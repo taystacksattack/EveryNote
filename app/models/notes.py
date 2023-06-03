@@ -1,7 +1,8 @@
 
-#import db
+# import db
 from .db import db, add_prefix_for_prod
 from datetime import datetime
+
 
 class Note(db.Model):
     __tablename__ = "notes"
@@ -22,11 +23,11 @@ class Note(db.Model):
                            default=datetime.utcnow)
 
     # relationships
-    owners = db.relationship(
-        "User", back_populates="notes", cascade="all, delete-orphan")
+    owner = db.relationship(
+        "User", back_populates="notes")
     notebooks = db.relationship(
-        "Notebook", back_populates="notes", cascade="all, delete-orphan")
+        "Notebook", back_populates="notes")
     tags = db.relationship(
-        "Tag", back_populates="notes", secondary="note_tags", cascade="all, delete-orphan")
+        "Tag", back_populates="notes", secondary="note_tags", cascade="all,delete-orphan")
 
-    shared_users = db.relationship("")
+    # shared_users = db.relationship("")

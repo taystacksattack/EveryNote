@@ -2,6 +2,7 @@
 from .db import db, add_prefix_for_prod
 from datetime import datetime
 
+
 class Notebook(db.Model):
     __tablename__ = "notebooks"
     # Table Columns
@@ -16,5 +17,6 @@ class Notebook(db.Model):
                            default=datetime.utcnow)
     # Relationships
     owner = db.relationship(
-        "User", back_populates="notebooks", cascade="all, delete")
-    notes = db.relationship("Notebook", back_populates="notes")
+        "User", back_populates="notebooks")
+    notes = db.relationship(
+        "Note", back_populates="notebooks", cascade="all, delete", single_parent=True)

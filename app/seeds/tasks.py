@@ -1,13 +1,15 @@
 from app.models import db, Task, environment, SCHEMA
 from sqlalchemy.sql import text
-
+from datetime import datetime
 
 # Adds a demo user, you can add other users here if you want
+
+
 def seed_tasks():
     ask_for_an_extension = Task(
-        title='Adult Responsibility', ownerId=1, description="ask for an extension for the 2023 tax season as you procrastinated to hard", completed=True, due_date="2023-28-05")
+        title='Adult Responsibility', ownerId=1, description="ask for an extension for the 2023 tax season as you procrastinated to hard", completed=True, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M"))
     finish_pokemon_types = Task(
-        title='Hobbies', ownerId=1, description="Finish writing out the type of the current iteration of Pokemon", completed=False, due_date="2023-01-07")
+        title='Hobbies', ownerId=2, description="Finish writing out the type of the current iteration of Pokemon", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M"))
 
     db.session.add(ask_for_an_extension)
     db.session.add(finish_pokemon_types)
@@ -23,7 +25,7 @@ def seed_tasks():
 def undo_tasks():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.tasks RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM tasks"))
 

@@ -14,12 +14,15 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    #our add, please don't break
-    tasks = db.relationship("Task", back_populates="owner")
-    notebooks = db.relationship("Notebook", back_populates="owner")
+    # our add, please don't break
+    tasks = db.relationship("Task", back_populates="owner",
+                            cascade="all, delete-orphan")
+    notebooks = db.relationship(
+        "Notebook", back_populates="owner")
 
-    notes = db.relationship("Note", secondary="sharedprivileges")
-    #adding relationships
+    notes = db.relationship(
+        "Note", back_populates="owner", secondary="share_privileges", cascade="all, delete-orphan", single_parent=True)
+    # adding relationships
 
     @property
     def password(self):
@@ -38,3 +41,4 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+# , cascade="all, delete-orphan"

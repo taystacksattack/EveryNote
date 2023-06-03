@@ -23,10 +23,10 @@ class Note(db.Model):
 
     # relationships
     owners = db.relationship(
-        "Users", back_populates="notes", cascade="all, delete-orphan")
+        "User", back_populates="notes", cascade="all, delete-orphan")
     notebooks = db.relationship(
-        "Notebooks", back_populates="notes", cascade="all, delete-orphan")
+        "Notebook", back_populates="notes", cascade="all, delete-orphan")
     tags = db.relationship(
-        "Tags", back_populates="notes", secondary="note_tags", cascade="all, delete-orphan")
+        "Tag", back_populates="notes", secondary="note_tags", cascade="all, delete-orphan")
 
     shared_users = db.relationship("")

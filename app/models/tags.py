@@ -13,4 +13,4 @@ class Tag(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
 
-    notes = db.relationship("NoteTags", secondary="tags", back_populates="tag")
+    notes = db.relationship("NoteTag", secondary="note_tags", back_populates="tags")

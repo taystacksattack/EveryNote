@@ -17,4 +17,4 @@ class Notebook(db.Model):
     # Relationships
     owner = db.relationship(
         "User", back_populates="notebooks", cascade="all, delete")
-    notes = db.relationship("Notebooks", back_populates="notes")
+    notes = db.relationship("Notebook", back_populates="notes")

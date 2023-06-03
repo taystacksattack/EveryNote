@@ -1,5 +1,5 @@
 
-from db import db, add_prefix_for_prod
+from .db import db, add_prefix_for_prod
 from datetime import datetime
 
 class Tag(db.Model):
@@ -9,8 +9,8 @@ class Tag(db.Model):
     name = db.Column(db.String, nullable=False)
     # color = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.datetime.utcnow)
+                           default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.datetime.utcnow)
+                           default=datetime.utcnow)
 
     notes = db.relationship("NoteTags", secondary="tags", back_populates="tag")

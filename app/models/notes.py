@@ -1,6 +1,6 @@
 
 #import db
-from db import db, add_prefix_for_prod
+from .db import db, add_prefix_for_prod
 from datetime import datetime
 
 class Note(db.Model):
@@ -8,18 +8,18 @@ class Note(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
-    body = db.Column(db.StringField)
+    body = db.Column(db.String(1000))
     trash = db.Column(db.Boolean)
     ownerId = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("Users.id")), nullable=False)
+        add_prefix_for_prod("users.id")), nullable=False)
     notebookId = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("Notebooks.id")), nullable=False)
+        add_prefix_for_prod("notebooks.id")), nullable=False)
     tagId = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("Tags.id")), nullable=False)
+        add_prefix_for_prod("tags.id")), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.datetime.utcnow)
+                           default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.datetime.utcnow)
+                           default=datetime.utcnow)
 
     # relationships
     owners = db.relationship(

@@ -1,8 +1,8 @@
-from app.models import db, Note, SCHEMA
+from app.models import db, Note, SCHEMA, environment
 from sqlalchemy.sql import text
 
 
-def seed_note():
+def seed_notes():
     taxes_for_2023 = Note(
         title=" 2023 Tax Season", body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ", ownerId=1, notebookId=1, tagId=1
     )
@@ -15,7 +15,6 @@ def seed_note():
     yu_gi_oh_is_dying = Note(
         title="Is Yu_Gi_Oh Dying??", body="consequat ac felis donec. Lectus sit amet est placerat in egestas erat imperdiet.", ownerId=1, notebookId=4, tagId=2
     )
-
 
     db.session.add(taxes_for_2023)
     db.session.add(pokemon_types)
@@ -30,7 +29,7 @@ def seed_note():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_note():
+def undo_notes():
     if environment == "production":
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.note RESTART IDENTITY CASCADE;")

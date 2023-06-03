@@ -2,6 +2,7 @@
 from .db import db, add_prefix_for_prod
 from datetime import datetime
 
+
 class Tag(db.Model):
     __tablename__ = "tags"
 
@@ -13,4 +14,5 @@ class Tag(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
 
-    notes = db.relationship("NoteTag", secondary="note_tags", back_populates="tags")
+    notes = db.relationship(
+        "Note", back_populates="tags", secondary="note_tags")

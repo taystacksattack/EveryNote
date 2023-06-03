@@ -1,7 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .notebooks import seed_notebooks, undo_notebooks
-from .notes import seed_note, undo_note
+from .notes import seed_notes, undo_notes
 from .tasks import seed_tasks, undo_tasks
 from .tags import seed_tags, undo_tags
 
@@ -22,15 +22,15 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_tags()
-        undo_task()
-        undo_note()
-        undo_notebook()
+        undo_tasks()
+        undo_notes()
+        undo_notebooks()
         undo_users()
     seed_users()
-    seed_notebook()
-    seed_note()
-    seed_task()
-    seed_tag()
+    seed_notebooks()
+    seed_notes()
+    seed_tasks()
+    seed_tags()
     # seed_note_tags
     # seed_sharepriviges
 
@@ -41,8 +41,8 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_tags()
-    undo_task()
-    undo_note()
-    undo_notebook()
+    undo_tasks()
+    undo_notes()
+    undo_notebooks()
     undo_users()
     # Add other undo functions here

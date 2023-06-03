@@ -1,4 +1,4 @@
-from app.models import SCHEMA
+from app.models import SCHEMA, environment
 from app.models.db import db
 from app.models.notebooks import Notebook
 from sqlalchemy.sql import text

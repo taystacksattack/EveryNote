@@ -26,4 +26,4 @@ class Task(db.Model):
                            default=datetime.utcnow)
     # relationships
     owner = db.relationship(
-        "User", back_populates="tasks", cascade="all, delete-orphan")
+        "User", back_populates="tasks" )

@@ -28,6 +28,6 @@ class Note(db.Model):
     notebooks = db.relationship(
         "Notebook", back_populates="notes")
     tags = db.relationship(
-        "Tag", back_populates="notes", secondary="note_tags", cascade="all,delete-orphan")
+        "Tag", back_populates="notes", secondary="note_tags")
 
     # shared_users = db.relationship("")

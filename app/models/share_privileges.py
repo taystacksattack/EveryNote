@@ -5,6 +5,7 @@ share_privileges = db.Table(
     db.Model.metadata,
     db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("note_id", db.Integer, db.ForeignKey(add_prefix_for_prod("notes.id")), primary_key=True),
+    db.Column("write_privileges", db.Boolean, default=False)
 )
 
 

@@ -31,3 +31,16 @@ class Note(db.Model):
         "Tag", back_populates="notes", secondary="note_tags")
 
     # shared_users = db.relationship("")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'body': self.body,
+            'trash': self.trash,
+            'ownerId': self.ownerId,
+            'notebookId': self.notebookId,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            # 'tags': self.tags
+        }

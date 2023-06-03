@@ -13,7 +13,7 @@ def seed_notes():
         title="Digimon Digital Monsters,What are they", body="Amet dictum sit amet justo donec. Viverra vitae congue eu", ownerId=1, notebookId=3, tagId=2
     )
     yu_gi_oh_is_dying = Note(
-        title="Is Yu_Gi_Oh Dying??", body="consequat ac felis donec. Lectus sit amet est placerat in egestas erat imperdiet.", ownerId=1, notebookId=4, tagId=2
+        title="Is Yu_Gi_Oh Dying??", body="consequat ac felis donec. Lectus sit amet est placerat in egestas erat imperdiet.", ownerId=2, notebookId=4, tagId=2
     )
 
     db.session.add(taxes_for_2023)

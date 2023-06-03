@@ -15,10 +15,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     #our add, please don't break
-    tasks = db.relationship("Tasks", back_populates="owner")
-    notebooks = db.relationship("Notebooks", back_populates="owner")
+    tasks = db.relationship("Task", back_populates="owner")
+    notebooks = db.relationship("Notebook", back_populates="owner")
 
-    notes = db.relationship("Notes", secondary="sharedprivileges")
+    notes = db.relationship("Note", secondary="sharedprivileges")
     #adding relationships
 
     @property

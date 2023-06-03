@@ -1,9 +1,10 @@
 from .db import db, add_prefix_for_prod
 
 share_privileges = db.Table(
-    "shareprivileges",
-    db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-    db.Column("note_id", db.Integer, db.ForeignKey("notes.id"), primary_key=True),
+    "share_privileges",
+    db.Model.metadata,
+    db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("note_id", db.Integer, db.ForeignKey(add_prefix_for_prod("notes.id")), primary_key=True),
 )
 
 

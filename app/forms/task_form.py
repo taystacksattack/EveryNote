@@ -9,11 +9,13 @@ class TaskForm(FlaskForm):
                         DataRequired(), Length(min=5, max=50)])
 
     description = TextAreaField(
-        "Description of said task", validators=[DataRequired()])
+        "Description of task", validators=[DataRequired()])
+
+    due_date = DateField("when should this task be completed?",)
 
     completed = BooleanField("Completed?", default=False)
 
-    due_date = DateField("when should this task be completed?",)
+    # submit = SubmitField("Save Task")
     '''
         Maybe hide these from the JinJa but manually input the data when creating the user
         # created_at = DateField("Created At")

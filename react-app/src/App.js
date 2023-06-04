@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CurrentNotes from './components/NotesPage'
+import CurrentTasks from './components/TasksPage'
+import CreateTask from './components/CreateTask'
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,12 @@ function App() {
           </Route>
           <Route path="/notes">
             <CurrentNotes />
+          </Route>
+          <Route path="/tasks/new">
+            <CreateTask />
+          </Route>
+          <Route path="/tasks">
+            <CurrentTasks />
           </Route>
         </Switch>
       )}

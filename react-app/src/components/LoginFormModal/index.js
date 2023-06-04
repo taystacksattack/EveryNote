@@ -3,6 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import {Link} from "react-router-dom";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -20,6 +21,13 @@ function LoginFormModal() {
         closeModal()
     }
   };
+
+  const handleDemoUser = async (e) => {
+    await dispatch(login('demo@aa.io', 'password'))
+    closeModal()
+    return
+
+  }
 
   return (
     <>
@@ -50,6 +58,7 @@ function LoginFormModal() {
         </label>
         <button type="submit">Log In</button>
       </form>
+        <Link id='demo-user-link' to='/' onClick={handleDemoUser}>Demo User</Link>
     </>
   );
 }

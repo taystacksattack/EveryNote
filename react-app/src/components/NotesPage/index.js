@@ -21,7 +21,7 @@ const CurrentNotes = () => {
             <h1>Notes</h1>
             {notesObj && Object.values(notesObj).map(note => {
                return(
-                <p>{note.title}</p>
+                <p key={note.id}>{note.title}</p>
                 )
             })}
 

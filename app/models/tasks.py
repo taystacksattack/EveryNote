@@ -27,3 +27,16 @@ class Task(db.Model):
     # relationships
     owner = db.relationship(
         "User", back_populates="tasks" )
+
+
+    def to_dict(self):
+        return{
+            'id': self.id,
+            'ownerId': self.ownerId,
+            'title': self.title,
+            'description': self.description,
+            'due_date': self.due_date,
+            'completed': self.completed,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+        }

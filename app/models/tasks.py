@@ -17,7 +17,7 @@ class Task(db.Model):
     ownerId = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
 
-    description = db.Column(db.String)
+    description = db.Column(db.String(500))
 
     completed = db.Column(db.Boolean, default=False)
 

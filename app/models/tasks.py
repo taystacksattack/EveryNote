@@ -1,10 +1,14 @@
 
 
-from .db import db, add_prefix_for_prod
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 
 class Task(db.Model):
     __tablename__ = "tasks"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     # Table Columns
     id = db.Column(db.Integer, primary_key=True)
 

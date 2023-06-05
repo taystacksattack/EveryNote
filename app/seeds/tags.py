@@ -8,7 +8,9 @@ def seed_tags():
         name='Adult Responsibility')
     hobbies = Tag(
         name='Hobbies')
-
+    animals = Tag(
+        name="Animal info"
+    )
     db.session.add(responsibility)
     db.session.add(hobbies)
     db.session.commit()

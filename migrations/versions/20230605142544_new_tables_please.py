@@ -1,6 +1,6 @@
 """new tables please
 
-Revision ID: 780173718e58
+Revision ID: ffdc0a98111c
 Revises:
 Create Date: 2023-06-05 14:25:44.778772
 
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '780173718e58'
+revision = 'ffdc0a98111c'
 down_revision = None
 branch_labels = None
 depends_on = None

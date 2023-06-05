@@ -4,16 +4,16 @@ from sqlalchemy.sql import text
 
 def seed_notes():
     taxes_for_2023 = Note(
-        title=" 2023 Tax Season", body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ", ownerId=1, notebookId=1, tagId=1
+        title=" 2023 Tax Season", body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ", ownerId=1, notebookId=1
     )
     pokemon_types = Note(
-        title="Pokemon Types", body="labore et dolore magna aliqua. Egestas pretium aenean pharetra magna ac.", ownerId=1, notebookId=2, tagId=2
+        title="Pokemon Types", body="labore et dolore magna aliqua. Egestas pretium aenean pharetra magna ac.", ownerId=1, notebookId=2
     )
     what_are_digimon = Note(
-        title="Digimon Digital Monsters,What are they", body="Amet dictum sit amet justo donec. Viverra vitae congue eu", ownerId=1, notebookId=3, tagId=2
+        title="Digimon Digital Monsters,What are they", body="Amet dictum sit amet justo donec. Viverra vitae congue eu", ownerId=1, notebookId=3
     )
     yu_gi_oh_is_dying = Note(
-        title="Is Yu_Gi_Oh Dying??", body="consequat ac felis donec. Lectus sit amet est placerat in egestas erat imperdiet.", ownerId=2, notebookId=4, tagId=2
+        title="Is Yu_Gi_Oh Dying??", body="consequat ac felis donec. Lectus sit amet est placerat in egestas erat imperdiet.", ownerId=2, notebookId=4
     )
 
     db.session.add(taxes_for_2023)

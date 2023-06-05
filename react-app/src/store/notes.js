@@ -1,54 +1,82 @@
 // constants
 //GET, CREATE, EDIT, DELETE
 
-//actions
+//ACTION CONSTANTS
 const GET_NOTES = "session/GET_NOTES";
-// const REMOVE_USER = "session/REMOVE_USER";
+const CREATE_NOTE = "session/CREATE_NOTE"
 
 
-// action collectors
+
+//ACTION CREATORS
 const getNotes = (notes) => ({
     type: GET_NOTES,
     notes
 });
 
+const createNote = (note) => ({
+    type: CREATE_NOTE,
+    note
+})
 
-//THUNK action creators
+//THUNKS
 export const getNotesThunk = () => async (dispatch) => {
     const response = await fetch("/api/notes/");
-	if (response.ok) {
+    if (response.ok) {
         const data = await response.json();
-		if (data.errors) {
+        if (data.errors) {
             return;
-		}
-
-		dispatch(getNotes(data.notes));
-        console.log("RAW", data.notes)
+        }
+        dispatch(getNotes(data.notes));
         return data.notes
-	}
+    }
 };
 
+export const createNoteThunk = (note) => async (dispatch) => {
+    console.log("note =============>", note)
+    const response = await fetch("/api/notes/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(note)
+    })
 
-//THIS IS OUR REDUCER
+    if (response.ok) {
+
+        const newNote = await response.json()
+        dispatch(createNote(newNote))
+        return newNote
+
+    } else {
+
+        const errors = await response.json()
+        return errors
+    }
+}
+
+
+//REDUCER
 const initialState = { allNotes: {} };
 export default function notesReducer(state = initialState, action) {
-	switch (action.type) {
-		case GET_NOTES:
-            console.log("action",action)
-            const newState = { allNotes: {}};
+    switch (action.type) {
+        case GET_NOTES: {
+            const newState = { allNotes: {} };
 
-            console.log("what is this...?",action.notes)
-            console.log("IS THIS AN ARRAY?",Array.isArray(action.notes))
-
-
-            if(action.notes.length){
+            if (action.notes.length) {
                 action.notes.forEach((note) => {
                     newState.allNotes[note.id] = note
-                })}
-            console.log("newstate be like: ", newState)
-			return newState;
+                })
+            }
 
-		default:
-			return state;
-	}
+            return newState;
+        }
+        case CREATE_NOTE: {
+            const newState = { ...state, allNotes: { ...state.allNotes } }
+            console.log('newState', newState)
+            console.log('action.note', action.note)
+            newState.allNotes[action.note.id] = action.note
+        
+            return newState
+        }
+        default:
+            return state
+    }
 }

@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .share_privileges import share_privileges
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
         "Notebook", back_populates="owner")
 
     notes = db.relationship(
-        "Note", back_populates="owner", secondary="share_privileges", cascade="all, delete-orphan", single_parent=True)
+        "Note", back_populates="owner", secondary=share_privileges, cascade="all, delete-orphan", single_parent=True)
     # adding relationships
 
     @property

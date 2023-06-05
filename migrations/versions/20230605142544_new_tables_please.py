@@ -1,20 +1,19 @@
-"""okokokok
+"""new tables please
 
-Revision ID: ffdc0a98111c
+Revision ID: 780173718e58
 Revises:
-Create Date: 2023-06-05 11:12:16.248766
+Create Date: 2023-06-05 14:25:44.778772
 
 """
 from alembic import op
 import sqlalchemy as sa
-
 
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = '780173718e58'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -63,7 +62,7 @@ def upgrade():
     op.create_table('notes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=True),
-    sa.Column('body', sa.String(length=1000), nullable=True),
+    sa.Column('body', sa.Text(), nullable=True),
     sa.Column('trash', sa.Boolean(), nullable=True),
     sa.Column('ownerId', sa.Integer(), nullable=False),
     sa.Column('notebookId', sa.Integer(), nullable=False),
@@ -97,6 +96,7 @@ def upgrade():
         op.execute(f"ALTER TABLE tasks SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE note_tags SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE share_privileges SET SCHEMA {SCHEMA};")
+
 
 
 def downgrade():

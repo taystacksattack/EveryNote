@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-
+import { Link } from "react-router-dom"
 import { getNotebooksThunk } from "../../store/notebook"
 
 const CurrentNotebooks = () => {
@@ -18,11 +18,15 @@ const CurrentNotebooks = () => {
     return (
         <div>
             <h1>NOTEBOOKS</h1>
-            {notebookObj && Object.values(notebookObj).map(notebook => {
-                return (
-                    <p key={notebook.id}>{notebook.title}</p>
-                )
-            })}
+            <div className="notebook-content-div">
+                {notebookObj && Object.values(notebookObj).map(notebook => {
+                    return (
+                        <p key={notebook.id}>
+                            <Link to={`/${notebook.id}`}> {notebook.title}</Link>
+                        </p>
+                    )
+                })}
+            </div>
         </div>
     )
 

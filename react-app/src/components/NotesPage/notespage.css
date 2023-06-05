@@ -1,0 +1,39 @@
+.everything-wrapper{
+    border: 2px solid green;
+    display: flex;
+    justify-content:end;
+    height: 100vh;
+}
+
+.note-selection{
+    border: 1px solid black;
+}
+
+.all-notes-area{
+    border: 2px solid red;
+    width: 20%
+}
+
+
+.new-note-area{
+    border: 2px solid blue;
+    width: 60%
+
+}
+
+#new-note-form{
+    display:flex;
+    flex-direction:column;
+}
+
+#title-textarea, #note-content-textarea{
+    /* border:none; */
+    resize:none;
+    /* need to think about scrolling and height  */
+
+} 
+
+
+#save-note-btn {
+    width: 5rem;
+}

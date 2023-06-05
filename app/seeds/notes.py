@@ -5,6 +5,7 @@ from app.seeds.data import lorem_ipsum
 
 
 def seed_notes():
+
     taxes_1 = Note(
         title="2021 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1
     )
@@ -82,6 +83,19 @@ def seed_notes():
     )
     movies_2 = Note(
         title="The Cinematic Odyssey: Unforgettable Moments in Film History", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9
+
+    taxes_for_2023 = Note(
+        title=" 2023 Tax Season", body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ", ownerId=1, notebookId=1
+    )
+    pokemon_types = Note(
+        title="Pokemon Types", body="labore et dolore magna aliqua. Egestas pretium aenean pharetra magna ac.", ownerId=1, notebookId=2
+    )
+    what_are_digimon = Note(
+        title="Digimon Digital Monsters,What are they", body="Amet dictum sit amet justo donec. Viverra vitae congue eu", ownerId=1, notebookId=3
+    )
+    yu_gi_oh_is_dying = Note(
+        title="Is Yu_Gi_Oh Dying??", body="consequat ac felis donec. Lectus sit amet est placerat in egestas erat imperdiet.", ownerId=2, notebookId=4
+
     )
     movies_3 = Note(
         title="Beyond the Reel: Exploring the Magic of Movie Making", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9

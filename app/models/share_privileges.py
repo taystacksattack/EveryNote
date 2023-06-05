@@ -1,4 +1,4 @@
-from .db import db, add_prefix_for_prod
+from .db import db, add_prefix_for_prod, environment, SCHEMA
 
 share_privileges = db.Table(
     "share_privileges",
@@ -8,7 +8,8 @@ share_privileges = db.Table(
     db.Column("write_privileges", db.Boolean, default=False)
 )
 
-
+if environment == "production":
+    share_privileges.schema = SCHEMA
 
 # class Share_Privileges(db.Table):
 #     __tablename__ = "share_privileges"

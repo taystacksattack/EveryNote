@@ -5,15 +5,20 @@ from wtforms.validators import DataRequired, Length
 
 
 class TaskForm(FlaskForm):
+
     title = StringField("Name of Task", validators=[
                         DataRequired(), Length(min=5, max=50)])
 
     description = TextAreaField(
-        "Description of said task", validators=[DataRequired()])
+        "Description of task", validators=[DataRequired()])
+
+    due_date = DateField("when should this task be completed?")
+
+    updated_at = DateField("updated at")
 
     completed = BooleanField("Completed?", default=False)
 
-    due_date = DateField("when should this task be completed?",)
+    # submit = SubmitField("Save Task")
     '''
         Maybe hide these from the JinJa but manually input the data when creating the user
         # created_at = DateField("Created At")

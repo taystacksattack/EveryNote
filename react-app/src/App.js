@@ -7,6 +7,10 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CurrentNotes from './components/NotesPage'
 import CurrentNotebooks from "./components/NotebookPage";
+import CurrentTasks from './components/TasksPage'
+import CreateTask from './components/CreateTask'
+import EditTask from './components/EditTask'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +35,14 @@ function App() {
           </Route>
           <Route path="/notebooks">
             <CurrentNotebooks />
+          <Route path="/tasks/:taskId/edit/">
+            <EditTask />
+          </Route>
+          <Route path="/tasks/new">
+            <CreateTask />
+          </Route>
+          <Route path="/tasks">
+            <CurrentTasks />
           </Route>
         </Switch>
       )}

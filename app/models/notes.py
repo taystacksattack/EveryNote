@@ -2,6 +2,7 @@
 # import db
 from .db import db, add_prefix_for_prod
 from datetime import datetime
+from .note_tags import note_tag
 
 
 class Note(db.Model):
@@ -17,6 +18,8 @@ class Note(db.Model):
         add_prefix_for_prod("notebooks.id")), nullable=False)
     # tagId = db.Column(db.Integer, db.ForeignKey(
     #     add_prefix_for_prod("tags.id")))
+    #     add_prefix_for_prod("tags.id")), nullable=False)
+
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
@@ -28,7 +31,7 @@ class Note(db.Model):
     notebooks = db.relationship(
         "Notebook", back_populates="notes")
     tags = db.relationship(
-        "Tag", back_populates="notes", secondary="note_tags")
+        "Tag", back_populates="notes", secondary=note_tag)
 
     # shared_users = db.relationship("")
 

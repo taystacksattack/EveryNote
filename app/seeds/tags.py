@@ -13,6 +13,7 @@ def seed_tags():
     )
     db.session.add(responsibility)
     db.session.add(hobbies)
+    db.session.add(animals)
     db.session.commit()
 
 

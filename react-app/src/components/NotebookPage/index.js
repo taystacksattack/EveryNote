@@ -6,7 +6,7 @@ import { getNotebooksThunk } from "../../store/notebook"
 const CurrentNotebooks = () => {
     const dispatch = useDispatch()
 
-    const notebookObj = useSelector(state => state.allNotebooks)
+    const notebookObj = useSelector(state => state.notebooks.allNotebooks)
 
     console.log("NotebookObj:", notebookObj)
 

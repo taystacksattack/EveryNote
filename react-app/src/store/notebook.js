@@ -18,10 +18,10 @@ const getNotebooks = (notebooks) => ({
 //THUNK action creators
 export const getNotebooksThunk = () => async (dispatch) => {
     const response = await fetch("/api/notebooks/");
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         dispatch(getNotebooks(data));
     }
 };
@@ -33,7 +33,7 @@ const notebooksReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_NOTEBOOKS:
             const newState = { allNotebooks: {} };
-            console.log("action.notebooks:", action.notebooks)
+            // console.log("action.notebooks:", action.notebooks)
             if (action.notebooks.length !== 0) {
                 action.notebooks.notebooks.forEach((notebook) => {
                     newState.allNotebooks[notebook.id] = notebook

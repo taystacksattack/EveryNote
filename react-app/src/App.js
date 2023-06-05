@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CurrentNotes from './components/NotesPage'
+import SingleNote from './components/SingleNotePage'
 
 import "./app.css"
 
@@ -18,7 +19,8 @@ function App() {
 
   return (
     <>
-      <div className="app-wrapper">app wrapper
+      <div className="app-100-wrapper">
+      <div className="app-wrapper">
       <div className="app-navbar">
       <Navigation isLoaded={isLoaded}/>
       </div>
@@ -33,12 +35,17 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/notes">
+
             <CurrentNotes />
+
+            <SingleNote />
+
           </Route>
         </Switch>
       )}
       </div>
     {/* app wrapper end */}
+    </div>
     </div>
     </>
   );

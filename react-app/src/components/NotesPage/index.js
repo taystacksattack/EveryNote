@@ -17,15 +17,18 @@ const CurrentNotes = () => {
     if(!notesObj) return (<div>Loading</div>)
 
     return(
+        <>
         <div>
             <h1>Notes</h1>
             {notesObj && Object.values(notesObj).map(note => {
-               return(
-                <p key={note.id}>{note.title}</p>
-                )
-            })}
+                return(
+                    <p key={note.id}>{note.title}</p>
+                    )
+                })}
 
         </div>
+
+        </>
 
     )
 

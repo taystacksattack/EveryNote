@@ -1,10 +1,14 @@
 
 
-from .db import db, add_prefix_for_prod
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 
 class Task(db.Model):
     __tablename__ = "tasks"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     # Table Columns
     id = db.Column(db.Integer, primary_key=True)
 
@@ -13,7 +17,7 @@ class Task(db.Model):
     ownerId = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
 
-    description = db.Column(db.String)
+    description = db.Column(db.String(500))
 
     completed = db.Column(db.Boolean, default=False)
 

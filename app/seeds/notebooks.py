@@ -57,6 +57,7 @@ def seed_notebooks():
     db.session.add(taxes)
     db.session.add(pokemon)
     db.session.add(digimon)
+    db.session.add(yu_gi_oh)
     db.session.add(danger)
     db.session.add(war)
     db.session.add(lies)

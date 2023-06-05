@@ -17,7 +17,9 @@ class Note(db.Model):
     notebookId = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("notebooks.id")), nullable=False)
     # tagId = db.Column(db.Integer, db.ForeignKey(
+    #     add_prefix_for_prod("tags.id")))
     #     add_prefix_for_prod("tags.id")), nullable=False)
+
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,

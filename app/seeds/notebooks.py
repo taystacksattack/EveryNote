@@ -17,11 +17,60 @@ def seed_notebooks():
     yu_gi_oh = Notebook(
         title="Yu_Gi_Oh", is_default=False, ownerId=1,
     )
+    danger = Notebook(
+        title="danger", is_default=True, ownerId=2,
+    )
+    war = Notebook(
+        title="war", is_default=True, ownerId=3,
+    )
+    lies = Notebook(
+        title="lies", is_default=True, ownerId=4,
+    )
+    law = Notebook(
+        title="law", is_default=True, ownerId=5,
+    )
+    Movies = Notebook(
+        title="Movies", is_default=True, ownerId=6,
+    )
+    poetry = Notebook(
+        title="poetry", is_default=True, ownerId=7,
+    )
+    Musical = Notebook(
+        title="Musical ", is_default=True, ownerId=8,
+    )
+    cars = Notebook(
+        title="cars ", is_default=True, ownerId=9,
+    )
+    animals = Notebook(
+        title="animals ", is_default=True, ownerId=10,
+    )
+    cats = Notebook(
+        title="cats", is_default=False, ownerId=10,
+    )
+    dogs = Notebook(
+        title="dogs", is_default=False, ownerId=10,
+    )
+    hippos = Notebook(
+        title="hippos", is_default=False, ownerId=10,
+    )
 
     db.session.add(taxes)
     db.session.add(pokemon)
     db.session.add(digimon)
     db.session.add(yu_gi_oh)
+    db.session.add(danger)
+    db.session.add(war)
+    db.session.add(lies)
+    db.session.add(law)
+    db.session.add(Movies)
+    db.session.add(poetry)
+    db.session.add(Musical)
+    db.session.add(cars)
+    db.session.add(animals)
+    db.session.add(cats)
+    db.session.add(dogs)
+    db.session.add(hippos)
+
     db.session.commit()
 
 

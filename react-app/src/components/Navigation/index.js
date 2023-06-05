@@ -24,7 +24,7 @@ function Navigation({ isLoaded }){
 				<NavLink exact to="/tasks">Tasks</NavLink>
 			</li>
 			<li>
-				<NavLink exact to="/">Notebooks</NavLink>
+				<NavLink exact to="/notebooks">Notebooks</NavLink>
 			</li>
 			<li>
 				<NavLink exact to="/">Tags</NavLink>

@@ -4,9 +4,9 @@ from app.models import Notebook
 
 notebook_routes = Blueprint('notebooks', __name__)
 
+# @login_required
 
 @notebook_routes.route("/")
-@login_required
 def notebooks():
     """
     Query for all notebooks and returns them in a list of notebooks dictionaries

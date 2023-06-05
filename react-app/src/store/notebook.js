@@ -18,34 +18,33 @@ const getNotebooks = (notebooks) => ({
 //THUNK action creators
 export const getNotebooksThunk = () => async (dispatch) => {
     const response = await fetch("/api/notebooks/");
-	if (response.ok) {
+    console.log(response)
+    if (response.ok) {
         const data = await response.json();
-
-		dispatch(getNotebooks(data));
-	}
+        console.log(data)
+        dispatch(getNotebooks(data));
+    }
 };
 
 
 //THIS IS OUR REDUCER
 const initialState = { allNotebooks: {} };
-export default function notebooksReducer(state = initialState, action) {
-	switch (action.type) {
-		case GET_NOTEBOOKS:
-            // console.log("action",action)
-            const newState = { allNotebooks: {}};
-
-            // console.log("what is this...?",action.notebooks)
-            // console.log("IS THIS AN ARRAY?",Array.isArray(action.notebooks))
-
-
-            if(action.notebooks.length){
-                action.notebooks.forEach((notebook) => {
+const notebooksReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case GET_NOTEBOOKS:
+            const newState = { allNotebooks: {} };
+            console.log("action.notebooks:", action.notebooks)
+            if (action.notebooks.length !== 0) {
+                action.notebooks.notebooks.forEach((notebook) => {
                     newState.allNotebooks[notebook.id] = notebook
-                })}
-            // console.log("newstate be like: ", newState)
-			return newState;
+                })
+            }
 
-		default:
-			return state;
-	}
+            return newState;
+
+        default:
+            return state;
+    }
 }
+
+export default notebooksReducer

@@ -13,7 +13,7 @@ class Note(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(1000))
+    title = db.Column(db.Text())
     body = db.Column(db.Text())
     trash = db.Column(db.Boolean)
     ownerId = db.Column(db.Integer, db.ForeignKey(

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import CurrentNotes from './components/NotesPage'
 import CurrentTasks from './components/TasksPage'
 import CreateTask from './components/CreateTask'
+import EditTask from './components/EditTask'
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/notes">
             <CurrentNotes />
+          </Route>
+          <Route path="/tasks/:taskId/edit/">
+            <EditTask />
           </Route>
           <Route path="/tasks/new">
             <CreateTask />

@@ -5,13 +5,16 @@ from wtforms.validators import DataRequired, Length
 
 
 class TaskForm(FlaskForm):
+
     title = StringField("Name of Task", validators=[
                         DataRequired(), Length(min=5, max=50)])
 
     description = TextAreaField(
         "Description of task", validators=[DataRequired()])
 
-    due_date = DateField("when should this task be completed?",)
+    due_date = DateField("when should this task be completed?")
+
+    updated_at = DateField("updated at")
 
     completed = BooleanField("Completed?", default=False)
 

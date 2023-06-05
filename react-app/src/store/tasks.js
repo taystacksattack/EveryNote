@@ -4,6 +4,8 @@
 //actions
 const GET_TASKS = "session/GET_TASKS";
 const CREATE_TASK = 'session/CREATE_TASK'
+const EDIT_TASK = 'session/EDIT_TASK'
+const DELETE_TASK = 'session/DELETE_TASK'
 // const REMOVE_USER = "session/REMOVE_USER";
 
 
@@ -15,6 +17,16 @@ const getTasks = (tasks) => ({
 
 const createTask = (task) => ({
     type: CREATE_TASK,
+    task
+});
+
+const editTask = (task) => ({
+    type: EDIT_TASK,
+    task
+});
+
+const deleteTask = (task) => ({
+    type: DELETE_TASK,
     task
 });
 
@@ -49,6 +61,31 @@ export const createTaskThunk = (task) => async (dispatch) => {
         console.log("ERROR with the post")
     }
 }
+
+export const editTaskThunk = (taskId, task) => async (dispatch) => {
+    console.log("taskId in think", taskId)
+    console.log("task in think", task)
+    console.log(`/api/tasks/${taskId}/edit`)
+    // const response = await fetch(`/api/tasks/${task.id}/edit`, {
+    //     method: 'PUT',
+    //     body: task
+    // })
+    // console.log('RESPONSE FROM SQLALCHEMY', response)
+
+    try{
+        const response = await fetch(`/api/tasks/${taskId}/edit`, {
+        method: 'PUT',
+        body: task
+    })
+    const {result} = await response.json()
+    console.log("response ok - edited task response", result)
+    dispatch(editTask(result))
+    return
+    } catch(e){
+        return e
+    }
+}
+
 
 
 //THIS IS OUR REDUCER

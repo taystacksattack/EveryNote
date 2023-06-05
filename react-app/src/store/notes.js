@@ -73,7 +73,7 @@ export default function notesReducer(state = initialState, action) {
             console.log('newState', newState)
             console.log('action.note', action.note)
             newState.allNotes[action.note.id] = action.note
-           // some bug with the normalization of data... it erased the 4th seeder..... 
+        
             return newState
         }
         default:

@@ -17,6 +17,15 @@ const CurrentNotes = () => {
         dispatch(getNotesThunk())
     }, [dispatch,])
 
+    useEffect(() => {
+        if (trash === true){
+
+            dispatch(createNoteThunk(newNote))
+            setTitle('')
+            setNoteContent('')
+        }
+    }, [dispatch, trash])
+
     // console.log("notes object", notesObj)
 
     const owner = useSelector(state => state.session.user)
@@ -26,9 +35,11 @@ const CurrentNotes = () => {
         title,
         body: noteContent,
         ownerId: owner.id,
-        notebookId: 1
-    }
+        notebookId: 1,
+        trash: trash
 
+    }
+    console.log('trash', trash)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,11 +49,18 @@ const CurrentNotes = () => {
 
 
     if (!notesObj) return (<div>Loading</div>)
+    const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
     return (
         <div className='everything-wrapper'>
             <div className='all-notes-area'>
                 <h1>Notes</h1>
-                {notesObj && Object.values(notesObj).map(note => (
+                {/* {notesObj && Object.values(notesObj).map(note => (
+                    <div key={note.id} className='note-selection'>
+                        <p >{note.title}</p>
+                        <p>{note.updated_at}</p>
+                    </div>
+                ))} */}
+                {notesObj && listOfNotes.map(note => (
                     <div key={note.id} className='note-selection'>
                         <p >{note.title}</p>
                         <p>{note.updated_at}</p>
@@ -69,11 +87,11 @@ const CurrentNotes = () => {
                         rows='50'
                     >
                     </textarea>
-
-                    <button id='save-note-btn'>Save Note</button>
+                    <button type='submit' id='save-note-btn'>Save Note</button>
 
                 </form>
-            </div>      
+                <button onClick={(e) => setTrash(!trash)}>trash</button>
+            </div>
 
 
         </div>

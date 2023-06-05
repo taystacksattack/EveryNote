@@ -15,8 +15,8 @@ class Note(db.Model):
         add_prefix_for_prod("users.id")), nullable=False)
     notebookId = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("notebooks.id")), nullable=False)
-    tagId = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("tags.id")), nullable=False)
+    # tagId = db.Column(db.Integer, db.ForeignKey(
+    #     add_prefix_for_prod("tags.id")))
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
@@ -31,3 +31,16 @@ class Note(db.Model):
         "Tag", back_populates="notes", secondary="note_tags")
 
     # shared_users = db.relationship("")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'body': self.body,
+            'trash': self.trash,
+            'ownerId': self.ownerId,
+            'notebookId': self.notebookId,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            # 'tags': self.tags
+        }

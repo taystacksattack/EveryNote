@@ -6,148 +6,148 @@ from app.seeds.data import lorem_ipsum
 
 def seed_notes():
     taxes_1 = Note(
-        title="2021 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1, tagId=1
+        title="2021 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1
     )
     taxes_2 = Note(
-        title="2022 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1, tagId=1
+        title="2022 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1
     )
     taxes_3 = Note(
-        title="2023 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1, tagId=1
+        title="2023 Tax Season", body=lorem_ipsum, trash=False, ownerId=1, notebookId=1
     )
     pokemon_1 = Note(
-        title="Pokemon Types", body=lorem_ipsum, trash=False, ownerId=1, notebookId=2, tagId=2
+        title="Pokemon Types", body=lorem_ipsum, trash=False, ownerId=1, notebookId=2
     )
     pokemon_2 = Note(
-        title="What inspired the creation of the first Pokemon game and how has the franchise evolved since then?", body=lorem_ipsum, trash=False, ownerId=1, notebookId=2, tagId=2
+        title="What inspired the creation of the first Pokemon game and how has the franchise evolved since then?", body=lorem_ipsum, trash=False, ownerId=1, notebookId=2
     )
     pokemon_3 = Note(
-        title="How has the Pokemon community impacted popular culture and influenced other video game franchises?", body=lorem_ipsum, trash=False, ownerId=1, notebookId=2, tagId=2
+        title="How has the Pokemon community impacted popular culture and influenced other video game franchises?", body=lorem_ipsum, trash=False, ownerId=1, notebookId=2
     )
     digimon_1 = Note(
-        title="Digimon Digital Monsters,What are they", body=lorem_ipsum, trash=False, ownerId=1, notebookId=3, tagId=2
+        title="Digimon Digital Monsters,What are they", body=lorem_ipsum, trash=False, ownerId=1, notebookId=3
     )
     digimon_2 = Note(
-        title="concept of Digivolution in Digimon", body=lorem_ipsum, trash=False, ownerId=1, notebookId=3, tagId=2
+        title="concept of Digivolution in Digimon", body=lorem_ipsum, trash=False, ownerId=1, notebookId=3
     )
     digimon_3 = Note(
-        title="basic premise of the Digimon franchise", body=lorem_ipsum, trash=False, ownerId=1, notebookId=3, tagId=2
+        title="basic premise of the Digimon franchise", body=lorem_ipsum, trash=False, ownerId=1, notebookId=3
     )
     yu_gi_oh_1 = Note(
-        title="Is Yu_Gi_Oh Dying??", body=lorem_ipsum, trash=False, ownerId=1, notebookId=4, tagId=2
+        title="Is Yu_Gi_Oh Dying??", body=lorem_ipsum, trash=False, ownerId=1, notebookId=4
     )
     yu_gi_oh_2 = Note(
-        title="BRRRRRRRRRRRRRRRRRRRR", body=lorem_ipsum, trash=False, ownerId=1, notebookId=4, tagId=2
+        title="BRRRRRRRRRRRRRRRRRRRR", body=lorem_ipsum, trash=False, ownerId=1, notebookId=4
     )
     yu_gi_oh_3 = Note(
-        title="Analyze the role of the Egyptian God Cards in the Yu-Gi-Oh!", body=lorem_ipsum, trash=False, ownerId=1, notebookId=4, tagId=2
+        title="Analyze the role of the Egyptian God Cards in the Yu-Gi-Oh!", body=lorem_ipsum, trash=False, ownerId=1, notebookId=4
     )
     danger_1 = Note(
-        title="Thrill and Peril: Tales of Danger Unleashed", body=lorem_ipsum, trash=False, ownerId=2, notebookId=5, tagId=2
+        title="Thrill and Peril: Tales of Danger Unleashed", body=lorem_ipsum, trash=False, ownerId=2, notebookId=5
     )
     danger_2 = Note(
-        title="Navigating the Abyss: A Brush with Danger", body=lorem_ipsum, trash=False, ownerId=2, notebookId=5, tagId=2
+        title="Navigating the Abyss: A Brush with Danger", body=lorem_ipsum, trash=False, ownerId=2, notebookId=5
     )
     danger_3 = Note(
-        title="When Shadows Loom: Confronting the Danger Within", body=lorem_ipsum, trash=False, ownerId=2, notebookId=5, tagId=2
+        title="When Shadows Loom: Confronting the Danger Within", body=lorem_ipsum, trash=False, ownerId=2, notebookId=5
     )
     war_1 = Note(
-        title="Echoes of Valor: Stories from the Battlefield", body=lorem_ipsum, trash=False, ownerId=3, notebookId=6, tagId=2
+        title="Echoes of Valor: Stories from the Battlefield", body=lorem_ipsum, trash=False, ownerId=3, notebookId=6
     )
     war_2 = Note(
-        title="The Price of Freedom: Unmasking the Realities of War", body=lorem_ipsum, trash=False, ownerId=3, notebookId=6, tagId=2
+        title="The Price of Freedom: Unmasking the Realities of War", body=lorem_ipsum, trash=False, ownerId=3, notebookId=6
     )
     war_3 = Note(
-        title="Unforgotten Heroes: Courage Amidst the Chaos of War", body=lorem_ipsum, trash=False, ownerId=3, notebookId=6, tagId=2
+        title="Unforgotten Heroes: Courage Amidst the Chaos of War", body=lorem_ipsum, trash=False, ownerId=3, notebookId=6
     )
     lies_1 = Note(
-        title="Web of Deception: Unraveling the Tangled Lies", body=lorem_ipsum, trash=False, ownerId=4, notebookId=7, tagId=2
+        title="Web of Deception: Unraveling the Tangled Lies", body=lorem_ipsum, trash=False, ownerId=4, notebookId=7
     )
     lies_2 = Note(
-        title="The Art of Illusion: Exploring the World of Lies", body=lorem_ipsum, trash=False, ownerId=4, notebookId=7, tagId=2
+        title="The Art of Illusion: Exploring the World of Lies", body=lorem_ipsum, trash=False, ownerId=4, notebookId=7
     )
     lies_3 = Note(
-        title="Smoke and Mirrors: Truth and Lies in a Disguised Reality", body=lorem_ipsum, trash=False, ownerId=4, notebookId=7, tagId=2
+        title="Smoke and Mirrors: Truth and Lies in a Disguised Reality", body=lorem_ipsum, trash=False, ownerId=4, notebookId=7
     )
     law_1 = Note(
-        title="In Pursuit of Justice: Trials, Triumphs, and Legal Tales", body=lorem_ipsum, trash=False, ownerId=5, notebookId=8, tagId=2
+        title="In Pursuit of Justice: Trials, Triumphs, and Legal Tales", body=lorem_ipsum, trash=False, ownerId=5, notebookId=8
     )
     law_2 = Note(
-        title="Behind the Gavel: Inside Stories from the Courtroom", body=lorem_ipsum, trash=False, ownerId=5, notebookId=8, tagId=2
+        title="Behind the Gavel: Inside Stories from the Courtroom", body=lorem_ipsum, trash=False, ownerId=5, notebookId=8
     )
     law_3 = Note(
-        title="Breaking Barriers: Trailblazing Lawyers and Landmark Cases", body=lorem_ipsum, trash=False, ownerId=5, notebookId=8, tagId=2
+        title="Breaking Barriers: Trailblazing Lawyers and Landmark Cases", body=lorem_ipsum, trash=False, ownerId=5, notebookId=8
     )
     movies_1 = Note(
-        title="Celluloid Chronicles: Captivating Stories Behind the Silver Screen", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9, tagId=2
+        title="Celluloid Chronicles: Captivating Stories Behind the Silver Screen", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9
     )
     movies_2 = Note(
-        title="The Cinematic Odyssey: Unforgettable Moments in Film History", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9, tagId=2
+        title="The Cinematic Odyssey: Unforgettable Moments in Film History", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9
     )
     movies_3 = Note(
-        title="Beyond the Reel: Exploring the Magic of Movie Making", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9, tagId=2
+        title="Beyond the Reel: Exploring the Magic of Movie Making", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9
     )
     poetry_1 = Note(
-        title="Whispers of the Soul: Poetic Expressions of Love and Loss", body=lorem_ipsum, trash=False, ownerId=7, notebookId=10, tagId=2
+        title="Whispers of the Soul: Poetic Expressions of Love and Loss", body=lorem_ipsum, trash=False, ownerId=7, notebookId=10
     )
     poetry_2 = Note(
-        title="Verse Untamed: Diving into the Depths of Emotion", body=lorem_ipsum, trash=False, ownerId=7, notebookId=10, tagId=2
+        title="Verse Untamed: Diving into the Depths of Emotion", body=lorem_ipsum, trash=False, ownerId=7, notebookId=10
     )
     poetry_3 = Note(
-        title="A Symphony of Words: Poetry as a Window to the Human Spirit", body=lorem_ipsum, trash=False, ownerId=7, notebookId=10, tagId=2
+        title="A Symphony of Words: Poetry as a Window to the Human Spirit", body=lorem_ipsum, trash=False, ownerId=7, notebookId=10
     )
     musical_1 = Note(
-        title="Song and Dance: Legendary Musicals that Shaped the Stage", body=lorem_ipsum, trash=False, ownerId=8, notebookId=11, tagId=2
+        title="Song and Dance: Legendary Musicals that Shaped the Stage", body=lorem_ipsum, trash=False, ownerId=8, notebookId=11
     )
     musical_2 = Note(
-        title="Harmony in Motion: The Magic of Musicals on Broadway", body=lorem_ipsum, trash=False, ownerId=8, notebookId=11, tagId=2
+        title="Harmony in Motion: The Magic of Musicals on Broadway", body=lorem_ipsum, trash=False, ownerId=8, notebookId=11
     )
     musical_3 = Note(
-        title="From Broadway to West End: A Journey through Musical Theater", body=lorem_ipsum, trash=False, ownerId=8, notebookId=11, tagId=2
+        title="From Broadway to West End: A Journey through Musical Theater", body=lorem_ipsum, trash=False, ownerId=8, notebookId=11
     )
     cars_1 = Note(
-        title="The Need for Speed: Legendary Cars and Their Stories", body=lorem_ipsum, trash=False, ownerId=9, notebookId=12, tagId=2
+        title="The Need for Speed: Legendary Cars and Their Stories", body=lorem_ipsum, trash=False, ownerId=9, notebookId=12
     )
     cars_2 = Note(
-        title="Chrome and Steel: Icons of Automotive Design", body=lorem_ipsum, trash=False, ownerId=9, notebookId=12, tagId=2
+        title="Chrome and Steel: Icons of Automotive Design", body=lorem_ipsum, trash=False, ownerId=9, notebookId=12
     )
     cars_3 = Note(
-        title="Driving Through Time: Evolution and Innovation in the Automobile Industry", body=lorem_ipsum, trash=False, ownerId=9, notebookId=12, tagId=2
+        title="Driving Through Time: Evolution and Innovation in the Automobile Industry", body=lorem_ipsum, trash=False, ownerId=9, notebookId=12
     )
     animals_1 = Note(
-        title="Wild Wonders: Extraordinary Encounters in the Animal Kingdom", body=lorem_ipsum, trash=False, ownerId=10, notebookId=13, tagId=2
+        title="Wild Wonders: Extraordinary Encounters in the Animal Kingdom", body=lorem_ipsum, trash=False, ownerId=10, notebookId=13
     )
     animals_2 = Note(
-        title="Nature's Diversity: Exploring the Rich Tapestry of Wildlife", body=lorem_ipsum, trash=False, ownerId=10, notebookId=13, tagId=2
+        title="Nature's Diversity: Exploring the Rich Tapestry of Wildlife", body=lorem_ipsum, trash=False, ownerId=10, notebookId=13
     )
     animals_3 = Note(
-        title="Guardians of the Earth: Conservation Stories from the Animal Realm", body=lorem_ipsum, trash=False, ownerId=10, notebookId=13, tagId=2
+        title="Guardians of the Earth: Conservation Stories from the Animal Realm", body=lorem_ipsum, trash=False, ownerId=10, notebookId=13
     )
     cats_1 = Note(
-        title="Purr-fect Companions: Tales of Feline Charm and Mischief", body=lorem_ipsum, trash=False, ownerId=10, notebookId=14, tagId=2
+        title="Purr-fect Companions: Tales of Feline Charm and Mischief", body=lorem_ipsum, trash=False, ownerId=10, notebookId=14
     )
     cats_2 = Note(
-        title="Whiskers and Whimsy: Celebrating the Enigmatic World of Cats", body=lorem_ipsum, trash=False, ownerId=10, notebookId=14, tagId=2
+        title="Whiskers and Whimsy: Celebrating the Enigmatic World of Cats", body=lorem_ipsum, trash=False, ownerId=10, notebookId=14
     )
     cats_3 = Note(
-        title="Adventures of the Catnip Crusaders: Feline Heroes and Their Feats", body=lorem_ipsum, trash=False, ownerId=10, notebookId=14, tagId=2
+        title="Adventures of the Catnip Crusaders: Feline Heroes and Their Feats", body=lorem_ipsum, trash=False, ownerId=10, notebookId=14
     )
     dogs_1 = Note(
-        title="Loyalty Unleashed: Inspiring Stories of Canine Devotion", body=lorem_ipsum, trash=False, ownerId=10, notebookId=15, tagId=2
+        title="Loyalty Unleashed: Inspiring Stories of Canine Devotion", body=lorem_ipsum, trash=False, ownerId=10, notebookId=15
     )
     dogs_2 = Note(
-        title="Paws and Promises: Heartwarming Tales of Man's Best Friend", body=lorem_ipsum, ownerId=10, notebookId=15, tagId=2
+        title="Paws and Promises: Heartwarming Tales of Man's Best Friend", body=lorem_ipsum, ownerId=10, notebookId=15
     )
     dogs_3 = Note(
-        title="Tales from the Leash: Adventures in the Wonderful World of Dogs", body=lorem_ipsum, trash=False, ownerId=10, notebookId=15, tagId=2
+        title="Tales from the Leash: Adventures in the Wonderful World of Dogs", body=lorem_ipsum, trash=False, ownerId=10, notebookId=15
     )
     hippos_1 = Note(
-        title="Behemoths of the Nile: Mysteries and Marvels of the Hippopotamus", body=lorem_ipsum, trash=False, ownerId=10, notebookId=16, tagId=2
+        title="Behemoths of the Nile: Mysteries and Marvels of the Hippopotamus", body=lorem_ipsum, trash=False, ownerId=10, notebookId=16
     )
     hippos_2 = Note(
-        title="River Giants: Exploring the Lives of Hippos in the Wild", body=lorem_ipsum, trash=False, ownerId=10, notebookId=16, tagId=2
+        title="River Giants: Exploring the Lives of Hippos in the Wild", body=lorem_ipsum, trash=False, ownerId=10, notebookId=16
     )
     hippos_3 = Note(
-        title="Hippos and Beyond: Discovering the Fascinating World of Semi-Aquatic Giants", body=lorem_ipsum, trash=False, ownerId=10, notebookId=16, tagId=2
+        title="Hippos and Beyond: Discovering the Fascinating World of Semi-Aquatic Giants", body=lorem_ipsum, trash=False, ownerId=10, notebookId=16
     )
 
     seeds = [taxes_1, taxes_2, taxes_3,

@@ -5,8 +5,8 @@ from sqlalchemy.sql import text
 
 
 def seed_notetags():
-    print("\n\n\nnote tag dir here lol")
-    print(dir(note_tag))
+    # print("\n\n\nnote tag dir here lol")
+    # print(dir(note_tag))
     # note_tag.add(1, 1)
     # # note_tag1 = note_tag(1, 1)
     # note_tag2 = note_tag(1, 2)
@@ -14,7 +14,7 @@ def seed_notetags():
     # db.session.add(note_tag1)
     # db.session.add(note_tag2)
     # db.session.commit()
-
+    pass
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE

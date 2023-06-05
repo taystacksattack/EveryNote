@@ -9,14 +9,32 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
+			<li>
+				<NavLink exact to="/">Home</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/notes">Notes</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/">Tasks</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/notebooks">Notebooks</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/">Tags</NavLink>
+			</li>
+			{/* <li>
+				<NavLink exact to="/">Trash</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/">Shared with Me</NavLink>
+			</li> */}
 		</ul>
 	);
 }

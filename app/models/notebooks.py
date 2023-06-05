@@ -20,3 +20,13 @@ class Notebook(db.Model):
         "User", back_populates="notebooks")
     notes = db.relationship(
         "Note", back_populates="notebooks", cascade="all, delete", single_parent=True)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "is_default": self.is_default,
+            "ownerId": self.ownerId,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }

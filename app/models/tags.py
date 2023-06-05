@@ -1,6 +1,7 @@
 
 from .db import db, add_prefix_for_prod
 from datetime import datetime
+from .note_tags import note_tag
 
 
 class Tag(db.Model):
@@ -15,4 +16,4 @@ class Tag(db.Model):
                            default=datetime.utcnow)
 
     notes = db.relationship(
-        "Note", back_populates="tags", secondary="note_tags")
+        "Note", back_populates="tags", secondary=note_tag)

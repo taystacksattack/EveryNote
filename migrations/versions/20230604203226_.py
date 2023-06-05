@@ -1,8 +1,8 @@
-"""omfg
+"""empty message
 
-Revision ID: a7a1b9e17fd9
+Revision ID: c6e5d31ef17a
 Revises: 
-Create Date: 2023-06-03 16:50:22.836570
+Create Date: 2023-06-04 20:32:26.043316
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a7a1b9e17fd9'
+revision = 'c6e5d31ef17a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -63,12 +63,10 @@ def upgrade():
     sa.Column('trash', sa.Boolean(), nullable=True),
     sa.Column('ownerId', sa.Integer(), nullable=False),
     sa.Column('notebookId', sa.Integer(), nullable=False),
-    sa.Column('tagId', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['notebookId'], ['notebooks.id'], ),
     sa.ForeignKeyConstraint(['ownerId'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['tagId'], ['tags.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('note_tags',

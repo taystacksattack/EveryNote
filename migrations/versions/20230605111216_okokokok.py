@@ -1,7 +1,7 @@
 """okokokok
 
-Revision ID: 964eea65ac6c
-Revises: 
+Revision ID: a7a1b9e17fd9
+Revises:
 Create Date: 2023-06-05 11:12:16.248766
 
 """
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '964eea65ac6c'
+revision = 'a7a1b9e17fd9'
 down_revision = None
 branch_labels = None
 depends_on = None

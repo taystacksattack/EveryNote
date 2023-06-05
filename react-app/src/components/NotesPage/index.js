@@ -18,7 +18,7 @@ const CurrentNotes = () => {
     }, [dispatch,])
 
     useEffect(() => {
-        if (trash === true){
+        if (trash === true) {
 
             dispatch(createNoteThunk(newNote))
             setTitle('')
@@ -46,10 +46,10 @@ const CurrentNotes = () => {
         dispatch(createNoteThunk(newNote))
 
     }
-
+    const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
     if (!notesObj) return (<div>Loading</div>)
-    const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
+
     return (
         <div className='everything-wrapper'>
             <div className='all-notes-area'>

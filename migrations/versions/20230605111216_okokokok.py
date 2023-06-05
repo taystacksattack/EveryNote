@@ -1,6 +1,6 @@
 """okokokok
 
-Revision ID: a7a1b9e17fd9
+Revision ID: ffdc0a98111c
 Revises:
 Create Date: 2023-06-05 11:12:16.248766
 
@@ -14,7 +14,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'a7a1b9e17fd9'
+revision = 'ffdc0a98111c'
 down_revision = None
 branch_labels = None
 depends_on = None

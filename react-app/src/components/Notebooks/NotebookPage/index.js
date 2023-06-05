@@ -1,20 +1,25 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { getNotebooksThunk } from "../../store/notebook"
+import { getNotebooksThunk } from "../../../store/notebook"
+import { useHistory } from 'react-router-dom';
 
 const CurrentNotebooks = () => {
+
     const dispatch = useDispatch()
+
 
     const notebookObj = useSelector(state => state.notebooks.allNotebooks)
 
-    console.log("NotebookObj:", notebookObj)
+    // console.log("NotebookObj:", notebookObj)
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
     }, [dispatch])
 
-    // if (!notebookObj) return null
+
+
+    if (!notebookObj) return null
     return (
         <div>
             <h1>NOTEBOOKS</h1>
@@ -22,7 +27,7 @@ const CurrentNotebooks = () => {
                 {notebookObj && Object.values(notebookObj).map(notebook => {
                     return (
                         <p key={notebook.id}>
-                            <Link to={`/${notebook.id}`}> {notebook.title}</Link>
+                            <Link to={`/notebooks/${notebook.id}`}> {notebook.title}</Link>
                         </p>
                     )
                 })}

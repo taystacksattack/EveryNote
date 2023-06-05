@@ -1,5 +1,5 @@
 export const GET_NOTEBOOKS = 'Notebooks/GET_NOTEBOOKS'
-
+export const CREATE_NOTEBOOK = 'Notebooks/CREATE_NOTEBOOK'
 // constants
 //GET, CREATE, EDIT, DELETE
 
@@ -14,6 +14,10 @@ const getNotebooks = (notebooks) => ({
     notebooks
 });
 
+const createNotebook = (notebook) => ({
+    type: CREATE_NOTEBOOK,
+    notebook
+})
 
 //THUNK action creators
 export const getNotebooksThunk = () => async (dispatch) => {
@@ -25,6 +29,19 @@ export const getNotebooksThunk = () => async (dispatch) => {
         dispatch(getNotebooks(data));
     }
 };
+
+export const createNotebooksThunk = (notebook) => async (dispatch) => {
+    const response = await fetch("/api/notebooks/new", {
+        method: "Post",
+        body: notebook
+    })
+    // console.log(response)
+    if (response.ok) {
+        const data = await response.json();
+
+        dispatch(createNotebook(data))
+    }
+}
 
 
 //THIS IS OUR REDUCER
@@ -39,9 +56,10 @@ const notebooksReducer = (state = initialState, action) => {
                     newState.allNotebooks[notebook.id] = notebook
                 })
             }
-
             return newState;
-
+        case CREATE_NOTEBOOK:
+            console.log("action.notebook:", action.notebook)
+            return { ...state, allNotebooks: action.notebook }
         default:
             return state;
     }

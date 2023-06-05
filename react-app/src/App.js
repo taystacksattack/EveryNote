@@ -6,7 +6,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CurrentNotes from './components/NotesPage'
-import CurrentNotebooks from "./components/NotebookPage";
+import CurrentNotebooks from "./components/Notebooks/NotebookPage";
+import NotebookDetails from "./components/Notebooks/NotebookDetailPage"
+import NewNotebook from "./components/Notebooks/NewNotebook"
 import CurrentTasks from './components/TasksPage'
 import CreateTask from './components/CreateTask'
 import EditTask from './components/EditTask'
@@ -33,11 +35,15 @@ function App() {
           <Route path="/notes">
             <CurrentNotes />
           </Route>
-
+          <Route exact path="/notebooks/new">
+            <NewNotebook />
+          </Route>
+          <Route exact path="/notebooks/:notebookId">
+            < NotebookDetails />
+          </Route>
           <Route path="/notebooks">
             <CurrentNotebooks />
           </Route>
-
           <Route path="/tasks/:taskId/edit/">
             <EditTask />
           </Route>

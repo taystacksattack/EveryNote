@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CurrentNotes from './components/NotesPage'
 
+import "./app.css"
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +18,12 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <div className="app-wrapper">app wrapper
+      <div className="app-navbar">
+      <Navigation isLoaded={isLoaded}/>
+      </div>
+
+      <div className="app-contents">
       {isLoaded && (
         <Switch>
           <Route path="/login" >
@@ -30,6 +37,9 @@ function App() {
           </Route>
         </Switch>
       )}
+      </div>
+    {/* app wrapper end */}
+    </div>
     </>
   );
 }

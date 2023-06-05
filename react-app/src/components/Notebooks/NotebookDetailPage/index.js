@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotebooksThunk } from "../../../store/notebook"
+import { useHistory } from 'react-router-dom';
 
 // import { useHistory } from 'react-router-dom';
 // import     from
@@ -24,6 +25,8 @@ const NotebookDetails = () => {
         dispatch(getNotebooksThunk())
     }, [dispatch])
 
+
+
     return (
         <div>
 
@@ -37,6 +40,7 @@ const NotebookDetails = () => {
                     )
                 })}
             </ol>
+
         </div>
     )
 }

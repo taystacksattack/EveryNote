@@ -4,31 +4,32 @@ import { Link } from "react-router-dom"
 import { getNotebooksThunk } from "../../../store/notebook"
 import { useHistory } from 'react-router-dom';
 
+import NewNotebook from '../NewNotebook/index'
+
+
 const CurrentNotebooks = () => {
 
     const dispatch = useDispatch()
 
-
     const notebookObj = useSelector(state => state.notebooks.allNotebooks)
-
-    // console.log("NotebookObj:", notebookObj)
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
     }, [dispatch])
 
-
-
-    if (!notebookObj) return null
+    // if (!notebookObj) return null
     return (
         <div>
             <h1>NOTEBOOKS</h1>
+            <NewNotebook />
             <div className="notebook-content-div">
                 {notebookObj && Object.values(notebookObj).map(notebook => {
                     return (
-                        <p key={notebook.id}>
-                            <Link to={`/notebooks/${notebook.id}`}> {notebook.title}</Link>
-                        </p>
+                        <div className={`notebook-div-${notebook.id}`}>
+                            <p key={notebook.id}>
+                                <Link to={`/notebooks/${notebook.id}`}> {notebook.title}</Link>
+                            </p>
+                        </div>
                     )
                 })}
             </div>

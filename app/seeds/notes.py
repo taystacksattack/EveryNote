@@ -83,7 +83,7 @@ def seed_notes():
     )
     movies_2 = Note(
         title="The Cinematic Odyssey: Unforgettable Moments in Film History", body=lorem_ipsum, trash=False, ownerId=6, notebookId=9
-
+    )
     taxes_for_2023 = Note(
         title=" 2023 Tax Season", body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ", ownerId=1, notebookId=1
     )

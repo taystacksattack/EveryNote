@@ -91,17 +91,11 @@ def upgrade():
     # ### end Alembic commands ###
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-    if environment == "production":
         op.execute(f"ALTER TABLE notebooks SET SCHEMA {SCHEMA};")
-    if environment == "production":
         op.execute(f"ALTER TABLE notes SET SCHEMA {SCHEMA};")
-    if environment == "production":
         op.execute(f"ALTER TABLE tags SET SCHEMA {SCHEMA};")
-    if environment == "production":
         op.execute(f"ALTER TABLE tasks SET SCHEMA {SCHEMA};")
-    if environment == "production":
         op.execute(f"ALTER TABLE note_tags SET SCHEMA {SCHEMA};")
-    if environment == "production":
         op.execute(f"ALTER TABLE share_privileges SET SCHEMA {SCHEMA};")
 
 

@@ -37,7 +37,7 @@ function App() {
           <Route path="/notebooks">
             <CurrentNotebooks />
           </Route>
-          
+
           <Route path="/tasks/:taskId/edit/">
             <EditTask />
           </Route>

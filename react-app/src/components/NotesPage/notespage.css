@@ -1,17 +1,21 @@
 .everything-wrapper{
     border: 2px solid green;
     display: flex;
-    justify-content:end;
+    justify-content:flex-end;
     height: 100vh;
 }
 
 .note-selection{
     border: 1px solid black;
+    width: 100%;
+    cursor: pointer;
 }
 
 .all-notes-area{
     border: 2px solid red;
-    width: 20%
+    width: 20%;
+    height: 100vh;
+
 }
 
 

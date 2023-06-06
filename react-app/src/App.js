@@ -37,12 +37,14 @@ function App() {
           <Route path="/notes">
             <CurrentNotes />
           </Route>
+
           <Route exact path="/notebooks/new">
             <NewNotebook />
           </Route>
           <Route exact path="/notebooks/:notebookId">
             < NotebookDetails />
           </Route>
+
           <Route path="/notebooks">
             <CurrentNotebooks />
           </Route>

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { getTagsThunk } from "../../store/tags"
 import { getNoteTagsThunk } from "../../store/notetags"
+import { getNotesThunk } from "../../store/notes"
 import "./TagsPage.css"
 
 const TagsPage = () => {
@@ -17,7 +18,32 @@ const TagsPage = () => {
     useEffect(() => {
         dispatch(getTagsThunk());
         dispatch(getNoteTagsThunk());
+        dispatch(getNotesThunk());
     }, [dispatch])
+
+
+    // console.log("\n\n\nallnotes???", allnotes.allNotes[1].title)
+
+    const waitForLoad = (tagId) => {
+        try {
+            return (
+             <>
+            <ul>
+                {notetags.tag_to_notes[tagId] && notetags.tag_to_notes[tagId].map(
+                        note_id => (
+                            <>
+                            <li>
+                                {note_id}:
+                                {allnotes.allNotes[note_id - 1].title}
+                            </li>
+                            </>
+                        )
+                )}
+            </ul>
+            </>
+            )
+        } catch {}
+    }
 
     return (
         <div>
@@ -35,21 +61,12 @@ const TagsPage = () => {
                     <div>
                         num_notes: {tag.num_notes}
                     </div>
-                        <ul>
-                            {notetags.tag_to_notes[tag.id] && notetags.tag_to_notes[tag.id].map(
-                                note_id => (
-                                    <>
-                                    <li>
-                                        {note_id}
-                                    </li>
-                                    </>
-                                )
-                            )}
-                        </ul>
+                        {tag.id && waitForLoad(tag.id)}
                     <br></br>
                     </>
                 )
-            )}</div>
+            )}
+            </div>
         </div>
     )
 }

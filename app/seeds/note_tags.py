@@ -21,6 +21,14 @@ def seed_notetags():
     seed_note_2 = Note.query.get(2) #2022 Tax Season
     seed_note_3 = Note.query.get(3) #2023 Tax Season
 
+    seed_note_test = Note.query.get(0)
+    seed_tag_test = Tag.query.get(0)
+    seed_note_test.tags.append(seed_tag_test)
+    db.session.add(seed_note_test)
+
+
+
+
     seed_tag_1_2_3 = Tag.query.filter(Tag.name =="Adult Responsibility").first()
     # seed_tag_2 = Tag.query.get(1) #Adult responsibility
 
@@ -32,9 +40,9 @@ def seed_notetags():
     # seed_tag_5 = Tag.query.get(2) #hobbies
     # seed_tag_6 = Tag.query.get(2) #hobbies
 
-    seed_note_7 = Note.query.get(7) #Is Yu_Gi_Oh Dying??..
-    seed_note_8 = Note.query.get(8) #BBRRRRRRRRRRRR..
-    seed_note_9 = Note.query.get(9) #Analyze the role of the Egyptian God..
+    seed_note_7 = Note.query.get(10) #Is Yu_Gi_Oh Dying??..
+    seed_note_8 = Note.query.get(11) #BBRRRRRRRRRRRR..
+    seed_note_9 = Note.query.get(12) #Analyze the role of the Egyptian God..
 
     seed_tag_7_8_9 = Tag.query.get(5) #Yu-Gi-Oh
     # seed_tag_8 = Tag.query.get(5) #Yu-Gi-Oh
@@ -88,13 +96,13 @@ def seed_notetags():
     db.session.add(seed_note_10)
 
     seed_note_11.tags.append(seed_tag_11_12_13)
-    db.session.add(seed_note_7)
+    db.session.add(seed_note_11)
 
     seed_note_12.tags.append(seed_tag_11_12_13)
-    db.session.add(seed_note_8)
+    db.session.add(seed_note_12)
 
     seed_note_13.tags.append(seed_tag_11_12_13)
-    db.session.add(seed_note_9)
+    db.session.add(seed_note_13)
 
     db.session.commit()
 

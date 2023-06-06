@@ -31,7 +31,7 @@ const CurrentNotes = () => {
     }, [dispatch])
 
 
-    //FOR IF I WANT TRASH STORAGE
+    //FOR IF I WANT TRASH STORAGE IMPLEMENTATION LATER
     // useEffect(() => {
     //     if (trash === true) {
 
@@ -41,7 +41,7 @@ const CurrentNotes = () => {
     //     }
     // }, [dispatch, trash])
 
-    // console.log("notes object", notesObj)
+  
 
 
 
@@ -112,7 +112,7 @@ const CurrentNotes = () => {
                     <textarea
                         id='title-textarea'
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value) }
                         placeholder='Title'
                     >
                     </textarea>
@@ -127,7 +127,7 @@ const CurrentNotes = () => {
                     <button type='submit' id='save-note-btn'>Save Note</button>
 
                 </form>
-                {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION*/}
+                {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION LATER*/}
                 {/* <button onClick={(e) => setTrash(!trash)}>trash</button> */}
 
             </div>

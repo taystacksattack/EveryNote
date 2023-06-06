@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Note
 from ..models.db import db
 from ..forms.note_form import NoteForm
+from datetime import datetime
 
 
 note_routes = Blueprint('notes', __name__)
@@ -72,9 +73,14 @@ def update_note(id):
         if form.data['title']:
             note.title=form.data['title']
         if form.data['body']:
+            
+            print('\n\n\n\n\n\n form data ', form.data)
             note.body=form.data['body']
-        # note.updated_at=data['updated_at']
 
+
+        # note.updated_at=datetime.utcnow
+      
+        print('\n\n\n\n\n this is datetime', datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
 
 
         db.session.commit()

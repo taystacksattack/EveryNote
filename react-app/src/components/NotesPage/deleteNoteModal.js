@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
-import { useEffect } from "react"
 import { useModal } from "../../context/Modal"
-import { deleteNoteThunk, getNotesThunk} from "../../store/notes";
+import { deleteNoteThunk} from "../../store/notes";
 
 
 function DeleteModal({note}) {

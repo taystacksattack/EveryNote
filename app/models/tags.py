@@ -21,8 +21,6 @@ class Tag(db.Model):
 
     notes = db.relationship(
         "Note", back_populates="tags", secondary=note_tag)
-<<<<<<< Updated upstream
-=======
 
     def to_dict(self):
         return {
@@ -46,4 +44,3 @@ class Tag(db.Model):
     #         "tag_id": self.id,
     #         "notes": self.notes
     #     }
->>>>>>> Stashed changes

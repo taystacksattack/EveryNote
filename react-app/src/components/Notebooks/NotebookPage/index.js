@@ -86,32 +86,37 @@ const CurrentNotebooks = () => {
                                 </div>
                                 <ul  >
                                     <li >
-                                        <div>
+                                        <div onClick={(e) => featureAlert()}>
                                             Add new note
                                         </div>
                                     </li>
                                     <li >
-                                        <div>
+                                        <div onClick={(e) => featureAlert()}>
                                             Share notebook
                                         </div>
                                     </li>
                                     <li className="li-divider">
-                                        <div>
-                                            {/* <UpdateNotebook /> */}
+                                        <div onClick={(e) => featureAlert()}>
+                                            Rename notebook
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div onClick={(e) => featureAlert()}>
+                                            Delete notebook
                                         </div>
                                     </li>
                                     <li >
-                                        <div>
+                                        <div onClick={(e) => featureAlert()}>
                                             Add to Shortcuts
                                         </div>
                                     </li>
                                     <li >
-                                        <div>
+                                        <div onClick={(e) => featureAlert()}>
                                             Set as default notebook
                                         </div>
                                     </li>
                                     <li >
-                                        <div  >
+                                        <div onClick={(e) => featureAlert()} >
                                             Add to stack
                                         </div>
                                     </li>

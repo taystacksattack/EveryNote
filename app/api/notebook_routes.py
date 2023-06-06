@@ -14,6 +14,10 @@ def notebooks():
     notebooks = Notebook.query.filter(
         Notebook.ownerId == current_user.id).all()
 
+    print("==================================")
+    print("GET NOTEBOOK:", notebooks)
+    print("==================================")
+
     return {'notebooks': [notebook.to_dict() for notebook in notebooks]}
 
 # GET notebook by ID
@@ -24,6 +28,10 @@ def notebooks():
 def get_notebook_byId(notebookId):
 
     notebook = Notebook.query.get(notebookId)
+
+    print("==================================")
+    print("GET NOTEBOOK BY ID:", notebook)
+    print("==================================")
     return notebook.to_dict()
 
 # CREATE a new notebook
@@ -56,17 +64,25 @@ def create_notebook():
 @notebook_routes.route('/notebooks/:notebookId/edit')
 @login_required
 def edit_notebook(notebookId):
+
+    print("==================================")
+    print("NOTEBOOK ID:", notebookId)
+    print("==================================")
+
     form = NotebookForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         notebook_to_edit = Notebook.query.get(notebookId)
+        print("==================================")
+        print("UPDATE NOTEBOOK:", notebook_to_edit)
+        print("==================================")
         notebook_to_edit.title = form.data["title"]
         notebook_to_edit.is_default = form.data["is_default"]
 
     db.session.commit()
-    return redirect('/notebooks')
+    return "update successful"
 
 
 @notebook_routes.route('/notebook/:notebookId/delete')

@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 // import { useHistory } from "react-router-dom"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
+import OpenModalButton from "../OpenModalButton"
+import DeleteModal from "./deleteNoteModal"
 import "./notespage.css"
 
 const CurrentNotes = () => {
@@ -28,14 +30,16 @@ const CurrentNotes = () => {
         dispatch(getNotesThunk())
     }, [dispatch])
 
-    useEffect(() => {
-        if (trash === true) {
 
-            dispatch(createNoteThunk(newNote))
-            setTitle('')
-            setNoteContent('')
-        }
-    }, [dispatch, trash])
+    //FOR IF I WANT TRASH STORAGE
+    // useEffect(() => {
+    //     if (trash === true) {
+
+    //         dispatch(createNoteThunk(newNote))
+    //         setTitle('')
+    //         setNoteContent('')
+    //     }
+    // }, [dispatch, trash])
 
     // console.log("notes object", notesObj)
 
@@ -86,26 +90,19 @@ const CurrentNotes = () => {
             <div className='all-notes-area'>
                 <h1>Notes</h1>
 
-                {/* AS DIV */}
                 {notesObj && listOfNotes.map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
                         <p>{note.updated_at}</p>
+                        <div className="trash-btn-container">
+                        <OpenModalButton
+                            buttonText="Trash"
+                            modalComponent={<DeleteModal note={note} />}
+                        />
+                        </div>
                     </div>
                 ))}
 
-
-                {/* AS BUTTON */}
-                {/* {notesObj && listOfNotes.map(note => (
-                    <button key={note.id} className='note-selection'>
-                        {note.title}
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        {note.updated_at}
-                    </button>
-                ))} */}
 
             </div>
 
@@ -130,7 +127,9 @@ const CurrentNotes = () => {
                     <button type='submit' id='save-note-btn'>Save Note</button>
 
                 </form>
-                <button onClick={(e) => setTrash(!trash)}>trash</button>
+                {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION*/}
+                {/* <button onClick={(e) => setTrash(!trash)}>trash</button> */}
+
             </div>
 
 

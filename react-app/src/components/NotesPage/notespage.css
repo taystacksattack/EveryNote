@@ -1,8 +1,16 @@
+*{
+   box-sizing: border-box; 
+}
+
+button {
+    cursor:pointer;
+}
+
 .everything-wrapper{
     border: 2px solid green;
     display: flex;
     justify-content:flex-end;
-    height: 100vh;
+    height: 100%;
 }
 
 .note-selection{
@@ -14,7 +22,7 @@
 .all-notes-area{
     border: 2px solid red;
     width: 20%;
-    height: 100vh;
+    height: 100%;
 
 }
 
@@ -33,9 +41,13 @@
 #title-textarea, #note-content-textarea{
     /* border:none; */
     resize:none;
+    height: 100%;
+    width: 100%;
+
     /* need to think about scrolling and height  */
 
 } 
+
 
 
 #save-note-btn {

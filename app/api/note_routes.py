@@ -83,3 +83,18 @@ def update_note(id):
     return {"message":  "Bad Data"}    
             
    
+@note_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_note(id):
+    """
+    Query for a note by id and deletes note
+    """
+    note = Note.query.get(id)
+
+    print('this is note \n\n\n\n\n', note)
+    
+    db.session.delete(note)
+    db.session.commit()
+    return {"message":  "Successfully deleted"} 
+        
+       

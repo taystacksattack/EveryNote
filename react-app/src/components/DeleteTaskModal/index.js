@@ -9,22 +9,21 @@ import { useHistory } from "react-router-dom";
 const DeleteTaskModal = ({task}) => {
     const history = useHistory()
     const dispatch = useDispatch()
-
     const {closeModal} = useModal()
-    const [deleted, setDelete] = useState(false)
+
+    // const [deleted, setDelete] = useState(false)
 
     console.log("task in delete task modal",task)
 
     useEffect(()=>{
-        dispatch(getTasksThunk())
-    }, [dispatch, closeModal]) 
+        dispatch(deleteTaskThunk())
+    }, [dispatch, closeModal])
 
     const deleteTask = () => {
         dispatch(deleteTaskThunk(task.id))
-            // .then(history.push('/tasks'))
-            .then(setDelete(!deleted))
+            .then(console.log("in the delete task"))
+            .then(history.push('/tasks'))
             .then(closeModal())
-            // .then(dispatch(getTasksThunk()))
     }
 
     return(

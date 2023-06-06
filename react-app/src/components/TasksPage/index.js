@@ -1,26 +1,27 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useDispatch, useSelector,  } from "react-redux"
+import { useEffect, useState } from "react"
 import { useHistory, NavLink } from "react-router-dom"
-import { getTasksThunk } from "../../store/tasks"
+import { deleteTaskThunk, getTasksThunk } from "../../store/tasks"
 import OpenModalButton from "../OpenModalButton"
-import DeleteTaskModal from '../DeleteTaskModal'
-import { useModal, closeModal } from "../../context/Modal";
-// import deleted from DeleteTaskModal
+import DeleteTaskModal, {deleted} from '../DeleteTaskModal'
+// import { closeModal } from "../DeleteTaskModal";
+
 
 
 
 const CurrentTasks = () => {
     const dispatch = useDispatch()
     const tasksObj = useSelector(state => state.tasks.allTasks)
-    // const [deleting, setDelete] = useSelector()
-
+    // const [deleting, setDeleting] = useState()
     // const tasksLength = Object.values(tasksObj).length
-
     useEffect(()=>{
         dispatch(getTasksThunk())
-    }, [dispatch, DeleteTaskModal ])
+        // dispatch(deleteTaskThunk())
+    }, [dispatch, ])
 
+    // console.log("tasksLength", tasksLength)
     console.log("tasks object",tasksObj)
+
     if(!tasksObj) return (<div>Loading</div>)
 
     return(
@@ -38,7 +39,7 @@ const CurrentTasks = () => {
                         </NavLink>
                         <OpenModalButton
                         buttonText = "Delete"
-                        modalComponent={<DeleteTaskModal task = {task}/>}
+                        modalComponent={<DeleteTaskModal task={task} />}
                         />
                     </div>
                 )

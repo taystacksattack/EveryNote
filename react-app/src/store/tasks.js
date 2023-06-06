@@ -90,21 +90,16 @@ export const deleteTaskThunk = (taskId) => async (dispatch) => {
     try{
         const response = await fetch(`/api/tasks/${taskId}/delete`, {
         method: "DELETE"
-
     })
     const result = await response.json()
     console.log("result in thunk ",result)
     dispatch(deleteTask(taskId))
     return result
     } catch(e){
-        // console.log(e)
+        console.log(e)
         return e
     }
 }
-
-
-
-
 //THIS IS OUR REDUCER
 const initialState = { allTasks: {} };
 export default function tasksReducer(state = initialState, action) {

@@ -9,12 +9,21 @@ const CurrentNotes = () => {
     const [title, setTitle] = useState('')
     const [noteContent, setNoteContent] = useState('')
     const [trash, setTrash] = useState(false)
-    const [clicked, setClicked] = useState({})
+    const [clickedNote, setClickedNote] = useState({})
 
 
     const dispatch = useDispatch()
     const notesObj = useSelector(state => state.notes.allNotes)
+    const owner = useSelector(state => state.session.user)
 
+    const newNote = {
+        title,
+        body: noteContent,
+        ownerId: owner.id,
+        notebookId: 1,
+        trash: trash
+
+    }
     useEffect(() => {
         dispatch(getNotesThunk())
     }, [dispatch])
@@ -30,44 +39,37 @@ const CurrentNotes = () => {
 
     // console.log("notes object", notesObj)
 
-    const owner = useSelector(state => state.session.user)
+
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
 
     // console.log('trash', trash)
-    const newNote = {
-        title,
-        body: noteContent,
-        ownerId: owner.id,
-        notebookId: 1,
-        trash: trash
 
-    }
-    
+
     const handleNoteClick = async (note) => {
         setTitle(note.title)
         setNoteContent(note.body)
-        setClicked(note)
+        setClickedNote(note)
     }
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (Object.values(clicked).length > 0) {
+        if (Object.values(clickedNote).length > 0) {
             console.log("updatingggggggggggg", title, noteContent)
-            console.log("note info", clicked)
+            console.log("note info", clickedNote)
             // const updatedDate = Date.now()
-     
+
             const updatedNote = {
                 title,
                 body: noteContent,
                 // updated_at: updatedDate
             }
-                
 
-            
-            await dispatch(editNoteThunk(updatedNote, clicked.id))
+
+
+            await dispatch(editNoteThunk(updatedNote, clickedNote.id))
             dispatch(getNotesThunk())
         } else {
 
@@ -108,7 +110,7 @@ const CurrentNotes = () => {
             </div>
 
             <div className='new-note-area'>
-                <form id='new-note-form' onSubmit={handleSubmit} method={Object.values(clicked).length ? "PUT" : "POST"}>
+                <form id='new-note-form' onSubmit={handleSubmit} method={Object.values(clickedNote).length ? "PUT" : "POST"}>
 
                     <textarea
                         id='title-textarea'

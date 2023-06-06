@@ -11,10 +11,4 @@ class NoteForm(FlaskForm):
     ownerId = IntegerField('ownerId')
 
 
-# class NoteForm2(FlaskForm):
-#     title = StringField("Title")
-#     body = TextAreaField("Write away")
-#     trash = BooleanField("Trash?")
-#     notebookId = IntegerField('notebookId')
-#     ownerId = IntegerField('ownerId')
-    # updated_at = DateTimeField('updated_at')
+

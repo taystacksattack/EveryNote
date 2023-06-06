@@ -4,7 +4,6 @@
 //ACTION CONSTANTS
 const GET_NOTES = "session/GET_NOTES";
 const CREATE_NOTE = "session/CREATE_NOTE"
-const GET_NOTE_DETAILS = "session/GET_NOTE_DETAILS"
 const EDIT_NOTE = "session/EDIT_NOTE"
 
 
@@ -71,7 +70,7 @@ export const editNoteThunk = (note, noteId) => async (dispatch) => {
         method: "PUT",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(note)
-        // body:note
+
     })
 
     if (response.ok) {

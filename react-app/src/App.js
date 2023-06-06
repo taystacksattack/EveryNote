@@ -33,9 +33,6 @@ function App() {
           <Route path="/notes">
             <CurrentNotes />
           </Route>
-          {/* <Route path="/notes/:noteId">
-            <GetNoteDetails/>
-          </Route> */}
           <Route path="/notebooks">
             <CurrentNotebooks />
           </Route>

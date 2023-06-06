@@ -50,7 +50,7 @@ const notebooksReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_NOTEBOOKS:
             const newState = { allNotebooks: {} };
-            // console.log("action.notebooks:", action.notebooks)
+            console.log("action.notebooks:", action.notebooks)
             if (action.notebooks.length !== 0) {
                 action.notebooks.notebooks.forEach((notebook) => {
                     newState.allNotebooks[notebook.id] = notebook

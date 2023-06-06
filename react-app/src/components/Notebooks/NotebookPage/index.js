@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { getNotebooksThunk } from "../../../store/notebook"
-import { useHistory } from 'react-router-dom';
 
 import NewNotebook from '../NewNotebook/index'
 

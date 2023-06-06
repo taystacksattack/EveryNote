@@ -12,14 +12,14 @@ const CreateNewNotebookModel = () => {
     const { closeModal } = useModal()
 
     const [title, setTitle] = useState("")
-    const [isdefault, setIsDefault] = useState(false)
+    const [isDefault, setIsDefault] = useState(`False`)
 
 
     const handleSubmit = (e) => {
         // e.preventDefault()
         const new_notebook = {
             "title": title,
-            "is_default": isdefault
+            "is_default": isDefault
         }
         return dispatch(createNotebooksThunk(new_notebook)).closeModal()
     }

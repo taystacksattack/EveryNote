@@ -42,7 +42,7 @@ export const getNotesThunk = () => async (dispatch) => {
 
 
 export const createNoteThunk = (note) => async (dispatch) => {
-    console.log("note =============>", note)
+    // console.log("note =============>", note)
     const response = await fetch("/api/notes/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,7 +65,7 @@ export const createNoteThunk = (note) => async (dispatch) => {
 export const editNoteThunk = (note, noteId) => async (dispatch) => {
 
 
-    console.log('Noteeeeeeeeeeeeeeeee', note)
+    // console.log('Noteeeeeeeeeeeeeeeee', note)
     const response = await fetch(`/api/notes/${noteId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json"},
@@ -74,7 +74,7 @@ export const editNoteThunk = (note, noteId) => async (dispatch) => {
     })
 
     if (response.ok) {
-        console.log('update response ok')
+        // console.log('update response ok')
         const updatedNote = await response.json()
         dispatch(editNote(updatedNote))
         return updatedNote
@@ -100,18 +100,18 @@ export default function notesReducer(state = initialState, action) {
 
             return newState;
         }
-  
+
         case CREATE_NOTE: {
             const newState = { ...state, allNotes: { ...state.allNotes } }
-            console.log('newState', newState)
-            console.log('action.note', action.note)
+            // console.log('newState', newState)
+            // console.log('action.note', action.note)
             newState.allNotes[action.note.id] = action.note
 
             return newState
         }
         case EDIT_NOTE: {
             const newState = { ...state }
-            newState.allNotes[action.note.id] = action.note 
+            newState.allNotes[action.note.id] = action.note
             return newState
         }
         default:

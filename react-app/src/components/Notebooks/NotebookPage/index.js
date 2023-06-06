@@ -24,7 +24,8 @@ const CurrentNotebooks = () => {
     const notes = Object.values(notesObj)
 
     const userObj = useSelector(state => state.session.user)
-    const user = Object.values(userObj)
+    // const user = Object.values(userObj)
+    // console.log(userObj)
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
@@ -32,12 +33,21 @@ const CurrentNotebooks = () => {
     }, [dispatch])
 
     const findOwner = () => {
-        const notebook = notebooks.find(notebook => notebook.ownerId)
-        if (notebook.ownerId === userObj.id) return userObj.username
+        // const notebook = notebooks.find(notebook => notebook.ownerId)
+        // if (notebook.ownerId === userObj.id) return userObj.username
+        return userObj.username
     }
 
-    const findTimeUpdated = () => {
-        return "TO BE STARTED"
+    const findTimeUpdated = (notebook) => {
+        // console.log('notebook.updated_at', notebook.updated_at)
+        let date1 = new Date(notebook.updated_at)
+        // console.log("d1", date1)
+        let date2 = new Date()
+        // console.log("d2", date2)
+        let dateDiff = date2.getTime() - date1.getTime()
+
+        // notebook.updated_at = new Date()
+        return `${(dateDiff / 86400000).toFixed(1)} days ago`
     }
 
     const sharedWith = () => {
@@ -54,7 +64,7 @@ const CurrentNotebooks = () => {
     }
     const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
-    if (!notebookObj) return null
+    if (!notebookObj && !notesObj) return null
     return (
         <div className="notebook-wrapper">
             <h1>NOTEBOOKS</h1>
@@ -78,7 +88,7 @@ const CurrentNotebooks = () => {
                                     {notebook.title}    ({notes.filter(note => note.notebookId == notebook.id).length})</Link>
                             </p>
                             <p>{findOwner()}</p>
-                            <p>{findTimeUpdated()}</p>
+                            <p>{findTimeUpdated(notebook)}</p>
                             <p>{sharedWith()}</p>
                             <label>
                                 <div onClick={(e) => changeState()}>
@@ -96,8 +106,8 @@ const CurrentNotebooks = () => {
                                         </div>
                                     </li>
                                     <li className="li-divider">
-                                        <div onClick={(e) => featureAlert()}>
-                                            Rename notebook
+                                        <div>
+                                            <UpdateNotebook notebook={notebook} />
                                         </div>
                                     </li>
                                     <li>

@@ -6,7 +6,7 @@ const UpdateNotebook = () => {
     return (
         <OpenModalButton
             buttonText={'Rename notebook'}
-            modalComponent={<UpdateNotebookModel />}>
+            modalComponent={<UpdateNotebookModel notebook={notebook} />}>
         </OpenModalButton>
 
     )

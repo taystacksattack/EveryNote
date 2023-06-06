@@ -29,9 +29,10 @@ const deleteNotebook = (notebook) => ({
 //THUNK action creators
 //CREATE
 export const createNotebooksThunk = (notebook) => async (dispatch) => {
-    console.log("create thunk:", notebook)
+    // console.log("create thunk:", notebook)
     const response = await fetch("/api/notebooks/new", {
         method: "Post",
+        headers: { "Content-Type": "application/json" },
         body: notebook
     })
     // console.log(response)
@@ -51,16 +52,22 @@ export const getNotebooksThunk = () => async (dispatch) => {
         dispatch(getNotebooks(data));
     }
 };
-// EDIT
+// EDIT - Done
 export const editNotebookThunk = (notebook) => async (dispatch) => {
-    console.log("editNotebookThunk:", notebook)
-    const response = await fetch(`/api/notebooks/${notebook.id}/edit`, {
-        method: "PUT",
-        body: notebook
-    })
-    if (response.ok) {
-        const data = await response.json()
-        dispatch(editNotebook(data))
+    const id = notebook.id
+    try {
+        const response = await fetch(`/api/notebooks/${id}/edit`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(notebook)
+        })
+
+        if (response.ok) {
+            const data = await response.json()
+            dispatch(editNotebook(data))
+        }
+    } catch (error) {
+        return error
     }
 }
 // Delete

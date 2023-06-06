@@ -57,8 +57,8 @@ const CurrentNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (Object.values(clickedNote).length > 0) {
-            console.log("updatingggggggggggg", title, noteContent)
-            console.log("note info", clickedNote)
+            // console.log("updatingggggggggggg", title, noteContent)
+            // console.log("note info", clickedNote)
             // const updatedDate = Date.now()
 
             const updatedNote = {

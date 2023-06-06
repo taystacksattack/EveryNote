@@ -2,6 +2,7 @@
 
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+import time
 
 class Task(db.Model):
     __tablename__ = "tasks"
@@ -21,13 +22,13 @@ class Task(db.Model):
 
     completed = db.Column(db.Boolean, default=False)
 
-    due_date = db.Column(db.DateTime, nullable=False)
+    due_date = db.Column(db.Integer, nullable=False)
 
-    created_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.utcnow)
+    created_at = db.Column(db.Integer, nullable=False,
+                           default=time.time())
 
-    updated_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.utcnow)
+    updated_at = db.Column(db.Integer, nullable=False,
+                           default=time.time())
     # relationships
     owner = db.relationship(
         "User", back_populates="tasks" )

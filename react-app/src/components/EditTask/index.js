@@ -3,7 +3,18 @@ import { useState, useEffect } from 'react';
 import { editTaskThunk } from '../../store/tasks';
 import { useHistory, useParams } from 'react-router-dom';
 
+const dateConvertor = (time) =>{
+    const year= new Date(time).getFullYear()
+    let month = new Date(time).getMonth()
+    let date = new Date(time).getDate()
 
+    if ( month.length === 1) month = "0" + month.toString()
+    if ( date.length === 1) date = "0" + date.toString()
+    console.log("in date convertor" , `${year}-${month}-${date}`)
+    return `${year}-${month}-${date}`
+}
+
+//`${new Date(task?.due_date).getFullYear()}-${new Date(task?.due_date).getMonth()}-${new Date(task?.due_date).getDate()}`
 
 const EditTask = () =>{
     const {taskId} = useParams()
@@ -12,13 +23,12 @@ const EditTask = () =>{
     //form state
     const [title, setTitle] = useState(task?.title)
     const [description, setDescription] = useState(task?.description)
-    const [due_date, setDue_date] = useState(task?.due_date)
+    const [due_date, setDue_date] = useState((task?.due_date))
     const [completed, setCompleted] = useState(task?.completed)
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
 
-    //`${new Date(task?.due_date).getFullYear()}-${new Date(task?.due_date).getMonth()}-${new Date(task?.due_date).getDate()}`
     // const currentUser = useSelector((state => state.userState.currentUser))
     const dispatch = useDispatch()
     const history = useHistory()
@@ -34,7 +44,9 @@ const EditTask = () =>{
         const formData = new FormData()
 
         console.log("wtf is formData",formData)
-        console.log('here is the title', title)
+        console.log('here is the due_date', due_date)
+
+        // console.log("here is the date" ,new Date(task?.due_date).getTime())
 
         formData.append("title", title)
         formData.append("description", description)

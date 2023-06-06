@@ -33,6 +33,9 @@ const CurrentTasks = () => {
                 return(
                     <div>
                         <p key={task.id}>{task.title}</p>
+                        <p key={task.due_date}>{new Date(task.due_date).toString()}</p>
+                        
+
                         <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                             Edit task
                         </NavLink>

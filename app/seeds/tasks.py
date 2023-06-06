@@ -1,71 +1,72 @@
 from app.models import db, Task, environment, SCHEMA
 from sqlalchemy.sql import text
-from datetime import datetime
+import datetime
+import time
 
 # Adds a demo user, you can add other users here if you want
 
 
 def seed_tasks():
     tax_1 = Task(
-        title='Adult Responsibility', ownerId=1, description="ask for an extension for the 2023 tax season as you procrastinated to hard", completed=True, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M"))
+        title='Adult Responsibility', ownerId=1, description="ask for an extension for the 2023 tax season as you procrastinated to hard", completed=True, due_date=datetime.datetime(2015,11,15).timestamp()*1000)
 
     pokemon_1 = Task(
-        title='Train ', ownerId=1, description="Train and level up your Pokemon to strengthen their stats and evolve them into more powerful forms", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M"))
+        title='Train ', ownerId=1, description="Train and level up your Pokemon to strengthen their stats and evolve them into more powerful forms", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000)
 
     digimon_1 = Task(
-        title="Hatch ", ownerId=1, description="Hatch and raise a Digimon from a Digitama, taking care of its needs and training it to increase its abilities.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Hatch ", ownerId=1, description="Hatch and raise a Digimon from a Digitama, taking care of its needs and training it to increase its abilities.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     yu_gi_oh_1 = Task(
-        title="Stay updated", ownerId=1, description="Stay updated with the latest card releases and rule changes to adapt your deck and stay competitive.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Stay updated", ownerId=1, description="Stay updated with the latest card releases and rule changes to adapt your deck and stay competitive.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     danger_1 = Task(
-        title="vigilant", ownerId=2, description="Stay vigilant and proactive in monitoring and addressing any potential dangers that may arise.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="vigilant", ownerId=2, description="Stay vigilant and proactive in monitoring and addressing any potential dangers that may arise.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     war_1 = Task(
-        title="Promote ", ownerId=3, description="Promote and participate in peaceful dialogue, conflict resolution, and diplomacy to prevent and mitigate wars.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Promote ", ownerId=3, description="Promote and participate in peaceful dialogue, conflict resolution, and diplomacy to prevent and mitigate wars.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     lies_1 = Task(
-        title="Practice ", ownerId=4, description="Practice active listening and critical thinking to identify and challenge false information or deceptive claims.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Practice ", ownerId=4, description="Practice active listening and critical thinking to identify and challenge false information or deceptive claims.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     law_1 = Task(
-        title="Volunteer", ownerId=5, description="Volunteer or intern at a law firm or legal organization to gain practical experience.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Volunteer", ownerId=5, description="Volunteer or intern at a law firm or legal organization to gain practical experience.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     movies_1 = Task(
-        title="Explore ", ownerId=6, description="Explore the history of cinema by watching classic films and studying the evolution of film techniques and storytelling.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Explore ", ownerId=6, description="Explore the history of cinema by watching classic films and studying the evolution of film techniques and storytelling.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     poetry_1 = Task(
-        title="Write ", ownerId=7, description="Write a poem every day, exploring different forms and experimenting with various themes and styles.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Write ", ownerId=7, description="Write a poem every day, exploring different forms and experimenting with various themes and styles.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     musical_1 = Task(
-        title="Audition ", ownerId=8, description="Audition for a local theater production or join a community musical group.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Audition ", ownerId=8, description="Audition for a local theater production or join a community musical group.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     cars_1 = Task(
-        title="car repair", ownerId=9, description="Learn basic car repair skills, such as changing a flat tire or replacing a car battery.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="car repair", ownerId=9, description="Learn basic car repair skills, such as changing a flat tire or replacing a car battery.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     animals_1 = Task(
-        title="Advocate ", ownerId=10, description="Advocate for animal welfare by supporting initiatives and organizations that promote responsible pet ownership and conservation efforts.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Advocate ", ownerId=10, description="Advocate for animal welfare by supporting initiatives and organizations that promote responsible pet ownership and conservation efforts.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     cats_1 = Task(
-        title="Train ", ownerId=10, description="Train your cat using positive reinforcement techniques to respond to commands and develop good behaviors.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Train ", ownerId=10, description="Train your cat using positive reinforcement techniques to respond to commands and develop good behaviors.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     dogs_1 = Task(
-        title="Train ", ownerId=10, description="Train your dog basic obedience commands, such as sit, stay, and come.", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="Train ", ownerId=10, description="Train your dog basic obedience commands, such as sit, stay, and come.", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     hippos_1 = Task(
-        title="STAY AWAY", ownerId=10, description="DONT GET NEAR HIPPOS AND MAKE SURE YOU ARE NOT IN THEY'RE NATURAL ENVIRONMENT", completed=False, due_date=datetime.strptime("15/11/25 16:30", "%d/%m/%y %H:%M")
+        title="STAY AWAY", ownerId=10, description="DONT GET NEAR HIPPOS AND MAKE SURE YOU ARE NOT IN THEY'RE NATURAL ENVIRONMENT", completed=False, due_date=datetime.datetime(2015,11,15).timestamp()*1000
     )
 
     db.session.add(tax_1)

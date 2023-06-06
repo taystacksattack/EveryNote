@@ -18,7 +18,7 @@ const CurrentTasks = () => {
 
     useEffect(()=>{
         dispatch(getTasksThunk())
-    }, [dispatch, ])
+    }, [dispatch, DeleteTaskModal ])
 
     console.log("tasks object",tasksObj)
     if(!tasksObj) return (<div>Loading</div>)

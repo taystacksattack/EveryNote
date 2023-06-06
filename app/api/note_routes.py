@@ -22,6 +22,9 @@ def notes():
 @note_routes.route('/', methods=[ 'POST'])
 @login_required
 def post_note():
+    """
+    Creates a new note and returns it as a dictionary
+    """
     form = NoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -53,3 +56,33 @@ def get_note(id):
     note = Note.query.get(id)
 
     return note.to_dict()
+
+
+@note_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def update_note(id):
+    """
+    Query for a note by id and returns that note in a dictionary
+    """
+    note = Note.query.get(id)
+    print('this is note \n\n\n\n\n', note)
+    form = NoteForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+   
+        if form.data['title']:
+            print('formdatatitle \n\n\n\n\n\n', form.data['title'])
+            note.title=form.data['title']
+        if form.data['body']:
+            note.body=form.data['body']
+        # note.updated_at=data['updated_at']
+        print('changed \n\n\n\n\n\n', note.to_dict())
+
+
+        db.session.commit()
+        return note.to_dict()
+        
+    return {"message":  "Bad Data"  }    
+            
+   

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 // import { useHistory } from "react-router-dom"
-import { getNotesThunk, createNoteThunk } from "../../store/notes"
+import { getNotesThunk, createNoteThunk, getNoteDetailsThunk, editNoteThunk } from "../../store/notes"
 import "./notespage.css"
 
 const CurrentNotes = () => {
@@ -9,6 +9,8 @@ const CurrentNotes = () => {
     const [title, setTitle] = useState('')
     const [noteContent, setNoteContent] = useState('')
     const [trash, setTrash] = useState(false)
+    const [clicked, setClicked] = useState({})
+
 
     const dispatch = useDispatch()
     const notesObj = useSelector(state => state.notes.allNotes)
@@ -31,6 +33,8 @@ const CurrentNotes = () => {
     const owner = useSelector(state => state.session.user)
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
+
+    // console.log('trash', trash)
     const newNote = {
         title,
         body: noteContent,
@@ -39,11 +43,38 @@ const CurrentNotes = () => {
         trash: trash
 
     }
-    console.log('trash', trash)
+    
+    const handleNoteClick = async (note) => {
+        setTitle(note.title)
+        setNoteContent(note.body)
+        setClicked(note)
+    }
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(createNoteThunk(newNote))
+        if (Object.values(clicked).length > 0) {
+            console.log("updatingggggggggggg", title, noteContent)
+            console.log("note info", clicked)
+            // const updatedDate = Date.now()
+            const formData = new FormData()
+            if (title) formData.append('title', title)
+                
+            if (noteContent) formData.append('body', noteContent)
+
+            console.log('AFTER APPEND of body', formData)
+            
+                // title,
+                // body: noteContent,
+                // // updated_at: updatedDate
+
+            
+            dispatch(editNoteThunk(formData, clicked.id))
+        } else {
+
+            dispatch(createNoteThunk(newNote))
+        }
 
     }
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
@@ -54,23 +85,32 @@ const CurrentNotes = () => {
         <div className='everything-wrapper'>
             <div className='all-notes-area'>
                 <h1>Notes</h1>
-                {/* {notesObj && Object.values(notesObj).map(note => (
-                    <div key={note.id} className='note-selection'>
-                        <p >{note.title}</p>
-                        <p>{note.updated_at}</p>
-                    </div>
-                ))} */}
+
+                {/* AS DIV */}
                 {notesObj && listOfNotes.map(note => (
-                    <div key={note.id} className='note-selection'>
+                    <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
                         <p>{note.updated_at}</p>
                     </div>
                 ))}
 
+
+                {/* AS BUTTON */}
+                {/* {notesObj && listOfNotes.map(note => (
+                    <button key={note.id} className='note-selection'>
+                        {note.title}
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        {note.updated_at}
+                    </button>
+                ))} */}
+
             </div>
 
             <div className='new-note-area'>
-                <form id='new-note-form' onSubmit={handleSubmit} method="POST">
+                <form id='new-note-form' onSubmit={handleSubmit} method={Object.values(clicked).length ? "PUT" : "POST"}>
 
                     <textarea
                         id='title-textarea'

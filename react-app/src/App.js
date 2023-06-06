@@ -35,7 +35,6 @@ function App() {
           <Route path="/notes">
             <CurrentNotes />
           </Route>
-
           <Route path="/notebooks">
             <CurrentNotebooks />
           </Route>

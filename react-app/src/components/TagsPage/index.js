@@ -9,11 +9,10 @@ const TagsPage = () => {
     const dispatch = useDispatch();
 
     const alltags = useSelector(state => state.tags);
-    let taglist;
+    const allnotes = useSelector(state => state.notes);
+    const notetags = useSelector(state => state.notetags);
 
-    if (alltags) {
-        taglist = Object.values(alltags);
-    }
+    const taglist = Object.values(alltags);
 
     useEffect(() => {
         dispatch(getTagsThunk());
@@ -30,12 +29,23 @@ const TagsPage = () => {
                     <div key={tag.id}>
                         tag_id: {tag.id}
                     </div>
-                    <div>
+                    <div key={tag.name}>
                         tag_name: {tag.name}
                     </div>
                     <div>
                         num_notes: {tag.num_notes}
                     </div>
+                        <ul>
+                            {notetags.tag_to_notes[tag.id] && notetags.tag_to_notes[tag.id].map(
+                                note_id => (
+                                    <>
+                                    <li>
+                                        {note_id}
+                                    </li>
+                                    </>
+                                )
+                            )}
+                        </ul>
                     <br></br>
                     </>
                 )

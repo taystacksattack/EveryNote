@@ -11,12 +11,11 @@ import DeleteTaskModal, {deleted} from '../DeleteTaskModal'
 
 const CurrentTasks = () => {
     const dispatch = useDispatch()
-    const tasksObj = useSelector(state => state.tasks.allTasks)
-    // const [deleting, setDeleting] = useState()
-    // const tasksLength = Object.values(tasksObj).length
+    let tasksObj = useSelector(state => state.tasks)
+    tasksObj = tasksObj.allTasks
     useEffect(()=>{
         dispatch(getTasksThunk())
-        // dispatch(deleteTaskThunk())
+
     }, [dispatch, ])
 
     // console.log("tasksLength", tasksLength)

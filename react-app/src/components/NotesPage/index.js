@@ -93,7 +93,7 @@ const CurrentNotes = () => {
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
                         <p>{note.updated_at.split('.')[0]}</p>
-                        <div className="trash-btn-container">
+                        <div id="delete-note-modal-container">
                             <OpenModalButton
                                 buttonText="Trash"
                                 modalComponent={<DeleteModal note={note} />}

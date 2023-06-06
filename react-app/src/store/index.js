@@ -6,12 +6,16 @@ import notebooks from './notebook'
 import notesReducer from './notes';
 import notebooksReducer from './notebook';
 import tasksReducer from './tasks';
+import tagsReducer from './tags';
+import noteTagsReducer from './notetags';
 
 
 const rootReducer = combineReducers({
   session,
   notes: notesReducer,
   notebooks: notebooksReducer,
+  notetags: noteTagsReducer,
+  tags: tagsReducer,
   tasks: tasksReducer
 });
 

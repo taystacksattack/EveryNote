@@ -9,11 +9,16 @@ def seed_tags():
     hobbies = Tag(
         name='Hobbies')
     animals = Tag(
-        name="Animal info"
-    )
+        name="Animal info")
+    digimon = Tag(
+        name="Digimon")
+    yugioh = Tag(
+        name="Yu-gi-Oh")
     db.session.add(responsibility)
     db.session.add(hobbies)
     db.session.add(animals)
+    db.session.add(digimon)
+    db.session.add(yugioh)
     db.session.commit()
 
 

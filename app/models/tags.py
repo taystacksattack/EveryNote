@@ -21,3 +21,27 @@ class Tag(db.Model):
 
     notes = db.relationship(
         "Note", back_populates="tags", secondary=note_tag)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'num_notes': len(self.notes),
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+    }
+
+    # def to_dict_test(self):
+    #     return {
+    #         'id': self.id,
+    #         'name': self.name,
+    #         'notes': self.notes,
+    #         'created_at': self.created_at,
+    #         'updated_at': self.updated_at,
+    # }
+    def notes_of_tag(self):
+        return {"notes": self.notes}
+    """ self.notes pulls list of all related note items
+
+    iterate through self.notes, pulls note ids, create dictionary of index: (note_id, tag_id)??
+       """

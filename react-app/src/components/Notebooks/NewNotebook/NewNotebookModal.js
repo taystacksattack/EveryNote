@@ -12,11 +12,16 @@ const CreateNewNotebookModel = () => {
     const { closeModal } = useModal()
 
     const [title, setTitle] = useState("")
-    const [isdefault, setIsDefault] = useState("")
+    const [isdefault, setIsDefault] = useState(false)
 
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
+        const new_notebook = {
+            "title": title,
+            "is_default": isdefault
+        }
+        return dispatch(createNotebooksThunk(new_notebook)).closeModal()
     }
 
     const closeForm = (e) => {
@@ -32,6 +37,7 @@ const CreateNewNotebookModel = () => {
                     <input
                         id="input-id"
                         type="text"
+                        onChange={(e) => setTitle(e.target.value)}
                     >
                     </input>
                 </label>

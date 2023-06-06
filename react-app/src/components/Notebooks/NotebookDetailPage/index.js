@@ -6,26 +6,40 @@ import { getNotesThunk } from '../../../store/notes';
 import './index.css'
 
 const NotebookDetails = () => {
-    const [body, setBody] = useState('')
+    const [currentNote, setCurrentNote] = useState({})
+    const [newBody, setNewBody] = useState('')
+
     const dispatch = useDispatch()
     const notebookId = useParams().notebookId
 
     const notebookObj = useSelector(state => state.notebooks.allNotebooks)
     const notes = useSelector(state => state.notes.allNotes)
-    // console.log("notebooks:", Object.values(notebookObj))
-    // console.log("notes:", Object.values(notes))
 
     const filtered = Object.values(notes).filter(note => {
-        // console.log(note.notebookId)
+
         return note.notebookId == notebookId
     })
-    // console.log(filtered)
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
         dispatch(getNotesThunk())
     }, [dispatch])
-    console.log("body length:", body.length)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const updateNotebook = {
+            "id": currentNote.id,
+            "title": currentNote.title,
+            "body": newBody
+        }
+
+        // dispatch(editNotebookThunk(updateNotebook))
+    }
+
+    const setterFunction = (note, e) => {
+        setCurrentNote(note)
+        setNewBody(note.body)
+    }
 
     return (
         <div>
@@ -36,10 +50,11 @@ const NotebookDetails = () => {
                 <div className='notebook-content-left'>
                     <ol>
                         {filtered.map(note => {
+                            { console.log(note) }
                             return (
                                 <li
                                     key={note.id}
-                                    onClick={(e) => setBody(note.body)}
+                                    onClick={(e) => setterFunction(note, e)}
                                 >
                                     <div className=''>
                                         {note.title}
@@ -53,10 +68,16 @@ const NotebookDetails = () => {
 
                 </div>
                 <div className='notebook-content-right'>
-                    <textarea
-                        value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                    ></textarea>
+                    <label type="submit">
+
+                        <label type="text">
+                            <textarea
+                                value={newBody}
+                                onChange={(e) => setNewBody(e.target.value)}
+                            ></textarea>
+                            <button type="submit" onClick={handleSubmit}>update</button>
+                        </label>
+                    </label>
                 </div>
             </div>
         </div>

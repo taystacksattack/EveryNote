@@ -5,7 +5,7 @@ const NewNotebook = () => {
 
     return (
         <OpenModalButton
-            buttonText={'Create New Notebook 2'}
+            buttonText={'New Notebook'}
             modalComponent={<CreateNewNotebookModel />}>
         </OpenModalButton>
 

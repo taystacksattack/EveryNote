@@ -29,20 +29,20 @@ def post_note():
     if form.validate_on_submit():
         data = form.data
         new_note = Note(
-            title=data['title'], 
+            title=data['title'],
             body=data['body'],
             trash=data['trash'],
             ownerId=data['ownerId'],
             notebookId=data['notebookId']
             )
-        
+
 
         print('\n\n\n\n\n newNote', new_note)
         db.session.add(new_note)
         db.session.commit()
         return new_note.to_dict()
 
-    return "Bad Data"    
+    return "Bad Data"
 
 @note_routes.route('/<int:id>')
 @login_required

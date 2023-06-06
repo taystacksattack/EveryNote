@@ -44,34 +44,45 @@ def seed_notetags():
     seed_note_9 = Note.query.get(9) #Analyze the role of the Egyptian God..
     seed_tag_9 = Tag.query.get(3) #Yu-Gi-Oh
 
-    print("\n\n\n\nwow we here", seed_note_1)
+    seed_note_10 = Note.query.filter(Note.title.like("%Thrill and Peril%")).first()
+    seed_tag_10_1 = Tag.query.get(1)
+    seed_tag_10_2 = Tag.query.get(2)
+    seed_tag_10_3 = Tag.query.get(3)
+
+    #print("\n\n\n\nwow we here", seed_note_1)
 
     seed_note_1.tags.append(seed_tag_1)
     db.session.add(seed_note_1)
-    db.session.commit()
+
     seed_note_2.tags.append(seed_tag_2)
     db.session.add(seed_note_2)
-    db.session.commit()
+
     seed_note_3.tags.append(seed_tag_3)
     db.session.add(seed_note_3)
-    db.session.commit()
+
     seed_note_4.tags.append(seed_tag_4)
     db.session.add(seed_note_4)
-    db.session.commit()
+
     seed_note_5.tags.append(seed_tag_5)
     db.session.add(seed_note_5)
-    db.session.commit()
+
     seed_note_6.tags.append(seed_tag_6)
     db.session.add(seed_note_6)
-    db.session.commit()
+
     seed_note_7.tags.append(seed_tag_7)
     db.session.add(seed_note_7)
-    db.session.commit()
+
     seed_note_8.tags.append(seed_tag_8)
     db.session.add(seed_note_8)
-    db.session.commit()
+
     seed_note_9.tags.append(seed_tag_9)
     db.session.add(seed_note_9)
+
+    #One note, many tags
+    seed_note_10.tags.append(seed_tag_10_1)
+    seed_note_10.tags.append(seed_tag_10_2)
+    seed_note_10.tags.append(seed_tag_10_3)
+    db.session.add(seed_note_10)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

@@ -1,20 +1,19 @@
-"""new tables2
+"""note-tags-seed
 
-Revision ID: ffdc0a98111c
+Revision ID: 8631454c6238
 Revises:
-Create Date: 2023-06-05 14:38:12.388088
+Create Date: 2023-06-05 18:51:11.415095
 
 """
 from alembic import op
 import sqlalchemy as sa
-
 
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = '8631454c6238'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -89,7 +88,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('user_id', 'note_id')
     )
     # ### end Alembic commands ###
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE notebooks SET SCHEMA {SCHEMA};")

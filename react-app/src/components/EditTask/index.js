@@ -17,6 +17,8 @@ const EditTask = () =>{
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+
+    //`${new Date(task?.due_date).getFullYear()}-${new Date(task?.due_date).getMonth()}-${new Date(task?.due_date).getDate()}`
     // const currentUser = useSelector((state => state.userState.currentUser))
     const dispatch = useDispatch()
     const history = useHistory()

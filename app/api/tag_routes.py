@@ -34,6 +34,9 @@ def get_notetags():
     """
     Query for all note_tags and returns them in a list of note_tag tuples, by (note_id, tag_id)
     """
+
+    print("\n\n\nAT NOTETAGS ROUTE")
+
     tags = Tag.query.all()
     res = { "note_to_tags": {},
            "tag_to_notes": {} }

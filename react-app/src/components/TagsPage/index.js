@@ -7,8 +7,13 @@ import "./TagsPage.css"
 const TagsPage = () => {
 
     const dispatch = useDispatch();
+
     const alltags = useSelector(state => state.tags);
-    const taglist = Object.values(alltags);
+    let taglist;
+
+    if (alltags) {
+        taglist = Object.values(alltags);
+    }
 
     useEffect(() => {
         dispatch(getTagsThunk());
@@ -19,7 +24,7 @@ const TagsPage = () => {
         <div>
             <h1> Tags Page!</h1>
             <div>
-                {taglist.map(
+                {taglist && taglist.map(
                 tag => (
                     <>
                     <div key={tag.id}>

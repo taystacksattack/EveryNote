@@ -11,6 +11,8 @@ import CurrentTasks from './components/TasksPage'
 import CreateTask from './components/CreateTask'
 import EditTask from './components/EditTask'
 
+import TagsPage from './components/TagsPage'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +39,11 @@ function App() {
           <Route path="/notebooks">
             <CurrentNotebooks />
           </Route>
-          
+
+          <Route path="/tags">
+            <TagsPage />
+          </Route>
+
           <Route path="/tasks/:taskId/edit/">
             <EditTask />
           </Route>

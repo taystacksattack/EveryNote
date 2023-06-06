@@ -16,9 +16,9 @@ const getNoteTags = (notetags) => ({
 export const getNoteTagsThunk = () => async (dispatch) => {
     console.log("\n\n\nattempting getNoteTags")
 
-    const response = await fetch("/api/tags/notetags/");
 
     try {
+        const response = await fetch("/api/tags/notetags/");
         const data = await response.json();
 
         console.log("\n\n\nwhat is notetags data", data)

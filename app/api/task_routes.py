@@ -87,11 +87,15 @@ def edit_task(id):
 
 @task_routes.route('/<int:id>/delete', methods = ["GET", "DELETE"])
 @login_required
-def delete_task():
+def delete_task(id):
+    print("id",id)
     task_to_delete = Task.query.get(id)
+    print("Here's that task",task_to_delete)
     if current_user.id != task_to_delete.ownerId:
             return {"error" : "This is not your task to delete"}
 
     db.session.delete(task_to_delete)
     db.session.commit()
-    return redirect("/")
+    # print(success)
+    redirect('/tasks')
+    return {"status":"successful deletion"}#redirect("/tasks")

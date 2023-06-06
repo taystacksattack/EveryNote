@@ -106,7 +106,7 @@ export default function notesReducer(state = initialState, action) {
             console.log('newState', newState)
             console.log('action.note', action.note)
             newState.allNotes[action.note.id] = action.note
-        
+
             return newState
         }
         case EDIT_NOTE: {

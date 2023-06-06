@@ -15,11 +15,6 @@ const getNotes = (notes) => ({
     notes
 });
 
-const getNoteDetails = (note) => ({
-    type: GET_NOTE_DETAILS,
-    note
-})
-
 
 const createNote = (note) => ({
     type: CREATE_NOTE,
@@ -46,19 +41,6 @@ export const getNotesThunk = () => async (dispatch) => {
 };
 
 
-export const getNoteDetailsThunk = (noteId) => async (dispatch) => {
-    const response = await fetch(`/api/notes/${noteId}`)
-
-    if (response.ok) {
-        console.log('getNoteDetails response ok')
-        const noteDetails = await response.json()
-        dispatch(getNoteDetails(noteDetails))
-    } else {
-        const errors = await response.json()
-        return errors
-    }
-
-}
 
 export const createNoteThunk = (note) => async (dispatch) => {
     console.log("note =============>", note)
@@ -87,9 +69,9 @@ export const editNoteThunk = (note, noteId) => async (dispatch) => {
     console.log('Noteeeeeeeeeeeeeeeee', note)
     const response = await fetch(`/api/notes/${noteId}`, {
         method: "PUT",
-        // headers: { "Content-Type": "application/json"},
-        // body: JSON.stringify(note)
-        body:note
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(note)
+        // body:note
     })
 
     if (response.ok) {
@@ -119,11 +101,7 @@ export default function notesReducer(state = initialState, action) {
 
             return newState;
         }
-        case GET_NOTE_DETAILS: {
-            const newState = { ...state }
-            newState.note = action.note
-            return newState
-        }
+  
         case CREATE_NOTE: {
             const newState = { ...state, allNotes: { ...state.allNotes } }
             console.log('newState', newState)
@@ -134,7 +112,7 @@ export default function notesReducer(state = initialState, action) {
         }
         case EDIT_NOTE: {
             const newState = { ...state }
-            newState.note = action.note
+            newState.allNotes[action.note.id] = action.note 
             return newState
         }
         default:

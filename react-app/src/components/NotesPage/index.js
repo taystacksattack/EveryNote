@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 // import { useHistory } from "react-router-dom"
-import { getNotesThunk, createNoteThunk, getNoteDetailsThunk, editNoteThunk } from "../../store/notes"
+import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
 import "./notespage.css"
 
 const CurrentNotes = () => {
@@ -17,7 +17,7 @@ const CurrentNotes = () => {
 
     useEffect(() => {
         dispatch(getNotesThunk())
-    }, [dispatch,])
+    }, [dispatch])
 
     useEffect(() => {
         if (trash === true) {
@@ -58,19 +58,17 @@ const CurrentNotes = () => {
             console.log("updatingggggggggggg", title, noteContent)
             console.log("note info", clicked)
             // const updatedDate = Date.now()
-            const formData = new FormData()
-            if (title) formData.append('title', title)
+     
+            const updatedNote = {
+                title,
+                body: noteContent,
+                // updated_at: updatedDate
+            }
                 
-            if (noteContent) formData.append('body', noteContent)
-
-            console.log('AFTER APPEND of body', formData)
-            
-                // title,
-                // body: noteContent,
-                // // updated_at: updatedDate
 
             
-            dispatch(editNoteThunk(formData, clicked.id))
+            await dispatch(editNoteThunk(updatedNote, clicked.id))
+            dispatch(getNotesThunk())
         } else {
 
             dispatch(createNoteThunk(newNote))

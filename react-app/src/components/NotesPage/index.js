@@ -18,6 +18,8 @@ const CurrentNotes = () => {
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
 
+
+    // notebookId hardcoded for now, gotta remember to make it dynamic later
     const newNote = {
         title,
         body: noteContent,
@@ -41,13 +43,6 @@ const CurrentNotes = () => {
     //     }
     // }, [dispatch, trash])
 
-  
-
-
-
-    // notebookId hardcoded for now, gotta remember to make it dynamic later
-
-    // console.log('trash', trash)
 
 
     const handleNoteClick = async (note) => {
@@ -75,9 +70,13 @@ const CurrentNotes = () => {
 
             await dispatch(editNoteThunk(updatedNote, clickedNote.id))
             dispatch(getNotesThunk())
+            setTitle('')
+            setNoteContent('')
         } else {
 
             dispatch(createNoteThunk(newNote))
+            setTitle('')
+            setNoteContent('')
         }
 
     }
@@ -93,12 +92,12 @@ const CurrentNotes = () => {
                 {notesObj && listOfNotes.map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
-                        <p>{note.updated_at}</p>
+                        <p>{note.updated_at.split('.')[0]}</p>
                         <div className="trash-btn-container">
-                        <OpenModalButton
-                            buttonText="Trash"
-                            modalComponent={<DeleteModal note={note} />}
-                        />
+                            <OpenModalButton
+                                buttonText="Trash"
+                                modalComponent={<DeleteModal note={note} />}
+                            />
                         </div>
                     </div>
                 ))}
@@ -112,7 +111,7 @@ const CurrentNotes = () => {
                     <textarea
                         id='title-textarea'
                         value={title}
-                        onChange={(e) => setTitle(e.target.value) }
+                        onChange={(e) => setTitle(e.target.value)}
                         placeholder='Title'
                     >
                     </textarea>

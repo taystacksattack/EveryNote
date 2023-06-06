@@ -26,7 +26,7 @@ class Note(db.Model):
 
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, nullable=False,
+    updated_at = db.Column(db.String, nullable=False,
                            default=datetime.utcnow)
 
     # relationships

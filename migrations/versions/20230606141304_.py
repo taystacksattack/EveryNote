@@ -1,8 +1,8 @@
-"""note-tags-seed
+"""empty message
 
-Revision ID: 8631454c6238
-Revises:
-Create Date: 2023-06-05 18:51:11.415095
+Revision ID: 6abf1acb97df
+Revises: 
+Create Date: 2023-06-06 14:13:04.677354
 
 """
 from alembic import op
@@ -13,10 +13,11 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '8631454c6238'
+revision = '6abf1acb97df'
 down_revision = None
 branch_labels = None
 depends_on = None
+
 
 
 def upgrade():
@@ -67,7 +68,7 @@ def upgrade():
     sa.Column('ownerId', sa.Integer(), nullable=False),
     sa.Column('notebookId', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.Column('updated_at', sa.DateTime(), nullable=False),
+    sa.Column('updated_at', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['notebookId'], ['notebooks.id'], ),
     sa.ForeignKeyConstraint(['ownerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

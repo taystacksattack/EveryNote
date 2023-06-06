@@ -82,7 +82,7 @@ def update_note(id):
       
         print('\n\n\n\n\n this is datetime', datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
 
-
+        note.updated_at = datetime.utcnow()
         db.session.commit()
         return note.to_dict()
         

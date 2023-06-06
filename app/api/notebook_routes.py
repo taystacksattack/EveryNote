@@ -9,27 +9,37 @@ notebook_routes = Blueprint('notebooks', __name__)
 # CREATE a new notebook
 
 
-@notebook_routes.route("/new", methods=["GET", "POST"])
+@notebook_routes.route("/new", methods=["POST"])
 @login_required
 def post_notebook():
+
     form = NotebookForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
 
+    print("==================================")
+    print("BOOL:", form.validate_on_submit())
+    print("==================================")
+
+    new_notebook = NotebookForm(
+        title=form.data["title"],
+        is_default=form.data["is_default"]
+    )
+
+    print("==================================")
+    print("NEW NOTEBOOK:", new_notebook.title)
+    print("==================================")
+
     if form.validate_on_submit():
-        new_notebook = NotebookForm(
-            title=form.data["title"],
-            is_default=form.data["is_default"]
-        )
-        print("==================================")
-        print("NEW NOTEBOOK:", new_notebook)
-        print("==================================")
+
         db.session.add(new_notebook)
         db.session.commit()
         return {"result": new_notebook.to_dict()}
     if form.errors:
-        print({"message": "not successful"})
-        return None
+        print("==================================")
+        print("FORM ERRORS", form.errors)
+        print("==================================")
+        return {"message": "not successful in CREATE route"}
 
 # UPDATE a notebook
 

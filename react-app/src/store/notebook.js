@@ -29,13 +29,13 @@ const deleteNotebook = (notebook) => ({
 //THUNK action creators
 //CREATE
 export const createNotebooksThunk = (notebook) => async (dispatch) => {
-    // console.log("create thunk:", notebook)
+    console.log("create thunk:", notebook)
     const response = await fetch("/api/notebooks/new", {
-        method: "Post",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: notebook
+        body: JSON.stringify(notebook)
     })
-    // console.log(response)
+    console.log("RESPONSE IN CREATENOTEBOOKTHUNK",response)
     if (response.ok) {
         const data = await response.json();
 

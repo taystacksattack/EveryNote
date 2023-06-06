@@ -1,33 +1,28 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { createNotebooksThunk } from "../../../store/notebook"
-import { useHistory } from 'react-router-dom';
+
 import { useModal } from "../../../context/Modal";
 
 
 const CreateNewNotebookModel = () => {
 
     const dispatch = useDispatch()
-    const history = useHistory()
     const { closeModal } = useModal()
 
     const [title, setTitle] = useState("")
-    const [isDefault, setIsDefault] = useState(`False`)
+    const [isDefault] = useState(false)
 
 
     const handleSubmit = (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         const new_notebook = {
             "title": title,
             "is_default": isDefault
         }
-        return dispatch(createNotebooksThunk(new_notebook)).closeModal()
+        console.log("New Notebook in Create", new_notebook)
+        return dispatch(createNotebooksThunk(new_notebook)).closeModal
     }
-
-    const closeForm = (e) => {
-        closeModal()
-    }
-
 
     return (
         <div>
@@ -41,15 +36,16 @@ const CreateNewNotebookModel = () => {
                     >
                     </input>
                 </label>
-                <label>
+                {/* <label>
                     Make This Default?
                     <input
                         id="input-default"
                         type='checkbox'
+                        onClick={(e) => booleanValue(isDefault)}
                     >
                     </input>
-                </label>
-                <button type="submit">
+                </label> */}
+                <button type="submit" onClick={(e) => handleSubmit(e)}>
                     Create new Notebook
                 </button>
             </form>

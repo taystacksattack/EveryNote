@@ -18,64 +18,67 @@ def seed_notetags():
 #Note.query.filter(Note.ownerId == current_user.id).all()
     # seed_note_1 = Note.query.filter(Note.title =="2023 Tax Season").first()
     seed_note_1 = Note.query.filter(Note.title =="2021 Tax Season").first()
-    seed_tag_1 = Tag.query.filter(Tag.name =="Adult Responsibility").first()
-
     seed_note_2 = Note.query.get(2) #2022 Tax Season
-    seed_tag_2 = Tag.query.get(1) #Adult responsibility
-
     seed_note_3 = Note.query.get(3) #2023 Tax Season
-    seed_tag_3 = Tag.query.get(1) #Adult responsibility
+
+    seed_tag_1_2_3 = Tag.query.filter(Tag.name =="Adult Responsibility").first()
+    # seed_tag_2 = Tag.query.get(1) #Adult responsibility
 
     seed_note_4 = Note.query.filter(Note.title == 'Pokemon Types').first()
-    seed_tag_4 = Tag.query.filter(Tag.name == "Hobbies").first()
-
     seed_note_5 = Note.query.get(5) #What inspired the creation of the first Pokemon game..
-    seed_tag_5 = Tag.query.get(2) #hobbies
-
     seed_note_6 = Note.query.get(6) #How has the Pokemon community impacted..
-    seed_tag_6 = Tag.query.get(2) #hobbies
+
+    seed_tag_4_5_6 = Tag.query.filter(Tag.name == "Hobbies").first()
+    # seed_tag_5 = Tag.query.get(2) #hobbies
+    # seed_tag_6 = Tag.query.get(2) #hobbies
 
     seed_note_7 = Note.query.get(7) #Is Yu_Gi_Oh Dying??..
-    seed_tag_7 = Tag.query.get(3) #Yu-Gi-Oh
-
     seed_note_8 = Note.query.get(8) #BBRRRRRRRRRRRR..
-    seed_tag_8 = Tag.query.get(3) #Yu-Gi-Oh
-
     seed_note_9 = Note.query.get(9) #Analyze the role of the Egyptian God..
-    seed_tag_9 = Tag.query.get(3) #Yu-Gi-Oh
+
+    seed_tag_7_8_9 = Tag.query.get(5) #Yu-Gi-Oh
+    # seed_tag_8 = Tag.query.get(5) #Yu-Gi-Oh
+    # seed_tag_9 = Tag.query.get(5) #Yu-Gi-Oh
+
 
     seed_note_10 = Note.query.filter(Note.title.like("%Thrill and Peril%")).first()
     seed_tag_10_1 = Tag.query.get(1)
     seed_tag_10_2 = Tag.query.get(2)
     seed_tag_10_3 = Tag.query.get(3)
 
+    seed_note_11 = Note.query.get(7)
+    seed_note_12 = Note.query.get(8)
+    seed_note_13 = Note.query.get(9)
+    seed_tag_11_12_13 = Tag.query.get(4) #DIGIMON
+
+
     #print("\n\n\n\nwow we here", seed_note_1)
 
-    seed_note_1.tags.append(seed_tag_1)
+    seed_note_1.tags.append(seed_tag_1_2_3)
     db.session.add(seed_note_1)
 
-    seed_note_2.tags.append(seed_tag_2)
+    seed_note_2.tags.append(seed_tag_1_2_3)
     db.session.add(seed_note_2)
 
-    seed_note_3.tags.append(seed_tag_3)
+    seed_note_3.tags.append(seed_tag_1_2_3)
     db.session.add(seed_note_3)
 
-    seed_note_4.tags.append(seed_tag_4)
+    seed_note_4.tags.append(seed_tag_4_5_6)
     db.session.add(seed_note_4)
 
-    seed_note_5.tags.append(seed_tag_5)
+    seed_note_5.tags.append(seed_tag_4_5_6)
     db.session.add(seed_note_5)
 
-    seed_note_6.tags.append(seed_tag_6)
+    seed_note_6.tags.append(seed_tag_4_5_6)
     db.session.add(seed_note_6)
 
-    seed_note_7.tags.append(seed_tag_7)
+    seed_note_7.tags.append(seed_tag_7_8_9)
     db.session.add(seed_note_7)
 
-    seed_note_8.tags.append(seed_tag_8)
+    seed_note_8.tags.append(seed_tag_7_8_9)
     db.session.add(seed_note_8)
 
-    seed_note_9.tags.append(seed_tag_9)
+    seed_note_9.tags.append(seed_tag_7_8_9)
     db.session.add(seed_note_9)
 
     #One note, many tags
@@ -83,6 +86,16 @@ def seed_notetags():
     seed_note_10.tags.append(seed_tag_10_2)
     seed_note_10.tags.append(seed_tag_10_3)
     db.session.add(seed_note_10)
+
+    seed_note_11.tags.append(seed_tag_11_12_13)
+    db.session.add(seed_note_7)
+
+    seed_note_12.tags.append(seed_tag_11_12_13)
+    db.session.add(seed_note_8)
+
+    seed_note_13.tags.append(seed_tag_11_12_13)
+    db.session.add(seed_note_9)
+
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

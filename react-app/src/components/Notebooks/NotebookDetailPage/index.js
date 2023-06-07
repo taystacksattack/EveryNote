@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNotebooksThunk } from "../../../store/notebook"
+import { editNotebookThunk, getNotebooksThunk } from "../../../store/notebook"
 import { getNotesThunk } from '../../../store/notes';
 import './index.css'
 

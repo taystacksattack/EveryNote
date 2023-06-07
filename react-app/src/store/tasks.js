@@ -118,7 +118,7 @@ export default function tasksReducer(state = initialState, action) {
 			return newState;
 
         case DELETE_TASK:
-            const deleteState = {...state}
+            const deleteState = {...state, allTasks:{...state.allTasks}} //new all tasks overwrites the old one, causes a hash collision
             console.log("delete state before deletion", deleteState)
             console.log("action.taskId", action.taskId)
             delete deleteState.allTasks[action.taskId]

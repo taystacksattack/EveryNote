@@ -15,31 +15,30 @@ const CurrentTasks = () => {
     const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('due');
 
-    let tasksObj = useSelector(state => state.tasks)
-    tasksObj = tasksObj.allTasks
+    let tasksObj = useSelector(state => state.tasks.allTasks)
+    // tasksObj = tasksObj.allTasks //total bandaid.
 
 
     // console.log("tasksLength", tasksLength)
     const tasksArr = Object.values(tasksObj)
-    console.log("tasks array",tasksArr)
-    useEffect(()=>{
-        const sortedTasks = type => {
-            const types = {
-                due: 'due_date',
-                created: 'created_at',
-                titled: 'title'
-            }
-            const sortProperty = types[type]
-            const sorted = [...tasksArr].sort((a, b) =>{
-                
-                return new Date(a[sortProperty]) - new Date (b[sortProperty])
-            });
-            console.log("sorted stuff in function",sorted)
-            setData(sorted)
-            console.log("data",data)
-        }
-        sortedTasks(sortType)
-    },[sortType, tasksArr.length])
+    // console.log("tasks array",tasksArr)
+    // useEffect(()=>{
+    //     const sortedTasks = type => {
+    //         const types = {
+    //             due: 'due_date',
+    //             created: 'created_at',
+    //             // titled: 'title'
+    //         }
+    //         const sortProperty = types[type]
+    //         const sorted = [...tasksArr].sort((a, b) =>{
+    //             return new Date(a[sortProperty]) - new Date (b[sortProperty])
+    //         });
+    //         console.log("sorted stuff in function",sorted)
+    //         setData(sorted)
+    //         console.log("data",data)
+    //     }
+    //     sortedTasks(sortType)
+    // },[sortType, tasksArr.length])
 
     useEffect(()=>{
         dispatch(getTasksThunk())
@@ -58,7 +57,7 @@ const CurrentTasks = () => {
                 <option value="created">Created Date</option>
                 {/* <option value="titled">Title, A-Z</option> */}
             </select>
-            {tasksObj && data.map(task => {
+            {tasksObj && tasksArr.map(task => {
                 return(
                     <div key={task.id}>
                         <p key={task.id}>Task: {task.title}</p>

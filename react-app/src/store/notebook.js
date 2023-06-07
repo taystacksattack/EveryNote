@@ -29,12 +29,11 @@ const deleteNotebook = (notebook) => ({
 //THUNK action creators
 //CREATE
 export const createNotebooksThunk = (notebook) => async (dispatch) => {
-    console.log("create thunk:", notebook)
     const response = await fetch("/api/notebooks/new", {
-        method: "Post",
-        body: notebook
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(notebook)
     })
-    // console.log(response)
     if (response.ok) {
         const data = await response.json();
 
@@ -44,28 +43,32 @@ export const createNotebooksThunk = (notebook) => async (dispatch) => {
 // GET
 export const getNotebooksThunk = () => async (dispatch) => {
     const response = await fetch("/api/notebooks/");
-    // console.log(response)
     if (response.ok) {
         const data = await response.json();
-        // console.log(data)
         dispatch(getNotebooks(data));
     }
 };
-// EDIT
+// EDIT - Done
 export const editNotebookThunk = (notebook) => async (dispatch) => {
-    console.log("editNotebookThunk:", notebook)
-    const response = await fetch(`/api/notebooks/${notebook.id}/edit`, {
-        method: "PUT",
-        body: notebook
-    })
-    if (response.ok) {
-        const data = await response.json()
-        dispatch(editNotebook(data))
+    const id = notebook.id
+    try {
+        const response = await fetch(`/api/notebooks/${id}/edit`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(notebook)
+        })
+
+        if (response.ok) {
+            const data = await response.json()
+            dispatch(editNotebook(data))
+        }
+    } catch (error) {
+        return error
     }
 }
 // Delete
 export const deleteNotebookThunk = (notebook) => async (dispatch) => {
-    const response = await fetch(`1/api/notebooks/${notebook.id}delete`, {
+    const response = await fetch(`/api/notebooks/${notebook.id}/delete`, {
         method: "DELETE"
     })
     if (response.ok) {
@@ -78,19 +81,27 @@ const initialState = { allNotebooks: {} };
 const notebooksReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_NOTEBOOKS:
-            const newState = { allNotebooks: {} };
-            // console.log("action.notebooks:", action.notebooks)
+            const getState = { ...state, allNotebooks: { ...state.allNotebooks } };
             if (action.notebooks.length !== 0) {
                 action.notebooks.notebooks.forEach((notebook) => {
-                    newState.allNotebooks[notebook.id] = notebook
+                    getState.allNotebooks[notebook.id] = notebook
                 })
             }
-            return newState;
+            return getState;
         case CREATE_NOTEBOOK:
-            console.log("action.notebook:", action.notebook)
-            return { ...state, allNotebooks: action.notebook }
+            const createState = { ...state, allNotebooks: { ...state.allNotebooks } }
+            createState.allNotebooks[action.notebook.id] = action.notebook
+
+        return createState
         case EDIT_NOTEBOOK:
-            return { ...state, allNotebooks: action.notebook }
+            const editState = { ...state, allNotebooks: { ...state.allNotebooks } }
+            editState.allNotebooks[action.notebook.id] = action.notebook
+
+        return editState
+        // case DELETE_NOTEBOOK:
+        //     const deleteState = { ...state, allNotebooks: { ...state.allNotebooks } }
+        //     delete deleteState.allNotebooks[action.notebook.id]
+        //     return deleteState
         default:
             return state;
     }

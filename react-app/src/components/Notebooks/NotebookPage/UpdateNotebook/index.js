@@ -1,12 +1,12 @@
 import OpenModalButton from '../../../OpenModalButton'
 import UpdateNotebookModel from './updateModal'
 
-const UpdateNotebook = () => {
+const UpdateNotebook = ({ notebook }) => {
 
     return (
         <OpenModalButton
             buttonText={'Rename notebook'}
-            modalComponent={<UpdateNotebookModel />}>
+            modalComponent={<UpdateNotebookModel notebook={notebook} />}>
         </OpenModalButton>
 
     )

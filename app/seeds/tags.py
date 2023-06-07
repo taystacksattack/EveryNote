@@ -14,11 +14,13 @@ def seed_tags():
         name="Digimon")
     yugioh = Tag(
         name="Yu-gi-Oh")
+    empty = Tag(name="Empty")
     db.session.add(responsibility)
     db.session.add(hobbies)
     db.session.add(animals)
     db.session.add(digimon)
     db.session.add(yugioh)
+    db.session.add(empty)
     db.session.commit()
 
 

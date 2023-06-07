@@ -1,4 +1,4 @@
-import OpenModalButton from '../../../components/OpenModalButton'
+import OpenModalButton from '../../OpenModalButton'
 import CreateNewNotebookModel from './NewNotebookModal'
 
 const NewNotebook = () => {

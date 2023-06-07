@@ -72,7 +72,7 @@ export const deleteNotebookThunk = (notebook) => async (dispatch) => {
         method: "DELETE"
     })
     if (response.ok) {
-        dispatch(deleteNotebook(notebook.id))
+        dispatch(deleteNotebook(notebook))
     }
 }
 
@@ -92,16 +92,16 @@ const notebooksReducer = (state = initialState, action) => {
             const createState = { ...state, allNotebooks: { ...state.allNotebooks } }
             createState.allNotebooks[action.notebook.id] = action.notebook
 
-        return createState
+            return createState
         case EDIT_NOTEBOOK:
             const editState = { ...state, allNotebooks: { ...state.allNotebooks } }
             editState.allNotebooks[action.notebook.id] = action.notebook
 
-        return editState
-        // case DELETE_NOTEBOOK:
-        //     const deleteState = { ...state, allNotebooks: { ...state.allNotebooks } }
-        //     delete deleteState.allNotebooks[action.notebook.id]
-        //     return deleteState
+            return editState
+        case DELETE_NOTEBOOK:
+            const deleteState = { ...state, allNotebooks: { ...state.allNotebooks } }
+            delete deleteState.allNotebooks[action.notebook.id]
+            return deleteState
         default:
             return state;
     }

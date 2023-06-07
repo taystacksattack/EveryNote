@@ -11,16 +11,27 @@
   grid-template-rows: repeat(20%);
 }
 
-ul {
+/* {
   list-style: nones;
   border: solid 2px black;
   box-shadow: 2px 2px 2px black;
+} */
+
+.everything-wrapper {
+  border: 2px solid green;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
 }
+
 .notebook-div-container {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+  margin: 10px;
+  padding: 10px;
 }
 
 .new-notebook-button {

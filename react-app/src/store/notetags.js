@@ -16,12 +16,14 @@ const getNoteTags = (notetags) => ({
 export const getNoteTagsThunk = () => async (dispatch) => {
     console.log("\n\n\nattempting getNoteTags")
 
-    const response = await fetch("/api/tags/notetags/");
 
     try {
+        const response = await fetch("/api/tags/notetags/");
         const data = await response.json();
 
         console.log("\n\n\nwhat is notetags data", data)
+        dispatch(getNoteTags(data));
+
     } catch (e) {
         console.log("Error", e)
     }
@@ -47,12 +49,14 @@ export default function noteTagsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_NOTE_TAGS: {
             const newState = { notetags: {}}
-            if (action.notetags.length) {
-                action.notetags.forEach((notetag) => {
-                    newState.notetags[notetag.id] = notetag
-                })
-            }
-            //return newState.notetags?
+
+            console.log("notetags??", action.notetags)
+
+            if (action.notetags) {
+                newState.notetags = action.notetags
+                }
+
+
             return newState.notetags;
         }
         default:

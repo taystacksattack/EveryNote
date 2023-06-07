@@ -39,9 +39,8 @@ class Tag(db.Model):
     #         'created_at': self.created_at,
     #         'updated_at': self.updated_at,
     # }
-    def notes_of_tag(self):
-        return {"notes": self.notes}
-    """ self.notes pulls list of all related note items
-
-    iterate through self.notes, pulls note ids, create dictionary of index: (note_id, tag_id)??
-       """
+    # def tag_notes(self):
+    #     return {
+    #         "tag_id": self.id,
+    #         "notes": self.notes
+    #     }

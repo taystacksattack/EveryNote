@@ -90,21 +90,16 @@ export const deleteTaskThunk = (taskId) => async (dispatch) => {
     try{
         const response = await fetch(`/api/tasks/${taskId}/delete`, {
         method: "DELETE"
-
     })
     const result = await response.json()
     console.log("result in thunk ",result)
     dispatch(deleteTask(taskId))
     return result
     } catch(e){
-        // console.log(e)
+        console.log(e)
         return e
     }
 }
-
-
-
-
 //THIS IS OUR REDUCER
 const initialState = { allTasks: {} };
 export default function tasksReducer(state = initialState, action) {
@@ -113,16 +108,17 @@ export default function tasksReducer(state = initialState, action) {
             console.log("action",action)
             const newState = { allTasks: {}};
             // console.log("This is the action.tasks...?",action)
-            console.log("IS THIS AN ARRAY?",Array.isArray(action.tasks))
+            // console.log("IS THIS AN ARRAY?",Array.isArray(action.tasks))
             if(action.tasks.length){
                 action.tasks.forEach((task) => {
+                    // console.log(task)
                     newState.allTasks[task.id] = task
                 })}
             console.log("newstate be like: ", newState)
 			return newState;
 
         case DELETE_TASK:
-            const deleteState = {...state}
+            const deleteState = {...state, allTasks:{...state.allTasks}} //new all tasks overwrites the old one, causes a hash collision
             console.log("delete state before deletion", deleteState)
             console.log("action.taskId", action.taskId)
             delete deleteState.allTasks[action.taskId]

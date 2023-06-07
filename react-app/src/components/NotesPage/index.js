@@ -59,12 +59,12 @@ const CurrentNotes = () => {
         if (Object.values(clickedNote).length > 0) {
             console.log("updatingggggggggggg", title, noteContent)
             console.log("note info", clickedNote)
-            // const updatedDate = Date.now()
+
 
             const updatedNote = {
                 title,
                 body: noteContent,
-                // updated_at: updatedDate
+
             }
 
 
@@ -85,28 +85,36 @@ const CurrentNotes = () => {
 
     console.log('list of notes', listOfNotes)
 
-    let listRendered = listOfNotes;
+    let listRendered = listOfNotes.slice();
 
 
     if (sortStatus === false) {
-        listRendered = listOfNotes.reverse()
+        listRendered = listRendered.reverse()
     }
   
 
-    // const azSort = (notesList) => {
-    //     const copy = listOfNotes
-    //     const sortedCopy = copy.sort((a,b) => {
-    //         const titleA = a.title.toLowerCase()
-    //         const titleB = b.title.toLowerCase()
+    const azSort = (notesList) => {
+        const copy = listOfNotes.slice()
+        const sortedCopy = copy.sort((a,b) => {
+            const titleA = a.title.toLowerCase()
+            const titleB = b.title.toLowerCase()
 
-    //         if (titleA < titleB) return -1
-    //         if (titleA > titleB) return 1
-    //         return 0
-    //     })
-    //     return sortedCopy
-    // }
+            if (titleA < titleB) return -1
+            if (titleA > titleB) return 1
+            return 0
+        })
+        return sortedCopy
+    }
 
     
+    if (sortAlpha === true) {
+        listRendered = azSort(listRendered.reverse())
+    } 
+
+    // if (sortAlpha === false) {
+    //     listRendered = azSort(listRendered)
+
+    // }
 
     if (!notesObj) return (<div>Loading</div>)
 
@@ -149,7 +157,9 @@ const CurrentNotes = () => {
                             />
                         </div>
                     </div>
-                ))}
+                ))
+
+                }
 
 
             </div>

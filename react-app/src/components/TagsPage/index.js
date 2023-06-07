@@ -19,12 +19,22 @@ const TagsPage = () => {
     const notetags = useSelector(state => state.notetags);
     // const this_user = useSelector(state => state.session.user)
     const [ sortAlphaNum, setSortAlphaNum ] = useState(true); //true, sort by alphabetical
-                                                            //false, sort by number of owned notes
-    const taglist = Object.values(alltags);
-    const sortedByNotesList = sortByOwnedNotes(taglist)
-    const sortedByAlphaList = sortByAlphabetical(taglist)
-
+    //false, sort by number of owned notes
     const [renderSwitch, setRenderSwitch] = useState(true);
+
+
+
+    const taglist = Object.values(alltags);
+    //
+    //
+    // HERE FOR REFERENCE
+    //COPIES OF TAG LIST, SORTED BY MOST NOTES
+    const sortedByNotesList = sortByOwnedNotes(taglist)
+    //SORTED BY ALPHABETICAL
+    const sortedByAlphaList = sortByAlphabetical(taglist)
+    //
+    //
+    //
 
     useEffect(() => {
         dispatch(getTagsThunk());
@@ -32,10 +42,7 @@ const TagsPage = () => {
         dispatch(getNotesThunk());
     }, [dispatch, renderSwitch])
 
-    // const test = () => {
-    //     const testTitle = title
-    //     console.log("does this even work??", testTitle)
-    // }
+
 
     async function createTest() {
         const newTag = { name: "test tag"};

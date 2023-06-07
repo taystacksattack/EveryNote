@@ -1,8 +1,10 @@
 from flask import Blueprint # jsonify, request
 from flask_login import login_required #current_user
+
 from app.models import Tag
 from ..models.db import db
 #from ..forms.tag_form import TagForm
+
 
 
 tag_routes = Blueprint('tags', __name__)
@@ -13,6 +15,7 @@ def pull_notetags(self):
         'note_id': self.note_id,
         'tag_id': self.tag_id
     }
+
 
 @tag_routes.route('/<int:tagId>', methods=["DELETE"]
 # @tag_routes.route('/<int:tagId>', methods=["DELETE"]
@@ -25,6 +28,7 @@ def delete_tag(tagId):
     db.session.commit()
     return { "message": f'Tag {tagId} successfully deleted'}
 
+
 @tag_routes.route('/')
 @login_required
 def get_tags():
@@ -34,6 +38,7 @@ def get_tags():
 
     tags = Tag.query.all()
     return {'tags': [tag.to_dict() for tag in tags]}
+
 
 @tag_routes.route('/', methods=["POST"])
 @login_required
@@ -65,6 +70,7 @@ def create_tag():
 
 
 
+
 #also get notetags
 #does this work? query Tag// notes relationship
 @tag_routes.route('/notetags/')
@@ -73,6 +79,7 @@ def get_notetags():
     """
     Query for all note_tags and returns them in a list of note_tag tuples, by (note_id, tag_id)
     """
+
 
     print("\n\n\nAT NOTETAGS ROUTE")
 
@@ -102,3 +109,4 @@ def get_notetags():
 
     # print("\n\n\n\does THIS work?", res)
     return res
+

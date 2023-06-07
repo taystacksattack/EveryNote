@@ -4,7 +4,9 @@
 //ACTION CONSTANTS
 const GET_TAGS = "session/GET_TAGS";
 const CREATE_TAG = "session/CREATE_TAG"
+
 // const DELETE_TAG = "session/DELETE_TAG"
+
 
 
 //ACTION CREATORS
@@ -18,10 +20,13 @@ const createTag = (tag) => ({
     tag
 })
 
+
 // const deleteTag = (tag) => ({
 //     type: DELETE_TAG,
 //     tag
 // })
+
+
 
 //THUNKS
 export const getTagsThunk = () => async (dispatch) => {
@@ -42,8 +47,10 @@ export const createTagThunk = (tag) => async (dispatch) => {
     const response = await fetch("/api/tags/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+
         body: tag
         // body: JSON.stringify(tag)
+
     })
 
     if (response.ok) {
@@ -55,6 +62,7 @@ export const createTagThunk = (tag) => async (dispatch) => {
         const errors = await response.json()
         return errors
     }
+
 };
 
 export const deleteTagThunk = (tagId) => async(dispatch) => {
@@ -68,6 +76,7 @@ export const deleteTagThunk = (tagId) => async(dispatch) => {
     console.log(res);
     return res;
 }
+
 
 //REDUCER
 const initialState = { allTags: {} };
@@ -84,6 +93,7 @@ export default function tagsReducer(state = initialState, action) {
             return newState.allTags;
         }
         case CREATE_TAG: {
+
             const newState = { ...state }
             // const newState = { ...state, allTags: { ...state.allTags } }
             // console.log('newState', newState)
@@ -92,6 +102,7 @@ export default function tagsReducer(state = initialState, action) {
             // console.log("added", newState[action.tag.id])
             // console.log("allTags", newState)
             return newState;
+
         }
         default:
             return state

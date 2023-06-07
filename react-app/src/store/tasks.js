@@ -25,9 +25,9 @@ const editTask = (task) => ({
     task
 });
 
-const deleteTask = (task) => ({
+const deleteTask = (taskId) => ({
     type: DELETE_TASK,
-    task
+    taskId
 });
 
 
@@ -86,6 +86,23 @@ export const editTaskThunk = (taskId, task) => async (dispatch) => {
     }
 }
 
+export const deleteTaskThunk = (taskId) => async (dispatch) => {
+    try{
+        const response = await fetch(`/api/tasks/${taskId}/delete`, {
+        method: "DELETE"
+
+    })
+    const result = await response.json()
+    console.log("result in thunk ",result)
+    dispatch(deleteTask(taskId))
+    return result
+    } catch(e){
+        // console.log(e)
+        return e
+    }
+}
+
+
 
 
 //THIS IS OUR REDUCER
@@ -95,11 +112,8 @@ export default function tasksReducer(state = initialState, action) {
 		case GET_TASKS:
             console.log("action",action)
             const newState = { allTasks: {}};
-
             // console.log("This is the action.tasks...?",action)
             console.log("IS THIS AN ARRAY?",Array.isArray(action.tasks))
-
-
             if(action.tasks.length){
                 action.tasks.forEach((task) => {
                     newState.allTasks[task.id] = task
@@ -107,6 +121,13 @@ export default function tasksReducer(state = initialState, action) {
             console.log("newstate be like: ", newState)
 			return newState;
 
+        case DELETE_TASK:
+            const deleteState = {...state}
+            console.log("delete state before deletion", deleteState)
+            console.log("action.taskId", action.taskId)
+            delete deleteState.allTasks[action.taskId]
+            console.log("delete state after deletion", deleteState)
+            return deleteState
 		default:
 			return state;
 	}

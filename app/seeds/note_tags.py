@@ -18,6 +18,7 @@ def seed_notetags():
 #Note.query.filter(Note.ownerId == current_user.id).all()
     # seed_note_1 = Note.query.filter(Note.title =="2023 Tax Season").first()
     seed_note_1 = Note.query.filter(Note.title =="2021 Tax Season").first()
+
     seed_note_2 = Note.query.filter(Note.title =="2022 Tax Season").first()
     seed_note_3 = Note.query.filter(Note.title =="2023 Tax Season").first()
     # seed_note_2 = Note.query.get(2) #2022 Tax Season
@@ -27,16 +28,19 @@ def seed_notetags():
     # seed_tag_test = Tag.query.get(0)
     # seed_note_test.tags.append(seed_tag_test)
     # db.session.add(seed_note_test)
+
     seed_tag_1_2_3 = Tag.query.filter(Tag.name =="Adult Responsibility").first()
     # seed_tag_2 = Tag.query.get(1) #Adult responsibility
 
     seed_note_4 = Note.query.filter(Note.title == 'Pokemon Types').first()
+
     # seed_note_5 = Note.query.get(5) #What inspired the creation of the first Pokemon game..
     # seed_note_6 = Note.query.get(6) #How has the Pokemon community impacted..
     seed_note_5 = Note.query.filter(Note.title.like('%first Pokemon game%')).first()
     seed_note_6 = Note.query.filter(Note.title.like('%How has the Pokemon%')).first()
 
     # print ("\n\n\nignore?", seed_note_5.to_dict())
+
 
     seed_tag_4_5_6 = Tag.query.filter(Tag.name == "Hobbies").first()
     # seed_tag_5 = Tag.query.get(2) #hobbies
@@ -51,6 +55,8 @@ def seed_notetags():
 
     seed_tag_7_8_9 = Tag.query.filter(Tag.name == "Yu-gi-Oh").first() #Yu-Gi-Oh
     # seed_tag_7_8_9 = Tag.query.get(5) #Yu-Gi-Oh
+
+
     # seed_tag_8 = Tag.query.get(5) #Yu-Gi-Oh
     # seed_tag_9 = Tag.query.get(5) #Yu-Gi-Oh
 
@@ -59,6 +65,7 @@ def seed_notetags():
     seed_tag_10_1 = Tag.query.get(1)
     seed_tag_10_2 = Tag.query.get(2)
     seed_tag_10_3 = Tag.query.get(3)
+
 
     seed_note_11 = Note.query.filter(Note.title.like('%Digimon Digital Monsters%')).first()
     seed_note_12 = Note.query.filter(Note.title.like('%concept of Digivolution%')).first()
@@ -106,6 +113,7 @@ def seed_notetags():
     db.session.add(seed_note_10)
 
     seed_note_11.tags.append(seed_tag_11_12_13)
+
     db.session.add(seed_note_11)
 
     seed_note_12.tags.append(seed_tag_11_12_13)
@@ -113,6 +121,7 @@ def seed_notetags():
 
     seed_note_13.tags.append(seed_tag_11_12_13)
     db.session.add(seed_note_13)
+
 
     db.session.commit()
 

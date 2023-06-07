@@ -2,13 +2,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { useHistory, NavLink } from "react-router-dom"
 import { getTasksThunk } from "../../store/tasks"
+import OpenModalButton from "../OpenModalButton"
+import DeleteTaskModal from '../DeleteTaskModal'
+import { useModal, closeModal } from "../../context/Modal";
+// import deleted from DeleteTaskModal
 
+//wassup
 
 
 const CurrentTasks = () => {
     const dispatch = useDispatch()
-
     const tasksObj = useSelector(state => state.tasks.allTasks)
+    // const [deleting, setDelete] = useSelector()
+
+    // const tasksLength = Object.values(tasksObj).length
 
     useEffect(()=>{
         dispatch(getTasksThunk())
@@ -30,9 +37,10 @@ const CurrentTasks = () => {
                         <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                             Edit task
                         </NavLink>
-                        <NavLink exact to = {`/tasks/${task.id}/delete`} id="delete_task_link">
-                            Delete task
-                        </NavLink>
+                        <OpenModalButton
+                        buttonText = "Delete"
+                        modalComponent={<DeleteTaskModal task = {task}/>}
+                        />
                     </div>
                 )
             })}

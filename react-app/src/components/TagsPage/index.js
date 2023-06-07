@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
+
 import { useEffect, useState} from "react" //useState
 import { createTagThunk, deleteTagThunk, getTagsThunk } from "../../store/tags"
 import { getNoteTagsThunk } from "../../store/notetags"
@@ -10,9 +11,12 @@ import OpenModalButton from "../OpenModalButton";
 //import DeleteGroupModal from "../DeleteGroupModal";
 
 
+
+
 const TagsPage = () => {
 
     const dispatch = useDispatch();
+
 
     const alltags = useSelector(state => state.tags);
     const allnotes = useSelector(state => state.notes);
@@ -36,9 +40,11 @@ const TagsPage = () => {
     //
     //
 
+
     useEffect(() => {
         dispatch(getTagsThunk());
         dispatch(getNoteTagsThunk());
+
         dispatch(getNotesThunk());
     }, [dispatch, renderSwitch])
 
@@ -173,9 +179,11 @@ const TagsPage = () => {
         }
     }
 
+
     return (
         <div>
             <h1> Tags Page!</h1>
+
             <button onClick={createTest}>Test, Create New Tag</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>
@@ -204,6 +212,7 @@ const TagsPage = () => {
                 )
             )}
             </div>
+
         </div>
     )
 }

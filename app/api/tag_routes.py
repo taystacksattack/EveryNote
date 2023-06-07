@@ -1,8 +1,8 @@
-from flask import Blueprint  # jsonify, request
+from flask import Blueprint, request  # jsonify, request
 from flask_login import login_required  # current_user
 from app.models import Tag
 from ..models.db import db
-# from ..forms.tag_form import TagForm
+from ..forms.tag_form import TagForm
 
 
 tag_routes = Blueprint('tags', __name__)
@@ -46,25 +46,33 @@ def create_tag():
     Query for all tags and returns them in a list of tags dictionaries
     """
 
-    """ form = TagForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
+    form = TagForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-        if form.validate_on_submit():
-            data = form.data
-            res_tag = Tag {
-            name: data.name
-            }
+    # print("\n\n\ntag create DOES THIS WORK", dict(request.data))
+    # print("\n\n\ntag create DOES THIS WORK", dict(request.form))
 
-            db.session.add(res_tag)
-            db.session.commit()
-            return res_tag.to_dict()
+    print("CREATE TAG ROUTE")
+
+    # if request.form[name]:
+    #     print("very nice")
+    if form.validate_on_submit():
+        data = form.data
+        res_tag = Tag(
+        name= data["name"]
+        )
+
+        db.session.add(res_tag)
+        db.session.commit()
+        return res_tag.to_dict()
+
+    return "Error, somewhere"
 
 
-        """
-    test_tag = Tag(name="test_tag")
-    db.session.add(test_tag)
-    db.session.commit()
-    return test_tag.to_dict()
+    # test_tag = Tag(name="test_tag")
+    # db.session.add(test_tag)
+    # db.session.commit()
+    # return test_tag.to_dict()
 
 
 # also get notetags
@@ -88,8 +96,8 @@ def get_notetags():
     for tag in tags:
         for note in tag.notes:
 
-            print("\n\n\ncurrent tag", tag.to_dict())
-            print("current note", note.to_dict())
+            # print("\n\n\ncurrent tag", tag.to_dict())
+            # print("current note", note.to_dict())
 
             try:
                 tag_to_notes[tag.id].append(note.id)

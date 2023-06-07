@@ -7,6 +7,8 @@ import "./TagsPage.css"
 // import { title } from "../NotesPage"
 
 import OpenModalButton from "../OpenModalButton";
+import TagDeleteModal from "./TagDeleteModal"
+import TagCreateModal from "./TagCreateModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
 
 
@@ -176,6 +178,12 @@ const TagsPage = () => {
     return (
         <div>
             <h1> Tags Page!</h1>
+            <div>
+                <OpenModalButton
+                    buttonText="Create New Tag"
+                    modalComponent={<TagCreateModal createOrRename="prop" />}
+                />
+            </div>
             <button onClick={createTest}>Test, Create New Tag</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>

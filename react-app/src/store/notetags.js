@@ -14,14 +14,14 @@ const getNoteTags = (notetags) => ({
 //THUNKS
 
 export const getNoteTagsThunk = () => async (dispatch) => {
-    console.log("\n\n\nattempting getNoteTags")
+    // console.log("\n\n\nattempting getNoteTags")
 
 
     try {
         const response = await fetch("/api/tags/notetags/");
         const data = await response.json();
 
-        console.log("\n\n\nwhat is notetags data", data)
+        // console.log("\n\n\nwhat is notetags data", data)
         dispatch(getNoteTags(data));
 
     } catch (e) {
@@ -50,7 +50,7 @@ export default function noteTagsReducer(state = initialState, action) {
         case GET_NOTE_TAGS: {
             const newState = { notetags: {}}
 
-            console.log("notetags??", action.notetags)
+            // console.log("notetags??", action.notetags)
 
             if (action.notetags) {
                 newState.notetags = action.notetags

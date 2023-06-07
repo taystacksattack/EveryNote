@@ -42,8 +42,8 @@ export const createTagThunk = (tag) => async (dispatch) => {
     const response = await fetch("/api/tags/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: tag
-        // body: JSON.stringify(tag)
+        // body: tag
+        body: JSON.stringify(tag)
     })
 
     if (response.ok) {
@@ -53,6 +53,7 @@ export const createTagThunk = (tag) => async (dispatch) => {
 
     } else {
         const errors = await response.json()
+        console.log("createTagThunk failed, reason ", errors)
         return errors
     }
 };

@@ -12,7 +12,8 @@ const CurrentNotes = () => {
     const [noteContent, setNoteContent] = useState('')
     const [trash, setTrash] = useState(false)
     const [clickedNote, setClickedNote] = useState({})
-
+    const [sortStatus, setSortStatus] = useState(false)
+    const [sortAlpha, setSortAlpha] = useState(false)
 
     const dispatch = useDispatch()
     const notesObj = useSelector(state => state.notes.allNotes)
@@ -82,14 +83,62 @@ const CurrentNotes = () => {
     }
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
+    console.log('list of notes', listOfNotes)
+
+    let listRendered = listOfNotes;
+
+
+    if (sortStatus === false) {
+        listRendered = listOfNotes.reverse()
+    }
+  
+
+    // const azSort = (notesList) => {
+    //     const copy = listOfNotes
+    //     const sortedCopy = copy.sort((a,b) => {
+    //         const titleA = a.title.toLowerCase()
+    //         const titleB = b.title.toLowerCase()
+
+    //         if (titleA < titleB) return -1
+    //         if (titleA > titleB) return 1
+    //         return 0
+    //     })
+    //     return sortedCopy
+    // }
+
+    
+
     if (!notesObj) return (<div>Loading</div>)
 
     return (
         <div className='everything-wrapper'>
             <div className='all-notes-area'>
-                <h1>Notes</h1>
 
-                {notesObj && listOfNotes.map(note => (
+                <h1><span id='note-icon' className="material-symbols-outlined">description</span>Notes</h1>
+
+                <div className="notes-subheading">
+                    <span>{listOfNotes.length} notes</span>
+                    <div className='sorting-icons'>
+                        <span id='alpha-sort-icon' className="material-symbols-outlined"
+                        onClick={(e) => {
+                            console.log('alphaStatus', sortAlpha)
+                            return setSortAlpha(!sortAlpha)}
+                        }
+                        >
+                            sort_by_alpha
+                        </span>
+                        <span id='date-sort-icon' className="material-symbols-outlined"
+                            onClick={(e) => {
+                                console.log('sortStatus', sortStatus)
+                                return setSortStatus(!sortStatus)
+                            }}>
+                            sort
+                        </span>
+
+                    </div>
+                </div>
+
+                {notesObj && listRendered.map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
                         <p>{note.updated_at.split('.')[0]}</p>

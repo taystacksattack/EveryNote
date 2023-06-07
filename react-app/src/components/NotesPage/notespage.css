@@ -13,6 +13,21 @@ button {
     height: 100%;
 }
 
+.notes-subheading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#note-icon {
+    font-size: 25px;
+}
+
+#date-sort-icon, #alpha-sort-icon {
+    padding: 3px;
+    cursor: pointer;
+}
+
 .note-selection{
     border: 1px solid black;
     width: 100%;

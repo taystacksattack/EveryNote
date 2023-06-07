@@ -12,6 +12,7 @@ const UpdateNotebookModel = ({ notebook }) => {
 
     const [title, setTitle] = useState("")
     const [isDefault] = useState(false)
+    const [bool, setBool] = useState(false)
 
     const handleSubmit = (e) => {
         const new_notebook = {
@@ -19,7 +20,10 @@ const UpdateNotebookModel = ({ notebook }) => {
             "title": title,
             "is_default": isDefault
         }
-        return dispatch(editNotebookThunk(new_notebook)).closeModal
+
+        dispatch(editNotebookThunk(new_notebook))
+        closeModal()
+        setBool(true)
     }
 
     const closeForm = (e) => {

@@ -1,7 +1,7 @@
 import OpenModalButton from '../../../OpenModalButton'
 import UpdateNotebookModel from './updateModal'
 
-const UpdateNotebook = () => {
+const UpdateNotebook = ({ notebook }) => {
 
     return (
         <OpenModalButton

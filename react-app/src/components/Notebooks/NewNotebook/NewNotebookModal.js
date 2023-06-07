@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { createNotebooksThunk } from "../../../store/notebook"
-
 import { useModal } from "../../../context/Modal";
+import { useEffect, useState } from 'react';
+import { createNotebooksThunk, getNotebooksThunk } from "../../../store/notebook"
+
 
 
 const CreateNewNotebookModel = () => {
@@ -12,17 +12,21 @@ const CreateNewNotebookModel = () => {
 
     const [title, setTitle] = useState("")
     const [isDefault] = useState(false)
-
+    const [bool, setBool] = useState(false)
 
     const handleSubmit = (e) => {
-        e.preventDefault()
         const new_notebook = {
             "title": title,
             "is_default": isDefault
         }
-        console.log("New Notebook in Create", new_notebook)
-        return dispatch(createNotebooksThunk(new_notebook)).closeModal
+        dispatch(createNotebooksThunk(new_notebook))
+        closeModal()
+        setBool(true)
     }
+
+    useEffect(() => {
+        dispatch(getNotebooksThunk())
+    }, [dispatch, closeModal])
 
     return (
         <div>
@@ -36,16 +40,7 @@ const CreateNewNotebookModel = () => {
                     >
                     </input>
                 </label>
-                {/* <label>
-                    Make This Default?
-                    <input
-                        id="input-default"
-                        type='checkbox'
-                        onClick={(e) => booleanValue(isDefault)}
-                    >
-                    </input>
-                </label> */}
-                <button type="submit" onClick={(e) => handleSubmit(e)}>
+                <button type="submit"  >
                     Create new Notebook
                 </button>
             </form>

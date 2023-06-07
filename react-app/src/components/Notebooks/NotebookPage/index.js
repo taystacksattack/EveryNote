@@ -1,31 +1,28 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 import './index.css'
 
 import NewNotebook from '../NewNotebook/index'
 import { getNotebooksThunk } from "../../../store/notebook"
 import { getNotesThunk } from "../../../store/notes"
-import UpdateNotebook from "./UpdateNotebook/updateModal"
+import UpdateNotebook from "./UpdateNotebook"
 import DeleteNotebook from "./DeleteNotebook"
-
-
 
 const CurrentNotebooks = () => {
 
     const [showMenu, setShowMenu] = useState(false)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const notebookObj = useSelector(state => state.notebooks.allNotebooks)
-    const notebooks = Object.values(notebookObj)
+    // const notebooks = Object.values(notebookObj)
 
     const notesObj = useSelector(state => state.notes.allNotes)
     const notes = Object.values(notesObj)
 
     const userObj = useSelector(state => state.session.user)
-    // const user = Object.values(userObj)
-    // console.log(userObj)
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
@@ -33,25 +30,23 @@ const CurrentNotebooks = () => {
     }, [dispatch])
 
     const findOwner = () => {
-        // const notebook = notebooks.find(notebook => notebook.ownerId)
-        // if (notebook.ownerId === userObj.id) return userObj.username
         return userObj.username
     }
 
     const findTimeUpdated = (notebook) => {
-        // console.log('notebook.updated_at', notebook.updated_at)
         let date1 = new Date(notebook.updated_at)
-        // console.log("d1", date1)
         let date2 = new Date()
-        // console.log("d2", date2)
         let dateDiff = date2.getTime() - date1.getTime()
+        let lastUpdated = (dateDiff / 86400000).toFixed(1)
 
-        // notebook.updated_at = new Date()
-        return `${(dateDiff / 86400000).toFixed(1)} days ago`
+        if (lastUpdated < 1.0 && lastUpdated >= 0) return "Today"
+        else if (lastUpdated < 2 && lastUpdated > 1) return "Yesterday"
+        else return `${Math.floor(lastUpdated)} days ago`
+
     }
 
     const sharedWith = () => {
-        return "TO BE STARTED"
+        return "Feature coming Soon!"
     }
 
     const changeState = () => {
@@ -81,7 +76,7 @@ const CurrentNotebooks = () => {
             <div className="notebook-content-div">
                 {notebookObj && Object.values(notebookObj).map(notebook => {
                     return (
-                        <div className={`notebook-div-container`}>
+                        <div className={`notebook-div-container `}>
                             <p key={notebook.id}>
                                 <Link to={`/notebooks/${notebook.id}`}>
 
@@ -91,12 +86,12 @@ const CurrentNotebooks = () => {
                             <p>{findTimeUpdated(notebook)}</p>
                             <p>{sharedWith()}</p>
                             <label>
-                                <div onClick={(e) => changeState()}>
+                                <div onMouseEnter={(e) => changeState()} >
                                     ...
                                 </div>
-                                <ul  >
+                                <ul className={`${ulClassName}-${notebook.id } spot-list`}>
                                     <li >
-                                        <div onClick={(e) => featureAlert()}>
+                                        <div onClick={(e) => history.push("/notes")}>
                                             Add new note
                                         </div>
                                     </li>

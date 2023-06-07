@@ -11,6 +11,11 @@
   grid-template-rows: repeat(20%);
 }
 
+ul {
+  list-style: nones;
+  border: solid 2px black;
+  box-shadow: 2px 2px 2px black;
+}
 .notebook-div-container {
   display: inline-flex;
   justify-content: space-evenly;
@@ -22,6 +27,33 @@
   width: 1rem;
 }
 
-.hidden {
+.hidden-1 {
+  display: none;
+}
+.hidden-2 {
+  display: none;
+}
+.hidden-3 {
+  display: none;
+}
+.hidden-4 {
+  display: none;
+}
+.hidden-5 {
+  display: none;
+}
+.hidden-6 {
+  display: none;
+}
+.hidden-7 {
+  display: none;
+}
+.hidden-8 {
+  display: none;
+}
+.hidden-9 {
+  display: none;
+}
+.hidden-10 {
   display: none;
 }

@@ -5,7 +5,7 @@
 const GET_NOTES = "session/GET_NOTES";
 const CREATE_NOTE = "session/CREATE_NOTE"
 const EDIT_NOTE = "session/EDIT_NOTE"
-
+const DELETE_NOTE = "session/DELETE_NOTE"
 
 
 //ACTION CREATORS
@@ -23,6 +23,11 @@ const createNote = (note) => ({
 const editNote = (note) => ({
     type: EDIT_NOTE,
     note
+})
+
+const deleteNote = (noteId) => ({
+    type: DELETE_NOTE,
+    noteId
 })
 
 
@@ -85,6 +90,21 @@ export const editNoteThunk = (note, noteId) => async (dispatch) => {
 
 }
 
+export const deleteNoteThunk = (noteId) => async (dispatch) => {
+
+    const response = await fetch(`/api/notes/${noteId}`, {
+        method: "DELETE",
+    })
+
+    if (response.ok) {
+        console.log('delete rsponse ok')
+        dispatch(deleteNote(noteId))
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
+
 //REDUCER
 const initialState = { allNotes: {} };
 export default function notesReducer(state = initialState, action) {
@@ -112,6 +132,11 @@ export default function notesReducer(state = initialState, action) {
         case EDIT_NOTE: {
             const newState = { ...state }
             newState.allNotes[action.note.id] = action.note
+            return newState
+        }
+        case DELETE_NOTE: {
+            const newState = { ...state, allNotes: { ...state.allNotes}}
+            delete newState.allNotes[action.noteId]
             return newState
         }
         default:

@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Note
 from ..models.db import db
 from ..forms.note_form import NoteForm
+from datetime import datetime
 
 
 note_routes = Blueprint('notes', __name__)
@@ -72,14 +73,34 @@ def update_note(id):
         if form.data['title']:
             note.title=form.data['title']
         if form.data['body']:
+            
+            print('\n\n\n\n\n\n form data ', form.data)
             note.body=form.data['body']
-        # note.updated_at=data['updated_at']
 
 
+        # note.updated_at=datetime.utcnow
+      
+        print('\n\n\n\n\n this is datetime', datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
 
+        note.updated_at = datetime.utcnow()
         db.session.commit()
         return note.to_dict()
         
     return {"message":  "Bad Data"}    
             
    
+@note_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_note(id):
+    """
+    Query for a note by id and deletes note
+    """
+    note = Note.query.get(id)
+
+    print('this is note \n\n\n\n\n', note)
+    
+    db.session.delete(note)
+    db.session.commit()
+    return {"message":  "Successfully deleted"} 
+        
+       

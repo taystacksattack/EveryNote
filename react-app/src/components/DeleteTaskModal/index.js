@@ -23,7 +23,7 @@ const DeleteTaskModal = ({ task }) => {
     const deleteTask = () => {
         dispatch(deleteTaskThunk(task.id))
             .then(console.log("in the delete task"))
-            .then(history.push('/tasks'))
+            // .then(history.push('/tasks'))
             .then(closeModal())
     }
 

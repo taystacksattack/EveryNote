@@ -1,5 +1,6 @@
+
 import { useDispatch, useSelector, Sort  } from "react-redux"
-import { useEffect, useState,  } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { useHistory, NavLink } from "react-router-dom"
 import { deleteTaskThunk, getTasksThunk } from "../../store/tasks"
 import OpenModalButton from "../OpenModalButton"
@@ -7,74 +8,79 @@ import DeleteTaskModal, {deleted} from '../DeleteTaskModal'
 // import { closeModal } from "../DeleteTaskModal";
 
 
-
-
 const CurrentTasks = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  const [sortType, setSortType] = useState('title');
 
-    const [data, setData] = useState([]);
-    const [sortType, setSortType] = useState('title');
+  useEffect(() => {
+    dispatch(getTasksThunk());
+  }, [dispatch]);
 
-    let tasksObj = useSelector(state => state.tasks)
-    tasksObj = tasksObj.allTasks
+  const tasksObj = useSelector(state => state.tasks);
 
+  const tasksArr = useMemo(() => {
+    if (tasksObj.allTasks) {
+      return Object.values(tasksObj.allTasks);
+    }
+    return [];
+  }, [tasksObj]);
 
-    // console.log("tasksLength", tasksLength)
-    const tasksArr = Object.values(tasksObj)
-    console.log("tasks array",tasksArr)
-    useEffect(()=>{
-        const sortedTasks = type => {
-            const types = {
-                due: 'due_date',
-                created: 'created_at',
-                titled: 'title'
-            }
-            const sortProperty = types[type]
-            const sorted = [...tasksArr].sort((a, b) => b[sortProperty] - a[sortProperty]);
-            console.log("sorted stuff in function",sorted)
-            setData(sorted)
-            console.log("data",data)
+  useEffect(() => {
+    const sortedTasks = type => {
+      const types = {
+        due: 'due_date',
+        created: 'created_at',
+        titled: 'title'
+      };
+      const sortProperty = types[type];
+      const sorted = [...tasksArr].sort((a, b) => {
+        if (sortProperty === 'title') {
+          return a[sortProperty].localeCompare(b[sortProperty]);
+        } else {
+          return new Date(a[sortProperty]) - new Date(b[sortProperty]);
         }
-        sortedTasks(sortType)
-    },[sortType])
+      });
+      setData(sorted);
+    };
+    sortedTasks(sortType);
+  }, [sortType, tasksArr]);
 
-    useEffect(()=>{
-        dispatch(getTasksThunk())
-    }, [dispatch, ])
+    useEffect(() => {
+    // Trigger sorting when tasks are fetched
+    if (tasksArr.length > 0) {
+      setSortType('due');
+    }
+  }, [tasksArr]);
 
-    if(!tasksObj) return (<div>Loading</div>)
-    console.log("heres the data ", data)
-    return(
-        <div>
-            <h1>Tasks</h1>
-            <NavLink exact to = '/tasks/new' id="new_task_link">
-                New task
-            </NavLink>
-            <select onChange={(e) => setSortType(e.target.value)}>
-                <option value="due">Due Date</option>
-                <option value="created">Created Date</option>
-                <option value="titled">Title, A-Z</option>
-            </select>
-            {tasksObj && data.map(task => {
-                return(
-                    <div key={task.id}>
-                        <p key={task.id}>Task: {task.title}</p>
-                        <p key={task.id}>Due: {task.due_date.slice(0,16)}</p>
-                        <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
-                            Edit task
-                        </NavLink>
-                        <OpenModalButton
-                        buttonText = "Delete"
-                        modalComponent={<DeleteTaskModal task={task} />}
-                        />
-                    </div>
-                )
-            })}
+  if (!tasksObj) return <div>Loading</div>;
 
+  return (
+    <div>
+      <h1>Tasks</h1>
+      <NavLink exact to="/tasks/new" id="new_task_link">
+        New task
+      </NavLink>
+      <select onChange={e => setSortType(e.target.value)}>
+        <option value="due">Due Date</option>
+        <option value="created">Created Date</option>
+        <option value="titled">Title, A-Z</option>
+      </select>
+      {data.map(task => (
+        <div key={task.id}>
+          <p>Task: {task.title}</p>
+          <p>Due: {task.due_date.slice(0, 16)}</p>
+          <NavLink exact to={`/tasks/${task.id}/edit`} id="edit_task_link">
+            Edit task
+          </NavLink>
+          <OpenModalButton
+            buttonText="Delete"
+            modalComponent={<DeleteTaskModal task={task} />}
+          />
         </div>
+      ))}
+    </div>
+  );
+};
 
-    )
-
-}
-
-export default CurrentTasks
+export default CurrentTasks;

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { editTaskThunk } from '../../store/tasks';
+import { editTaskThunk, getTasksThunk } from '../../store/tasks';
 import { useHistory, useParams } from 'react-router-dom';
 
 const dateConvertor = (time) =>{
@@ -58,6 +58,7 @@ const EditTask = () =>{
         console.log("HERE IS THAT FORM DATA YOU ASKED FOR...", formData)
         console.log("task.id",task.id)
         await dispatch(editTaskThunk(task.id, formData))
+        await dispatch(getTasksThunk())
 
         setTitle('')
         setDescription('')

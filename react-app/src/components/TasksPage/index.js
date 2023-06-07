@@ -13,7 +13,7 @@ const CurrentTasks = () => {
     const dispatch = useDispatch()
 
     const [data, setData] = useState([]);
-    const [sortType, setSortType] = useState('title');
+    const [sortType, setSortType] = useState('due');
 
     let tasksObj = useSelector(state => state.tasks)
     tasksObj = tasksObj.allTasks
@@ -30,13 +30,16 @@ const CurrentTasks = () => {
                 titled: 'title'
             }
             const sortProperty = types[type]
-            const sorted = [...tasksArr].sort((a, b) => b[sortProperty] - a[sortProperty]);
+            const sorted = [...tasksArr].sort((a, b) =>{
+                
+                return new Date(a[sortProperty]) - new Date (b[sortProperty])
+            });
             console.log("sorted stuff in function",sorted)
             setData(sorted)
             console.log("data",data)
         }
         sortedTasks(sortType)
-    },[sortType])
+    },[sortType, tasksArr.length])
 
     useEffect(()=>{
         dispatch(getTasksThunk())
@@ -53,7 +56,7 @@ const CurrentTasks = () => {
             <select onChange={(e) => setSortType(e.target.value)}>
                 <option value="due">Due Date</option>
                 <option value="created">Created Date</option>
-                <option value="titled">Title, A-Z</option>
+                {/* <option value="titled">Title, A-Z</option> */}
             </select>
             {tasksObj && data.map(task => {
                 return(

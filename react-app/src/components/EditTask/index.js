@@ -4,6 +4,9 @@ import { editTaskThunk } from '../../store/tasks';
 import { useHistory, useParams } from 'react-router-dom';
 
 const dateConvertor = (time) =>{
+    // console.log(new Date(time).getTime())
+    // time = new Date(time).getTime() + new Date(time).getTimezoneOffset()
+    console.log(time)
     const year= new Date(time).getFullYear()
     let month = new Date(time).getMonth() + 1 //need to add one to account for python using zero indexes in months
     let date = new Date(time).getDate()

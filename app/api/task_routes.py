@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Task
 from ..forms.task_form import TaskForm
 from datetime import datetime
+import operator
 
 
 task_routes = Blueprint('tasks', __name__)
@@ -16,7 +17,10 @@ def tasks():
     '''
 
     tasks = Task.query.filter(Task.ownerId == current_user.id).all()
-    return [task.to_dict() for task in tasks]
+    task_dicts = [task.to_dict() for task in tasks]
+    sorted_tasks = sorted(task_dicts, key=operator.itemgetter('title'))
+    # print(sorted_tasks)
+    return sorted_tasks
 
 @task_routes.route('/<int:id>')
 @login_required

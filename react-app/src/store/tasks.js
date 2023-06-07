@@ -108,9 +108,10 @@ export default function tasksReducer(state = initialState, action) {
             console.log("action",action)
             const newState = { allTasks: {}};
             // console.log("This is the action.tasks...?",action)
-            console.log("IS THIS AN ARRAY?",Array.isArray(action.tasks))
+            // console.log("IS THIS AN ARRAY?",Array.isArray(action.tasks))
             if(action.tasks.length){
                 action.tasks.forEach((task) => {
+                    // console.log(task)
                     newState.allTasks[task.id] = task
                 })}
             console.log("newstate be like: ", newState)

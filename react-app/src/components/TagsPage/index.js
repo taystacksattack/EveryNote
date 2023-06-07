@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState} from "react" //useState
-import { getTagsThunk } from "../../store/tags"
+import { createTagThunk, deleteTagThunk, getTagsThunk } from "../../store/tags"
 import { getNoteTagsThunk } from "../../store/notetags"
 import { getNotesThunk } from "../../store/notes"
 import "./TagsPage.css"
 // import { title } from "../NotesPage"
+
+import OpenModalButton from "../OpenModalButton";
+//import DeleteGroupModal from "../DeleteGroupModal";
 
 
 const TagsPage = () => {
@@ -21,20 +24,50 @@ const TagsPage = () => {
     const sortedByNotesList = sortByOwnedNotes(taglist)
     const sortedByAlphaList = sortByAlphabetical(taglist)
 
-    // useEffect(() => {
-    //     test()
-    // }, [])
+    const [renderSwitch, setRenderSwitch] = useState(true);
 
     useEffect(() => {
         dispatch(getTagsThunk());
         dispatch(getNoteTagsThunk());
         dispatch(getNotesThunk());
-    }, [dispatch])
+    }, [dispatch, renderSwitch])
 
     // const test = () => {
     //     const testTitle = title
     //     console.log("does this even work??", testTitle)
     // }
+
+    async function createTest() {
+        const newTag = { name: "test tag"};
+
+        console.log("creating new tag...");
+        return dispatch(createTagThunk(newTag))
+
+        .catch(async (res) => {
+            // const data = await res.json();
+            // if (data && data.errors) {
+            //     return data.errors
+            // }
+            console.log("errors?")
+        })
+    }
+
+    async function deleteTest(tagId) {
+        console.log("testing delete...");
+
+        return dispatch(deleteTagThunk(tagId))
+        .then(() => {
+            let temp = renderSwitch;
+            setRenderSwitch(!temp);
+        })
+        // .then(dispatch(getTagsThunk()))
+        .catch(async (res) => {
+            console.log("delete error?")
+        })
+
+
+
+    }
 
     function alphaOrNum() {
         if (sortAlphaNum == true) {
@@ -136,6 +169,7 @@ const TagsPage = () => {
     return (
         <div>
             <h1> Tags Page!</h1>
+            <button onClick={createTest}>Test, Create New Tag</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>
                 {alphaOrNum().map(
@@ -156,6 +190,7 @@ const TagsPage = () => {
                     <div>
                         num_notes: {tag.id && numNotesByOwner(tag.id)}
                     </div>
+                    {<button onClick={() => {deleteTest(tag.id)}}>Test Delete this Tag</button>}
                         {waitForLoad(tag.id)}
                     <br></br>
                     </>

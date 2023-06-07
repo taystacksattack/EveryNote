@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.models import db, Notebook
 from ..forms.notebook_form import NotebookForm
-
+from datetime import datetime
 
 notebook_routes = Blueprint('notebooks', __name__)
 
@@ -17,28 +17,32 @@ def post_notebook():
 
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    print("==================================")
-    print("BOOL:", form.validate_on_submit())
-    print("==================================")
-
-    new_notebook = NotebookForm(
-        title=form.data["title"],
-        is_default=form.data["is_default"]
-    )
-
-    print("==================================")
-    print("NEW NOTEBOOK:", new_notebook.title)
-    print("==================================")
+    # print("==================================")
+    # print("BOOL:", form.validate_on_submit())
+    # print("FORM DATA:", form.data)
+    # print("USER ID:", current_user.id)
+    # print("==================================")
 
     if form.validate_on_submit():
+        new_notebook = Notebook(
+            title=form.data["title"],
+            is_default=form.data["is_default"],
+            ownerId=current_user.id,
+            # created_at=form.DateTime.datetime.utcnow,
+            # updated_at=form.DateTime.datetime.utcnow
+        )
+
+        # print("==================================")
+        # print("NEW NOTEBOOK:", new_notebook)
+        # print("==================================")
 
         db.session.add(new_notebook)
         db.session.commit()
-        return {"result": new_notebook.to_dict()}
+        return {"result": new_notebook}
     if form.errors:
-        print("==================================")
-        print("FORM ERRORS", form.errors)
-        print("==================================")
+        # print("==================================")
+        # print("FORM ERRORS", form.errors)
+        # print("==================================")
         return {"message": "not successful in CREATE route"}
 
 # UPDATE a notebook
@@ -72,8 +76,12 @@ def put_notebook(id):
 
 @notebook_routes.route('/<int:id>/delete', methods=["GET", "DELETE"])
 @login_required
-def delete_notebook(notebookId):
-    notebook_to_delete = Notebook.query.get(notebookId)
+def delete_notebook(id):
+    notebook_to_delete = Notebook.query.get(id)
+
+    # print("==================================2")
+    # print("DELETE NOTEBOOK", notebook_to_delete)
+    # print("==================================2")
 
     db.session.delete(notebook_to_delete)
     db.session.commit()
@@ -88,9 +96,9 @@ def get_notebook_byId(notebookId):
 
     notebook = Notebook.query.get(notebookId)
 
-    print("==================================")
-    print("GET NOTEBOOK BY ID:", notebook)
-    print("==================================")
+    # print("==================================")
+    # print("GET NOTEBOOK BY ID:", notebook)
+    # print("==================================")
     return notebook.to_dict()
 
 # GET all notebooks
@@ -103,8 +111,8 @@ def notebooks():
     notebooks = Notebook.query.filter(
         Notebook.ownerId == current_user.id).all()
 
-    print("==================================")
-    print("GET NOTEBOOK:", notebooks)
-    print("==================================")
+    # print("==================================")
+    # print("GET NOTEBOOK:", notebooks)
+    # print("==================================")
 
     return {'notebooks': [notebook.to_dict() for notebook in notebooks]}

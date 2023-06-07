@@ -8,7 +8,7 @@ import NewNotebook from '../NewNotebook/index'
 import { getNotebooksThunk } from "../../../store/notebook"
 import { getNotesThunk } from "../../../store/notes"
 import UpdateNotebook from "./UpdateNotebook/updateModal"
-
+import DeleteNotebook from "./DeleteNotebook"
 
 
 
@@ -111,8 +111,8 @@ const CurrentNotebooks = () => {
                                         </div>
                                     </li>
                                     <li>
-                                        <div onClick={(e) => featureAlert()}>
-                                            Delete notebook
+                                        <div >
+                                            <DeleteNotebook notebook={notebook} />
                                         </div>
                                     </li>
                                     <li >

@@ -12,6 +12,7 @@ const TagsPage = () => {
     const alltags = useSelector(state => state.tags);
     const allnotes = useSelector(state => state.notes);
     const notetags = useSelector(state => state.notetags);
+    const this_user = useSelector(state => state.session.user)
 
     const taglist = Object.values(alltags);
 
@@ -21,8 +22,50 @@ const TagsPage = () => {
         dispatch(getNotesThunk());
     }, [dispatch])
 
+    // const loaded = () => {
+    //     return alltags && allnotes && notetags
+    // }
+
 
     // console.log("\n\n\nallnotes???", allnotes.allNotes[1].title)
+    const numNotesByOwner = (tagId) => {
+        let count = 0;
+
+        if (tagId && notetags.tag_to_notes[tagId]) {
+            // console.log("\n\n\ncurrent tagId", tagId)
+            const noteIdList = notetags.tag_to_notes[tagId]
+            // console.log("\n\n\nCURRENT NOTEIDLIST", noteIdList)
+            for (let noteId of noteIdList) {
+                if (allnotes.allNotes[noteId]) {
+                    count += 1;
+                }
+            }
+        }
+
+
+        // noteIdList.forEach((note) => {
+
+        //     console.log("\n\n\nINSIDE", note)
+        //     // try {
+        //     //     if (note.ownerId == this_user.id) {
+        //     //         count += 1;
+        //     //     }
+        //     // }
+        //     // catch (e) {
+        //     //     console.log("INNER ERROR", e)
+        //     // }
+        // })
+
+        return count;
+    }
+
+    const listValidNotes = (noteId) => {
+        try {
+            return <li>{noteId}: {allnotes.allNotes[noteId].title}</li>
+        } catch {
+
+        }
+    }
 
     const waitForLoad = (tagId) => {
         try {
@@ -32,17 +75,16 @@ const TagsPage = () => {
                 {notetags.tag_to_notes[tagId] && notetags.tag_to_notes[tagId].map(
                         note_id => (
                             <>
-                            <li>
-                                {note_id}:
-                                {allnotes.allNotes[note_id].title}
-                            </li>
+                                {listValidNotes(note_id)}
                             </>
                         )
                 )}
             </ul>
             </>
             )
-        } catch {}
+        } catch (e) {
+            console.log("\n\n\nERROR", e)
+        }
     }
 
     return (
@@ -58,10 +100,13 @@ const TagsPage = () => {
                     <div key={tag.name}>
                         tag_name: {tag.name}
                     </div>
-                    <div>
+                    {/* <div>
                         num_notes: {tag.num_notes}
+                    </div> */}
+                    <div>
+                        num_notes: {tag.id && numNotesByOwner(tag.id)}
                     </div>
-                        {tag.id && waitForLoad(tag.id)}
+                        {waitForLoad(tag.id)}
                     <br></br>
                     </>
                 )

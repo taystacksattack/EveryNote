@@ -34,7 +34,7 @@ const TagsPage = () => {
                             <>
                             <li>
                                 {note_id}:
-                                {allnotes.allNotes[note_id - 1].title}
+                                {allnotes.allNotes[note_id].title}
                             </li>
                             </>
                         )

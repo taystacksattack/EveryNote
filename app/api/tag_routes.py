@@ -47,6 +47,10 @@ def get_notetags():
 
     for tag in tags:
         for note in tag.notes:
+
+            print("\n\n\ncurrent tag", tag.to_dict())
+            print("current note", note.to_dict())
+
             try:
                 tag_to_notes[tag.id].append(note.id)
             except KeyError:
@@ -57,5 +61,5 @@ def get_notetags():
             except KeyError:
                 note_to_tags[note.id] = [tag.id]
 
-    print("\n\n\n\does THIS work?", res)
+    # print("\n\n\n\does THIS work?", res)
     return res

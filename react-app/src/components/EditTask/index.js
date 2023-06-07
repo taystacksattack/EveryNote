@@ -3,9 +3,15 @@ import { useState, useEffect } from 'react';
 import { editTaskThunk } from '../../store/tasks';
 import { useHistory, useParams } from 'react-router-dom';
 
-const dataConvertor= (time) => {
-    
-    return
+const dateConvertor = (time) =>{
+    const year= new Date(time).getFullYear()
+    let month = new Date(time).getMonth() + 1 //need to add one to account for python using zero indexes in months
+    let date = new Date(time).getDate()
+
+    if ( month.toString().length === 1) month = "0" + month.toString()
+    if ( date.toString().length === 1) date = "0" + date.toString()
+    console.log("in date convertor" , `${year}-${month}-${date}`)
+    return `${year}-${month}-${date}`
 }
 
 
@@ -16,7 +22,7 @@ const EditTask = () =>{
     //form state
     const [title, setTitle] = useState(task?.title)
     const [description, setDescription] = useState(task?.description)
-    const [due_date, setDue_date] = useState(task?.due_date)
+    const [due_date, setDue_date] = useState(dateConvertor(task?.due_date))
     const [completed, setCompleted] = useState(task?.completed)
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);

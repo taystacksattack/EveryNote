@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect } from "react" //useState
 import { getTagsThunk } from "../../store/tags"
 import { getNoteTagsThunk } from "../../store/notetags"
 import { getNotesThunk } from "../../store/notes"
@@ -22,48 +22,31 @@ const TagsPage = () => {
         dispatch(getNotesThunk());
     }, [dispatch])
 
-    // const loaded = () => {
-    //     return alltags && allnotes && notetags
-    // }
 
-
-    // console.log("\n\n\nallnotes???", allnotes.allNotes[1].title)
     const numNotesByOwner = (tagId) => {
         let count = 0;
 
-        if (tagId && notetags.tag_to_notes[tagId]) {
-            // console.log("\n\n\ncurrent tagId", tagId)
-            const noteIdList = notetags.tag_to_notes[tagId]
-            // console.log("\n\n\nCURRENT NOTEIDLIST", noteIdList)
-            for (let noteId of noteIdList) {
-                if (allnotes.allNotes[noteId]) {
-                    count += 1;
+        try {
+            if (tagId && notetags.tag_to_notes[tagId]) {
+                // console.log("\n\n\ncurrent tagId", tagId)
+                const noteIdList = notetags.tag_to_notes[tagId]     //get list of ALL notes connected to tag
+                // console.log("\n\n\nCURRENT NOTEIDLIST", noteIdList)
+                for (let noteId of noteIdList) {
+                    if (allnotes.allNotes[noteId]) { //if note seen in notetags also seen in notes
+                        count += 1;                 //then user is owner, add 1 to count
+                    }
                 }
             }
         }
-
-
-        // noteIdList.forEach((note) => {
-
-        //     console.log("\n\n\nINSIDE", note)
-        //     // try {
-        //     //     if (note.ownerId == this_user.id) {
-        //     //         count += 1;
-        //     //     }
-        //     // }
-        //     // catch (e) {
-        //     //     console.log("INNER ERROR", e)
-        //     // }
-        // })
-
+        catch {}
         return count;
     }
 
     const listValidNotes = (noteId) => {
         try {
-            return <li>{noteId}: {allnotes.allNotes[noteId].title}</li>
+            return (<li>{noteId}: {allnotes.allNotes[noteId].title}</li>)
         } catch {
-
+// ///////////////////////////////////////////////////
         }
     }
 
@@ -83,7 +66,7 @@ const TagsPage = () => {
             </>
             )
         } catch (e) {
-            console.log("\n\n\nERROR", e)
+            // console.log("\n\n\nERROR", e)
         }
     }
 

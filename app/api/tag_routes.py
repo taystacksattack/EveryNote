@@ -60,6 +60,7 @@ def create_tag():
         data = form.data
         res_tag = Tag(
         name= data["name"]
+        # name= data.name
         )
 
         db.session.add(res_tag)

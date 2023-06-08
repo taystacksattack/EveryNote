@@ -19,9 +19,18 @@
 }
 
 
-#profile-button-wrapper{
+#logged-out-button-wrapper{
     margin-top: 4.5%;
     width: 75vw;
     display: flex;
     justify-content: flex-end;
+    /* border:red solid; */
+}
+
+#logged-in-button-wrapper {
+    margin-top: 4.5%;
+    width: 75vw;
+    display: flex;
+    /* justify-content: flex-end; */
+    /* border:red solid; */
 }

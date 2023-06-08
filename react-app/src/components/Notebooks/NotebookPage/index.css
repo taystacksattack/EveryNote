@@ -13,8 +13,8 @@
 
 ul {
   list-style: nones;
-  border: solid 2px black;
-  box-shadow: 2px 2px 2px black;
+  /* border: solid 2px black; */
+  /* box-shadow: 2px 2px 2px black; */
 }
 .notebook-div-container {
   display: inline-flex;

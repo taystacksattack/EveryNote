@@ -44,10 +44,11 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div id = "profile-button-wrapper">
+      <div id = {user? "logged-in-button-wrapper": "logged-out-button-wrapper"}>
         <button id= "profile-button" onClick={openMenu}>
           <i id="user-button" className="fas fa-user-circle" />
         </button>
+      </div>
 
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -74,7 +75,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-      </div>
+
     </>
   );
 }

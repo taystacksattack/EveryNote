@@ -13,18 +13,24 @@ button {
     height: 100%;
 }
 
+.notes-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .notes-subheading{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#note-icon {
+#note-icon, #add-note-icon {
     font-size: 25px;
 }
 
-#date-sort-icon, #alpha-sort-icon {
-    padding: 3px;
+#date-sort-icon, #alpha-sort-icon, #add-note-icon {
+    padding: 4px;
     cursor: pointer;
 }
 

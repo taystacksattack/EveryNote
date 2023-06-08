@@ -12,13 +12,12 @@ const CurrentNotes = () => {
     const [noteContent, setNoteContent] = useState('')
     const [trash, setTrash] = useState(false)
     const [clickedNote, setClickedNote] = useState({})
-    const [sortStatus, setSortStatus] = useState(false)
-    const [sortAlpha, setSortAlpha] = useState(false)
+
 
     const dispatch = useDispatch()
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
-
+    const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
     const newNote = {
@@ -34,6 +33,68 @@ const CurrentNotes = () => {
     }, [dispatch])
 
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (Object.values(clickedNote).length > 0) {
+            console.log("updatingggggggggggg", title, noteContent)
+            console.log("note info", clickedNote)
+
+
+            const updatedNote = {
+                title,
+                body: noteContent,
+
+            }
+
+            await dispatch(editNoteThunk(updatedNote, clickedNote.id))
+            dispatch(getNotesThunk())
+            setTitle('')
+            setNoteContent('')
+        } else {
+
+            dispatch(createNoteThunk(newNote))
+            setTitle('')
+            setNoteContent('')
+        }
+
+    }
+
+    
+
+    // console.log('list of notes', listOfNotes)
+
+    const [sortDate, setSortDate] = useState(false)
+    const [sortAlpha, setSortAlpha] = useState(false)
+    // const [listRendered, setListRendered] = useState([...listOfNotes].toReversed())
+    const [listRendered, setListRendered] = useState()
+
+
+    const azSort = (notesList) => {
+        const copy = notesList.slice()
+        const sortedCopy = copy.sort((a, b) => {
+            const titleA = a.title.toLowerCase()
+            const titleB = b.title.toLowerCase()
+
+            if (titleA < titleB) return -1
+            if (titleA > titleB) return 1
+            return 0
+        })
+        return sortedCopy
+    }
+
+    const handleSortAlpha = () => {
+        setSortAlpha(!sortAlpha)
+        if (sortAlpha === true) setListRendered(azSort(listOfNotes))
+        if (sortAlpha === false) setListRendered(azSort(listOfNotes).toReversed())
+    }
+
+    const handleSortDate = () => {
+        setSortDate(!sortDate)
+        if (sortDate === true) setListRendered(listOfNotes)
+        if (sortDate === false) setListRendered(listOfNotes.toReversed())
+    }
+    
+    
     //FOR IF I WANT TRASH STORAGE IMPLEMENTATION LATER
     // useEffect(() => {
     //     if (trash === true) {
@@ -54,73 +115,10 @@ const CurrentNotes = () => {
 
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (Object.values(clickedNote).length > 0) {
-            console.log("updatingggggggggggg", title, noteContent)
-            console.log("note info", clickedNote)
+  
 
-            // console.log("updatingggggggggggg", title, noteContent)
-            // console.log("note info", clickedNote)
-            // const updatedDate = Date.now()
-
-            const updatedNote = {
-                title,
-                body: noteContent,
-
-            }
-
-
-
-            await dispatch(editNoteThunk(updatedNote, clickedNote.id))
-            dispatch(getNotesThunk())
-            setTitle('')
-            setNoteContent('')
-        } else {
-
-            dispatch(createNoteThunk(newNote))
-            setTitle('')
-            setNoteContent('')
-        }
-
-    }
-    const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
-
-    console.log('list of notes', listOfNotes)
-
-    let listRendered = listOfNotes.slice();
-
-
-    if (sortStatus === false) {
-        listRendered = listRendered.reverse()
-    }
-
-
-    const azSort = (notesList) => {
-        const copy = listOfNotes.slice()
-        const sortedCopy = copy.sort((a,b) => {
-            const titleA = a.title.toLowerCase()
-            const titleB = b.title.toLowerCase()
-
-            if (titleA < titleB) return -1
-            if (titleA > titleB) return 1
-            return 0
-        })
-        return sortedCopy
-    }
-
-
-    if (sortAlpha === true) {
-        listRendered = azSort(listRendered.reverse())
-    }
-
-    // if (sortAlpha === false) {
-    //     listRendered = azSort(listRendered)
-
-    // }
 
     if (!notesObj) return (<div>Loading</div>)
-
     return (
         <div className='everything-wrapper'>
             <div className='all-notes-area'>
@@ -128,28 +126,23 @@ const CurrentNotes = () => {
                 <h1><span id='note-icon' className="material-symbols-outlined">description</span>Notes</h1>
 
                 <div className="notes-subheading">
-                    <span>{listOfNotes.length} notes</span>
+                    {listOfNotes.length && <span>{listOfNotes?.length} notes</span>}
                     <div className='sorting-icons'>
                         <span id='alpha-sort-icon' className="material-symbols-outlined"
-                        onClick={(e) => {
-                            console.log('alphaStatus', sortAlpha)
-                            return setSortAlpha(!sortAlpha)}
-                        }
+                            onClick={(e) => handleSortAlpha()}
+
                         >
                             sort_by_alpha
                         </span>
                         <span id='date-sort-icon' className="material-symbols-outlined"
-                            onClick={(e) => {
-                                console.log('sortStatus', sortStatus)
-                                return setSortStatus(!sortStatus)
-                            }}>
+                            onClick={(e) => handleSortDate()}>
                             sort
                         </span>
 
                     </div>
                 </div>
 
-                {notesObj && listRendered.map(note => (
+                {notesObj && !listRendered ? listOfNotes.reverse().map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
                         <p>{note.updated_at.split('.')[0]}</p>
@@ -161,7 +154,19 @@ const CurrentNotes = () => {
                         </div>
                     </div>
                 ))
-
+                : listRendered.map(note => (
+                    <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
+                        <p >{note.title}</p>
+                        <p>{note.updated_at.split('.')[0]}</p>
+                        <div id="delete-note-modal-container">
+                            <OpenModalButton
+                                buttonText="Trash"
+                                modalComponent={<DeleteModal note={note} />}
+                            />
+                        </div>
+                    </div>
+                ))
+                
                 }
 
 

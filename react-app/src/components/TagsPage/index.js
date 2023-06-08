@@ -1,7 +1,8 @@
+
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState} from "react" //useState
 import { createTagThunk, deleteTagThunk, getTagsThunk } from "../../store/tags"
-import { getNoteTagsThunk, addNoteTagThunk } from "../../store/notetags"
+import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk, removeAllNoteTagThunk } from "../../store/notetags"
 import { getNotesThunk } from "../../store/notes"
 import "./TagsPage.css"
 // import { title } from "../NotesPage"
@@ -12,6 +13,7 @@ import TagCreateRenameModal from "./TagCreateRenameModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
 import CurrentNotes from "../NotesPage"
 
+import AddTagForm from "./AddTagToNoteForm"
 
 const TagsPage = () => {
 
@@ -95,20 +97,20 @@ const TagsPage = () => {
             return (
                 <>
                 <div>
-                    NOTE TEST, with NOTE 1
+                    NOTE TEST, with NOTE {noteId}
                 </div>
                 <div>id: {currentNote.id}</div>
                 <div>title: {currentNote.title}</div>
                 <div>preview: {currentNote.body.slice(0, 25)}...</div>
                 <br></br>
                 <div>TAGS:</div>
-                {currentNoteTags.map((tagId) => {
+                {currentNoteTags && currentNoteTags.map((tagId) => {
                     return (
                         <>
                         <a href="/tags">
                         <span>{tagId}: {alltags[tagId].name}</span>
                         </a>
-                        <button onClick={()=> removeTagFromNote()}>(remove this tag)</button>
+                        <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button>
 
                         </>
                         )
@@ -122,25 +124,39 @@ const TagsPage = () => {
     async function removeTagFromNote(noteId, tagId) {
 
         console.log("remove tag from note")
+        return dispatch(deleteNoteTagThunk(noteId, tagId))
+        .then(() => setRenderSwitch(!renderSwitch))
+        .catch(async (res) => {
+            console.log("errors?", res)
+        })
+    }
+
+    async function removeTagFromAll(tagId) {
+        console.log(`FIX LATER: remove tag ${tagId} from ALL notes`)
+        return dispatch(removeAllNoteTagThunk(tagId))
+        .then(() => setRenderSwitch(!renderSwitch))
+        .catch(async (res) => {
+            console.log("errors?", res)
+        })
     }
     //END OF NOTE TEST
     //
     //
 
-    async function createTest() {
-        const newTag = { name: "test tag"};
+    // async function createTest() {
+    //     const newTag = { name: "test tag"};
 
-        console.log("creating new tag...");
-        return dispatch(createTagThunk(newTag))
+    //     console.log("creating new tag...");
+    //     return dispatch(createTagThunk(newTag))
 
-        .catch(async (res) => {
-            // const data = await res.json();
-            // if (data && data.errors) {
-            //     return data.errors
-            // }
-            console.log("errors?")
-        })
-    }
+    //     .catch(async (res) => {
+    //         // const data = await res.json();
+    //         // if (data && data.errors) {
+    //         //     return data.errors
+    //         // }
+    //         console.log("errors?")
+    //     })
+    // }
 
     async function deleteTest(tagId) {
         console.log("testing delete...");
@@ -262,8 +278,11 @@ const TagsPage = () => {
 
 
             {/* Adding note example here */}
-            <div>
+            <div className="tag-notetest-node">
                 {noteTest(1)}
+            </div>
+            <div>
+                <AddTagForm noteId="1" />
             </div>
             {/* End of note example */}
 
@@ -277,8 +296,9 @@ const TagsPage = () => {
                 />
             </div>
 
-            <button onClick={createTest}>Test, Create New Tag</button>
-            <button onClick={() => {addNoteTag(1, 2)}}>Test NoteTag, 1/3</button>
+            {/* <button onClick={createTest}>Test, Create New Tag</button>
+             */}
+            <button onClick={() => {addNoteTag(1, 2)}}>Test: Add to Note1, Tag2</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>
                 {alphaOrNum().map(
@@ -287,6 +307,7 @@ const TagsPage = () => {
                 // {taglist && taglist.map(
                 tag => (
                     <>
+                    <div className="tag-node">
                     <div key={tag.id}>
                         tag_id: {tag.id}
                     </div>
@@ -309,7 +330,12 @@ const TagsPage = () => {
 
                     {<button onClick={() => {deleteTest(tag.id)}}>Test Delete this Tag</button>}
                         {waitForLoad(tag.id)}
-                    <br></br>
+
+                    <div>
+                        <button onClick={() => {removeTagFromAll(tag.id)}}>Remove Tag from ALL notes</button>
+                    </div>
+
+                    </div>
                     </>
                 )
             )}
@@ -319,3 +345,4 @@ const TagsPage = () => {
 }
 
 export default TagsPage
+

@@ -144,6 +144,10 @@ def add_tag_to_note(noteId, tagId):
         this_note = Note.query.get(noteId)
         this_tag = Tag.query.get(tagId)
 
+        if this_note is None:
+            return { "error": f"Unable to add tag {tagId} to Note {noteId}; note {noteId} not found" }
+        if this_tag is None:
+            return { "error": f"Unable to add tag {tagId} to Note {noteId}; tag {tagId} not found" }
         if this_tag in this_note.tags:
             return { "message" :f"Tag {tagId} is already in Note {noteId}??"}
 
@@ -156,6 +160,72 @@ def add_tag_to_note(noteId, tagId):
         return { "error": f"Unable to add tag {tagId} to Note {noteId}"}
 
 
+@tag_routes.route('/notetags/<int:noteId>/<int:tagId>', methods=["DELETE"])
+@login_required
+def remove_tag_from_note(noteId, tagId):
+    # try:
+    #     this_note = Note.query.get(noteId)
+    #     this_tag = Tag.query.get(tagId)
+
+    #     if this_tag in this_note.tags:
+
+    #         print("pre-delete")
+
+    #         this_note.tags.delete(this_tag)
+    #         db.session.commit()
+    #         print("maybe this works?", this_note.tags)
+    #         return { "message": f"Tag {tagId} successfully removed from Note {noteId}"}
+    #     else:
+    #         return { "message": f"Tag {tagId} not in Note {noteId}?"}
+    # except:
+    #     return { "error": f"Unable to remove tag {tagId} from Note {noteId}"}
+    this_note = Note.query.get(noteId)
+    this_tag = Tag.query.get(tagId)
+
+    try:
+        [delete_notetag] = [tag for tag in this_note.tags if tag == this_tag]
+
+        this_note.tags.remove(delete_notetag)
+
+        db.session.commit()
+        return { "message": f"Tag {tagId} successfully removed from Note {noteId}"}
+    except:
+        return { "error": f"Either unable to locate tag {tagId}, or notetag with note {noteId}"}
+
+
+@tag_routes.route('/notetags/all/<int:tagId>', methods=["DELETE"])
+@login_required
+def remove_tag_from_all_notes(tagId):
+    # try:
+    #     this_tag = Tag.query.get(tagId)
+
+    #     for note in this_tag.notes:
+    #         print(f"Removing tag {this_tag.name} from note {note.name}")
+
+    #         [delete_tag_in_note] = [tag for tag in note.tags if tag == this_tag]
+
+    #         note.tags.remove(delete_tag_in_note)
+
+    #     db.session.commit()
+
+    #     return { "message": f"Tag {tagId} successfully removed from all notes"}
+    # except:
+    #     return { "error": f"Unable to remove tag {tagId} from all notes"}
+    this_tag = Tag.query.get(tagId)
+
+    print("\n\n\nthis_tag's notes", this_tag.notes)
+
+    for note in this_tag.notes:
+        print(f"\n\n\nRemoving tag {this_tag.name} from note {note.title}")
+
+        [delete_tag_in_note] = [tag for tag in note.tags if tag == this_tag]
+
+        print("found tag for note")
+
+        note.tags.remove(delete_tag_in_note)
+    db.session.commit()
+
+    return { "message": f"Tag {tagId} successfully removed from all notes"}
 
 
 """     seed_note_13.tags.append(seed_tag_11_12_13)
@@ -163,3 +233,4 @@ def add_tag_to_note(noteId, tagId):
 
     db.session.commit()
  """
+

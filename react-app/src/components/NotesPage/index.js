@@ -20,6 +20,7 @@ const CurrentNotes = () => {
 
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
+
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
 

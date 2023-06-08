@@ -35,7 +35,6 @@ const deleteNote = (noteId) => ({
 export const getNotesThunk = () => async (dispatch) => {
     const response = await fetch("/api/notes/");
     if (response.ok) {
-        console.log('inside getnotethunk')
         const data = await response.json();
         if (data.errors) {
             return;

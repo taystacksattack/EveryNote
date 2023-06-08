@@ -62,22 +62,47 @@ export const addNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
 
 export const deleteNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
     const url = `/api/tags/notetags/${noteId}/${tagId}`
+
     const response = await fetch(url,
     {
         method: "DELETE",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ noteId, tagId})
+        body: JSON.stringify({ "noteId": noteId, "tagId": tagId})
     })
 
     if (response.ok) {
         const data = await response.json();
-        console.log("ADDNOTE THUNK OK, response", data)
+        console.log("remove notetag THUNK OK, response", data)
         return data;
     } else {
         const errors = await response.json()
         return errors;
     }
 })
+
+export const removeAllNoteTagThunk = ((tagId) => async (dispatch) => {
+    const url = `/api/tags/notetags/all/${tagId}`
+
+    console.log("delete notetag thunk, url", url)
+
+    const response = await fetch(url,
+    {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ "tagId": tagId})
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log("remove notetag of one tag THUNK OK, response", data)
+        return data;
+    } else {
+        const errors = await response.json()
+        return errors;
+    }
+})
+
+
 
 //REDUCER
 const initialState = { notetags: {} };

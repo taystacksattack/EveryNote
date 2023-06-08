@@ -32,10 +32,10 @@ const CurrentNotes = () => {
     const owner = useSelector(state => state.session.user)
 
 
-  
+
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
-    
- 
+
+
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
     const newNote = {
@@ -174,13 +174,13 @@ const CurrentNotes = () => {
 
             return (
                 <>
-                <div>
+                {/* <div>
                     NOTE TEST, with NOTE {noteId}
                 </div>
                 <div>id: {currentNote.id}</div>
                 <div>title: {currentNote.title}</div>
                 <div>preview: {currentNote.body.slice(0, 25)}...</div>
-                <br></br>
+                <br></br> */}
                 <div>TAGS:</div>
                 {currentNoteTags && currentNoteTags.map((tagId) => {
                     return (
@@ -248,9 +248,9 @@ const CurrentNotes = () => {
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p className='note-titles'>{note.title}</p>
                         <p>{note.updated_at.split('.')[0]}</p>
-                        
+
                         {noteTest(note.id)}
-                        
+
                         <div id="delete-note-modal-container">
                             <OpenModalButton
                                 buttonText="Trash"
@@ -264,7 +264,7 @@ const CurrentNotes = () => {
                             <p id='note-titles'>{note.title}</p>
                             <p>{note.updated_at.split('.')[0]}</p>
 
-                            
+
                             {noteTest(note.id)}
 
                             <div id="delete-note-modal-container">
@@ -315,4 +315,3 @@ const CurrentNotes = () => {
 }
 
 export default CurrentNotes
-

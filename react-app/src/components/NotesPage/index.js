@@ -155,7 +155,7 @@ const CurrentNotes = () => {
                     </span>
                 </div>
                 <div className="notes-subheading">
-                    {<span>{listOfNotes.length} notes</span>}
+                    {<span className='note-tally'>{listOfNotes.length} notes</span>}
                     <div className='sorting-icons'>
                         <span id='alpha-sort-icon' className="material-symbols-outlined"
                             onClick={(e) => handleSortAlpha()}
@@ -173,7 +173,7 @@ const CurrentNotes = () => {
 
                 {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                        <p >{note.title}</p>
+                        <p className='note-titles'>{note.title}</p>
                         <p>{note.updated_at.split('.')[0]}</p>
                         <div id="delete-note-modal-container">
                             <OpenModalButton
@@ -185,9 +185,10 @@ const CurrentNotes = () => {
                 ))
                     : listRendered.map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                            <p >{note.title}</p>
+                            <p id='note-titles'>{note.title}</p>
                             <p>{note.updated_at.split('.')[0]}</p>
                             <div id="delete-note-modal-container">
+
                                 <OpenModalButton
                                     buttonText="Trash"
                                     modalComponent={<DeleteModal note={note} />}

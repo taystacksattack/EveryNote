@@ -1,5 +1,13 @@
+:root {
+    --bg-clr: #1a1a1a;
+    --font-clr: #a6a6a6;
+    --evernote-green: #008f26
+}
+
 *{
    box-sizing: border-box; 
+   background-color: var(--bg-clr);
+   color: var(--font-clr)
 }
 
 button {
@@ -19,6 +27,10 @@ button {
     justify-content: space-between;
 }
 
+.notes-header > h1{
+    color:white;
+}
+
 .notes-subheading{
     display: flex;
     justify-content: space-between;
@@ -27,23 +39,28 @@ button {
 
 #note-icon, #add-note-icon {
     font-size: 25px;
+    color:white;
+
 }
 
 #date-sort-icon, #alpha-sort-icon, #add-note-icon {
     padding: 4px;
     cursor: pointer;
+    color: white;
 }
 
 .note-selection{
-    border: 1px solid black;
+    border-bottom: 1px solid var(--font-clr);
     width: 100%;
     cursor: pointer;
+    overflow:hidden;
 }
 
 .all-notes-area{
     border: 2px solid red;
     width: 20%;
     height: 100%;
+    padding: 0 1rem;
 
 }
 
@@ -69,7 +86,29 @@ button {
 
 } 
 
+#title-textarea {
+    font-size: 2rem;
+}
 
+#note-content-textarea{
+    font-size: 18px;
+}
 #save-note-btn {
     width: 5rem;
+    background-color: rgb(54, 56, 56);
+    padding: 0.2rem;
+}
+
+
+#delete-note-modal-container > button {
+    background-color: rgb(54, 56, 56);
+    margin-bottom: 0.2rem;
+}
+
+.note-tally {
+    color:white;
+}
+
+.note-selection #note-titles {
+    color:white;
 }

@@ -21,6 +21,12 @@ const CurrentNotebooks = () => {
 
     const userObj = useSelector(state => state.session.user)
 
+    const notebookNum = () => {
+        if (notebooks.length === 0) return "Time to create a new notebook"
+        if (notebooks.length > 0 && notebooks.length < 2) return "Notebook (1)"
+        return `Notebooks (${notebooks.length})`
+    }
+
     useEffect(() => {
         dispatch(getNotebooksThunk())
         dispatch(getNotesThunk())
@@ -31,7 +37,7 @@ const CurrentNotebooks = () => {
         <div className="everything-wrapper-2">
             <div></div>
             <div className="notebook-wrapper">
-                <h1>NOTEBOOKS</h1>
+                <h1>{notebookNum(notebooks)}</h1>
                 <div className="new-notebook-component">
                     <NewNotebook />
                 </div>

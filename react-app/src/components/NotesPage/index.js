@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
@@ -314,3 +315,4 @@ const CurrentNotes = () => {
 }
 
 export default CurrentNotes
+

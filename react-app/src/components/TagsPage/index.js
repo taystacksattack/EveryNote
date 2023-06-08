@@ -10,6 +10,7 @@ import OpenModalButton from "../OpenModalButton";
 import TagDeleteModal from "./TagDeleteModal"
 import TagCreateRenameModal from "./TagCreateRenameModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
+import CurrentNotes from "../NotesPage"
 
 
 const TagsPage = () => {
@@ -37,6 +38,16 @@ const TagsPage = () => {
     //
     //
     //
+    useEffect(() => {
+        testFunction()
+    }, [])
+
+    function testFunction() {
+        console.log("\n\n\nON LOAD")
+        const firstNote = allnotes.allNotes["1"]
+        CurrentNotes.handleNoteClick(firstNote)
+        
+    }
 
     useEffect(() => {
         dispatch(getTagsThunk());

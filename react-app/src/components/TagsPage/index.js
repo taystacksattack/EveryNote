@@ -95,14 +95,14 @@ const TagsPage = () => {
             return (
                 <>
                 <div>
-                    NOTE TEST, with NOTE 1
+                    NOTE TEST, with NOTE {noteId}
                 </div>
                 <div>id: {currentNote.id}</div>
                 <div>title: {currentNote.title}</div>
                 <div>preview: {currentNote.body.slice(0, 25)}...</div>
                 <br></br>
                 <div>TAGS:</div>
-                {currentNoteTags.map((tagId) => {
+                {currentNoteTags && currentNoteTags.map((tagId) => {
                     return (
                         <>
                         <a href="/tags">

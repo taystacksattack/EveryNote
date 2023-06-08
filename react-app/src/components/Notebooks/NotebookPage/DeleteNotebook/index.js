@@ -6,7 +6,7 @@ const DeleteNotebook = ({ notebook }) => {
 
     return (
         <OpenModalButton
-            buttonText={'Delete Notebook'}
+            buttonText={'Delete'}
             modalComponent={<DeleteNotebookModal notebook={notebook} />}>
         </OpenModalButton>
 

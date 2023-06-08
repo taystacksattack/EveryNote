@@ -60,6 +60,24 @@ export const addNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
     }
 })
 
+export const deleteNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
+    const response = await fetch(`/api/tags/notetags/${noteId}/${tagId}`,
+    {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ noteId, tagId})
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log("ADDNOTE THUNK OK, response", data)
+        return data;
+    } else {
+        const errors = await response.json()
+        return errors;
+    }
+})
+
 //REDUCER
 const initialState = { notetags: {} };
 export default function noteTagsReducer(state = initialState, action) {

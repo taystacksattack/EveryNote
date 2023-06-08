@@ -278,7 +278,7 @@ const TagsPage = () => {
             </div>
 
             <button onClick={createTest}>Test, Create New Tag</button>
-            <button onClick={() => {addNoteTag(1, 3)}}>Test NoteTag, 1/3</button>
+            <button onClick={() => {addNoteTag(1, 2)}}>Test NoteTag, 1/3</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>
                 {alphaOrNum().map(

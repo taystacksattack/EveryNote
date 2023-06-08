@@ -40,40 +40,52 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
+  //  let ulClassName
+  // if (user) ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden")
+  // if (user) ulClassName = "loggedin-dropdown" + (showMenu ? "" : " hidden")
+
   const closeMenu = () => setShowMenu(false);
 
   return (
     <>
-      <div id = "profile-button-wrapper">
-        <button id= "profile-button" onClick={openMenu}>
-          <i className="fas fa-user-circle" />
-        </button>
-      </div>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
+      <div id = {user? "logged-in-button-wrapper": "logged-out-button-wrapper"}>
+        <button id= "profile-button" onClick={openMenu}>
+          <i id="user-button" className="fas fa-user-circle" />
+        </button>
+
+        <ul className={ulClassName} ref={ulRef}>
+          {user ? (
+            <>
+              <li>{user.username}</li>
+              <li>{user.email}</li>
+              <li>
+                <button onClick={handleLogout}>Log Out</button>
+              </li>
+            </>
+          ) : (
+            <div id="drop-down">
+              <>
+                <OpenModalButton
+                  id = "landing-page-buttons"
+                  buttonText="Log In"
+                  onItemClick={closeMenu}
+                  modalComponent={<LoginFormModal />}
+                />
+
+                <OpenModalButton
+                  // className = "landing-page-buttons"
+                  buttonText="Sign Up"
+                  onItemClick={closeMenu}
+                  modalComponent={<SignupFormModal />}
+                />
+              </>
+            </div>
+          )}
+        </ul>
+
+  </div>
     </>
   );
 }

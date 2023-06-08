@@ -25,8 +25,8 @@ const UpdateNotebookModel = ({ notebook }) => {
 
         if (Object.values(err).length === 0) {
 
-            // const newDate = new Date().toISOString()
-            // console.log("new Date", newDate)
+            const newDate = new Date().toISOString()
+            console.log("new Date", newDate)
             const new_notebook = {
                 "id": notebook.id,
                 "title": title,

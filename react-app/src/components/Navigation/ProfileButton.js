@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
 
   //  let ulClassName
   // if (user) ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden")
-  // if (user) ulClassName = "loggedin-dropdown" + (showMenu ? "" : " hidden")
+  // if (!user) ulClassName = "loggedin-dropdown" + (showMenu ? "" : " hidden")
 
   const closeMenu = () => setShowMenu(false);
 

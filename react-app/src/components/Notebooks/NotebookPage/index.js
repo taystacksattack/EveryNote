@@ -28,27 +28,25 @@ const CurrentNotebooks = () => {
 
     if (!notebookObj && !notesObj) return null
     return (
-        <div className="everything-wrapper">
+        <div className="everything-wrapper-2">
+            <div></div>
             <div className="notebook-wrapper">
                 <h1>NOTEBOOKS</h1>
                 <div className="new-notebook-component">
                     <NewNotebook />
                 </div>
                 <div className={`notebook-div-container`}>
-                    <p>TITLE</p>
+                    <p className="notebook-title">TITLE</p>
                     <p>CREATED BY</p>
                     <p>UPDATED</p>
-                    <p>SHARED WITH</p>
                     <p>ACTIONS</p>
                 </div>
                 <div className="notebook-content-div">
                     {notebookObj && notebooks.map(notebook =>
                         <NotebookItems userObj={userObj} notebook={notebook} notes={notes} />
-
                     )}
                 </div>
             </div >
-
         </div>
     )
 

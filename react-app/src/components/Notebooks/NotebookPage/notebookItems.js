@@ -30,46 +30,34 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
 
     }
 
-    // const sharedWith = () => {
-    //     return "Feature coming Soon!"
-    // }
-
     const changeState = (e) => {
-        // e.stopPropagation()
+        e.preventDefault()
         if (showMenu) setShowMenu(false)
         else setShowMenu(true)
     }
 
-    // const featureAlert = () => {
-    //     window.alert('Feature Coming Soon...')
-    // }
-    const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+    const ulClassName = (showMenu ? "" : "hidden");
 
     return (
         <div className={`notebook-div-container `}>
             <p key={notebook.id}>
                 <Link to={`/notebooks/${notebook.id}`}>
-
+                    <i class="fa-solid fa-book"></i>{"   "}
                     {notebook.title}    ({notes.filter(note => note.notebookId == notebook.id).length})</Link>
             </p>
             <p>{findOwner()}</p>
             <p>{findTimeUpdated(notebook)}</p>
-            {/* <p>{sharedWith()}</p> */}
             <label>
-                <div onMouseEnter={(e) => changeState(e)} >
-                    ...
-                </div>
-                <ul className={`${ulClassName}-${notebook.id} spot-list`}>
+                <button onClick={(e) => changeState(e)} className="drop-down-list">
+                    <p>...</p>
+                </button>
+
+                <ul className={`${ulClassName} spot-list`}>
                     <li >
                         <div onClick={(e) => history.push("/notes")}>
                             Add new note
                         </div>
                     </li>
-                    {/* <li >
-                        <div onClick={(e) => featureAlert()}>
-                            Share notebook
-                        </div>
-                    </li> */}
                     <li className="li-divider">
                         <div>
                             <UpdateNotebook notebook={notebook} />
@@ -80,21 +68,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                             <DeleteNotebook notebook={notebook} />
                         </div>
                     </li>
-                    {/* <li >
-                        <div onClick={(e) => featureAlert()}>
-                            Add to Shortcuts
-                        </div>
-                    </li> */}
-                    {/* <li >
-                        <div onClick={(e) => featureAlert()}>
-                            Set as default notebook
-                        </div>
-                    </li> */}
-                    {/* <li >
-                        <div onClick={(e) => featureAlert()} >
-                            Add to stack
-                        </div>
-                    </li> */}
+
                 </ul>
             </label>
         </div>

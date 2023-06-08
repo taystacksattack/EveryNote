@@ -11,17 +11,27 @@ const UpdateNotebookModel = ({ notebook }) => {
     const { closeModal } = useModal()
 
     const [title, setTitle] = useState("")
+    const [errors, setErrors] = useState({})
     const [isDefault] = useState(false)
     const [bool, setBool] = useState(false)
 
     const handleSubmit = (e) => {
-        const new_notebook = {
-            "id": notebook.id,
-            "title": title,
-            "is_default": isDefault
-        }
 
-        dispatch(editNotebookThunk(new_notebook))
+        const err = {}
+
+        if (title.length > 1) err.title = "Cannot be less than 1 characters long"
+
+        if (Object.values(err).length === 0) {
+
+            const new_notebook = {
+                "id": notebook.id,
+                "title": title,
+                "is_default": isDefault
+            }
+
+            dispatch(editNotebookThunk(new_notebook))
+        }
+        setErrors(err)
         closeModal()
         setBool(true)
     }

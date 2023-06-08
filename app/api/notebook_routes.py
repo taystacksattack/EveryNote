@@ -67,10 +67,6 @@ def put_notebook(id):
 def delete_notebook(id):
     notebook_to_delete = Notebook.query.get(id)
 
-    print("==================================2")
-    print("DELETE NOTEBOOK", notebook_to_delete)
-    print("==================================2")
-
     db.session.delete(notebook_to_delete)
     db.session.commit()
     redirect('/notebooks')
@@ -88,6 +84,8 @@ def get_notebook_byId(notebookId):
     return notebook.to_dict()
 
 # GET all notebooks
+
+
 @notebook_routes.route("/")
 @login_required
 def notebooks():

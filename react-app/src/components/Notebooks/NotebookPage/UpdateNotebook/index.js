@@ -1,5 +1,6 @@
 import OpenModalButton from '../../../OpenModalButton'
 import UpdateNotebookModel from './updateModal'
+import "./index.css"
 
 const UpdateNotebook = ({ notebook }) => {
 

@@ -3,6 +3,9 @@ import { useEffect, useState } from "react"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "./deleteNoteModal"
+import { deleteTagThunk, getTagsThunk } from "../../store/tags"
+import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk, removeAllNoteTagThunk } from "../../store/notetags"
+
 import "./notespage.css"
 
 const CurrentNotes = () => {

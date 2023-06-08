@@ -61,7 +61,8 @@ export const addNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
 })
 
 export const deleteNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
-    const response = await fetch(`/api/tags/notetags/${noteId}/${tagId}`,
+    const url = `/api/tags/notetags/${noteId}/${tagId}`
+    const response = await fetch(url,
     {
         method: "DELETE",
         headers: {"Content-Type": "application/json"},

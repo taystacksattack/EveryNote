@@ -1,20 +1,24 @@
+/* wraps the profile button */
 #profile-button{
     /* position: absolute; */
     display: flex;
     align-items: center;
     justify-content: center;
-    border: #008f26 solid;
-    border-radius: 15pt;
-    height: 2.6rem;
-    width: 2.6rem;
-    margin-right: .75rem;
+    border: #c49f2f solid;
+    border-radius: 20pt;
+    height: 2.9rem;
+    width: 2.9rem;
+    margin-right: 1.3rem;
+    margin-bottom: 1rem;
     /* color: red; */
-    background-color: #008f26;
+    /* background-color: #c49f2f; */
 }
 
+/* for the button itself */
 #user-button{
     color: black;
     font-size: 30pt;
+    /* margin-bottom: 1rem; */
     /* height: 30px; */
     /* width: 30px */
 }
@@ -30,9 +34,13 @@
 }
 
 #logged-in-button-wrapper {
-    margin-top: 4.5%;
-    width: 75vw;
-    display: flex;
+    margin-top: 2%;
+    /* width: 75vw; */
+    /* display: flex; */
     /* justify-content: flex-end; */
     /* border:red solid; */
+}
+
+#logged-in-layour{
+    border: red solid 1px
 }

@@ -31,34 +31,40 @@ function LoginFormModal() {
 
   return (
     <>
+    <div id = "login-modal-wrapper">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form
+      id = "login-form"
+      onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
+        <div id="form-items-wrapper">
+          <label id="form-items">
+            Email
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label id="form-items">
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <button id="login-button" type="submit">Log In</button>
       </form>
         <Link id='demo-user-link' to='/' onClick={handleDemoUser}>Demo User</Link>
+    </div>
     </>
   );
 }

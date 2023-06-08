@@ -12,9 +12,19 @@
 #drop-down{
   display: flex;
   flex-direction: column;
-
+  margin-top: 1rem;
+  /* background-color: #c49f2f; */
 }
+
 
 .hidden {
   display: none;
+}
+
+button {
+  border-radius: 20pt;
+  background-color: #c49f2f;
+  padding: .5rem;
+  font-size: 16pt;
+  /* margin-top: 1rem */
 }

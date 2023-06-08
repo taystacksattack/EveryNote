@@ -1,7 +1,30 @@
 .profile-dropdown {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: red solid; */
+  margin-top: 3rem;
+  margin-left: 1rem
 }
+
+#drop-down{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  /* background-color: #c49f2f; */
+}
+
 
 .hidden {
   display: none;
+}
+
+button {
+  border-radius: 20pt;
+  background-color: #c49f2f;
+  padding: .25rem;
+  font-size: 12pt;
+  /* margin-top: 1rem */
 }

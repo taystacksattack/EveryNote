@@ -53,6 +53,7 @@ def put_notebook(id):
 
         notebook_to_edit.title = form.data["title"]
         notebook_to_edit.is_default = form.data["is_default"]
+        # notebook_to_edit.updated_at = form.data["updated_at"]
 
         db.session.commit()
         return notebook_to_edit.to_dict()

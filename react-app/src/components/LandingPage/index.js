@@ -8,13 +8,15 @@ function LandingPage({ isLoaded }){
 
         return (
         <>
-                <div className = "header-wrapper">
+                <div id = "header-wrapper">
                         {/* <h1>  ...  </h1> */}
                         {isLoaded && (
                                 <ProfileButton/>
                                 )}
                 </div>
-                <img id="landing-background" alt="Welcome!" src="https://cdn.discordapp.com/attachments/1102007410014556160/1116370540454756493/EveryNote_Set_up.jpg" />
+                <div id="background-wrapper">
+                        <img id="landing-background" alt="Welcome!" src="https://cdn.discordapp.com/attachments/1102007410014556160/1116370540454756493/EveryNote_Set_up.jpg" />
+                </div>
         </>
 	);
 }

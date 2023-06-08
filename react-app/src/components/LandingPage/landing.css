@@ -1,19 +1,24 @@
 
-.header-wrapper{
+#header-wrapper{
+    /* border: blue solid 2px; */
     display: flex;
+    /* justify-content: center; */
     position: absolute;
-    /* justify-content: flex-end; */
+    margin-left: 10%;
+}
+
+#background-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
 #landing-background{
-    /* background-image: url("https://cdn.discordapp.com/attachments/1102007410014556160/1116370540454756493/EveryNote_Set_up.jpg"); */
-    /* background-size: contain; */
-    /* background-repeat: no-repeat; */
     height: 300vh;
-    /* background-position: center; */
     position: absolute;
     z-index: -1000;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    width: 80%;
     padding: 1rem;
     /* height: 100vh */
     /* border: red solid 2px */

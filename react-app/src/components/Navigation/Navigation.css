@@ -1,5 +1,18 @@
 .profile-dropdown {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: red solid; */
+  margin-top: 3rem;
+  margin-left: 1rem
+}
+
+#drop-down{
+  display: flex;
+  flex-direction: column;
+
 }
 
 .hidden {

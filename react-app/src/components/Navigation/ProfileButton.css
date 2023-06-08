@@ -3,10 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: red solid; */
+    border: #008f26 solid;
     border-radius: 15pt;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.6rem;
+    width: 2.6rem;
+    margin-right: .75rem;
     /* color: red; */
     background-color: #008f26;
 }
@@ -24,6 +25,7 @@
     width: 75vw;
     display: flex;
     justify-content: flex-end;
+    /* flex-direction: column-reverse; */
     /* border:red solid; */
 }
 

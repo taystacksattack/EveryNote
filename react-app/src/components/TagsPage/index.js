@@ -12,6 +12,7 @@ import TagCreateRenameModal from "./TagCreateRenameModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
 import CurrentNotes from "../NotesPage"
 
+import AddTagForm from "./AddTagToNoteForm"
 
 const TagsPage = () => {
 
@@ -130,7 +131,7 @@ const TagsPage = () => {
     }
 
     async function removeTagFromAll(tagId) {
-        console.log(`remove tag ${tagId} from ALL notes`)
+        console.log(`FIX LATER: remove tag ${tagId} from ALL notes`)
         return dispatch(removeAllNoteTagThunk(tagId))
         .then(() => setRenderSwitch(!renderSwitch))
         .catch(async (res) => {
@@ -278,6 +279,9 @@ const TagsPage = () => {
             {/* Adding note example here */}
             <div className="tag-notetest-node">
                 {noteTest(1)}
+            </div>
+            <div>
+                <AddTagForm noteId="1" />
             </div>
             {/* End of note example */}
 

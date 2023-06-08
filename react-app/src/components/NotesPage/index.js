@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-// import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "./deleteNoteModal"
@@ -12,13 +12,18 @@ const CurrentNotes = () => {
     const [noteContent, setNoteContent] = useState('')
     const [trash, setTrash] = useState(false)
     const [clickedNote, setClickedNote] = useState({})
-
+    const [clickedAdd, setClickedAdd] = useState(false)
+   const [sortDate, setSortDate] = useState(false)
+    const [sortAlpha, setSortAlpha] = useState(false)
+    const [listRendered, setListRendered] = useState([])
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
+    console.log('NOTESOBJ',notesObj)
     // notebookId hardcoded for now, gotta remember to make it dynamic later
     const newNote = {
         title,
@@ -30,43 +35,27 @@ const CurrentNotes = () => {
     }
     useEffect(() => {
         dispatch(getNotesThunk())
-    }, [dispatch])
+        console.log('inside useEffect listOfNotes', listOfNotes)
+        setListRendered(listOfNotes)
+
+    // }, [dispatch, listOfNotes.length, listRendered.length,notesObj[clickedNote.id]?.title, notesObj[clickedNote.id]?.body])
+}, [dispatch, listOfNotes.length, listRendered.length,clickedNote.id?.title, notesObj[clickedNote.id]?.body])
+
+    useEffect(() => {
+        setClickedNote({})
+        setTitle('')
+        setNoteContent('')
+    }, [listOfNotes.length, clickedAdd])
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (Object.values(clickedNote).length > 0) {
-            console.log("updatingggggggggggg", title, noteContent)
-            console.log("note info", clickedNote)
 
 
-            const updatedNote = {
-                title,
-                body: noteContent,
 
-            }
 
-            await dispatch(editNoteThunk(updatedNote, clickedNote.id))
-            dispatch(getNotesThunk())
-            setTitle('')
-            setNoteContent('')
-        } else {
-
-            dispatch(createNoteThunk(newNote))
-            setTitle('')
-            setNoteContent('')
-        }
-
-    }
-
-    
 
     // console.log('list of notes', listOfNotes)
 
-    const [sortDate, setSortDate] = useState(false)
-    const [sortAlpha, setSortAlpha] = useState(false)
-    // const [listRendered, setListRendered] = useState([...listOfNotes].toReversed())
-    const [listRendered, setListRendered] = useState()
+ 
 
 
     const azSort = (notesList) => {
@@ -104,8 +93,41 @@ const CurrentNotes = () => {
         if (sortDate === true) setListRendered(dateSort(listOfNotes))
         if (sortDate === false) setListRendered(dateSort(listOfNotes).toReversed())
     }
-    
-    
+
+
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (Object.values(clickedNote).length > 0) {
+            console.log("updatingggggggggggg", title, noteContent)
+            console.log("note info", clickedNote)
+
+
+            const updatedNote = {
+                title,
+                body: noteContent,
+
+            }
+
+            await dispatch(editNoteThunk(updatedNote, clickedNote.id))
+            await dispatch(getNotesThunk())
+            setListRendered(listOfNotes)
+            setTitle('')
+            setNoteContent('')
+        } else {
+
+            await dispatch(createNoteThunk(newNote))
+            setTitle('')
+            setNoteContent('')
+            // setListRendered([])
+            await dispatch(getNotesThunk())
+            // setListRendered(listOfNotes)
+            console.log('listofNotessssssssssssssssssssssssssssssssss', listOfNotes)
+            console.log('listRenderedddddddddddddddddddddddddddddddd', listRendered)
+        }
+
+    }
     //FOR IF I WANT TRASH STORAGE IMPLEMENTATION LATER
     // useEffect(() => {
     //     if (trash === true) {
@@ -126,16 +148,19 @@ const CurrentNotes = () => {
 
 
 
-  
+
 
 
     if (!notesObj) return (<div>Loading</div>)
     return (
         <div className='everything-wrapper'>
             <div className='all-notes-area'>
-
-                <h1><span id='note-icon' className="material-symbols-outlined">description</span>Notes</h1>
-
+                <div className='notes-header'>
+                    <h1><span id='note-icon' className="material-symbols-outlined">description</span>Notes</h1>
+                    <span id='add-note-icon' className="material-symbols-outlined" onClick={(e) => setClickedAdd(!clickedAdd)} >
+                        add_notes
+                    </span>
+                </div>
                 <div className="notes-subheading">
                     {<span>{listOfNotes.length} notes</span>}
                     <div className='sorting-icons'>
@@ -153,7 +178,7 @@ const CurrentNotes = () => {
                     </div>
                 </div>
 
-                {notesObj && !listRendered ? listOfNotes.reverse().map(note => (
+                {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p >{note.title}</p>
                         <p>{note.updated_at.split('.')[0]}</p>
@@ -165,19 +190,19 @@ const CurrentNotes = () => {
                         </div>
                     </div>
                 ))
-                : listRendered.map(note => (
-                    <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                        <p >{note.title}</p>
-                        <p>{note.updated_at.split('.')[0]}</p>
-                        <div id="delete-note-modal-container">
-                            <OpenModalButton
-                                buttonText="Trash"
-                                modalComponent={<DeleteModal note={note} />}
-                            />
+                    : listRendered.map(note => (
+                        <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
+                            <p >{note.title}</p>
+                            <p>{note.updated_at.split('.')[0]}</p>
+                            <div id="delete-note-modal-container">
+                                <OpenModalButton
+                                    buttonText="Trash"
+                                    modalComponent={<DeleteModal note={note} />}
+                                />
+                            </div>
                         </div>
-                    </div>
-                ))
-                
+                    ))
+
                 }
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, request  # jsonify, request
 from flask_login import login_required  # current_user
-from app.models import Tag
+from app.models import Tag, Note
 from ..models.db import db
 from ..forms.tag_form import TagForm
 
@@ -135,3 +135,31 @@ def get_notetags():
 
     # print("\n\n\n\does THIS work?", res)
     return res
+
+@tag_routes.route('/notetags/<int:noteId>/<int:tagId>', methods=["POST"])
+@login_required
+def add_tag_to_note(noteId, tagId):
+
+    try:
+        this_note = Note.query.get(noteId)
+        this_tag = Tag.query.get(tagId)
+
+        if this_tag in this_note.tags:
+            return { "message" :f"Tag {tagId} is already in Note {noteId}??"}
+
+        this_note.tags.append(this_tag)
+        # db.session.add(this_note)
+        db.session.commit()
+
+        return { "message": f"Tag {tagId} successfully added to Note {noteId}"}
+    except:
+        return { "error": f"Unable to add tag {tagId} to Note {noteId}"}
+
+
+
+
+"""     seed_note_13.tags.append(seed_tag_11_12_13)
+    db.session.add(seed_note_13)
+
+    db.session.commit()
+ """

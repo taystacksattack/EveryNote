@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState} from "react" //useState
 import { createTagThunk, deleteTagThunk, getTagsThunk } from "../../store/tags"
-import { getNoteTagsThunk } from "../../store/notetags"
+import { getNoteTagsThunk, addNoteTagThunk } from "../../store/notetags"
 import { getNotesThunk } from "../../store/notes"
 import "./TagsPage.css"
 // import { title } from "../NotesPage"
@@ -44,7 +44,18 @@ const TagsPage = () => {
         dispatch(getNotesThunk());
     }, [dispatch, renderSwitch])
 
+    async function addNoteTag() {
+        console.log("test noteTag with note 1, tag 3");
 
+        return dispatch(addNoteTagThunk(1, 3))
+        .then(() => {
+            let temp = renderSwitch;
+            setRenderSwitch(!temp);
+        })
+        .catch(async (res) => {
+            console.log("addNoteTag errors?", res)
+        })
+    }
 
     async function createTest() {
         const newTag = { name: "test tag"};
@@ -186,6 +197,7 @@ const TagsPage = () => {
             </div>
 
             <button onClick={createTest}>Test, Create New Tag</button>
+            <button onClick={addNoteTag}>Test NoteTag, 1/3</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>
                 {alphaOrNum().map(

@@ -82,6 +82,17 @@ const CurrentNotes = () => {
         return sortedCopy
     }
 
+    const dateSort = (notesList) => {
+        const copy = notesList.slice()
+        const sortedCopy = copy.sort((a, b) => {
+            const dateA = a.updated_at
+            const dateB = b.updated_at
+            return new Date(dateA) - new Date(dateB)
+        })
+        return sortedCopy
+    }
+
+
     const handleSortAlpha = () => {
         setSortAlpha(!sortAlpha)
         if (sortAlpha === true) setListRendered(azSort(listOfNotes))
@@ -90,8 +101,8 @@ const CurrentNotes = () => {
 
     const handleSortDate = () => {
         setSortDate(!sortDate)
-        if (sortDate === true) setListRendered(listOfNotes)
-        if (sortDate === false) setListRendered(listOfNotes.toReversed())
+        if (sortDate === true) setListRendered(dateSort(listOfNotes))
+        if (sortDate === false) setListRendered(dateSort(listOfNotes).toReversed())
     }
     
     
@@ -126,7 +137,7 @@ const CurrentNotes = () => {
                 <h1><span id='note-icon' className="material-symbols-outlined">description</span>Notes</h1>
 
                 <div className="notes-subheading">
-                    {listOfNotes.length && <span>{listOfNotes?.length} notes</span>}
+                    {<span>{listOfNotes.length} notes</span>}
                     <div className='sorting-icons'>
                         <span id='alpha-sort-icon' className="material-symbols-outlined"
                             onClick={(e) => handleSortAlpha()}

@@ -13,40 +13,38 @@ import DeleteTaskModal, {deleted} from '../DeleteTaskModal'
 const CurrentTasks = () => {
     const dispatch = useDispatch()
 
-    const [data, setData] = useState([]);
-    const [sortType, setSortType] = useState('due');
+    const [tasks, setTasks] = useState([]);
+    const [sortType, setSortType] = useState('due_date');
 
     let tasksObj = useSelector(state => state.tasks.allTasks)
-    // tasksObj = tasksObj.allTasks //total bandaid.
+    // tasksObj = tasksObj.allTasks //total bandaid for delete tasks issue
 
 
     // console.log("tasksLength", tasksLength)
     const tasksArr = Object.values(tasksObj)
     // console.log("tasks array",tasksArr)
-    // useEffect(()=>{
-    //     const sortedTasks = type => {
-    //         const types = {
-    //             due: 'due_date',
-    //             created: 'created_at',
-    //             // titled: 'title'
-    //         }
-    //         const sortProperty = types[type]
-    //         const sorted = [...tasksArr].sort((a, b) =>{
-    //             return new Date(a[sortProperty]) - new Date (b[sortProperty])
-    //         });
-    //         console.log("sorted stuff in function",sorted)
-    //         setData(sorted)
-    //         console.log("data",data)
-    //     }
-    //     sortedTasks(sortType)
-    // },[sortType, tasksArr.length])
+    useEffect(()=>{
+        const sortedTasks = type => {
+            const sorted = [...tasksArr].sort((a, b) =>{
+                if (type !== "title"){
+                    return new Date(a[type]) - new Date (b[type])
+                } else{
+                    return a.title.localeCompare(b.title)
+                }
+            });
+            console.log("sorted stuff in function",sorted)
+            setTasks(sorted)
+            // console.log("sortedTasks",sortedTasks)
+        }
+        sortedTasks(sortType)
+    },[sortType, tasksArr.length])
 
     useEffect(()=>{
         dispatch(getTasksThunk())
     }, [dispatch, ])
 
     if(!tasksObj) return (<div>Loading</div>)
-    console.log("heres the data ", data)
+    console.log("heres the data ", tasks)
     return(
         <div>
             <h1>Tasks</h1>
@@ -54,11 +52,11 @@ const CurrentTasks = () => {
                 New task
             </NavLink>
             <select onChange={(e) => setSortType(e.target.value)}>
-                <option value="due">Due Date</option>
-                <option value="created">Created Date</option>
-                {/* <option value="titled">Title, A-Z</option> */}
+                <option value="due_date">Due Date</option>
+                <option value="created_at">Created Date</option>
+                <option value="title">Title, A-Z</option>
             </select>
-            {tasksObj && tasksArr.map(task => {
+            {tasksObj && tasks.map(task => {
                 return(
                     <div key={task.id}>
                         <p key={task.id}>Task: {task.title}</p>

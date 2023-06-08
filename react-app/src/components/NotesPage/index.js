@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "./deleteNoteModal"
@@ -13,17 +12,17 @@ const CurrentNotes = () => {
     const [trash, setTrash] = useState(false)
     const [clickedNote, setClickedNote] = useState({})
     const [clickedAdd, setClickedAdd] = useState(false)
-   const [sortDate, setSortDate] = useState(false)
+    const [sortDate, setSortDate] = useState(false)
     const [sortAlpha, setSortAlpha] = useState(false)
     const [listRendered, setListRendered] = useState([])
 
     const dispatch = useDispatch()
-    const history = useHistory()
+
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
-    console.log('NOTESOBJ',notesObj)
+
     // notebookId hardcoded for now, gotta remember to make it dynamic later
     const newNote = {
         title,
@@ -35,11 +34,10 @@ const CurrentNotes = () => {
     }
     useEffect(() => {
         dispatch(getNotesThunk())
-        console.log('inside useEffect listOfNotes', listOfNotes)
         setListRendered(listOfNotes)
 
-    // }, [dispatch, listOfNotes.length, listRendered.length,notesObj[clickedNote.id]?.title, notesObj[clickedNote.id]?.body])
-}, [dispatch, listOfNotes.length, listRendered.length,clickedNote.id?.title, notesObj[clickedNote.id]?.body])
+    }, [dispatch, listOfNotes.length, listRendered.length, notesObj[clickedNote.id]?.title, notesObj[clickedNote.id]?.body])
+
 
     useEffect(() => {
         setClickedNote({})
@@ -49,13 +47,9 @@ const CurrentNotes = () => {
 
 
 
-
-
-
-
     // console.log('list of notes', listOfNotes)
 
- 
+
 
 
     const azSort = (notesList) => {
@@ -120,11 +114,9 @@ const CurrentNotes = () => {
             await dispatch(createNoteThunk(newNote))
             setTitle('')
             setNoteContent('')
-            // setListRendered([])
+
             await dispatch(getNotesThunk())
-            // setListRendered(listOfNotes)
-            console.log('listofNotessssssssssssssssssssssssssssssssss', listOfNotes)
-            console.log('listRenderedddddddddddddddddddddddddddddddd', listRendered)
+
         }
 
     }

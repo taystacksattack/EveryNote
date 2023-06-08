@@ -5,6 +5,7 @@
 const GET_TAGS = "session/GET_TAGS";
 const CREATE_TAG = "session/CREATE_TAG"
 // const DELETE_TAG = "session/DELETE_TAG"
+const UPDATE_TAG = "session/UPDATE_TAG"
 
 
 //ACTION CREATORS
@@ -22,6 +23,11 @@ const createTag = (tag) => ({
 //     type: DELETE_TAG,
 //     tag
 // })
+
+const updateTag = (tag) => ({
+    type: UPDATE_TAG,
+    tag
+})
 
 //THUNKS
 export const getTagsThunk = () => async (dispatch) => {
@@ -58,6 +64,53 @@ export const createTagThunk = (tag) => async (dispatch) => {
     }
 };
 
+export const updateTagThunk = (tag, tagId) => async (dispatch) => {
+
+    console.log("AT UPDATE TAG THUNK")
+    console.log("UPDATE TAG", tag)
+    console.log("UPDATE TAG_ID", tagId)
+
+    console.log("JSON STRINGIFIED TAG", JSON.stringify(tag))
+
+    const url = `/api/tags/${tagId}`
+
+    const response = await fetch(url, {
+    // const response = await fetch(`/api/tags/${tagId}`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(tag)
+    })
+    if (response.ok) {
+        const resTag = await response.json();
+
+        console.log("updateTag??", resTag)
+
+        dispatch(updateTag(resTag))
+        return resTag;
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+
+
+    // if (response.ok) {
+    //     console.log("\n\n\nUPDATE A GO GO BABY")
+
+    //     const updateTag = await response.json()
+    //     dispatch(updateTag(updateTag))
+    //     return updateTag;
+
+    // } else {
+    //     console.log("DON'T GET TOO COCKY, STAR FOX")
+
+    //     const errors = await response.json()
+    //     console.log("updateTagThunk failed, reason")
+    //     return errors
+    // }
+
+
+}
+
 export const deleteTagThunk = (tagId) => async(dispatch) => {
     console.log("at delete tag thunk");
     console.log("tagId", tagId)
@@ -92,6 +145,11 @@ export default function tagsReducer(state = initialState, action) {
             newState[action.tag.id] = action.tag
             // console.log("added", newState[action.tag.id])
             // console.log("allTags", newState)
+            return newState;
+        }
+        case UPDATE_TAG: {
+            const newState = { ...state }
+            newState[action.tag.id] = action.tag
             return newState;
         }
         default:

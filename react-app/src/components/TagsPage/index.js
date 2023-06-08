@@ -8,7 +8,7 @@ import "./TagsPage.css"
 
 import OpenModalButton from "../OpenModalButton";
 import TagDeleteModal from "./TagDeleteModal"
-import TagCreateModal from "./TagCreateModal"
+import TagCreateRenameModal from "./TagCreateRenameModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
 
 
@@ -181,9 +181,10 @@ const TagsPage = () => {
             <div>
                 <OpenModalButton
                     buttonText="Create New Tag"
-                    modalComponent={<TagCreateModal createOrRename="prop" />}
+                    modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
                 />
             </div>
+
             <button onClick={createTest}>Test, Create New Tag</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
             <div>
@@ -205,6 +206,14 @@ const TagsPage = () => {
                     <div>
                         num_notes: {tag.id && numNotesByOwner(tag.id)}
                     </div>
+
+                    <div>
+                    <OpenModalButton
+                        buttonText="Rename Tag"
+                        modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
+                    />
+                    </div>
+
                     {<button onClick={() => {deleteTest(tag.id)}}>Test Delete this Tag</button>}
                         {waitForLoad(tag.id)}
                     <br></br>

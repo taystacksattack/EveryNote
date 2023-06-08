@@ -27,6 +27,29 @@ def delete_tag(tagId):
     db.session.commit()
     return {"message": f'Tag {tagId} successfully deleted'}
 
+@tag_routes.route('/<int:tagId>', methods=["POST"])
+@login_required
+def update_tag(tagId):
+
+    form = TagForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+
+    print("at update route, tag: ", tagId)
+    to_update = Tag.query.get(tagId)
+
+
+    print("EDIT TAG")
+
+    if form.validate_on_submit():
+        data = form.data
+        # to_update["name"] = data["name"]
+        to_update.name = data["name"]
+        #db.session.add(to_update)
+        db.session.commit()
+        return to_update.to_dict()
+
+    return { "Error": "end of update route" }
 
 @tag_routes.route('/')
 @login_required

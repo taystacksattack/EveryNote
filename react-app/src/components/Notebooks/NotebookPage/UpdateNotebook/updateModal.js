@@ -25,11 +25,15 @@ const UpdateNotebookModel = ({ notebook }) => {
 
         if (Object.values(err).length === 0) {
 
+            // const newDate = new Date().toISOString()
+            // console.log("new Date", newDate)
             const new_notebook = {
                 "id": notebook.id,
                 "title": title,
-                "is_default": isDefault
+                "is_default": isDefault,
+                // "updated_at": newDate
             }
+            console.log(new_notebook)
             dispatch(editNotebookThunk(new_notebook))
             closeModal()
             setBool(true)

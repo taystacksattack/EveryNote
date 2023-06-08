@@ -22,7 +22,7 @@ const CreateNewNotebookModel = () => {
 
         if (title.length > 1) err.title = "Cannot be less than 1 characters long"
 
-        if (Object.values(err).length === 0) {
+        // if (Object.values(err).length === 0) {
 
             const new_notebook = {
                 "title": title,
@@ -31,7 +31,7 @@ const CreateNewNotebookModel = () => {
             dispatch(createNotebooksThunk(new_notebook))
             closeModal()
             setBool(true)
-        }
+        // }
         setErrors(err)
     }
 

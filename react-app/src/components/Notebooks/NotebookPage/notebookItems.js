@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 
 import UpdateNotebook from "./UpdateNotebook"
 import DeleteNotebook from "./DeleteNotebook"
-
+import AddNoteToNotebook from "./AddNote"
 
 
 const NotebookItems = ({ userObj, notebook, notes }) => {
@@ -52,26 +52,28 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                     <p>...</p>
                 </button>
 
-                <ul className={`${ulClassName} spot-list`}>
-                    <li >
-                        <div onClick={(e) => history.push("/notes")}>
-                            Add new note
-                        </div>
-                    </li>
-                    <li className="li-divider">
-                        <div>
-                            <UpdateNotebook notebook={notebook} />
-                        </div>
-                    </li>
-                    <li>
-                        <div >
-                            <DeleteNotebook notebook={notebook} />
-                        </div>
-                    </li>
-
-                </ul>
+                <div className="notebook-ul-ultra-wrapper">
+                    <ul className={`${ulClassName} spot-list`}>
+                        <li >
+                            <AddNoteToNotebook />
+                            {/* <div onClick={(e) => history.push("/notes")} className="notebook-item-create">
+                                Add new note
+                            </div> */}
+                        </li>
+                        <li className="li-divider">
+                            <div className="notebook-item-update">
+                                <UpdateNotebook notebook={notebook} />
+                            </div>
+                        </li>
+                        <li>
+                            <div >
+                                <DeleteNotebook notebook={notebook} />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </label>
-        </div>
+        </div >
     )
 }
 

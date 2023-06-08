@@ -21,7 +21,7 @@ const UpdateNotebookModel = ({ notebook }) => {
 
         if (title.length > 1) err.title = "Cannot be less than 1 characters long"
 
-        if (Object.values(err).length === 0) {
+        // if (Object.values(err).length === 0) {
 
             const new_notebook = {
                 "id": notebook.id,
@@ -30,7 +30,7 @@ const UpdateNotebookModel = ({ notebook }) => {
             }
 
             dispatch(editNotebookThunk(new_notebook))
-        }
+        // }
         setErrors(err)
         closeModal()
         setBool(true)

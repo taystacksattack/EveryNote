@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editNotebookThunk, getNotebooksThunk } from "../../../store/notebook"
-import { getNotesThunk } from '../../../store/notes';
+import { getNotebooksThunk } from "../../../store/notebook"
+import { editNoteThunk, getNotesThunk } from '../../../store/notes';
 import './index.css'
 
 const NotebookDetails = () => {
@@ -15,6 +15,8 @@ const NotebookDetails = () => {
     const notebookObj = useSelector(state => state.notebooks.allNotebooks)
     const notes = useSelector(state => state.notes.allNotes)
 
+    const userObj = useSelector(state => state.session.user)
+    console.log("userOjb", userObj)
     const filtered = Object.values(notes).filter(note => {
 
         return note.notebookId == notebookId
@@ -27,13 +29,15 @@ const NotebookDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const updateNotebook = {
+        const updateNote = {
             "id": currentNote.id,
+            "ownerId": userObj.id,
             "title": currentNote.title,
-            "body": newBody
+            "body": newBody,
+            "trash": false,
         }
-
-        // dispatch(editNotebookThunk(updateNotebook))
+        console.log("update:", updateNote)
+        dispatch(editNoteThunk(updateNote, updateNote.id))
     }
 
     const setterFunction = (note, e) => {

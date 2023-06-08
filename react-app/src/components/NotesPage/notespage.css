@@ -110,6 +110,9 @@ button {
     color:var(--font-clr)
 }
 
+#new-note-form {
+    background-color: rgb(40, 37, 37);
+}
 
 #delete-note-modal-container > button {
     background-color: rgb(54, 56, 56);

@@ -69,7 +69,7 @@ function AddTagForm({noteId}) {
           </select>
 
         </label>
-        <button type="submit">Add Tag</button>
+        <button type="submit">Add Tag (Refresh after Add)</button>
       </form>
     </>
   );

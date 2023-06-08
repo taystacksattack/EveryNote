@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSelector } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -12,6 +12,7 @@ import NewNotebook from "./components/Notebooks/NewNotebook"
 import CurrentTasks from './components/TasksPage'
 import CreateTask from './components/CreateTask'
 import EditTask from './components/EditTask'
+import LandingPage from './components/LandingPage'
 
 import TagsPage from './components/TagsPage'
 
@@ -19,12 +20,15 @@ import TagsPage from './components/TagsPage'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
+      {/* {true ?  : null} */}
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -37,7 +41,6 @@ function App() {
           <Route path="/notes">
             <CurrentNotes />
           </Route>
-
           <Route exact path="/notebooks/new">
             <NewNotebook />
           </Route>

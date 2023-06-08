@@ -63,8 +63,6 @@ export const addNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
 export const deleteNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
     const url = `/api/tags/notetags/${noteId}/${tagId}`
 
-    console.log("delete notetag thunk, url", `/api/tags/notetags/${noteId}/${tagId}`)
-
     const response = await fetch(url,
     {
         method: "DELETE",

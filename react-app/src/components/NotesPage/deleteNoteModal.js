@@ -11,6 +11,7 @@ function DeleteModal({note}) {
     const handleDelete = (e) => {
         e.preventDefault();
         dispatch(deleteNoteThunk(note.id))
+
         closeModal()
     }
 

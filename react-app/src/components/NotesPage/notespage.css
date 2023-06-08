@@ -1,5 +1,12 @@
+:root {
+    --bg-clr: #1a1a1a;
+    --font-clr: #a6a6a6;
+    --evernote-green: #008f26
+}
+
 *{
    box-sizing: border-box; 
+
 }
 
 button {
@@ -11,41 +18,63 @@ button {
     display: flex;
     justify-content:flex-end;
     height: 100%;
+    color: var(--font-clr);
+
+}
+
+.notes-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notes-header > h1{
+    color:white;
 }
 
 .notes-subheading{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--font-clr)
 }
 
-#note-icon {
+#note-icon, #add-note-icon {
     font-size: 25px;
+    color:white;
+
 }
 
-#date-sort-icon, #alpha-sort-icon {
-    padding: 3px;
+#date-sort-icon, #alpha-sort-icon, #add-note-icon {
+    padding: 4px;
     cursor: pointer;
+    color: white;
 }
 
 .note-selection{
-    border: 1px solid black;
+    border-bottom: 1px solid var(--font-clr);
     width: 100%;
     cursor: pointer;
+    overflow:hidden;
+
 }
 
 .all-notes-area{
-    border: 2px solid red;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
     width: 20%;
-    height: 100%;
+    /* height: 100%; */
+    padding: 0 1rem;
+    background-color: var(--bg-clr);
+    display:flex;
+    flex-direction: column;
 
 }
 
 
 .new-note-area{
     border: 2px solid blue;
-    width: 60%
-
+    width: 60%;
 }
 
 #new-note-form{
@@ -58,12 +87,48 @@ button {
     resize:none;
     height: 100%;
     width: 100%;
+    background-color: rgb(40, 37, 37);
+    color: var(--font-clr)
 
     /* need to think about scrolling and height  */
-
 } 
 
 
+
+#title-textarea {
+    font-size: 2rem;
+    overflow: hidden;
+}
+
+#note-content-textarea{
+    font-size: 18px;
+}
 #save-note-btn {
     width: 5rem;
+    background-color: rgb(54, 56, 56);
+    padding: 0.2rem;
+    color:var(--font-clr)
+}
+
+#new-note-form {
+    background-color: rgb(40, 37, 37);
+}
+
+#delete-note-modal-container > button {
+    background-color: rgb(54, 56, 56);
+    margin-bottom: 0.2rem;
+    color: var(--font-clr)
+}
+
+.note-tally {
+    color:white;
+}
+
+.note-selection #note-titles {
+    color:white;
+}
+
+
+#tag-names {
+    color:white;
 }

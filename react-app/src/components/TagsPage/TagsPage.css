@@ -111,6 +111,17 @@
     margin-bottom: 0.5rem;
 }
 
+#tag-list-top-create-button > * {
+    padding: 1rem;
+    font-size: 1rem;
+}
+#tag-list-top-sort-button > * {
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+
+
 /* for note-- tag buttons, from notes */
 .tag-note-tag-button > * {
     background-color: var(--mustard);

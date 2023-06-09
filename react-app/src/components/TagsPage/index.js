@@ -152,45 +152,45 @@ const TagsPage = () => {
 ////////////END add tag to select note
 
 
-    function noteTest(noteId) {
-        try {
-            const currentNote = allnotes.allNotes[noteId]
-            const currentNoteTags = notetags.note_to_tags[noteId]
+    // function noteTest(noteId) {
+    //     try {
+    //         const currentNote = allnotes.allNotes[noteId]
+    //         const currentNoteTags = notetags.note_to_tags[noteId]
 
-            console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
-            console.log("CURRENT NOTE TAGS", currentNoteTags)
+    //         console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
+    //         console.log("CURRENT NOTE TAGS", currentNoteTags)
 
-            return (
-                <>
-                <div>
-                    NOTE TEST, with NOTE {noteId}
-                </div>
-                <div>id: {currentNote.id}</div>
-                <div>title: {currentNote.title}</div>
-                <div>preview: {currentNote.body.slice(0, 25)}...</div>
-                <br></br>
-                <div>TAGS:</div>
-                {currentNoteTags && currentNoteTags.map((tagId) => {
-                    return (
-                        <>
-                        {/* <a href="/tags">
-                        <span>{tagId}: {alltags[tagId].name}</span>
-                        </a>
-                        <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button> */}
-                        <div className="tag-button">
-                            <a href="/tags">
-                                <span id='tag-names'>{`${alltags[tagId].name} `}</span>
-                            </a>
-                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
-                        </div>
-                        </>
-                        )
-                })}
-                </>
-            )
-        } catch {}
+    //         return (
+    //             <>
+    //             <div>
+    //                 NOTE TEST, with NOTE {noteId}
+    //             </div>
+    //             <div>id: {currentNote.id}</div>
+    //             <div>title: {currentNote.title}</div>
+    //             <div>preview: {currentNote.body.slice(0, 25)}...</div>
+    //             <br></br>
+    //             <div>TAGS:</div>
+    //             {currentNoteTags && currentNoteTags.map((tagId) => {
+    //                 return (
+    //                     <>
+    //                     {/* <a href="/tags">
+    //                     <span>{tagId}: {alltags[tagId].name}</span>
+    //                     </a>
+    //                     <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button> */}
+    //                     <div className="tag-button">
+    //                         <a href="/tags">
+    //                             <span id='tag-names'>{`${alltags[tagId].name} `}</span>
+    //                         </a>
+    //                         <span onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
+    //                     </div>
+    //                     </>
+    //                     )
+    //             })}
+    //             </>
+    //         )
+    //     } catch {}
 
-    }
+    // }
 
     async function removeTagFromNote(noteId, tagId) {
 
@@ -376,14 +376,14 @@ const TagsPage = () => {
             </div> */}
 
             <div className="tag-list-top-create-and-sort-buttons">
-                 <span>
+                 <span id="tag-list-top-create-button">
                 <OpenModalButton
                     buttonText="Create New Tag"
                     modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
                 />
                 </span>
-                <span>
-                    <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
+                <span id="tag-list-top-sort-button">
+                    <button onClick={toggleSort}>Toggle Sort: A-Z or #notes</button>
                 </span>
             </div>
 

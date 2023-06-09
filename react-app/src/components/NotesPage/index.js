@@ -228,6 +228,7 @@ const CurrentNotes = () => {
                     </span>
                 </div>
                 <div className="notes-subheading">
+
                     {<span className='note-tally'>{listOfNotes.length} notes</span>}
                     <div className='sorting-icons'>
                         <span id='alpha-sort-icon' className="material-symbols-outlined"
@@ -244,6 +245,7 @@ const CurrentNotes = () => {
                     </div>
                 </div>
 
+                <div>
                 {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p className='note-titles'>{note.title}</p>
@@ -259,6 +261,7 @@ const CurrentNotes = () => {
                         </div>
                     </div>
                 ))
+
                     : listRendered.map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                             <p id='note-titles'>{note.title}</p>
@@ -276,8 +279,8 @@ const CurrentNotes = () => {
                             </div>
                         </div>
                     ))
-
                 }
+                </div>
 
 
             </div>

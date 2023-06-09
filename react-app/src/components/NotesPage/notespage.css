@@ -6,7 +6,7 @@
 }
 
 *{
-   box-sizing: border-box; 
+   box-sizing: border-box;
 
 }
 
@@ -54,6 +54,7 @@ button {
 
 .note-selection{
     border-bottom: 1px solid var(--font-clr);
+    /* height: 100%; */
     width: 100%;
     cursor: pointer;
     overflow:hidden;
@@ -63,24 +64,25 @@ button {
 .all-notes-area{
     border-left: 2px solid red;
     border-right: 2px solid red;
-    width: 20%;
-    /* height: 100%; */
+    width: 50%;
+    height: 100%;
     padding: 0 1rem;
     background-color: var(--bg-clr);
     display:flex;
     flex-direction: column;
-
+    overflow: scroll;
 }
 
 
 .new-note-area{
     border: 2px solid blue;
-    width: 60%;
+    width: 100%;
 }
 
 #new-note-form{
     display:flex;
     flex-direction:column;
+    height:100%;
 }
 
 #title-textarea, #note-content-textarea{
@@ -92,13 +94,14 @@ button {
     color: var(--font-clr)
 
     /* need to think about scrolling and height  */
-} 
+}
 
 
 
 #title-textarea {
     font-size: 2rem;
     overflow: hidden;
+    height: 3rem;
 }
 
 #note-content-textarea{
@@ -133,4 +136,3 @@ button {
 #tag-names {
     color:white;
 }
-

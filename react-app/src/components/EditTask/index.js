@@ -76,7 +76,7 @@ const EditTask = ({taskId}) =>{
         const errors = []
         if (title.length<5 ||title.length>30 ) errors.push('Please provide a title between 5 and 50 characters.')
         if (description.length<5 ||description.length>500) errors.push('Please provide a valid description between 5 and 500 characters.')
-        if(new Date(due_date).getTime() < Date.now() || !due_date) errors.push('Please provide a valid due date in the future')
+        if((new Date(due_date).getTime() < Date.now() || !due_date) && !completed ) errors.push('Please provide a valid due date in the future')
         setValidationErrors(errors)
         // if (errors.length) setDisabled(true)
     }, [title, description, due_date])
@@ -86,8 +86,9 @@ const EditTask = ({taskId}) =>{
 
     return (
         <div className="form-page">
+            {/* <h1>Edit Task</h1> */}
+            <br></br>
             <div className="form-container">
-                <h1>Edit Task</h1>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <div className="errors-info">
                         <h2>The following errors were found:</h2>
@@ -102,8 +103,9 @@ const EditTask = ({taskId}) =>{
                     onSubmit={(e) => editForm(e)}
                     encType='multipart/form-data'
                 >
-                    <label>Title
+                    <label>
                         <input
+                            placeholder="Title"
                             id = "title"
                             type='textarea'
                             value = {title}
@@ -111,34 +113,41 @@ const EditTask = ({taskId}) =>{
                         >
                         </input>
                     </label>
-                    <label>Description
+                    <label>
                         <textarea
+                            placeholder="Description"
                             id = "description"
                             type='textarea'
                             value = {description}
                             onChange={e=> setDescription(e.target.value)}
                         >
                         </textarea>
-                    </label>
-                    <label>Completed?
-                        <input
-                            id = "completed"
-                            type='checkbox'
-                            value = {completed}
-                            onClick={e=> setCompleted(!completed)}
-                        >
-                        </input>
-                    </label>
-                    <label>Due Date
-                        <input
-                            id = "due_date"
-                            type='date'
-                            value = {due_date}
-                            onChange={e=> setDue_date(e.target.value)}
-                        >
-                        </input>
-                    </label>
-                    <button id="submit_button" type='submit'>Save Changes</button>
+                   </label>
+                        <br></br>
+                        <div id="completed-due">
+                            <label id="completed">Completed
+                                <input
+                                    id = "completed"
+                                    type='checkbox'
+                                    value = {completed}
+                                    onClick={e=> setCompleted(!completed)}
+                                >
+                                </input>
+                            </label>
+                            <label id = "due_date">Due Date
+                                <input
+                                    id = "due_date"
+                                    type='date'
+                                    value = {due_date}
+                                    onChange={e=> setDue_date(e.target.value)}
+                                >
+                                </input>
+                            </label>
+                        </div>
+                    <br></br>
+                    <div>
+                        <button id="submit_button" type='submit'>Save Changes</button>
+                    </div>
                 </form>
             </div>
             {/* {showTask ? <SingleTask taskId={task.id}/> : null} */}

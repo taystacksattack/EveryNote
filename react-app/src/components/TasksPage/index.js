@@ -77,17 +77,22 @@ const CurrentTasks = () => {
     if(!tasksObj) return (<div>Loading</div>)
     console.log("heres the data ", tasks)
     return(
-        <div>
+
             <div id='tasks-area-wrapper'>
                 <div id="tasks-list">
                     <h1>Tasks</h1>
                     <br></br>
-                    <Link onClick={e=>handleNewTask(e)}>New Task</Link>
-                    <select onChange={(e) => setSortType(e.target.value)}>
-                        <option value="due_date">Due Date</option>
-                        <option value="created_at">Created Date</option>
-                        <option value="title">Title, A-Z</option>
-                    </select>
+                    <div id="new-task">
+                        <Link onClick={e=>handleNewTask(e)}>New Task</Link>
+                    </div>
+                    <br></br>
+                    <div id="select-filter">
+                        <select onChange={(e) => setSortType(e.target.value)}>
+                            <option value="due_date">Due Date</option>
+                            <option value="created_at">Created Date</option>
+                            <option value="title">Title, A-Z</option>
+                        </select>
+                    </div>
                     {tasksObj && tasks.map(task => {
                         return(
                             <div key={task.id} id='each-task'>
@@ -114,7 +119,7 @@ const CurrentTasks = () => {
                     {/* <SingleTask/> */}
                 </div>
             </div>
-        </div>
+
 
     )
 

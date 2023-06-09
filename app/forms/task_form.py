@@ -10,7 +10,7 @@ class TaskForm(FlaskForm):
                         DataRequired(), Length(min=5, max=50)])
 
     description = TextAreaField(
-        "Description of task", validators=[DataRequired()])
+        "Description of task", validators=[DataRequired(), Length(min=5, max=500, message="Please input a task less than 500 characters.")])
 
     due_date = DateField("when should this task be completed?")
 

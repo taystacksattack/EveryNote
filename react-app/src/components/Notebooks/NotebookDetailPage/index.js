@@ -12,6 +12,7 @@ const NotebookDetails = () => {
     const [newBody, setNewBody] = useState('')
     const [title, setTitle] = useState('')
     const [bool, setBool] = useState(true)
+    const [errors, setErrors] = useState({})
 
     const dispatch = useDispatch()
     const notebookId = useParams().notebookId
@@ -20,45 +21,74 @@ const NotebookDetails = () => {
     const notes = useSelector(state => state.notes.allNotes)
 
     const userObj = useSelector(state => state.session.user)
-    console.log("userOjb", userObj)
     const filtered = Object.values(notes).filter(note => {
 
         return note.notebookId == notebookId
     })
 
 
+    const err = {}
     const handleSubmitUpdate = (e) => {
         e.preventDefault()
-        const updateNote = {
-            "id": currentNote.id,
-            "ownerId": userObj.id,
-            "title": title,
-            "body": newBody,
-            "notebookId": notebookId,
-            "trash": false,
+
+        if (title.length === 0) err.title = "Your note name must contain at least one character"
+        if (title.length > 30) err.title = "body character limit is between 1 and 2500 characters"
+
+        if (Object.values(err).length === 0) {
+
+            const updateNote = {
+                "id": currentNote.id,
+                "ownerId": userObj.id,
+                "title": title,
+                "body": newBody,
+                "notebookId": notebookId,
+                "trash": false,
+            }
+            dispatch(editNoteThunk(updateNote, updateNote.id))
+            setBool(!bool)
         }
-        console.log("update:", updateNote)
-        dispatch(editNoteThunk(updateNote, updateNote.id))
-        setBool(!bool)
+        setErrors(err)
+
     }
 
     const handleSubmitCreate = (e) => {
         e.preventDefault()
-        const newNote = {
-            "id": currentNote.id,
-            "ownerId": userObj.id,
-            "title": title,
-            "body": newBody,
-            "notebookId": notebookId,
-            "trash": false,
-        }
-        console.log("newNote:", newNote)
-        dispatch(createNoteThunk(newNote))
-        setTitle('')
-        setNewBody('')
-        setCurrentNote({ title: '' })
-        setBool(!bool)
 
+        if (title.length === 0) err.title1 = "Your note name must contain at least one character"
+        if (title.length > 30) err.title2 = "Title character limit is between 1 and 30 characters"
+        if (newBody.length === 0) err.body1 = "Your note name must contain at least one character"
+        if (newBody.length > 2500) err.body2 = "body character limit is between 1 and 2500 characters"
+        if (Object.values(err).length === 0) {
+            const newNote = {
+                "id": currentNote.id,
+                "ownerId": userObj.id,
+                "title": title || "Untitled",
+                "body": newBody,
+                "notebookId": notebookId,
+                "trash": false,
+            }
+            dispatch(createNoteThunk(newNote))
+            setTitle('')
+            setNewBody('')
+            setCurrentNote({ title: '' })
+            setBool(!bool)
+        }
+        setErrors(err)
+
+    }
+
+    const bigCheckState = () => {
+        let boolean = false
+        if (title.length === 0 || title.length > 30) boolean = true
+        if (newBody.length === 0 || newBody > 2500) boolean = true
+        return boolean
+    }
+
+    const checkState = () => {
+        let boolean = false
+        if (title.length === 0) boolean = true
+        if (title.length > 30) boolean = true
+        return boolean
     }
 
     const deleteButton = (e) => {
@@ -71,21 +101,29 @@ const NotebookDetails = () => {
         setNewBody(note.body)
     }
 
-    const updateOrCreate = () => {
-        if (currentNote.id) {
-            return <button type="submit" onClick={handleSubmitUpdate}>update</button>
-        }
-        return <button type='submit' onClick={handleSubmitCreate}>create</button>
+    // const updateOrCreate = () => {
+    //     if (currentNote.id) {
+    //         return <button type="submit" onClick={handleSubmitUpdate}>
+    //             Update {currentNote.title} Notebook
+    //         </button>
+    //     }
+    //     return <button type='submit' onClick={handleSubmitCreate}>Create New Note</button>
+    // }
+
+    const NewNotebookNow = () => {
+        setErrors(err)
+        setTitle('')
+        setNewBody('')
+        setCurrentNote({ title: '' })
+        setBool(!bool)
     }
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
         dispatch(getNotesThunk())
-        // setTitle('')
     }, [dispatch, newBody, bool, title])
 
-
-
+    console.log(errors)
     return (
         <div>
 
@@ -93,6 +131,7 @@ const NotebookDetails = () => {
             <div className='notebook-content-wrapper'>
 
                 <div className='notebook-content-left'>
+                    <button type='submit' onClick={NewNotebookNow}>Create New Note</button>
                     <ol>
                         {filtered.map(note => {
                             return (
@@ -119,7 +158,7 @@ const NotebookDetails = () => {
 
                 </div>
                 <div className='notebook-detail-content-right'>
-                    <label type="submit">
+                    <form type="submit" className='notebook-details-form'>
                         <label type="type">
                             <textarea
                                 className='notebook-detail-textarea-title'
@@ -128,6 +167,7 @@ const NotebookDetails = () => {
                                 onChange={(e) => setTitle(e.target.value)}
                             ></textarea>
                         </label>
+                        <p className='errors'>{errors.title1 || errors.title2}</p>
                         <label type="text">
                             <textarea
                                 className='notebook-detail-textarea-body'
@@ -135,8 +175,16 @@ const NotebookDetails = () => {
                                 onChange={(e) => setNewBody(e.target.value)}
                             ></textarea>
                         </label>
-                        {updateOrCreate()}
-                    </label>
+                        <p className='errors'>{errors.body1 || errors.body2}</p>
+
+                        {/* {updateOrCreate()} */}
+                        <div className='notebook-detail-button-container'>
+                            <button type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
+                                Update {currentNote.title} Notebook
+                            </button>
+                            <button type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

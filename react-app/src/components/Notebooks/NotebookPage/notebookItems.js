@@ -24,10 +24,6 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
         return note.notebookId == notebookId
     })
 
-    console.log("notebook", notebook)
-    console.log("notes", notes)
-    console.log("notebookId", notebookId)
-    console.log("filtered", filtered)
     const findOwner = () => {
         return userObj.username
     }

@@ -1,3 +1,10 @@
+/*:root {
+    --bg-clr: #1a1a1a;
+    --font-clr: #a6a6a6;
+    --evernote-green: #008f26
+}  */
+
+
 .tag-node {
     border: 3px solid lightgray;
     padding: 0.5em;
@@ -5,7 +12,31 @@
 }
 
 .tag-notetest-node {
-    border: 3px solid lightgray;
+    border: 3px solid darkcyan;
     padding: 0.5em;
     margin: 0.3em;
+}
+
+.tag-notetest-note-controls {
+    border: 2px solid green;
+    /* color: white; */
+}
+
+.tag-notetest-note-controls select {
+    color: white;
+}
+
+.tag-page-wrapper {
+    color: var(--font-clr);
+    width: 50%;
+}
+
+/* top section, above taglist */
+.tag-list-top {
+    border: 1px solid fuchsia;
+}
+
+/* for note-- tag buttons, from notes */
+.tag-note-tag-button > * {
+    background-color: var(--mustard);
 }

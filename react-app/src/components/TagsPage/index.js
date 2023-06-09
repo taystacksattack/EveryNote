@@ -273,33 +273,36 @@ const TagsPage = () => {
     }
 
     return (
-        <div>
+        <div className="tag-page-wrapper">
+
+        <div className="tag-list-top">
             <h1> Tags Page!</h1>
 
-
-            {/* Adding note example here */}
             <div className="tag-notetest-node">
                 {noteTest(1)}
             </div>
-            <div>
+            <div className="tag-notetest-note-controls">
+
                 <AddTagForm noteId="1" />
+                {/* <button onClick={createTest}>Test, Create New Tag</button>
+                 */}
+                <button onClick={() => {addNoteTag(1, 2)}}>Test: Add to Note1, Tag2</button>
+
             </div>
-            {/* End of note example */}
 
-
-
-            <br></br>
-            <div>
+            <div className="tag-list-top-create-new-button">
                 <OpenModalButton
                     buttonText="Create New Tag"
                     modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
                 />
             </div>
 
-            {/* <button onClick={createTest}>Test, Create New Tag</button>
-             */}
-            <button onClick={() => {addNoteTag(1, 2)}}>Test: Add to Note1, Tag2</button>
             <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
+
+        </div>
+        {/* end of tag-list-top */}
+
+
             <div>
                 {alphaOrNum().map(
                 // {sortedByAlphaList && sortedByAlphaList.map(
@@ -345,4 +348,3 @@ const TagsPage = () => {
 }
 
 export default TagsPage
-

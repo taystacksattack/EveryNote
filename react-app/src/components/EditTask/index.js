@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { editTaskThunk, getTasksThunk } from '../../store/tasks';
 import { useHistory, useParams } from 'react-router-dom';
+import SingleTask from '../TasksPage/SingleTask';
+import '../TasksPage/TasksPage.css'
 
 const dateConvertor = (time) =>{
     // console.log(new Date(time).getTime())
@@ -30,6 +32,7 @@ const EditTask = ({taskId}) =>{
     const [completed, setCompleted] = useState(task?.completed)
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [showTask, setShowTask] =useState(false)
 
 
     //`${new Date(task?.due_date).getFullYear()}-${new Date(task?.due_date).getMonth()}-${new Date(task?.due_date).getDate()}`
@@ -66,12 +69,12 @@ const EditTask = ({taskId}) =>{
         setDue_date('')
         setCompleted(false)
         setHasSubmitted(false)
-        history.push('/tasks')
+        setShowTask(true)
     }
 
     useEffect(() => {
         const errors = []
-        if (title.length<5 ||title.length>50 ) errors.push('Please provide a title between 5 and 50 characters.')
+        if (title.length<5 ||title.length>30 ) errors.push('Please provide a title between 5 and 50 characters.')
         if (description.length<5 ||description.length>500) errors.push('Please provide a valid description between 5 and 500 characters.')
         if(new Date(due_date).getTime() < Date.now() || !due_date) errors.push('Please provide a valid due date in the future')
         setValidationErrors(errors)
@@ -79,6 +82,7 @@ const EditTask = ({taskId}) =>{
     }, [title, description, due_date])
 
 
+    if (showTask) return (<SingleTask taskId={task.id}/>)
 
     return (
         <div className="form-page">
@@ -108,13 +112,13 @@ const EditTask = ({taskId}) =>{
                         </input>
                     </label>
                     <label>Description
-                        <input
+                        <textarea
                             id = "description"
                             type='textarea'
                             value = {description}
                             onChange={e=> setDescription(e.target.value)}
                         >
-                        </input>
+                        </textarea>
                     </label>
                     <label>Completed?
                         <input
@@ -137,6 +141,7 @@ const EditTask = ({taskId}) =>{
                     <button id="submit_button" type='submit'>Save Changes</button>
                 </form>
             </div>
+            {/* {showTask ? <SingleTask taskId={task.id}/> : null} */}
         </div>
     )
 

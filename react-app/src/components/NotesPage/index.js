@@ -55,7 +55,7 @@ const CurrentNotes = () => {
     useEffect(() => {
         dispatch(getTagsThunk())
         dispatch(getNoteTagsThunk())
-    }, [dispatch])
+    }, [dispatch, renderSwitch])
 
 
     useEffect(() => {
@@ -181,15 +181,17 @@ const CurrentNotes = () => {
                 <div>title: {currentNote.title}</div>
                 <div>preview: {currentNote.body.slice(0, 25)}...</div>
                 <br></br> */}
-                <div>TAGS:</div>
+                {/* <div>TAGS:</div> */}
+                <br></br>
                 {currentNoteTags && currentNoteTags.map((tagId) => {
                     return (
                         <>
-                        <a href="/tags">
-                        <span id='tag-names'>{tagId}: {alltags[tagId].name}</span>
-                        </a>
-                        <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button>
-
+                        <div className="tag-button">
+                            <a href="/tags">
+                                <span id='tag-names'>{`${alltags[tagId].name} `}</span>
+                            </a>
+                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                        </div>
                         </>
                         )
                 })}
@@ -255,7 +257,7 @@ const CurrentNotes = () => {
 
                         <div id="delete-note-modal-container">
                             <OpenModalButton
-                                buttonText="Trash"
+                                buttonText='🗑'
                                 modalComponent={<DeleteModal note={note} />}
                             />
                         </div>
@@ -264,19 +266,21 @@ const CurrentNotes = () => {
 
                     : listRendered.map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                            <p id='note-titles'>{note.title}</p>
-                            <p>{note.updated_at.split('.')[0]}</p>
+                            <div id="whole-note-data-wrapper">
+                                <div id="note-data-wrapper">
+                                    <p id='note-titles'>{note.title}</p>
+                                    <p>{note.updated_at.split('.')[0]}</p>
+                                </div>
+                                <div id="delete-note-modal-container">
+                                    <OpenModalButton
+                                        buttonText='🗑'
+                                        modalComponent={<DeleteModal note={note} />}
+                                    />
+                                </div>
 
-
+                            </div>
                             {noteTest(note.id)}
 
-                            <div id="delete-note-modal-container">
-
-                                <OpenModalButton
-                                    buttonText="Trash"
-                                    modalComponent={<DeleteModal note={note} />}
-                                />
-                            </div>
                         </div>
                     ))
                 }

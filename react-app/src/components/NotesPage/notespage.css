@@ -58,6 +58,7 @@ button {
     width: 100%;
     cursor: pointer;
     overflow:hidden;
+    padding: .3rem 0;
 
 }
 
@@ -71,6 +72,7 @@ button {
     display:flex;
     flex-direction: column;
     overflow: scroll;
+
 }
 
 
@@ -109,9 +111,11 @@ button {
 }
 #save-note-btn {
     width: 5rem;
-    background-color: rgb(54, 56, 56);
+    background-color: var(--mustard);
     padding: 0.2rem;
-    color:var(--font-clr)
+    color:rgb(40, 37, 37);
+    border-radius: 8pt;
+    margin: .4rem;
 }
 
 #new-note-form {
@@ -119,9 +123,25 @@ button {
 }
 
 #delete-note-modal-container > button {
-    background-color: rgb(54, 56, 56);
+    border: none;
+    background-color: transparent;
     margin-bottom: 0.2rem;
-    color: var(--font-clr)
+    color: var(--font-clr);
+}
+
+#delete-note-modal-container{
+    display:flex;
+    justify-content: flex-end;
+    /* border:red solid 1px; */
+}
+
+
+#whole-note-data-wrapper{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border:red solid 1px; */
 }
 
 .note-tally {
@@ -134,5 +154,26 @@ button {
 
 
 #tag-names {
-    color:white;
+    color:black;
+    background-color: var(--mustard);
+    font-size: .7em;
+}
+
+.tag-button > *{
+    background-color: var(--mustard);
+}
+
+.fa-circle-xmark{
+    background-color: var(--mustard);
+    color: rgb(54, 56, 56);
+    margin-left: .3rem;
+}
+
+.tag-button{
+    background-color: var(--mustard);
+    display: inline-flex;
+    border-radius: 5px;
+    padding: .2rem;
+    margin: 0rem .2rem 0.6rem 0;
+    /* width: 100%; */
 }

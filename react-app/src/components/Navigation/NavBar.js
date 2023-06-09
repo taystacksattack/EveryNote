@@ -11,7 +11,7 @@ function NavBar({ isLoaded }){
 	// console.log(sessionUser)
 
 	return (
-		<ul>
+		<ul className="nav-links">
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />

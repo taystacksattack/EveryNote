@@ -16,6 +16,13 @@
   /* background-color: #c49f2f; */
 }
 
+/* here is the navlink font */
+li > *{
+  color: rgb(225, 133, 20);
+  font-size: 16pt;
+  
+  /* margin: 5rem; */
+}
 
 .hidden {
   display: none;

@@ -55,7 +55,7 @@ const CurrentNotes = () => {
     useEffect(() => {
         dispatch(getTagsThunk())
         dispatch(getNoteTagsThunk())
-    }, [dispatch])
+    }, [dispatch, renderSwitch])
 
 
     useEffect(() => {
@@ -115,8 +115,8 @@ const CurrentNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (Object.values(clickedNote).length > 0) {
-            console.log("updatingggggggggggg", title, noteContent)
-            console.log("note info", clickedNote)
+            // console.log("updatingggggggggggg", title, noteContent)
+            // console.log("note info", clickedNote)
 
 
             const updatedNote = {
@@ -169,8 +169,8 @@ const CurrentNotes = () => {
             const currentNote = allnotes.allNotes[noteId]
             const currentNoteTags = notetags.note_to_tags[noteId]
 
-            console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
-            console.log("CURRENT NOTE TAGS", currentNoteTags)
+            // console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
+            // console.log("CURRENT NOTE TAGS", currentNoteTags)
 
             return (
                 <>
@@ -181,15 +181,17 @@ const CurrentNotes = () => {
                 <div>title: {currentNote.title}</div>
                 <div>preview: {currentNote.body.slice(0, 25)}...</div>
                 <br></br> */}
-                <div>TAGS:</div>
+                {/* <div>TAGS:</div> */}
+                <br></br>
                 {currentNoteTags && currentNoteTags.map((tagId) => {
                     return (
                         <>
-                        <a href="/tags">
-                        <span id='tag-names'>{tagId}: {alltags[tagId].name}</span>
-                        </a>
-                        <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button>
-
+                        <div className="tag-button">
+                            <a href="/tags">
+                                <span id='tag-names'>{`${alltags[tagId].name} `}</span>
+                            </a>
+                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                        </div>
                         </>
                         )
                 })}
@@ -201,11 +203,11 @@ const CurrentNotes = () => {
 
     async function removeTagFromNote(noteId, tagId) {
 
-        console.log("remove tag from note")
+        // console.log("remove tag from note")
         return dispatch(deleteNoteTagThunk(noteId, tagId))
         .then(() => setRenderSwitch(!renderSwitch))
         .catch(async (res) => {
-            console.log("errors?", res)
+            // console.log("errors?", res)
         })
     }
 
@@ -228,6 +230,7 @@ const CurrentNotes = () => {
                     </span>
                 </div>
                 <div className="notes-subheading">
+
                     {<span className='note-tally'>{listOfNotes.length} notes</span>}
                     <div className='sorting-icons'>
                         <span id='alpha-sort-icon' className="material-symbols-outlined"
@@ -244,6 +247,7 @@ const CurrentNotes = () => {
                     </div>
                 </div>
 
+                <div>
                 {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                     <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
                         <p className='note-titles'>{note.title}</p>
@@ -253,31 +257,34 @@ const CurrentNotes = () => {
 
                         <div id="delete-note-modal-container">
                             <OpenModalButton
-                                buttonText="Trash"
+                                buttonText='🗑'
                                 modalComponent={<DeleteModal note={note} />}
                             />
                         </div>
                     </div>
                 ))
+
                     : listRendered.map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                            <p id='note-titles'>{note.title}</p>
-                            <p>{note.updated_at.split('.')[0]}</p>
+                            <div id="whole-note-data-wrapper">
+                                <div id="note-data-wrapper">
+                                    <p id='note-titles'>{note.title}</p>
+                                    <p>{note.updated_at.split('.')[0]}</p>
+                                </div>
+                                <div id="delete-note-modal-container">
+                                    <OpenModalButton
+                                        buttonText='🗑'
+                                        modalComponent={<DeleteModal note={note} />}
+                                    />
+                                </div>
 
-
+                            </div>
                             {noteTest(note.id)}
 
-                            <div id="delete-note-modal-container">
-
-                                <OpenModalButton
-                                    buttonText="Trash"
-                                    modalComponent={<DeleteModal note={note} />}
-                                />
-                            </div>
                         </div>
                     ))
-
                 }
+                </div>
 
 
             </div>

@@ -7,3 +7,17 @@
     font-size: 16pt;
     margin-top: 1rem
 } */
+
+:root {
+    --bg-clr: #1a1a1a;
+    --font-clr: #a6a6a6;
+    --evernote-green: #008f26;
+    --txt-area-gray: rgb(40, 37, 37);
+    --mustard: #c49f2f;
+}
+
+*{
+    margin:0;
+    background-color: var(--bg-clr);
+    font-family: arial;
+}

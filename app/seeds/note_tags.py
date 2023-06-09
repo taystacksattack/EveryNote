@@ -17,9 +17,9 @@ def seed_notetags():
     #     name="Animal info"
 #Note.query.filter(Note.ownerId == current_user.id).all()
     # seed_note_1 = Note.query.filter(Note.title =="2023 Tax Season").first()
-    seed_note_1 = Note.query.filter(Note.title =="2021 Tax Season").first()
-    seed_note_2 = Note.query.filter(Note.title =="2022 Tax Season").first()
-    seed_note_3 = Note.query.filter(Note.title =="2023 Tax Season").first()
+    seed_note_1 = Note.query.filter(Note.title =="2021 Tax ").first()
+    seed_note_2 = Note.query.filter(Note.title =="2022 Tax ").first()
+    seed_note_3 = Note.query.filter(Note.title =="2023 Tax ").first()
     # seed_note_2 = Note.query.get(2) #2022 Tax Season
     # seed_note_3 = Note.query.get(3) #2023 Tax Season
 
@@ -33,8 +33,8 @@ def seed_notetags():
     seed_note_4 = Note.query.filter(Note.title == 'Pokemon Types').first()
     # seed_note_5 = Note.query.get(5) #What inspired the creation of the first Pokemon game..
     # seed_note_6 = Note.query.get(6) #How has the Pokemon community impacted..
-    seed_note_5 = Note.query.filter(Note.title.like('%first Pokemon game%')).first()
-    seed_note_6 = Note.query.filter(Note.title.like('%How has the Pokemon%')).first()
+    seed_note_5 = Note.query.filter(Note.title.like('%first Pokemon game?%')).first()
+    seed_note_6 = Note.query.filter(Note.title.like('%Pokemon impacted popular culture %')).first()
 
     # print ("\n\n\nignore?", seed_note_5.to_dict())
 
@@ -55,14 +55,14 @@ def seed_notetags():
     # seed_tag_9 = Tag.query.get(5) #Yu-Gi-Oh
 
 
-    seed_note_10 = Note.query.filter(Note.title.like("%Thrill and Peril%")).first()
+    seed_note_10 = Note.query.filter(Note.title.like("%Tales of Danger Unleashed%")).first()
     seed_tag_10_1 = Tag.query.get(1)
     seed_tag_10_2 = Tag.query.get(2)
     seed_tag_10_3 = Tag.query.get(3)
 
-    seed_note_11 = Note.query.filter(Note.title.like('%Digimon Digital Monsters%')).first()
+    seed_note_11 = Note.query.filter(Note.title.like('%Digimon What are they%')).first()
     seed_note_12 = Note.query.filter(Note.title.like('%concept of Digivolution%')).first()
-    seed_note_13 = Note.query.filter(Note.title.like('%Digimon franchise%')).first()
+    seed_note_13 = Note.query.filter(Note.title.like('%basic premise of the Digimon %')).first()
     # seed_note_11 = Note.query.get(7)
     # seed_note_12 = Note.query.get(8)
     # seed_note_13 = Note.query.get(9)

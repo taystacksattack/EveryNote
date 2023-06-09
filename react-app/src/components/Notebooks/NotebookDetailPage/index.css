@@ -1,5 +1,44 @@
-textarea {
+.notebook-detail-main-ultra-wrapper {
+  width: 60%;
+}
+
+.notebook-content-wrapper {
+  display: grid;
+  grid-template-columns: 35% 80%;
+  column-gap: 20%;
+}
+.notebook-detail-h1 {
+  color: white;
+}
+.notebook-detail-title {
+  color: rgba(255, 255, 255, 0.267);
+}
+
+.notebook-detail-content-right {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.notebook-detail-textarea-title {
+  color: white;
+  width: 80%;
+}
+.notebook-detail-textarea-body {
   resize: none;
-  width: 50%;
+  width: 80%;
   height: 20rem;
+  color: white;
+}
+
+.notebook-details-form {
+  width: 80%;
+}
+.notebook-detail-button-container {
+  width: 80%;
+}
+.notebook-content-left {
+  width: 100%;
+}
+.notebook-detail-note-li {
+  /* border: solid 1px green; */
+  width: 100%;
 }

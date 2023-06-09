@@ -18,40 +18,40 @@ def seed_notebooks():
         title="Yu_Gi_Oh", is_default=False, ownerId=1,
     )
     danger = Notebook(
-        title="danger", is_default=True, ownerId=2,
+        title="danger", is_default=False, ownerId=1,
     )
     war = Notebook(
-        title="war", is_default=True, ownerId=3,
+        title="war", is_default=False, ownerId=1,
     )
     lies = Notebook(
-        title="lies", is_default=True, ownerId=4,
+        title="lies", is_default=False, ownerId=1,
     )
     law = Notebook(
-        title="law", is_default=True, ownerId=5,
+        title="law", is_default=False, ownerId=1,
     )
     Movies = Notebook(
-        title="Movies", is_default=True, ownerId=6,
+        title="Movies", is_default=False, ownerId=1,
     )
     poetry = Notebook(
-        title="poetry", is_default=True, ownerId=7,
+        title="poetry", is_default=False, ownerId=1,
     )
     Musical = Notebook(
-        title="Musical ", is_default=True, ownerId=8,
+        title="Musical ", is_default=False, ownerId=1,
     )
     cars = Notebook(
-        title="cars ", is_default=True, ownerId=9,
+        title="cars ", is_default=False, ownerId=1,
     )
     animals = Notebook(
-        title="animals ", is_default=True, ownerId=10,
+        title="animals ", is_default=False, ownerId=1,
     )
     cats = Notebook(
-        title="cats", is_default=False, ownerId=10,
+        title="cats", is_default=False, ownerId=1,
     )
     dogs = Notebook(
-        title="dogs", is_default=False, ownerId=10,
+        title="dogs", is_default=False, ownerId=1,
     )
     hippos = Notebook(
-        title="hippos", is_default=False, ownerId=10,
+        title="hippos", is_default=False, ownerId=1,
     )
 
     db.session.add(taxes)

@@ -18,7 +18,7 @@ function NavBar({ isLoaded }){
 				</li>
 			)}
 			<li>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/notes">Home</NavLink>
 			</li>
 			<li>
 				<NavLink exact to="/notes">Notes</NavLink>

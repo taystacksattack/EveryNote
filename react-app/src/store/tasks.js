@@ -51,14 +51,22 @@ export const createTaskThunk = (task) => async (dispatch) => {
         method: 'POST',
         body: task
     })
-    console.log('RESPONSE FROM SQLALCHEMY', response)
+    console.log('RAW RESPONSE FROM SQLALCHEMY', response)
 
     if (response.ok){
-        const {result} = await response.json()
-        console.log("response ok - new task", result)
-        dispatch(createTask(result))
+        const data = await response.json()
+        console.log("response ok - new task", data)
+        if(data.errors){
+            return data.errors
+        }
+        return null
+    } else if (response.status<=200){
+        const data = await response.json()
+        dispatch(createTask(data))
+        return null
+
     } else{
-        console.log("ERROR with the post")
+        return ["An error occurred.Please try again."]
     }
 }
 

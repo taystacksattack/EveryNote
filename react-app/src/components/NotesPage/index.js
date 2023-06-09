@@ -36,12 +36,10 @@ const CurrentNotes = () => {
 
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
-////working on this
-    const newErrors = {}
-    if (title.length > 30) newErrors.title = 'Title must be less than 30 characters.'
-    if (noteContent.length > 2500) newErrors.noteContent = 'Note is too long. Please keep note under 2500 characters. '
+    ////working on this
 
-//////
+
+    //////
 
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
@@ -121,7 +119,18 @@ const CurrentNotes = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (Object.values(clickedNote).length > 0) {
+
+        setErrors({})
+
+        const newErrors = {}
+        if (title.length > 30) newErrors.title = 'Please keep title less than 30 characters.'
+        if (noteContent.length > 2500) newErrors.noteContent = 'Please keep note less than 2500 characters.'
+
+        if (Object.values(newErrors).length) {
+            setErrors(newErrors)
+            return null
+        } else if (Object.values(clickedNote).length > 0) {
+
             console.log("updatingggggggggggg", title, noteContent)
             console.log("note info", clickedNote)
 
@@ -164,53 +173,54 @@ const CurrentNotes = () => {
         setTitle(note.title)
         setNoteContent(note.body)
         setClickedNote(note)
+        setErrors({})
 
     }
 
     //add tag stuff
     function AddTagForm(noteId) {
         const dispatch = useDispatch();
-      //   const [noteIdChoice, setNoteIdChoice] = useState("");
+        //   const [noteIdChoice, setNoteIdChoice] = useState("");
         const [tagIdChoice, setTagIdChoice] = useState();
-      
+
         // const alltags = useSelector(state => state.tags);
         // const allnotes = useSelector(state => state.notes);
         // const notetags = useSelector(state => state.notetags);
-      
+
         useEffect(() => {
-          console.log("current tagID Choice!", tagIdChoice)
+            console.log("current tagID Choice!", tagIdChoice)
         })
-      
+
         try {
-      
+
             const currentNote = allnotes.allNotes[noteId]
             const tagsOfCurrentNote = notetags.note_to_tags[noteId]
-      
+
             const allTagsValues = Object.values(alltags);
-            const allTagsList = allTagsValues.map((tag) => {return {"id": tag.id, "name": tag.name} })
-      
+            const allTagsList = allTagsValues.map((tag) => { return { "id": tag.id, "name": tag.name } })
+
             const availableTags = allTagsList.filter((val) => tagsOfCurrentNote.indexOf(val.id) === -1)
-      
-      
-      
+
+
+
             console.log("\n\n\n\nADDTAGNOTEFORM CURRENTNOTE??", currentNote)
             console.log("ADDTAGNOTEFORM TAGS OF CURRENTNOTE??", tagsOfCurrentNote)
             console.log("ALLTAGS VALUES???", allTagsValues)
             console.log("ALLTAGS LIST???", allTagsList)
             console.log("UNIQUE TAGS??", availableTags)
-      
-      
-        const handleSubmitAddTag = async (e) => {
-          e.preventDefault();
-            setRenderSwitch(!renderSwitch)
-           await dispatch(addNoteTagThunk(noteId, tagIdChoice))
-        };
-      
-        return (
-          <>
-            <div>Add Tag to Current Note</div>
-            <form action = '' onSubmit={handleSubmitAddTag}>
-              {/* <label>
+
+
+            const handleSubmitAddTag = async (e) => {
+                e.preventDefault();
+                setRenderSwitch(!renderSwitch)
+                await dispatch(addNoteTagThunk(noteId, tagIdChoice))
+            };
+
+            return (
+                <>
+                    <div>Add Tag to Current Note</div>
+                    <form action='' onSubmit={handleSubmitAddTag}>
+                        {/* <label>
                 Tag
                 <input
                   type="text"
@@ -219,30 +229,31 @@ const CurrentNotes = () => {
                   required
                 />
               </label> */}
-              <label>
-                <select name="tagId"
-                onChange={(e) => {
-                  setTagIdChoice(e.target.value)}
-              }>
-                  {/* MAP: option value=tagID, label tag_name */}
-                  <option value={""}>-Select Tag-</option>
-                  {availableTags.map((tagNamePair) => (
-                       <option value={tagNamePair.id}>{tagNamePair.name}</option>
-                  ))}
-      
-                </select>
-      
-              </label>
-              <button onClick = {handleSubmitAddTag}>Add Tag (Refresh after Add) </button>
-            </form>
-          </>
-        );
-      
-      } catch {
-          return (<></>)
-      }
-      }
-      
+                        <label>
+                            <select name="tagId"
+                                onChange={(e) => {
+                                    setTagIdChoice(e.target.value)
+                                }
+                                }>
+                                {/* MAP: option value=tagID, label tag_name */}
+                                <option value={""}>-Select Tag-</option>
+                                {availableTags.map((tagNamePair) => (
+                                    <option value={tagNamePair.id}>{tagNamePair.name}</option>
+                                ))}
+
+                            </select>
+
+                        </label>
+                        <button onClick={handleSubmitAddTag}>Add Tag (Refresh after Add) </button>
+                    </form>
+                </>
+            );
+
+        } catch {
+            return (<></>)
+        }
+    }
+
 
 
     // josh stuff//////////////////
@@ -258,30 +269,30 @@ const CurrentNotes = () => {
 
             return (
                 <>
-                {/* <div>
+                    {/* <div>
                     NOTE TEST, with NOTE {noteId}
                 </div>
                 <div>id: {currentNote.id}</div>
                 <div>title: {currentNote.title}</div>
                 <div>preview: {currentNote.body.slice(0, 25)}...</div>
                 <br></br> */}
-                {/* <div>TAGS:</div> */}
-                <br></br>
-                {currentNoteTags && currentNoteTags.map((tagId) => {
-                    return (
-                        <>
-                        <div className="tag-button">
-                            <a href="/tags">
-                                <span id='tag-names'>{`${alltags[tagId].name} `}</span>
-                            </a>
-                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
-                        </div>
-                        </>
+                    {/* <div>TAGS:</div> */}
+                    <br></br>
+                    {currentNoteTags && currentNoteTags.map((tagId) => {
+                        return (
+                            <>
+                                <div className="tag-button">
+                                    <a href="/tags">
+                                        <span id='tag-names'>{`${alltags[tagId].name} `}</span>
+                                    </a>
+                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                                </div>
+                            </>
                         )
-                })}
+                    })}
                 </>
             )
-        } catch {}
+        } catch { }
 
     }
 
@@ -289,14 +300,14 @@ const CurrentNotes = () => {
 
         console.log("remove tag from note")
         return dispatch(deleteNoteTagThunk(noteId, tagId))
-        .then(() => setRenderSwitch(!renderSwitch))
-        .catch(async (res) => {
-            console.log("errors?", res)
-        })
+            .then(() => setRenderSwitch(!renderSwitch))
+            .catch(async (res) => {
+                console.log("errors?", res)
+            })
     }
 
 
-/////////////////////////
+    /////////////////////////
 
 
 
@@ -332,42 +343,43 @@ const CurrentNotes = () => {
                 </div>
 
                 <div>
-                {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
-                    <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                        <p className='note-titles'>{note.title}</p>
-                        <p>{note.updated_at.split('.')[0]}</p>
-
-                        {noteTest(note.id)}
-                        
-                        <div id="delete-note-modal-container">
-                            <OpenModalButton
-                                buttonText='🗑'
-                                modalComponent={<DeleteModal note={note} />}
-                            />
-                        </div>
-                    </div>
-                ))
-
-                    : listRendered.map(note => (
+                    {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                            <div id="whole-note-data-wrapper">
-                                <div id="note-data-wrapper">
-                                    <p id='note-titles'>{note.title}</p>
-                                    <p>{note.updated_at.split('.')[0]}</p>
-                                </div>
-                                <div id="delete-note-modal-container">
-                                    <OpenModalButton
-                                        buttonText='🗑'
-                                        modalComponent={<DeleteModal note={note} />}
-                                    />
-                                </div>
+                            <p className='note-titles'>{note.title}</p>
+                            <p>{note.updated_at.split('.')[0]}</p>
 
-                            </div>
                             {noteTest(note.id)}
 
+                            <div id="delete-note-modal-container">
+                                <OpenModalButton
+                                    buttonText='🗑'
+                                    modalComponent={<DeleteModal note={note} />}
+                                />
+                            </div>
                         </div>
                     ))
-                }
+
+                        : listRendered.map(note => (
+                            <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
+                                <div id="whole-note-data-wrapper">
+                                    <div id="note-data-wrapper">
+
+                                        <p id='note-titles'>{note.title}</p>
+                                        <p>{note.updated_at.split('.')[0]}</p>
+                                    </div>
+                                    <div id="delete-note-modal-container">
+                                        <OpenModalButton
+                                            buttonText='🗑'
+                                            modalComponent={<DeleteModal note={note} />}
+                                        />
+                                    </div>
+
+                                </div>
+                                {noteTest(note.id)}
+
+                            </div>
+                        ))
+                    }
                 </div>
 
 
@@ -393,6 +405,8 @@ const CurrentNotes = () => {
                     </textarea>
                     <button type='submit' id='save-note-btn'>Save Note</button>
                     {notetags && notetags ? AddTagForm(clickedNote.id) : ''}
+                    {errors.title && <p className='note-errors'>{errors.title}</p>}
+                    {errors.noteContent && <p className='note-errors'>{errors.noteContent}</p>}
                 </form>
                 {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION LATER*/}
                 {/* <button onClick={(e) => setTrash(!trash)}>trash</button> */}

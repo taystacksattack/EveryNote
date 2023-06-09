@@ -189,3 +189,9 @@ button {
     margin: 0 1rem;
     padding: 0.5rem;
 }
+
+
+.note-errors {
+    color:red;
+    font-size: 20px;
+}

@@ -20,12 +20,12 @@ const CurrentTasks = () => {
     const [sortType, setSortType] = useState('due_date');
     const [showNewTasks, setShowNewTasks] = useState(false);
     const [showEditTasks, setShowEditTasks] = useState(false);
+    const [taskToEdit, setTaskToEdit] = useState(null);
 
     let tasksObj = useSelector(state => state.tasks.allTasks)
     // tasksObj = tasksObj.allTasks //total bandaid for delete tasks issue
 
-
-    // console.log("tasksLength", tasksLength)
+    console.log("task to edit", taskToEdit)
     const tasksArr = Object.values(tasksObj)
     // console.log("tasks array",tasksArr)
     useEffect(()=>{
@@ -48,6 +48,19 @@ const CurrentTasks = () => {
         dispatch(getTasksThunk())
     }, [dispatch, ])
 
+
+    const handleTaskEdit = (e) => {
+        setShowNewTasks(!showNewTasks)
+        setTaskToEdit(e)
+        setShowEditTasks(!showEditTasks)
+    }
+
+    const handleNewTask = (e) => {
+        setShowNewTasks(!showNewTasks)
+        if (showEditTasks) setShowEditTasks(!showEditTasks)
+    }
+
+
     if(!tasksObj) return (<div>Loading</div>)
     console.log("heres the data ", tasks)
     return(
@@ -55,7 +68,7 @@ const CurrentTasks = () => {
             <div id='tasks-area-wrapper'>
                 <div id="tasks-list">
                     <h1>Tasks</h1>
-                    <Link onClick={e=>setShowNewTasks(!showNewTasks)}>New Task</Link>
+                    <Link onClick={e=>handleNewTask(e)}>New Task</Link>
                     <select onChange={(e) => setSortType(e.target.value)}>
                         <option value="due_date">Due Date</option>
                         <option value="created_at">Created Date</option>
@@ -69,7 +82,8 @@ const CurrentTasks = () => {
                                 {/* <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                                     Edit task
                                 </NavLink> */}
-                                <Link onClick={e=>setShowEditTasks(!showNewTasks)}>Edit Task</Link>
+                                <Link onClick={e=> handleTaskEdit(task.id)}>Edit Task</Link>
+
                                 <OpenModalButton
                                 buttonText = "Delete"
                                 modalComponent={<DeleteTaskModal task={task} />}
@@ -80,7 +94,7 @@ const CurrentTasks = () => {
                 </div>
                 <div id="task-input-area">
                     {showNewTasks ? <CreateTask/> : null}
-                    {showEditTasks ? <EditTask/> : null}
+                    {showEditTasks ? <EditTask taskId={taskToEdit}/> : null}
                     {/* <SingleTask/> */}
                 </div>
             </div>

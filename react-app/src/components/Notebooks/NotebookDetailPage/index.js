@@ -56,7 +56,6 @@ const NotebookDetails = () => {
 
         if (title.length === 0) err.title1 = "Your note name must contain at least one character"
         if (title.length > 30) err.title2 = "Title character limit is between 1 and 30 characters"
-        if (newBody.length === 0) err.body1 = "Your note name must contain at least one character"
         if (newBody.length > 2500) err.body2 = "body character limit is between 1 and 2500 characters"
         if (Object.values(err).length === 0) {
             const newNote = {
@@ -135,7 +134,7 @@ const NotebookDetails = () => {
                     <ol>
                         {filtered.map(note => {
                             return (
-                                <li
+                                <li className='notebook-detail-note-li'
                                     key={note.id}
                                     onClick={(e) => setterFunction(note, e)}
                                 >
@@ -175,7 +174,7 @@ const NotebookDetails = () => {
                                 onChange={(e) => setNewBody(e.target.value)}
                             ></textarea>
                         </label>
-                        <p className='errors'>{errors.body1 || errors.body2}</p>
+                        <p className='errors'>{errors.body2}</p>
 
                         {/* {updateOrCreate()} */}
                         <div className='notebook-detail-button-container'>

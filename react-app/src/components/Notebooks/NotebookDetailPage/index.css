@@ -38,3 +38,7 @@
 .notebook-content-left{
   width: 100%;
 }
+.notebook-detail-note-li{
+  border:solid 1px green;
+  width: 100%;
+}

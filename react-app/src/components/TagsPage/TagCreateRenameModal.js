@@ -15,6 +15,8 @@ function TagCreateRenameModal({createOrRename, tag}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setErrors({});
+
     const submitErrors = {};
 
     if (tagName.length === 0 || tagName.length > 30) {

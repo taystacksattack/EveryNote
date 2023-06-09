@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 // import { useSelector,} from 'react-redux';
 import { useState, useEffect } from 'react';
-import { createTaskThunk } from '../../store/tasks';
+import { createTaskThunk, getTasksThunk } from '../../store/tasks';
 import { useHistory } from 'react-router-dom';
 
 
@@ -34,6 +34,7 @@ const CreateTask = () =>{
         console.log("HERE IS THAT FORM DATA YOU ASKED FOR...", formData)
 
         await dispatch(createTaskThunk(formData))
+        await dispatch(getTasksThunk())
         // console.log("response from backend in frontend",response)
         // console.log(response.length)
         // if(response) {

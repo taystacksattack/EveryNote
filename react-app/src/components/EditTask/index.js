@@ -70,11 +70,12 @@ const EditTask = () =>{
 
     useEffect(() => {
         const errors = []
-        if (!title.length) errors.push('Please provide a valid title.')
-        if (!description.length) errors.push('Please provide a valid description.')
-        // if (something about the due date...?) errors.push('Please provide a valid due date in the future')
+        if (title.length<5 ||title.length>50 ) errors.push('Please provide a title between 5 and 50 characters.')
+        if (description.length<5 ||description.length>500) errors.push('Please provide a valid description between 5 and 500 characters.')
+        if(new Date(due_date).getTime() < Date.now() || !due_date) errors.push('Please provide a valid due date in the future')
         setValidationErrors(errors)
-    }, [title, description])
+        // if (errors.length) setDisabled(true)
+    }, [title, description, due_date])
 
 
 

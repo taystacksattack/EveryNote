@@ -1,0 +1,68 @@
+
+#tasks-area-wrapper{
+    margin-left: 1rem;
+    display:flex;
+    /* justify-content: flex-end; */
+    width:100%;
+}
+
+#select-filter{
+    /* border: red solid 1px */
+}
+
+#each-task{
+    border-top: var(--font-clr) solid 1px;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem 0rem 0rem;
+}
+
+#task-title{
+    font-size: 16pt;
+}
+
+#trash > button{
+    border: none;
+        background-color: transparent;
+        margin-bottom: 0.2rem;
+        color: var(--font-clr);
+}
+
+#task-input-area{
+    width:100%;
+    margin-right: 1rem;
+}
+
+.errors-info > ul >li{
+    border: red solid 1px;
+    color:red;
+}
+
+#title{
+    font-size: 24pt;
+    width:100%;
+}
+#description {
+    /* font-size: 24pt; */
+    width: 100%;
+}
+#due_date, #completed{
+    font-size: 14pt;
+    margin-left: .5rem;
+}
+#completed-due{
+    display: flex;
+    justify-content: space-between;
+}
+
+#submit-button{
+    width:10%;
+}
+
+
+.form-container >form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}

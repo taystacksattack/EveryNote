@@ -1,11 +1,140 @@
+
+/*:root {
+    --bg-clr: #1a1a1a;
+    --font-clr: #a6a6a6;
+    --evernote-green: #008f26
+}  */
+
+
+#tag-list-top-sentence {
+    font-size: 0.8rem;
+}
+#tag-list-top-sentence-tags {
+    color: white;
+}
+#tag-list-top-sentence-notes {
+    color: rgb(101, 101, 101);
+}
+
 .tag-node {
-    border: 3px solid lightgray;
+    /* border: 3px solid lightgray; */
+    padding: 1em;
+    /* margin: 0.3em; */
+    border-bottom: 2px solid var(--font-clr);
+}
+
+.tag-node-main-buttons {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    padding-top: 0.5rem;
+    width: 100%;
+}
+.tag-note-main-buttons > button {
+    max-width: 0;
+}
+
+.tag-node-name-and-num-name {
+    color: white;
+}
+
+
+/* #tag-note-list-invisible-tab {
+    color: transparent;
+} */
+.tag-note-list-note-and-remove {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.tag-note-list-note-li {
+    width: 15rem;
+    color: var(--font-clr);
+}
+.tag-note-list-note-li > * {
+    font-size: 0.7rem;
+}
+
+.tag-note-list-remove-button {
+    height: 2rem;
+    width: 5rem;
+}
+.tag-note-list-ul {
+    width: 100%;
+    margin: 0.5rem 0
+}
+
+
+.tag-notetest-node {
+    border: 3px solid darkcyan;
     padding: 0.5em;
     margin: 0.3em;
 }
 
-.tag-notetest-node {
-    border: 3px solid lightgray;
-    padding: 0.5em;
-    margin: 0.3em;
+.tag-notetest-note-controls {
+    border: 2px solid green;
+    /* color: white; */
 }
+
+.tag-notetest-note-controls select {
+    color: white;
+}
+
+.tag-page-wrapper {
+    color: var(--font-clr);
+    width: 28rem;
+    border-left: 1px solid darkcyan;
+    overflow-y: scroll;
+}
+
+.tag-page-wrapper button {
+    /* color: hotpink; */
+    font-size: 0.7em;
+    border-radius: 5px;
+}
+
+.tag-page-wrapper button > * {
+    font-size: 0.7em;
+}
+
+/* top section, above taglist */
+.tag-list-top {
+    border: 1px solid fuchsia;
+    padding: 1rem;
+}
+
+.tag-list-top-create-and-sort-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#tag-list-top-create-button > * {
+    padding: 1rem;
+    font-size: 1rem;
+}
+#tag-list-top-sort-button > * {
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+
+
+/* for note-- tag buttons, from notes */
+.tag-note-tag-button > * {
+    background-color: var(--mustard);
+}
+
+/* For addTagToSelectNote */
+.tag-select-note {
+    margin-top: 1rem;
+}
+
+.tag-select-note-tag-selections {
+    color: white;
+    width: 100%;
+}
+

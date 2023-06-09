@@ -120,6 +120,7 @@ const CurrentNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
         setErrors({})
 
         const newErrors = {}
@@ -133,6 +134,7 @@ const CurrentNotes = () => {
 
             console.log("updatingggggggggggg", title, noteContent)
             console.log("note info", clickedNote)
+
 
 
             const updatedNote = {
@@ -264,8 +266,8 @@ const CurrentNotes = () => {
             const currentNote = allnotes.allNotes[noteId]
             const currentNoteTags = notetags.note_to_tags[noteId]
 
-            console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
-            console.log("CURRENT NOTE TAGS", currentNoteTags)
+            // console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
+            // console.log("CURRENT NOTE TAGS", currentNoteTags)
 
             return (
                 <>
@@ -298,12 +300,14 @@ const CurrentNotes = () => {
 
     async function removeTagFromNote(noteId, tagId) {
 
-        console.log("remove tag from note")
+        // console.log("remove tag from note")
         return dispatch(deleteNoteTagThunk(noteId, tagId))
+
             .then(() => setRenderSwitch(!renderSwitch))
             .catch(async (res) => {
                 console.log("errors?", res)
             })
+
     }
 
 

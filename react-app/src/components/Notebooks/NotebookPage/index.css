@@ -7,6 +7,7 @@
   border: 2px solid green;
   display: grid;
   grid-template-columns: 25% 75%;
+  /* grid-template-columns: 100%; */
   justify-content: flex-end;
   height: 100%;
   background-color: #1a1a1a;
@@ -66,6 +67,9 @@
   align-items: center;
   justify-content: right;
   padding-right: 10%;
+  border-bottom: solid 2px #a6a6a6;
+  position: relative;
+  right: 40px;
 }
 .new-notebook-component button {
   color: #008f26;

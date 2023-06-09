@@ -129,6 +129,7 @@ button {
     color: var(--font-clr);
 }
 
+
 #delete-note-modal-container{
     display:flex;
     justify-content: flex-end;
@@ -176,4 +177,21 @@ button {
     padding: .2rem;
     margin: 0rem .2rem 0.6rem 0;
     /* width: 100%; */
+}
+
+#delete-note-modal > h1, #delete-note-modal > p, #delete-note-modal {
+    background-color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+#delete-note-modal button {
+    margin: 0 1rem;
+    padding: 0.5rem;
+}
+
+
+.note-errors {
+    color:red;
+    font-size: 20px;
 }

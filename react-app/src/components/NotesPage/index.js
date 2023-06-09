@@ -20,6 +20,7 @@ const CurrentNotes = () => {
     const [sortDate, setSortDate] = useState(false)
     const [sortAlpha, setSortAlpha] = useState(false)
     const [listRendered, setListRendered] = useState([])
+    const [errors, setErrors] = useState({})
 
     //josh stuff
     const alltags = useSelector(state => state.tags);
@@ -35,6 +36,12 @@ const CurrentNotes = () => {
 
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
+////working on this
+    const newErrors = {}
+    if (title.length > 30) newErrors.title = 'Title must be less than 30 characters.'
+    if (noteContent.length > 2500) newErrors.noteContent = 'Note is too long. Please keep note under 2500 characters. '
+
+//////
 
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
@@ -160,6 +167,83 @@ const CurrentNotes = () => {
 
     }
 
+    //add tag stuff
+    function AddTagForm(noteId) {
+        const dispatch = useDispatch();
+      //   const [noteIdChoice, setNoteIdChoice] = useState("");
+        const [tagIdChoice, setTagIdChoice] = useState();
+      
+        // const alltags = useSelector(state => state.tags);
+        // const allnotes = useSelector(state => state.notes);
+        // const notetags = useSelector(state => state.notetags);
+      
+        useEffect(() => {
+          console.log("current tagID Choice!", tagIdChoice)
+        })
+      
+        try {
+      
+            const currentNote = allnotes.allNotes[noteId]
+            const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+      
+            const allTagsValues = Object.values(alltags);
+            const allTagsList = allTagsValues.map((tag) => {return {"id": tag.id, "name": tag.name} })
+      
+            const availableTags = allTagsList.filter((val) => tagsOfCurrentNote.indexOf(val.id) === -1)
+      
+      
+      
+            console.log("\n\n\n\nADDTAGNOTEFORM CURRENTNOTE??", currentNote)
+            console.log("ADDTAGNOTEFORM TAGS OF CURRENTNOTE??", tagsOfCurrentNote)
+            console.log("ALLTAGS VALUES???", allTagsValues)
+            console.log("ALLTAGS LIST???", allTagsList)
+            console.log("UNIQUE TAGS??", availableTags)
+      
+      
+        const handleSubmitAddTag = async (e) => {
+          e.preventDefault();
+            setRenderSwitch(!renderSwitch)
+           await dispatch(addNoteTagThunk(noteId, tagIdChoice))
+        };
+      
+        return (
+          <>
+            <div>Add Tag to Current Note</div>
+            <form action = '' onSubmit={handleSubmitAddTag}>
+              {/* <label>
+                Tag
+                <input
+                  type="text"
+                  value={"value"}
+                  onChange={(e) => setTagIdChoice(e.target.value)}
+                  required
+                />
+              </label> */}
+              <label>
+                <select name="tagId"
+                onChange={(e) => {
+                  setTagIdChoice(e.target.value)}
+              }>
+                  {/* MAP: option value=tagID, label tag_name */}
+                  <option value={""}>-Select Tag-</option>
+                  {availableTags.map((tagNamePair) => (
+                       <option value={tagNamePair.id}>{tagNamePair.name}</option>
+                  ))}
+      
+                </select>
+      
+              </label>
+              <button onClick = {handleSubmitAddTag}>Add Tag (Refresh after Add) </button>
+            </form>
+          </>
+        );
+      
+      } catch {
+          return (<></>)
+      }
+      }
+      
+
 
     // josh stuff//////////////////
 
@@ -254,7 +338,7 @@ const CurrentNotes = () => {
                         <p>{note.updated_at.split('.')[0]}</p>
 
                         {noteTest(note.id)}
-
+                        
                         <div id="delete-note-modal-container">
                             <OpenModalButton
                                 buttonText='🗑'
@@ -308,7 +392,7 @@ const CurrentNotes = () => {
                     >
                     </textarea>
                     <button type='submit' id='save-note-btn'>Save Note</button>
-
+                    {notetags && notetags ? AddTagForm(clickedNote.id) : ''}
                 </form>
                 {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION LATER*/}
                 {/* <button onClick={(e) => setTrash(!trash)}>trash</button> */}

@@ -35,7 +35,6 @@ const CurrentNotebooks = () => {
     if (!notebookObj && !notesObj) return null
     return (
         <div className="everything-wrapper-2">
-            <div></div>
             <div className="notebook-wrapper">
                 <h1>{notebookNum(notebooks)}</h1>
                 <div className="new-notebook-component">

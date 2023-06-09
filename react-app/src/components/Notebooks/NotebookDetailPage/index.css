@@ -1,5 +1,29 @@
-textarea {
+.notebook-detail-main-ultra-wrapper {
+  width: 60%;
+}
+
+.notebook-content-wrapper {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  column-gap: 20%;
+}
+.notebook-detail-h1 {
+  color: white;
+}
+.notebook-detail-title {
+  color: rgba(255, 255, 255, 0.267);
+}
+
+.notebook-detail-content-right {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.notebook-detail-textarea-title {
+  color: white;
+}
+.notebook-detail-textarea-body {
   resize: none;
-  width: 50%;
+  width: 100%;
   height: 20rem;
+  color: white;
 }

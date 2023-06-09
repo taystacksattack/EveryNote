@@ -22,6 +22,7 @@ const UpdateNotebookModel = ({ notebook }) => {
         e.preventDefault()
 
         if (title.length === 0) err.title = "Your notebook name must contain at least one character"
+        if (title.length > 30) err.title = "character limit is between 1 and 30 characters"
 
         if (Object.values(err).length === 0) {
 
@@ -57,6 +58,7 @@ const UpdateNotebookModel = ({ notebook }) => {
     const checkState = () => {
         let boolean = false
         if (title.length === 0) boolean = true
+        if (title.length > 30) boolean = true
         return boolean
     }
 

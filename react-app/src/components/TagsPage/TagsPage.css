@@ -39,8 +39,12 @@
 }
 .tag-note-list-note-li {
     width: 15rem;
-    color: var(--font-clr)
+    color: var(--font-clr);
 }
+.tag-note-list-note-li > * {
+    font-size: 0.7rem;
+}
+
 .tag-note-list-remove-button {
     height: 2rem;
     width: 5rem;

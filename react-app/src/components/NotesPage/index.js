@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "./deleteNoteModal"
-import { deleteTagThunk, getTagsThunk } from "../../store/tags"
-import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk } from "../../store/notetags"
+import { getTagsThunk } from "../../store/tags"
+import { getNoteTagsThunk, deleteNoteTagThunk } from "../../store/notetags"
 
 import "./notespage.css"
 
@@ -20,6 +20,7 @@ const CurrentNotes = () => {
     const [sortDate, setSortDate] = useState(false)
     const [sortAlpha, setSortAlpha] = useState(false)
     const [listRendered, setListRendered] = useState([])
+
 
     //josh stuff
     const alltags = useSelector(state => state.tags);
@@ -55,7 +56,7 @@ const CurrentNotes = () => {
     useEffect(() => {
         dispatch(getTagsThunk())
         dispatch(getNoteTagsThunk())
-    }, [dispatch])
+    }, [dispatch, renderSwitch])
 
 
     useEffect(() => {
@@ -260,7 +261,8 @@ const CurrentNotes = () => {
                     </div>
                 ))
                     : listRendered.map(note => (
-                        <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
+                        <div key={note.id} className='note-selection' onClick={() => 
+                        handleNoteClick(note)}>
                             <p id='note-titles'>{note.title}</p>
                             <p>{note.updated_at.split('.')[0]}</p>
 

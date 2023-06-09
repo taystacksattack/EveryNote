@@ -2,7 +2,8 @@
 :root {
     --bg-clr: #1a1a1a;
     --font-clr: #a6a6a6;
-    --evernote-green: #008f26
+    --evernote-green: #008f26;
+    --txt-area-gray: rgb(40, 37, 37);
 }
 
 *{
@@ -61,8 +62,8 @@ button {
 }
 
 .all-notes-area{
-    border-left: 2px solid red;
-    border-right: 2px solid red;
+    /* border-left: 2px solid red; */
+    /* border-right: 2px solid red; */
     width: 20%;
     /* height: 100%; */
     padding: 0 1rem;
@@ -74,8 +75,9 @@ button {
 
 
 .new-note-area{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     width: 60%;
+    background-color:var(--txt-area-gray);
 }
 
 #new-note-form{
@@ -88,7 +90,7 @@ button {
     resize:none;
     height: 100%;
     width: 100%;
-    background-color: rgb(40, 37, 37);
+    background-color: var(--txt-area-gray);
     color: var(--font-clr)
 
     /* need to think about scrolling and height  */
@@ -106,13 +108,13 @@ button {
 }
 #save-note-btn {
     width: 5rem;
-    background-color: rgb(54, 56, 56);
+    background-color: var(--evernote-green);
     padding: 0.2rem;
-    color:var(--font-clr)
+    color:black;
 }
 
 #new-note-form {
-    background-color: rgb(40, 37, 37);
+    background-color: var(--txt-area-gray);
 }
 
 #delete-note-modal-container > button {
@@ -134,3 +136,7 @@ button {
     color:white;
 }
 
+
+.selected {
+    background-color: var(--txt-area-gray)
+}

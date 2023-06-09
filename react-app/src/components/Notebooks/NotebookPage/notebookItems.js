@@ -14,6 +14,16 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const notebookObj = useSelector(state => state.notebooks.allNotebooks)
+
+    const notesObj = useSelector(state => state.notes.allNotes)
+
+    const notebookId = notebook.id
+
+    const filtered = Object.values(notes).filter(note => {
+        return note.notebookId == notebookId
+    })
+
     const findOwner = () => {
         return userObj.username
     }
@@ -37,13 +47,31 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
     }
 
     const ulClassName = (showMenu ? "" : "hidden");
+    const ulClassNameForNotes = (showMenu ? "" : "hidden1");
 
     return (
         <div className={`notebook-div-container `}>
             <p key={notebook.id}>
+                <i class="fa-solid fa-list " onClick={(e) => changeState(e)}>
+                    <div className={`notebook-note-dropdown ${ulClassNameForNotes}`}>
+                        <ul>
+                            {filtered.map(note => {
+                                return <li key={note.id}>
+                                    <Link to="/notebooks/1">
+                                        <p className="notebook-note-dropdown-note-li">
+                                            {note.title}
+                                        </p>
+                                    </Link>
+                                </li>
+                            })}
+                        </ul>
+                    </div>
+                </i>
                 <Link to={`/notebooks/${notebook.id}`}>
-                    <i class="fa-solid fa-book"></i>{"   "}
-                    {notebook.title}    ({notes.filter(note => note.notebookId == notebook.id).length})</Link>
+                    {"   "}
+                    {notebook.title}
+                    ({notes.filter(note => note.notebookId == notebook.id).length})
+                </Link>
             </p>
             <p>{findOwner()}</p>
             <p>{findTimeUpdated(notebook)}</p>
@@ -56,9 +84,6 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                     <ul className={`${ulClassName} spot-list`}>
                         <li >
                             <AddNoteToNotebook />
-                            {/* <div onClick={(e) => history.push("/notes")} className="notebook-item-create">
-                                Add new note
-                            </div> */}
                         </li>
                         <li className="li-divider">
                             <div className="notebook-item-update">

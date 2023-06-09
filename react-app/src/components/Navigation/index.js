@@ -14,10 +14,7 @@ function Navigation({ isLoaded }){
 	return (
 		<div>
 			{isLoaded && sessionUser? <NavBar isLoaded = {isLoaded}/> : <LandingPage isLoaded = {isLoaded}/>}
-
 			{/* {isLoaded && sessionUser ? <NavBar isLoaded = {isLoaded}/> : null } */}
-
-
 		</div>
 	);
 }

@@ -22,16 +22,28 @@ const UpdateNotebookModel = ({ notebook }) => {
         e.preventDefault()
 
         if (title.length === 0) err.title = "Your notebook name must contain at least one character"
+        if (title.length > 30) err.title = "character limit is between 1 and 30 characters"
 
         if (Object.values(err).length === 0) {
 
-            // const newDate = new Date().toISOString()
-            // console.log("new Date", newDate)
+            // const newDateArr = new Date().toISOString().split("-")
+            // let [year, month, dateHourSec] = newDateArr
+            // const dateHourSecArr = dateHourSec.split('T')
+            // let [day, hourSec] = dateHourSecArr
+            // const hourSecArr = hourSec.split(":")
+            // let [hour, sec, mill] = hourSecArr
+            // console.log("year", year)
+            // console.log("month", month)
+            // console.log("dateHourSec", dateHourSec.split('T'))
+            // let date = `${year}/${month}/${day} ${hour}:${sec}.${mill}`
+
+
+            // console.log("new Date", date)
             const new_notebook = {
                 "id": notebook.id,
                 "title": title,
                 "is_default": isDefault,
-                // "updated_at": newDate
+                // "updated_at": date
             }
             console.log(new_notebook)
             dispatch(editNotebookThunk(new_notebook))
@@ -46,6 +58,7 @@ const UpdateNotebookModel = ({ notebook }) => {
     const checkState = () => {
         let boolean = false
         if (title.length === 0) boolean = true
+        if (title.length > 30) boolean = true
         return boolean
     }
 

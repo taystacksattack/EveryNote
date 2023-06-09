@@ -11,14 +11,14 @@ function NavBar({ isLoaded }){
 	// console.log(sessionUser)
 
 	return (
-		<ul>
+		<ul className="nav-links">
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
 			<li>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/notes">Home</NavLink>
 			</li>
 			<li>
 				<NavLink exact to="/notes">Notes</NavLink>

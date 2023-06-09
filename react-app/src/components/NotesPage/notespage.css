@@ -180,7 +180,8 @@ button {
 }
 
 #delete-note-modal > h1, #delete-note-modal > p, #delete-note-modal {
-    background-color: white;
+    background-color: var(--bg-clr);
+    /* border-radius: ; */
     text-align: center;
     padding: 1rem;
 }

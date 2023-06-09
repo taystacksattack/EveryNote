@@ -3,6 +3,7 @@
 .create-rename-wrapper {
     padding: 1rem;
     border-radius: 5px;
+    background-color: var(--bg-clr);
 }
 
 
@@ -16,7 +17,7 @@
 
 #create-rename-input {
     color: white;
-    /* background-color: lightgray; */
+    background-color: var(--bg-clr);
 }
 
 #create-rename-errors {

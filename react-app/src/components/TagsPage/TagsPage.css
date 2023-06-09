@@ -83,6 +83,7 @@
 }
 
 .tag-page-wrapper {
+    background-color: #1a1a1a;
     color: var(--font-clr);
     width: 28rem;
     border-left: 1px solid darkcyan;
@@ -134,7 +135,7 @@
 }
 
 .tag-select-note-tag-selections {
-    color: white;
+    color: var(--font-clr);
+    background-color: #1a1a1a;
     width: 100%;
 }
-

@@ -33,5 +33,6 @@ button {
   background-color: #c49f2f;
   padding: .25rem;
   font-size: 12pt;
+  color: var(--bg-clr)
   /* margin-top: 1rem */
 }

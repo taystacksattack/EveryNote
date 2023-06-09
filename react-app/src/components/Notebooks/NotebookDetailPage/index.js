@@ -130,7 +130,7 @@ const NotebookDetails = () => {
             <div className='notebook-content-wrapper'>
 
                 <div className='notebook-content-left'>
-                    <button type='submit' onClick={NewNotebookNow}>Create New Note</button>
+                    <button type='submit' onClick={NewNotebookNow}>Reset Note</button>
                     <ol>
                         {filtered.map(note => {
                             return (

@@ -107,11 +107,16 @@ const TagsPage = () => {
                 {currentNoteTags && currentNoteTags.map((tagId) => {
                     return (
                         <>
-                        <a href="/tags">
+                        {/* <a href="/tags">
                         <span>{tagId}: {alltags[tagId].name}</span>
                         </a>
-                        <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button>
-
+                        <button onClick={()=> removeTagFromNote(currentNote.id, tagId)}>(remove this tag)</button> */}
+                        <div className="tag-button">
+                            <a href="/tags">
+                                <span id='tag-names'>{`${alltags[tagId].name} `}</span>
+                            </a>
+                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                        </div>
                         </>
                         )
                 })}
@@ -243,9 +248,20 @@ const TagsPage = () => {
         return count;
     }
 
-    const listValidNotes = (noteId) => {
+    const listValidNotes = (noteId, tagId) => {
         try {
-            return (<a href="/notes/"><li>{noteId}: {allnotes.allNotes[noteId].title}</li></a>)
+            return (
+            <>
+
+            <span className="tag-note-list-note-and-remove">
+            <a href="/notes/">
+                <li className="tag-note-list-note-li">{noteId}: {allnotes.allNotes[noteId].title}</li>
+            </a>
+            {/* <span id="tag-note-list-invisible-tab">_____</span> */}
+            <button className="tag-note-list-remove-button" onClick={() => removeTagFromNote(noteId, tagId)}>Remove Tag</button>
+            </span>
+            </>
+            )
         } catch {
 // ///////////////////////////////////////////////////
 //ADD SPECIFIC NOTE_ID LOGIC TO <A> LINKS
@@ -256,11 +272,11 @@ const TagsPage = () => {
         try {
             return (
              <>
-            <ul>
+            <ul className="tag-note-list-ul">
                 {notetags.tag_to_notes[tagId].map(
                         note_id => (
                             <>
-                                {listValidNotes(note_id)}
+                                {listValidNotes(note_id, tagId)}
                             </>
                         )
                 )}
@@ -290,14 +306,17 @@ const TagsPage = () => {
 
             </div>
 
-            <div className="tag-list-top-create-new-button">
+            <div className="tag-list-top-create-and-sort-buttons">
+                 <span>
                 <OpenModalButton
                     buttonText="Create New Tag"
                     modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
                 />
+                </span>
+                <span>
+                    <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
+                </span>
             </div>
-
-            <button onClick={toggleSort}>Toggle Sort: alphabetical or notes</button>
 
         </div>
         {/* end of tag-list-top */}
@@ -311,31 +330,50 @@ const TagsPage = () => {
                 tag => (
                     <>
                     <div className="tag-node">
-                    <div key={tag.id}>
+
+                    {/* <div key={tag.id}>
                         tag_id: {tag.id}
                     </div>
                     <div key={tag.name}>
                         tag_name: {tag.name}
                     </div>
-                    {/* <div>
+                    //////// <div>
                         num_notes: {tag.num_notes}
-                    </div> */}
+                    </div>
                     <div>
                         num_notes: {tag.id && numNotesByOwner(tag.id)}
+                    </div> */}
+
+                    <div className="tag-node-name-and-num">
+                        <span className="tag-node-name-and-num-name">
+                            {tag.name}
+                        </span>
+                        <span> </span>
+
+                        <span className="tag-node-name-and-num-num">
+                            ({tag.id && numNotesByOwner(tag.id)})
+                        </span>
                     </div>
 
                     <div>
+                        {waitForLoad(tag.id)}
+                    </div>
+
+                    <div className="tag-node-main-buttons">
+                    <span className="tag-node-rename-button">
                     <OpenModalButton
                         buttonText="Rename Tag"
                         modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
                     />
-                    </div>
+                    </span>
 
-                    {<button onClick={() => {deleteTest(tag.id)}}>Test Delete this Tag</button>}
-                        {waitForLoad(tag.id)}
+                    <span className="tag-node-delete-button">
+                    {<button onClick={() => {deleteTest(tag.id)}}>Delete this Tag</button>}
+                    </span>
 
-                    <div>
+                    <span>
                         <button onClick={() => {removeTagFromAll(tag.id)}}>Remove Tag from ALL notes</button>
+                    </span>
                     </div>
 
                     </div>

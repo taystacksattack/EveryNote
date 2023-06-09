@@ -6,10 +6,50 @@
 
 
 .tag-node {
-    border: 3px solid lightgray;
+    /* border: 3px solid lightgray; */
     padding: 0.5em;
-    margin: 0.3em;
+    /* margin: 0.3em; */
+    border-bottom: 2px solid var(--font-clr);
 }
+
+.tag-node-main-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 0.5rem;
+    width: 100%;
+}
+.tag-note-main-buttons > button {
+    max-width: 0;
+}
+
+.tag-node-name-and-num-name {
+    color: white;
+}
+
+
+/* #tag-note-list-invisible-tab {
+    color: transparent;
+} */
+.tag-note-list-note-and-remove {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.tag-note-list-note-li {
+    width: 15rem;
+    color: var(--font-clr)
+}
+.tag-note-list-remove-button {
+    height: 2rem;
+    width: 5rem;
+}
+.tag-note-list-ul {
+    width: 100%;
+    margin: 0.5rem 0
+}
+
 
 .tag-notetest-node {
     border: 3px solid darkcyan;
@@ -28,12 +68,31 @@
 
 .tag-page-wrapper {
     color: var(--font-clr);
-    width: 50%;
+    width: 25rem;
+    border-left: 1px solid darkcyan;
+    overflow-y: scroll;
+}
+
+.tag-page-wrapper button {
+    /* color: hotpink; */
+    font-size: 0.7em;
+    border-radius: 5px;
+}
+
+.tag-page-wrapper button > * {
+    font-size: 0.7em;
 }
 
 /* top section, above taglist */
 .tag-list-top {
     border: 1px solid fuchsia;
+}
+
+.tag-list-top-create-and-sort-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 /* for note-- tag buttons, from notes */

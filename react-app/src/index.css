@@ -18,6 +18,6 @@
 
 *{
     margin:0;
-    background-color: var(--bg-clr);
+    /* background-color: var(--bg-clr); */
     font-family: arial;
 }

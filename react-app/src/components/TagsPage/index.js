@@ -26,6 +26,7 @@ const TagsPage = () => {
     const [ sortAlphaNum, setSortAlphaNum ] = useState(true); //true, sort by alphabetical
     //false, sort by number of owned notes
     const [renderSwitch, setRenderSwitch] = useState(true);
+    const [noteIdChoice, setNoteIdChoice] = useState();
 
 
 
@@ -86,6 +87,71 @@ const TagsPage = () => {
 
     //NOTE TESTTTT
     //
+
+    ///Create Add tag to select note
+    function AddSelectNoteToTag(tagId) {
+        // const dispatch = useDispatch();
+        // const [noteIdChoice, setNoteIdChoice] = useState();
+
+        try {
+
+            const currentTag = alltags[tagId]
+
+            const notesOfCurrentTag = notetags.tag_to_notes[tagId] ? notetags.tag_to_notes[tagId] : []
+
+            const allNotesValues = Object.values(allnotes.allNotes);
+            const allNotesList = allNotesValues.map((note) => {return {"id": note.id, "title": note.title} })
+
+
+            const availableNotes = allNotesList.filter((val) => notesOfCurrentTag.indexOf(val.id) === -1)
+
+            // allnotes.allNotes[noteId]
+
+            console.log("\n\n\n\n(add SELECT) note CURRENT_tag??", currentTag)
+            console.log("(ADD select) note, notes of tag??", notesOfCurrentTag)
+            console.log("(addSelect) ALL notes VALUES???", allNotesValues)
+            console.log("(addSelect) allnotes list???", allNotesList)
+            console.log("(addSelect) unique, available notes??", availableNotes)
+
+
+        const handleSubmitSelectNote = async (e) => {
+          e.preventDefault();
+          dispatch(addNoteTagThunk(noteIdChoice, tagId));
+          setRenderSwitch(!renderSwitch);
+        };
+
+        return (
+          <>
+            <div>Add This Tag to Select Note</div>
+            <form onSubmit={handleSubmitSelectNote}>
+              <label>
+                <select name="noteId"
+                onChange={(e) => {
+                  setNoteIdChoice(e.target.value)}} className="tag-select-note-tag-selections">
+
+                  {/* MAP: option value=tagID, label tag_name */}
+                  <option value={""}>-Select Note-</option>
+
+                  {availableNotes.map((noteNamePair) => (
+                       <option value={noteNamePair.id}>{noteNamePair.title}</option>
+                  ))}
+
+                </select>
+
+              </label>
+              <button>Add Tag</button>
+              {/* <button type="submit">Add Tag (Refresh after Add)</button> */}
+            </form>
+          </>
+        );
+
+      } catch {
+          return (<></>)
+      }
+      }
+////////////END add tag to select note
+
+
     function noteTest(noteId) {
         try {
             const currentNote = allnotes.allNotes[noteId]
@@ -115,7 +181,7 @@ const TagsPage = () => {
                             <a href="/tags">
                                 <span id='tag-names'>{`${alltags[tagId].name} `}</span>
                             </a>
-                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                            <span  onClick={()=> removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
                         </div>
                         </>
                         )
@@ -293,18 +359,21 @@ const TagsPage = () => {
 
         <div className="tag-list-top">
             <h1> Tags Page!</h1>
-
-            <div className="tag-notetest-node">
+            <br></br>
+            <p>Apply tags to better organize your notes!</p>
+            <br></br>
+            <p id="tag-list-top-sentence">(The following <span id='tag-list-top-sentence-tags'>tags</span> are applied to the following <span id="tag-list-top-sentence-notes">notes</span>)</p>
+            {/* <div className="tag-notetest-node">
                 {noteTest(1)}
             </div>
             <div className="tag-notetest-note-controls">
 
                 <AddTagForm noteId="1" />
                 {/* <button onClick={createTest}>Test, Create New Tag</button>
-                 */}
+
                 <button onClick={() => {addNoteTag(1, 2)}}>Test: Add to Note1, Tag2</button>
 
-            </div>
+            </div> */}
 
             <div className="tag-list-top-create-and-sort-buttons">
                  <span>
@@ -371,10 +440,15 @@ const TagsPage = () => {
                     {<button onClick={() => {deleteTest(tag.id)}}>Delete this Tag</button>}
                     </span>
 
-                    <span>
+                    {/* <span>
                         <button onClick={() => {removeTagFromAll(tag.id)}}>Remove Tag from ALL notes</button>
-                    </span>
+                    </span> */}
                     </div>
+
+                    <div className="tag-select-note">
+                        {AddSelectNoteToTag(tag.id)}
+                    </div>
+
 
                     </div>
                     </>

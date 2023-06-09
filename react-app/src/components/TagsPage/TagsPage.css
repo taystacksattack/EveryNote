@@ -5,9 +5,19 @@
 }  */
 
 
+#tag-list-top-sentence {
+    font-size: 0.8rem;
+}
+#tag-list-top-sentence-tags {
+    color: white;
+}
+#tag-list-top-sentence-notes {
+    color: rgb(101, 101, 101);
+}
+
 .tag-node {
     /* border: 3px solid lightgray; */
-    padding: 0.5em;
+    padding: 1em;
     /* margin: 0.3em; */
     border-bottom: 2px solid var(--font-clr);
 }
@@ -15,7 +25,8 @@
 .tag-node-main-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
+    /* justify-content: space-between; */
     padding-top: 0.5rem;
     width: 100%;
 }
@@ -72,7 +83,7 @@
 
 .tag-page-wrapper {
     color: var(--font-clr);
-    width: 25rem;
+    width: 28rem;
     border-left: 1px solid darkcyan;
     overflow-y: scroll;
 }
@@ -90,6 +101,7 @@
 /* top section, above taglist */
 .tag-list-top {
     border: 1px solid fuchsia;
+    padding: 1rem;
 }
 
 .tag-list-top-create-and-sort-buttons {
@@ -102,4 +114,14 @@
 /* for note-- tag buttons, from notes */
 .tag-note-tag-button > * {
     background-color: var(--mustard);
+}
+
+/* For addTagToSelectNote */
+.tag-select-note {
+    margin-top: 1rem;
+}
+
+.tag-select-note-tag-selections {
+    color: white;
+    width: 100%;
 }

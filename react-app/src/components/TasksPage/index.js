@@ -81,6 +81,7 @@ const CurrentTasks = () => {
             <div id='tasks-area-wrapper'>
                 <div id="tasks-list">
                     <h1>Tasks</h1>
+                    <br></br>
                     <Link onClick={e=>handleNewTask(e)}>New Task</Link>
                     <select onChange={(e) => setSortType(e.target.value)}>
                         <option value="due_date">Due Date</option>
@@ -89,18 +90,19 @@ const CurrentTasks = () => {
                     </select>
                     {tasksObj && tasks.map(task => {
                         return(
-                            <div key={task.id}>
-                                <Link onClick={e=> handleTaskDisplay(task.id)} key={task.title}>Task: {task.title}</Link>
+                            <div key={task.id} id='each-task'>
+                                <Link onClick={e=> handleTaskDisplay(task.id)} key={task.title} id='task-title'>{task.title}</Link>
                                 <p key={task.due_date}>Due: {task.due_date.slice(0,16)}</p>
                                 {/* <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                                     Edit task
                                 </NavLink> */}
                                 <Link onClick={e=> handleTaskEdit(task.id)}>Edit Task</Link>
-
-                                <OpenModalButton
-                                buttonText = "Delete"
-                                modalComponent={<DeleteTaskModal task={task} />}
-                                />
+                                <div id="trash">
+                                    <OpenModalButton
+                                    buttonText = "🗑"
+                                    modalComponent={<DeleteTaskModal task={task} />}
+                                    />
+                                </div>
                             </div>
                         )
                     })}

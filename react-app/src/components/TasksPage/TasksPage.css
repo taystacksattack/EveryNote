@@ -1,5 +1,23 @@
 
 #tasks-area-wrapper{
+    margin-left: 1rem;
     display:flex;
+}
 
+#each-task{
+    border-top: var(--font-clr) solid 1px;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem 0rem 0rem;
+}
+
+#task-title{
+    font-size: 16pt;
+}
+
+#trash > button{
+    border: none;
+        background-color: transparent;
+        margin-bottom: 0.2rem;
+        color: var(--font-clr);
 }

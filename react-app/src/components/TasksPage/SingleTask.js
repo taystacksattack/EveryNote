@@ -37,7 +37,9 @@ const SingleTask = ({taskId}) =>{
             <div className="form-container">
                 <h1>{task.title}</h1>
                 <p>{task.description}</p>
-                
+                <p>{task.due_date.slice(0,16)}</p>
+                <p>Completed?: {task.completed ? "Yes!": "Not yet"}</p>
+
             </div>
         </div>
     )

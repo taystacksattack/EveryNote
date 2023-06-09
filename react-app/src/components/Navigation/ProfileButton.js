@@ -39,11 +39,13 @@ function ProfileButton({ user }) {
     history.push('/')
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  //original code
+  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
-  //  let ulClassName
-  // if (user) ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden")
-  // if (user) ulClassName = "loggedin-dropdown" + (showMenu ? "" : " hidden")
+  //adjustment for logged in vs not logged in
+   let ulClassName
+  if (!user) ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden")
+  if (user) ulClassName = "loggedin-dropdown" + (showMenu ? "" : " hidden")
 
   const closeMenu = () => setShowMenu(false);
 

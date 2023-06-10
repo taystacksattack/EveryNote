@@ -5,7 +5,7 @@ import "./index.css"
 const NewNotebook = () => {
 
     return (
-        <div>
+        <div className='create-notebook-feature'>
             <i class="fa-solid fa-book">+</i>
             <OpenModalButton
                 buttonText={'New Notebook'}

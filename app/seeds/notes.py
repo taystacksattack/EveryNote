@@ -73,7 +73,7 @@ def seed_notes():
         title="In Pursuit of Justice", body=a22, trash=False, ownerId=1, notebookId=8
     )
     law_2 = Note(
-        title="Behind the Gavel: Inside Stories from the Courtroom", body=a23, trash=False, ownerId=1, notebookId=8
+        title="Behind the Gavel ", body=a23, trash=False, ownerId=1, notebookId=8
     )
     law_3 = Note(
         title="Breaking Barriers", body=a24, trash=False, ownerId=1, notebookId=8

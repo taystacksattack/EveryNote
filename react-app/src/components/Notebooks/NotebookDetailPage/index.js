@@ -124,8 +124,8 @@ const NotebookDetails = () => {
 
     console.log(errors)
     return (
+        <div id="whole-notebook-wrapper">
         <div>
-
             <h1>Notebook Details</h1>
             <div className='notebook-content-wrapper'>
 
@@ -186,6 +186,7 @@ const NotebookDetails = () => {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

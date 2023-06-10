@@ -2,9 +2,16 @@
   width: 60%;
 }
 
+#whole-notebook-wrapper{
+  background-color: var(--bg-clr);
+  width: 100%;
+  /* padding: 2rem; */
+}
+
+
 .notebook-content-wrapper {
   display: grid;
-  grid-template-columns: 35% 80%;
+  grid-template-columns: 35% 65%;
   column-gap: 20%;
 }
 .notebook-detail-h1 {
@@ -21,12 +28,14 @@
 .notebook-detail-textarea-title {
   color: white;
   width: 80%;
+  background-color: var(--bg-clr);
 }
 .notebook-detail-textarea-body {
   resize: none;
   width: 80%;
   height: 20rem;
-  color: white;
+  color: var(--font-color);
+  background-color: var(--bg-clr);
 }
 
 .notebook-details-form {

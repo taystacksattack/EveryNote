@@ -5,10 +5,12 @@ import "./index.css"
 const UpdateNotebook = ({ notebook }) => {
 
     return (
-        <OpenModalButton
-            buttonText={'Rename'}
-            modalComponent={<UpdateNotebookModel notebook={notebook} />}>
-        </OpenModalButton>
+        <div className='update-notebook-feature'>
+            <OpenModalButton
+                buttonText={'Rename'}
+                modalComponent={<UpdateNotebookModel notebook={notebook} />}>
+            </OpenModalButton>
+        </div>
 
     )
 }

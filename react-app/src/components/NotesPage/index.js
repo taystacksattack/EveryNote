@@ -264,7 +264,7 @@ const CurrentNotes = () => {
     function noteTest(noteId) {
         try {
             const currentNote = allnotes.allNotes[noteId]
-            const currentNoteTags = notetags.note_to_tags[noteId]
+            const currentNoteTags = notetags.note_to_tags[noteId] ? notetag.note_to_tags[noteId] : []
 
             // console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
             // console.log("CURRENT NOTE TAGS", currentNoteTags)

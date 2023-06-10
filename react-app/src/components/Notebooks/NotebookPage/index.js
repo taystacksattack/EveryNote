@@ -36,7 +36,9 @@ const CurrentNotebooks = () => {
     return (
         <div className="everything-wrapper-2">
             <div className="notebook-wrapper">
-                <h1>{notebookNum(notebooks)}</h1>
+                <div className="add-note-notebook">
+                    <h1>{notebookNum(notebooks)}</h1>
+                </div>
                 <div className="new-notebook-component">
                     <NewNotebook />
                 </div>

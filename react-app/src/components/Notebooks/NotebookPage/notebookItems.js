@@ -54,7 +54,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
             <p key={notebook.id}>
                 <i class="fa-solid fa-list " onClick={(e) => changeState(e)}>
                     <div className={`notebook-note-dropdown ${ulClassNameForNotes}`}>
-                        <ul>
+                        <ul className="notebook-ul-note-links">
                             {filtered.map(note => {
                                 return <li key={note.id}>
                                     <Link to="/notebooks/1">

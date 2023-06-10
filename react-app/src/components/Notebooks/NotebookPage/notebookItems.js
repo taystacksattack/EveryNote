@@ -52,7 +52,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
 
     return (
         <div className={`notebook-div-container `}>
-            <p key={notebook.id}>
+            <div key={notebook.id}>
                 <i class="fa-solid fa-list " onClick={(e) => changeState(e)}>
                     <div className={`notebook-note-dropdown ${ulClassNameForNotes}`}>
                         <ul className="notebook-ul-note-links">
@@ -73,7 +73,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                     {notebook.title}
                     ({notes.filter(note => note.notebookId === notebook.id).length})
                 </Link>
-            </p>
+            </div>
             <p>{findOwner()}</p>
             <p>{findTimeUpdated(notebook)}</p>
             <label>
@@ -83,15 +83,15 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
 
                 <div className="notebook-ul-ultra-wrapper">
                     <ul className={`${ulClassName} spot-list`}>
-                        <li >
+                        <li key="addNote">
                             <AddNoteToNotebook />
                         </li>
-                        <li className="li-divider">
+                        <li className="li-divider" key="updateNotebook">
                             <div className="notebook-item-update">
                                 <UpdateNotebook notebook={notebook} />
                             </div>
                         </li>
-                        <li>
+                        <li key="deleteNotebook">
                             <div >
                                 <DeleteNotebook notebook={notebook} />
                             </div>

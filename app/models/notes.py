@@ -14,7 +14,7 @@ class Note(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30))
-    body = db.Column(db.Text(2500))
+    body = db.Column(db.Text())
     trash = db.Column(db.Boolean)
     ownerId = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useSelector } from "react";
+import React, { useState, useEffect} from "react";
+// import React, { useSelector } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -12,7 +13,7 @@ import NewNotebook from "./components/Notebooks/NewNotebook"
 import CurrentTasks from './components/TasksPage'
 import CreateTask from './components/CreateTask'
 import EditTask from './components/EditTask'
-import LandingPage from './components/LandingPage'
+// import LandingPage from './components/LandingPage'
 import './App.css'
 
 import TagsPage from './components/TagsPage'

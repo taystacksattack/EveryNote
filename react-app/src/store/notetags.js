@@ -26,7 +26,7 @@ export const getNoteTagsThunk = () => async (dispatch) => {
         dispatch(getNoteTags(data));
 
     } catch (e) {
-        console.log("Error", e)
+        // console.log("Error", e)
     }
 
     // if (response.ok) {
@@ -53,7 +53,7 @@ export const addNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log("ADDNOTE THUNK OK, response", data)
+        // console.log("ADDNOTE THUNK OK, response", data)
         return data;
     } else {
         const errors = await response.json()
@@ -73,7 +73,7 @@ export const deleteNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log("remove notetag THUNK OK, response", data)
+        // console.log("remove notetag THUNK OK, response", data)
         return data;
     } else {
         const errors = await response.json()
@@ -84,7 +84,7 @@ export const deleteNoteTagThunk = ((noteId, tagId) => async (dispatch) => {
 export const removeAllNoteTagThunk = ((tagId) => async (dispatch) => {
     const url = `/api/tags/notetags/all/${tagId}`
 
-    console.log("delete notetag thunk, url", url)
+    // console.log("delete notetag thunk, url", url)
 
     const response = await fetch(url,
     {
@@ -95,7 +95,7 @@ export const removeAllNoteTagThunk = ((tagId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log("remove notetag of one tag THUNK OK, response", data)
+        // console.log("remove notetag of one tag THUNK OK, response", data)
         return data;
     } else {
         const errors = await response.json()
@@ -125,4 +125,3 @@ export default function noteTagsReducer(state = initialState, action) {
             return state
     }
 }
-

@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+// import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+// import { useHistory } from "react-router-dom"
 
 
 import UpdateNotebook from "./UpdateNotebook"
@@ -11,17 +12,17 @@ import AddNoteToNotebook from "./AddNote"
 const NotebookItems = ({ userObj, notebook, notes }) => {
 
     const [showMenu, setShowMenu] = useState(false)
-    const dispatch = useDispatch()
-    const history = useHistory()
+    // const dispatch = useDispatch()
+    // const history = useHistory()
 
-    const notebookObj = useSelector(state => state.notebooks.allNotebooks)
+    // const notebookObj = useSelector(state => state.notebooks.allNotebooks)
 
-    const notesObj = useSelector(state => state.notes.allNotes)
+    // const notesObj = useSelector(state => state.notes.allNotes)
 
     const notebookId = notebook.id
 
     const filtered = Object.values(notes).filter(note => {
-        return note.notebookId == notebookId
+        return note.notebookId === Number(notebookId)
     })
 
     const findOwner = () => {
@@ -70,7 +71,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                 <Link to={`/notebooks/${notebook.id}`}>
                     {"   "}
                     {notebook.title}
-                    ({notes.filter(note => note.notebookId == notebook.id).length})
+                    ({notes.filter(note => note.notebookId === notebook.id).length})
                 </Link>
             </p>
             <p>{findOwner()}</p>

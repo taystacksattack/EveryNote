@@ -1,5 +1,6 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+// import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import { addNoteTagThunk } from "../../store/notetags";
@@ -14,9 +15,9 @@ function AddTagForm({noteId}) {
   const allnotes = useSelector(state => state.notes);
   const notetags = useSelector(state => state.notetags);
 
-  useEffect(() => {
-    console.log("current tagID Choice!", tagIdChoice)
-  })
+  // useEffect(() => {
+  //   console.log("current tagID Choice!", tagIdChoice)
+  // })
 
   try {
 
@@ -30,11 +31,11 @@ function AddTagForm({noteId}) {
 
 
 
-      console.log("\n\n\n\nADDTAGNOTEFORM CURRENTNOTE??", currentNote)
-      console.log("ADDTAGNOTEFORM TAGS OF CURRENTNOTE??", tagsOfCurrentNote)
-      console.log("ALLTAGS VALUES???", allTagsValues)
-      console.log("ALLTAGS LIST???", allTagsList)
-      console.log("UNIQUE TAGS??", availableTags)
+      // console.log("\n\n\n\nADDTAGNOTEFORM CURRENTNOTE??", currentNote)
+      // console.log("ADDTAGNOTEFORM TAGS OF CURRENTNOTE??", tagsOfCurrentNote)
+      // console.log("ALLTAGS VALUES???", allTagsValues)
+      // console.log("ALLTAGS LIST???", allTagsList)
+      // console.log("UNIQUE TAGS??", availableTags)
 
 
   const handleSubmit = async (e) => {
@@ -82,4 +83,3 @@ function AddTagForm({noteId}) {
 }
 
 export default AddTagForm;
-

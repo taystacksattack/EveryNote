@@ -41,7 +41,7 @@ export const getTasksThunk = () => async (dispatch) => {
 		}
 
 		dispatch(getTasks(data));
-        console.log("RAW", data)
+        // console.log("RAW", data)
         return data
 	}
 };
@@ -51,11 +51,11 @@ export const createTaskThunk = (task) => async (dispatch) => {
         method: 'POST',
         body: task
     })
-    console.log('RAW RESPONSE FROM SQLALCHEMY', response)
+    // console.log('RAW RESPONSE FROM SQLALCHEMY', response)
 
     if (response.ok){
         const data = await response.json()
-        console.log("response ok - new task", data)
+        // console.log("response ok - new task", data)
         if(data.errors){
             return data.errors
         }
@@ -71,9 +71,9 @@ export const createTaskThunk = (task) => async (dispatch) => {
 }
 
 export const editTaskThunk = (taskId, task) => async (dispatch) => {
-    console.log("taskId in think", taskId)
-    console.log("task in think", task)
-    console.log(`/api/tasks/${taskId}/edit`)
+    // console.log("taskId in think", taskId)
+    // console.log("task in think", task)
+    // console.log(`/api/tasks/${taskId}/edit`)
     // const response = await fetch(`/api/tasks/${task.id}/edit`, {
     //     method: 'PUT',
     //     body: task
@@ -86,7 +86,7 @@ export const editTaskThunk = (taskId, task) => async (dispatch) => {
         body: task
     })
     const {result} = await response.json()
-    console.log("response ok - edited task response", result)
+    // console.log("response ok - edited task response", result)
     dispatch(editTask(result))
     return
     } catch(e){
@@ -100,11 +100,11 @@ export const deleteTaskThunk = (taskId) => async (dispatch) => {
         method: "DELETE"
     })
     const result = await response.json()
-    console.log("result in thunk ",result)
+    // console.log("result in thunk ",result)
     dispatch(deleteTask(taskId))
     return result
     } catch(e){
-        console.log(e)
+        // console.log(e)
         return e
     }
 }
@@ -113,7 +113,7 @@ const initialState = { allTasks: {} };
 export default function tasksReducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_TASKS:
-            console.log("action",action)
+            // console.log("action",action)
             const newState = { allTasks: {}};
             // console.log("This is the action.tasks...?",action)
             // console.log("IS THIS AN ARRAY?",Array.isArray(action.tasks))
@@ -122,15 +122,15 @@ export default function tasksReducer(state = initialState, action) {
                     // console.log(task)
                     newState.allTasks[task.id] = task
                 })}
-            console.log("newstate be like: ", newState)
+            // console.log("newstate be like: ", newState)
 			return newState;
 
         case DELETE_TASK:
             const deleteState = {...state, allTasks:{...state.allTasks}} //new all tasks overwrites the old one, causes a hash collision
-            console.log("delete state before deletion", deleteState)
-            console.log("action.taskId", action.taskId)
+            // console.log("delete state before deletion", deleteState)
+            // console.log("action.taskId", action.taskId)
             delete deleteState.allTasks[action.taskId]
-            console.log("delete state after deletion", deleteState)
+            // console.log("delete state after deletion", deleteState)
             return deleteState
 		default:
 			return state;

@@ -4,7 +4,8 @@ import { useEffect, useState } from "react"
 import { getNotesThunk, createNoteThunk, editNoteThunk } from "../../store/notes"
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "./deleteNoteModal"
-import { deleteTagThunk, getTagsThunk } from "../../store/tags"
+import { getTagsThunk } from "../../store/tags"
+// import { deleteTagThunk } from "../../store/tags"
 import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk } from "../../store/notetags"
 
 import "./notespage.css"
@@ -14,7 +15,7 @@ const CurrentNotes = () => {
 
     const [title, setTitle] = useState('')
     const [noteContent, setNoteContent] = useState('')
-    const [trash, setTrash] = useState(false)
+    // const [trash, setTrash] = useState(false)
     const [clickedNote, setClickedNote] = useState({})
     const [clickedAdd, setClickedAdd] = useState(false)
     const [sortDate, setSortDate] = useState(false)
@@ -48,7 +49,7 @@ const CurrentNotes = () => {
         body: noteContent,
         ownerId: owner.id,
         notebookId: 1,
-        trash: trash
+        trash: false
 
     }
     useEffect(() => {
@@ -56,6 +57,11 @@ const CurrentNotes = () => {
         setListRendered(listOfNotes)
 
     }, [dispatch, listOfNotes.length, listRendered.length, notesObj[clickedNote.id]?.title, notesObj[clickedNote.id]?.body])
+    // useEffect(() => {
+    //     dispatch(getNotesThunk())
+    //     setListRendered(listOfNotes)
+
+    // }, [dispatch, listOfNotes.length, listRendered.length, notesObj[clickedNote.id]?.title, notesObj[clickedNote.id]?.body])
 
     useEffect(() => {
         dispatch(getTagsThunk())
@@ -132,8 +138,8 @@ const CurrentNotes = () => {
             return null
         } else if (Object.values(clickedNote).length > 0) {
 
-            console.log("updatingggggggggggg", title, noteContent)
-            console.log("note info", clickedNote)
+            // console.log("updatingggggggggggg", title, noteContent)
+            // console.log("note info", clickedNote)
 
 
 
@@ -189,13 +195,13 @@ const CurrentNotes = () => {
         // const allnotes = useSelector(state => state.notes);
         // const notetags = useSelector(state => state.notetags);
 
-        useEffect(() => {
-            console.log("current tagID Choice!", tagIdChoice)
-        })
+        // useEffect(() => {
+        //     console.log("current tagID Choice!", tagIdChoice)
+        // })
 
         try {
 
-            const currentNote = allnotes.allNotes[noteId]
+            // const currentNote = allnotes.allNotes[noteId]
             const tagsOfCurrentNote = notetags.note_to_tags[noteId]
 
             const allTagsValues = Object.values(alltags);
@@ -205,11 +211,11 @@ const CurrentNotes = () => {
 
 
 
-            console.log("\n\n\n\nADDTAGNOTEFORM CURRENTNOTE??", currentNote)
-            console.log("ADDTAGNOTEFORM TAGS OF CURRENTNOTE??", tagsOfCurrentNote)
-            console.log("ALLTAGS VALUES???", allTagsValues)
-            console.log("ALLTAGS LIST???", allTagsList)
-            console.log("UNIQUE TAGS??", availableTags)
+            // console.log("\n\n\n\nADDTAGNOTEFORM CURRENTNOTE??", currentNote)
+            // console.log("ADDTAGNOTEFORM TAGS OF CURRENTNOTE??", tagsOfCurrentNote)
+            // console.log("ALLTAGS VALUES???", allTagsValues)
+            // console.log("ALLTAGS LIST???", allTagsList)
+            // console.log("UNIQUE TAGS??", availableTags)
 
 
             const handleSubmitAddTag = async (e) => {
@@ -264,7 +270,7 @@ const CurrentNotes = () => {
     function noteTest(noteId) {
         try {
             const currentNote = allnotes.allNotes[noteId]
-            const currentNoteTags = notetags.note_to_tags[noteId]
+            const currentNoteTags = notetags.note_to_tags[noteId] ? notetags.note_to_tags[noteId] : []
 
             // console.log("\n\n\nNOTE TEST CURRENT NOTE, ", currentNote)
             // console.log("CURRENT NOTE TAGS", currentNoteTags)
@@ -305,7 +311,7 @@ const CurrentNotes = () => {
 
             .then(() => setRenderSwitch(!renderSwitch))
             .catch(async (res) => {
-                console.log("errors?", res)
+                // console.log("errors?", res)
             })
 
     }

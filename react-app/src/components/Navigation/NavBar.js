@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LandingPage from '../LandingPage';
+// import LandingPage from '../LandingPage';
 import './Navigation.css';
 
 function NavBar({ isLoaded }){
@@ -17,9 +17,9 @@ function NavBar({ isLoaded }){
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
-			<li>
+			{/* <li>
 				<NavLink exact to="/notes">Home</NavLink>
-			</li>
+			</li> */}
 			<li>
 				<NavLink exact to="/notes">Notes</NavLink>
 			</li>

@@ -1,6 +1,6 @@
 
 :root {
-    --bg-clr: #1a1a1a;
+    /* --bg-clr: #1a1a1a; */
     --font-clr: #a6a6a6;
     --evernote-green: #008f26
 }
@@ -15,7 +15,7 @@ button {
 }
 
 .everything-wrapper{
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     justify-content:flex-end;
     height: 100%;
@@ -63,8 +63,8 @@ button {
 }
 
 .all-notes-area{
-    border-left: 2px solid red;
-    border-right: 2px solid red;
+    border-left: 2px solid var(--button);
+    border-right: 2px solid var(--button);
     width: 50%;
     height: 100%;
     padding: 0 1rem;
@@ -77,7 +77,7 @@ button {
 
 
 .new-note-area{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     width: 100%;
 }
 
@@ -92,7 +92,8 @@ button {
     resize:none;
     height: 100%;
     width: 100%;
-    background-color: rgb(40, 37, 37);
+    background-color: rgb(37, 37, 40);
+    /* background-color: var(--shadows); */
     color: var(--font-clr)
 
     /* need to think about scrolling and height  */

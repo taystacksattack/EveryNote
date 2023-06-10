@@ -7,9 +7,9 @@ const AddNoteToNotebook = () => {
 
     const history = useHistory()
 
-    const comingSoon = () => {
-        window.alert("feature coming soon")
-    }
+    // const comingSoon = () => {
+    //     window.alert("feature coming soon")
+    // }
 
     const pushPushPush = () => {
         history.push("/notebooks/1")

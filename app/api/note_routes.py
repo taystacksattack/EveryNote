@@ -42,11 +42,11 @@ def post_note():
         db.session.add(new_note)
         db.session.commit()
 
-        
+
 
         return new_note.to_dict()
 
-    return validation_errors_to_error_messages(form.errors), 400    
+    return validation_errors_to_error_messages(form.errors), 400
 
 
 @note_routes.route('/<int:id>')
@@ -67,31 +67,31 @@ def update_note(id):
     Query for a note by id and returns an updated note in a dictionary
     """
     note = Note.query.get(id)
-    print('this is note \n\n\n\n\n', note)
+    # print('this is note \n\n\n\n\n', note)
     form = NoteForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-   
+
         if form.data['title']:
             note.title=form.data['title']
         if form.data['body']:
-            
-            print('\n\n\n\n\n\n form data ', form.data)
+
+            # print('\n\n\n\n\n\n form data ', form.data)
             note.body=form.data['body']
 
 
         # note.updated_at=datetime.utcnow
-      
-        print('\n\n\n\n\n this is datetime', datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
+
+        # print('\n\n\n\n\n this is datetime', datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))
 
         note.updated_at = datetime.utcnow()
         db.session.commit()
         return note.to_dict()
-        
-    return {"message":  "Bad Data"}    
-            
-   
+
+    return {"message":  "Bad Data"}
+
+
 @note_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_note(id):
@@ -100,10 +100,8 @@ def delete_note(id):
     """
     note = Note.query.get(id)
 
-    print('this is note \n\n\n\n\n', note)
-    
+    # print('this is note \n\n\n\n\n', note)
+
     db.session.delete(note)
     db.session.commit()
-    return {"message":  "Successfully deleted"} 
-        
-       
+    return {"message":  "Successfully deleted"}

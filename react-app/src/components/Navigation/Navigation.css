@@ -6,7 +6,8 @@
   align-items: center;
   /* border: red solid; */
   margin-top: 3rem;
-  margin-left: 1rem
+  margin-left: 1rem;
+  z-index: 2
 }
 
 #drop-down{
@@ -18,7 +19,7 @@
 
 /* here is the navlink font */
 li > *{
-  color: rgb(225, 133, 20);
+  color: var(--);
   font-size: 16pt;
 
   /* margin: 5rem; */
@@ -30,7 +31,7 @@ li > *{
 
 button {
   border-radius: 20pt;
-  background-color: #c49f2f;
+  background-color: var(--button);
   padding: .25rem;
   font-size: 12pt;
   color: var(--bg-clr)

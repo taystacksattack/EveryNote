@@ -1,7 +1,9 @@
 import { useDispatch, useSelector, Sort  } from "react-redux"
 import { useEffect, useState,  } from "react"
-import { useHistory, NavLink, Link } from "react-router-dom"
-import { deleteTaskThunk, getTasksThunk } from "../../store/tasks"
+// import { useHistory, NavLink} from "react-router-dom"
+import {Link } from "react-router-dom"
+import { getTasksThunk } from "../../store/tasks"
+// import { deleteTaskThunk,} from "../../store/tasks"
 import OpenModalButton from "../OpenModalButton"
 import DeleteTaskModal, {deleted} from '../DeleteTaskModal'
 import CreateTask from "../CreateTask"
@@ -27,7 +29,7 @@ const CurrentTasks = () => {
     let tasksObj = useSelector(state => state.tasks.allTasks)
     // tasksObj = tasksObj.allTasks //total bandaid for delete tasks issue
 
-    console.log("task to edit", singleTask)
+    // console.log("task to edit", singleTask)
     const tasksArr = Object.values(tasksObj)
     // console.log("tasks array",tasksArr)
     useEffect(()=>{
@@ -39,7 +41,7 @@ const CurrentTasks = () => {
                     return a.title.localeCompare(b.title)
                 }
             });
-            console.log("sorted stuff in function",sorted)
+            // console.log("sorted stuff in function",sorted)
             setTasks(sorted)
             // console.log("sortedTasks",sortedTasks)
         }
@@ -75,7 +77,7 @@ const CurrentTasks = () => {
 
 
     if(!tasksObj) return (<div>Loading</div>)
-    console.log("heres the data ", tasks)
+    // console.log("heres the data ", tasks)
     return(
 
             <div id='tasks-area-wrapper'>

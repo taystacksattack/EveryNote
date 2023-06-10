@@ -61,12 +61,12 @@ def new_task():
             completed = form.data['completed']
         )
 
-        print("NEW TASK inside of the route",new_task)
+        # print("NEW TASK inside of the route",new_task)
         db.session.add(new_task)
         db.session.commit()
         return {"result": new_task.to_dict()}
     if form.errors:
-        print("Look at these errors from the backend", form.errors)
+        # print("Look at these errors from the backend", form.errors)
         return {"errors": validation_errors_to_error_messages(form.errors)}
 
 
@@ -79,7 +79,7 @@ def edit_task(id):
 
     # CHECK TO SEE IF USER ID == task ownerId
 
-    print("form inside route",form)
+    # print("form inside route",form)
 
     if form.validate_on_submit():
         task_to_update = Task.query.get(id)
@@ -93,20 +93,20 @@ def edit_task(id):
         # task_to_update.updated_at = datetime.utcnow
         db.session.commit()
 
-        print(task_to_update)
+        # print(task_to_update)
         return redirect("/tasks")
 
     if form.errors:
-        print('Look at these errors from the backend', form.errors)
+        # print('Look at these errors from the backend', form.errors)
         return
 
 
 @task_routes.route('/<int:id>/delete', methods = ["GET", "DELETE"])
 @login_required
 def delete_task(id):
-    print("id",id)
+    # print("id",id)
     task_to_delete = Task.query.get(id)
-    print("Here's that task",task_to_delete)
+    # print("Here's that task",task_to_delete)
     if current_user.id != task_to_delete.ownerId:
             return {"error" : "This is not your task to delete"}
 

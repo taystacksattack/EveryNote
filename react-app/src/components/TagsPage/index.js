@@ -1,19 +1,20 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState} from "react" //useState
-import { createTagThunk, deleteTagThunk, getTagsThunk } from "../../store/tags"
+import {  deleteTagThunk, getTagsThunk } from "../../store/tags"
+// import { createTagThunk } from "../../store/tags"
 import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk, removeAllNoteTagThunk } from "../../store/notetags"
 import { getNotesThunk } from "../../store/notes"
 import "./TagsPage.css"
 // import { title } from "../NotesPage"
 
 import OpenModalButton from "../OpenModalButton";
-import TagDeleteModal from "./TagDeleteModal"
+// import TagDeleteModal from "./TagDeleteModal"
 import TagCreateRenameModal from "./TagCreateRenameModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
-import CurrentNotes from "../NotesPage"
+// import CurrentNotes from "../NotesPage"
 
-import AddTagForm from "./AddTagToNoteForm"
+// import AddTagForm from "./AddTagToNoteForm"
 
 const TagsPage = () => {
 
@@ -61,7 +62,7 @@ const TagsPage = () => {
     }, [dispatch, renderSwitch])
 
     async function addNoteTag(noteId, tagId) {
-        console.log("test noteTag with note 1, tag 3");
+        // console.log("test noteTag with note 1, tag 3");
 
         return dispatch(addNoteTagThunk(noteId, tagId))
         .then(() => {
@@ -69,7 +70,7 @@ const TagsPage = () => {
             setRenderSwitch(!temp);
         })
         .catch(async (res) => {
-            console.log("addNoteTag errors?", res)
+            // console.log("addNoteTag errors?", res)
         })
     }
 
@@ -107,11 +108,11 @@ const TagsPage = () => {
 
             // allnotes.allNotes[noteId]
 
-            console.log("\n\n\n\n(add SELECT) note CURRENT_tag??", currentTag)
-            console.log("(ADD select) note, notes of tag??", notesOfCurrentTag)
-            console.log("(addSelect) ALL notes VALUES???", allNotesValues)
-            console.log("(addSelect) allnotes list???", allNotesList)
-            console.log("(addSelect) unique, available notes??", availableNotes)
+            // console.log("\n\n\n\n(add SELECT) note CURRENT_tag??", currentTag)
+            // console.log("(ADD select) note, notes of tag??", notesOfCurrentTag)
+            // console.log("(addSelect) ALL notes VALUES???", allNotesValues)
+            // console.log("(addSelect) allnotes list???", allNotesList)
+            // console.log("(addSelect) unique, available notes??", availableNotes)
 
 
         const handleSubmitSelectNote = async (e) => {
@@ -194,7 +195,7 @@ const TagsPage = () => {
 
     async function removeTagFromNote(noteId, tagId) {
 
-        console.log("remove tag from note")
+        // console.log("remove tag from note")
         return dispatch(deleteNoteTagThunk(noteId, tagId))
         .then(() => setRenderSwitch(!renderSwitch))
         .catch(async (res) => {
@@ -203,11 +204,11 @@ const TagsPage = () => {
     }
 
     async function removeTagFromAll(tagId) {
-        console.log(`FIX LATER: remove tag ${tagId} from ALL notes`)
+        // console.log(`FIX LATER: remove tag ${tagId} from ALL notes`)
         return dispatch(removeAllNoteTagThunk(tagId))
         .then(() => setRenderSwitch(!renderSwitch))
         .catch(async (res) => {
-            console.log("errors?", res)
+            // console.log("errors?", res)
         })
     }
     //END OF NOTE TEST
@@ -230,7 +231,7 @@ const TagsPage = () => {
     // }
 
     async function deleteTest(tagId) {
-        console.log("testing delete...");
+        // console.log("testing delete...");
 
         return dispatch(deleteTagThunk(tagId))
         .then(() => {
@@ -239,7 +240,7 @@ const TagsPage = () => {
         })
         // .then(dispatch(getTagsThunk()))
         .catch(async (res) => {
-            console.log("delete error?")
+            // console.log("delete error?")
         })
 
 

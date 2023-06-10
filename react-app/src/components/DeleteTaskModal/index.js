@@ -2,7 +2,8 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 // import { closeModal } from "../../context/Modal";
-import { deleteTaskThunk, getTasksThunk } from '../../store/tasks'
+import { deleteTaskThunk } from '../../store/tasks'
+// import { getTasksThunk } from '../../store/tasks'
 // import { useHistory } from "react-router-dom";
 
 
@@ -10,21 +11,21 @@ import { deleteTaskThunk, getTasksThunk } from '../../store/tasks'
 const DeleteTaskModal = ({ task }) => {
     // const history = useHistory()
     const dispatch = useDispatch()
-    const {closeModal} = useModal()
+    const { closeModal } = useModal()
 
     // const [deleted, setDelete] = useState(false)
 
-    console.log("task in delete task modal", task)
+    // console.log("task in delete task modal", task)
 
-  
+
 
     const deleteTask = (e) => {
         e.preventDefault();
         dispatch(deleteTaskThunk(task.id))
-            // .then(console.log("in the delete task"))
-            // .then(history.push('/tasks'))
-            // .then(closeModal())
-            closeModal()
+        // .then(console.log("in the delete task"))
+        // .then(history.push('/tasks'))
+        // .then(closeModal())
+        closeModal()
     }
 
     return (

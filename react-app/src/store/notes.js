@@ -97,7 +97,7 @@ export const deleteNoteThunk = (noteId) => async (dispatch) => {
     })
 
     if (response.ok) {
-        console.log('delete rsponse ok')
+        // console.log('delete rsponse ok')
         dispatch(deleteNote(noteId))
     } else {
         const errors = await response.json()

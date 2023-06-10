@@ -1,4 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useModal } from '../../../../context/Modal';
 import { editNotebookThunk, getNotebooksThunk } from '../../../../store/notebook';
@@ -13,7 +14,7 @@ const UpdateNotebookModel = ({ notebook }) => {
     const [title, setTitle] = useState(notebook.title)
     const [errors, setErrors] = useState({})
     const [isDefault] = useState(false)
-    const [bool, setBool] = useState(false)
+    // const [bool, setBool] = useState(false)
 
 
 
@@ -45,10 +46,10 @@ const UpdateNotebookModel = ({ notebook }) => {
                 "is_default": isDefault,
                 // "updated_at": date
             }
-            console.log(new_notebook)
+            // console.log(new_notebook)
             dispatch(editNotebookThunk(new_notebook))
             closeModal()
-            setBool(true)
+            // setBool(true)
         }
         setErrors(err)
     }
@@ -66,13 +67,13 @@ const UpdateNotebookModel = ({ notebook }) => {
         closeModal()
     }
 
-    console.log("update", title)
-    console.log("update", errors)
+    // console.log("update", title)
+    // console.log("update", errors)
 
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
-    }, [dispatch, title, errors, checkState])
+    }, [dispatch, title, errors])
 
     return (
 

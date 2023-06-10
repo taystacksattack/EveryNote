@@ -10,11 +10,10 @@ const CreateNewNotebookModel = () => {
 
     const dispatch = useDispatch()
     const { closeModal } = useModal()
-
     const [title, setTitle] = useState("")
     const [errors, setErrors] = useState({})
     const [isDefault] = useState(false)
-    const [bool, setBool] = useState(false)
+    // const [bool, setBool] = useState(false)
 
 
     const handleSubmit = (e) => {
@@ -32,12 +31,12 @@ const CreateNewNotebookModel = () => {
             }
             dispatch(createNotebooksThunk(new_notebook))
             closeModal()
-            setBool(true)
+            // setBool(true)
         }
         setErrors(err)
     }
-    console.log(errors)
-    console.log(title)
+    // console.log(errors)
+    // console.log(title)
 
     const checkState = () => {
         let boolean = false
@@ -48,7 +47,7 @@ const CreateNewNotebookModel = () => {
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
-    }, [dispatch, title, errors, checkState])
+    }, [dispatch, title, errors])
 
     return (
         <div className='create-modal-div-wrapper'>

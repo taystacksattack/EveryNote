@@ -10,7 +10,7 @@ function AddSelectNoteToTag(tagId) {
 
   try {
 
-      const currentTag = alltags[noteId]
+      // const currentTag = alltags[noteId]
       const notesOfCurrentTag = notetags.tag_to_notes[tagId]
 
       const allNotesValues = Object.values(allnotes.allNotes);
@@ -20,11 +20,11 @@ function AddSelectNoteToTag(tagId) {
 
       // allnotes.allNotes[noteId]
 
-      console.log("\n\n\n\n(add SELECT) note CURRENT_tag??", currentTag)
-      console.log("(ADD select) note, notes of tag??", notesOfCurrentTag)
-      console.log("(addSelect) ALL notes VALUES???", allTagsValues)
-      console.log("(addSelect) allnotes list???", allTagsList)
-      console.log("(addSelect) unique, available notes??", availableNotes)
+      // console.log("\n\n\n\n(add SELECT) note CURRENT_tag??", currentTag)
+      // console.log("(ADD select) note, notes of tag??", notesOfCurrentTag)
+      // console.log("(addSelect) ALL notes VALUES???", allTagsValues)
+      // console.log("(addSelect) allnotes list???", allTagsList)
+      // console.log("(addSelect) unique, available notes??", availableNotes)
 
 
   const handleSubmitSelectNote = async (e) => {

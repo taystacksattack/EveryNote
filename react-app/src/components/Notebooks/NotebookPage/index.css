@@ -4,25 +4,24 @@
 }
 
 .everything-wrapper-2 {
-  /* border: 2px solid green; */
   display: grid;
-  /* grid-template-columns: 25% 75%; */
   grid-template-columns: 100%;
+  grid-template-rows: 30% 20% 10%;
   justify-content: flex-end;
   height: 120%;
   width: 100%;
-  background-color: #1a1a1a;
+  background-color: var(--bg-clr);
   text-decoration: none;
-  color: #a6a6a6;
+  color: var(--font-clr);
 }
 
 .notebook-wrapper {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(0%);
+  grid-template-rows: 20% 10%;
 }
 .notebook-wrapper a {
-  color: #a6a6a6;
+  color: var(--button);
 }
 
 .notebook-div-container {
@@ -35,7 +34,9 @@
   padding: 10px;
   border-bottom: solid 2px #a6a6a6;
 }
-
+.notebook-num-stuff {
+  height: 2rem;
+}
 .spot-list {
   list-style: none;
   display: grid;
@@ -50,17 +51,30 @@
   /* list-style:circle */
 }
 .add-note-notebook {
-  color: #008f26;
+  color: var(--button);
 }
 .spot-list button {
-  background-color: #1a1a1a;
-  color: #008f26;
+  background-color: var(--bg-clr);
+  color: var(--button);
   border: none;
   /* list-style: ; */
   /* border: solid 1px #008f26; */
   /* height: 1.5rem; */
 }
+.fa-solid {
+  color: var(--shadows);
+}
 
+.dot-dot {
+  background-color: var(--bg-clr);
+  color: var(--button);
+  border: none;
+  padding: 0%;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hidden {
   display: none;
 }
@@ -70,18 +84,18 @@
   font-size: 10px;
 }
 .new-notebook-component {
-  color: #008f26;
+  color: var(--button);
   display: flex;
   align-items: center;
   justify-content: right;
   padding-right: 10%;
-  border-bottom: solid 2px #a6a6a6;
+  border-bottom: solid 2px var(--border);
   position: relative;
   left: 0%;
 }
 .new-notebook-component button {
-  color: #008f26;
-  background-color: #1a1a1a;
+  color: var(--button);
+  background-color: var(--bg-clr);
   border: none;
 }
 .add-note-feature {
@@ -96,25 +110,26 @@
 .notebook-note-dropdown-note-li {
   height: 20px;
   font-size: 15px;
-  color: #008f26;
+  color: var(--button);
   font-weight: lighter;
 }
 .drop-down-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #008f26;
+  color: var(--button);
+  padding: 0%;
 }
 .create-notebook-feature {
-  color: #008f26;
+  color: var(--button);
   /* border: solid 1px #008f26; */
 }
 .update-notebook-feature {
-  color: #008f26;
+  color: var(--button);
   /* border: solid 1px #008f26; */
 }
 .add-note-feature {
-  color: #008f26;
+  color: var(--button);
 }
 .notebook-ul-note-links {
   /* background-color: #008f26; */

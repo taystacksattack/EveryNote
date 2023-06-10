@@ -34,16 +34,17 @@ const SingleTask = ({taskId}) =>{
 
     return (
         <div className="form-page">
+            {task && 
             <div className="form-container">
-                <h1>{task.title}</h1>
+                <h1>task.title</h1>
                 <br></br>
-                <div id="">
+                 <div id="">
                     <p>{task.description}</p>
                     <br></br>
                     <p>Due: {task.due_date.slice(0,16)}</p>
                     <p>Completed? {task.completed ? "Yes!": "Not yet"}</p>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 

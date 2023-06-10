@@ -30,7 +30,7 @@ function SignupFormModal() {
 		if (password.length < 6) newErrors.password = 'Password must be 6 characters or more'
 		if (password !== confirmPassword) newErrors.password = 'Confirm Password field must be the same as the Password field'
 		if (!email.includes('@') || (!email.endsWith('.com') && !email.endsWith('.io') && !email.endsWith('.net') && !email.endsWith('.edu'))) newErrors.email = 'Please provide a valid email'
-		if (email.length < 5) newErrors.email = 'Email length invalid'
+		if (email.length < 5) newErrors.email = 'Email length must be greater than 4 characters'
 
 		if (Object.values(newErrors).length) {
 			setErrors(newErrors)
@@ -77,7 +77,7 @@ function SignupFormModal() {
 						<label id="form-items">
 							Email 
 							<input
-								type="text"
+								type="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								required

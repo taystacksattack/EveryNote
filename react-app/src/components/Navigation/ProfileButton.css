@@ -1,22 +1,24 @@
 /* wraps the profile button */
 #profile-button{
-    /* position: absolute; */
+    position: static;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: #c49f2f solid;
+    border: var(--button) solid;
     border-radius: 20pt;
     height: 2.9rem;
     width: 2.9rem;
     margin-right: 1.3rem;
     margin-bottom: 1rem;
-    /* color: red; */
+    z-index: 2;
+    /* border: red solid 1px */
     /* background-color: #c49f2f; */
 }
 /* for the button itself */
 #user-button{
     color: black;
     font-size: 30pt;
+    position: static;
     /* margin-bottom: 1rem; */
     /* height: 30px; */
     /* width: 30px */

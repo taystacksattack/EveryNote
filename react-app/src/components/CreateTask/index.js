@@ -113,7 +113,7 @@ const CreateTask = () =>{
                                 >
                                 </input>
                             </label>
-                            <label id = "due_date">Due Date
+                            <label id = "due_date_label">Due Date
                                 <input
                                     id = "due_date"
                                     type='date'

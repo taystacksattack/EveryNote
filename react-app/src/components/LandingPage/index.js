@@ -15,7 +15,7 @@ function LandingPage({ isLoaded }){
                                 )}
                 </div>
                 <div id="background-wrapper">
-                        <img id="landing-background" alt="Welcome!" src="https://cdn.discordapp.com/attachments/1102007410014556160/1116370540454756493/EveryNote_Set_up.jpg" />
+                        <img id="landing-background" alt="Welcome!" src="https://cdn.discordapp.com/attachments/1113247365982330952/1117166249223397518/EveryNote_Set_up_in_black.jpg" />
                         {/* <img id="landing-background" alt="Welcome!" src="https://cdn.discordapp.com/attachments/1102007410014556160/1116446249265139722/EveryNote_Set_up_in_black.jpg" /> */}
                         {/* https://cdn.discordapp.com/attachments/1102007410014556160/1116446249265139722/EveryNote_Set_up_in_black.jpg */}
                 </div>

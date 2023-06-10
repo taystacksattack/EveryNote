@@ -111,7 +111,6 @@ def downgrade():
     # ### end Alembic commands ###
 
 
-
 # """here we go again
 
 # Revision ID: ffdc0a98111c

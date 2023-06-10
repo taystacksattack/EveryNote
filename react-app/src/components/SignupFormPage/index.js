@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
-import { useModal } from "../../context/Modal"
+// import { useModal } from "../../context/Modal"
 import './SignupForm.css';
 
 
@@ -27,14 +27,14 @@ function SignupFormPage() {
 
     const newErrors = {}
 
-   
+
     if (username.length > 40) newErrors.username = 'Username must be less than 40 characters'
     if (password.length < 6) newErrors.password = 'Password must be 6 characters or more'
     if (password !== confirmPassword) newErrors.password = 'Confirm Password field must be the same as the Password field'
     if (!email.includes('@') || !email.endsWith('.com') || !email.endsWith('.io') || !email.endsWith('.net') || !email.endsWith('.edu') || email.length < 5) newErrors.email = 'Please provide a valid email'
 
 
-    console.log('objectvalues ', Object.values(newErrors))
+    // console.log('objectvalues ', Object.values(newErrors))
     if (Object.values(newErrors).length) {
       setErrors(newErrors)
       return

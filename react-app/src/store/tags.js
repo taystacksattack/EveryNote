@@ -35,7 +35,7 @@ export const getTagsThunk = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            console.log("Error in fetching tags")
+            // console.log("Error in fetching tags")
             return;
         }
         dispatch(getTags(data.tags));
@@ -44,7 +44,7 @@ export const getTagsThunk = () => async (dispatch) => {
 };
 
 export const createTagThunk = (tag) => async (dispatch) => {
-    console.log("\n\n\ntag", tag)
+    // console.log("\n\n\ntag", tag)
     const response = await fetch("/api/tags/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,18 +59,18 @@ export const createTagThunk = (tag) => async (dispatch) => {
 
     } else {
         const errors = await response.json()
-        console.log("createTagThunk failed, reason ", errors)
+        // console.log("createTagThunk failed, reason ", errors)
         return errors
     }
 };
 
 export const updateTagThunk = (tag, tagId) => async (dispatch) => {
 
-    console.log("AT UPDATE TAG THUNK")
-    console.log("UPDATE TAG", tag)
-    console.log("UPDATE TAG_ID", tagId)
+    // console.log("AT UPDATE TAG THUNK")
+    // console.log("UPDATE TAG", tag)
+    // console.log("UPDATE TAG_ID", tagId)
 
-    console.log("JSON STRINGIFIED TAG", JSON.stringify(tag))
+    // console.log("JSON STRINGIFIED TAG", JSON.stringify(tag))
 
     const url = `/api/tags/${tagId}`
 

@@ -62,7 +62,7 @@ def put_notebook(id):
         return notebook_to_edit.to_dict()
 
     if form.errors:
-        print(form.errors)
+        # print(form.errors)
         return {"message": "not successful in Update route"}
 
 

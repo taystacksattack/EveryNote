@@ -9,13 +9,19 @@
 } */
 
 :root {
-    --bg-clr: #1a1a1a;
-    --font-clr: #a6a6a6;
+    --bg-clr: #131d2d;
+    --font-clr: #d5d8e1;
     --evernote-green: #008f26;
     --txt-area-gray: rgb(40, 37, 37);
-    --mustard: #c49f2f;
-}
+    --mustard: #5583CC;
+    --modal: ##90B7F7;
+    --button: #5583CC;
+    --shadows: #29446e;
+    --border: rgb(118, 118, 118);
 
+}
+/* retry
+ */
 *{
     margin:0;
     /* background-color: var(--bg-clr); */

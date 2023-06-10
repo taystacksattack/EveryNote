@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useStore } from 'react-redux';
 import { getNotebooksThunk } from "../../../store/notebook"
 import { createNoteThunk, editNoteThunk, getNotesThunk } from '../../../store/notes';
 import './index.css'
@@ -17,13 +18,13 @@ const NotebookDetails = () => {
     const dispatch = useDispatch()
     const notebookId = useParams().notebookId
 
-    const notebookObj = useSelector(state => state.notebooks.allNotebooks)
+    // const notebookObj = useSelector(state => state.notebooks.allNotebooks)
     const notes = useSelector(state => state.notes.allNotes)
 
     const userObj = useSelector(state => state.session.user)
     const filtered = Object.values(notes).filter(note => {
 
-        return note.notebookId == notebookId
+        return note.notebookId === Number(notebookId)
     })
 
 
@@ -83,12 +84,12 @@ const NotebookDetails = () => {
         return boolean
     }
 
-    const checkState = () => {
-        let boolean = false
-        if (title.length === 0) boolean = true
-        if (title.length > 30) boolean = true
-        return boolean
-    }
+    // const checkState = () => {
+    //     let boolean = false
+    //     if (title.length === 0) boolean = true
+    //     if (title.length > 30) boolean = true
+    //     return boolean
+    // }
 
     const deleteButton = (e) => {
         e.preventDefault()
@@ -122,71 +123,71 @@ const NotebookDetails = () => {
         dispatch(getNotesThunk())
     }, [dispatch, newBody, bool, title])
 
-    console.log(errors)
+    // console.log(errors)
     return (
         <div id="whole-notebook-wrapper">
-        <div>
-            <h1>Notebook Details</h1>
-            <div className='notebook-content-wrapper'>
+            <div>
+                <h1>Notebook Details</h1>
+                <div className='notebook-content-wrapper'>
 
-                <div className='notebook-content-left'>
-                    <button type='submit' onClick={NewNotebookNow}>Reset Note</button>
-                    <ol>
-                        {filtered.map(note => {
-                            return (
-                                <li className='notebook-detail-note-li'
-                                    key={note.id}
-                                    onClick={(e) => setterFunction(note, e)}
-                                >
-                                    <div>
-                                        <p className={`notebook-detail-title ${'currentNoteSelector'}`}>
-                                            {note.title}
-                                        </p>
+                    <div className='notebook-content-left'>
+                        <button type='submit' onClick={NewNotebookNow}>Reset Note</button>
+                        <ol>
+                            {filtered.map(note => {
+                                return (
+                                    <li className='notebook-detail-note-li'
+                                        key={note.id}
+                                        onClick={(e) => setterFunction(note, e)}
+                                    >
+                                        <div>
+                                            <p className={`notebook-detail-title ${'currentNoteSelector'}`}>
+                                                {note.title}
+                                            </p>
 
-                                    </div>
-                                    <div id="delete-note-modal-container" onClick={(e) => deleteButton(e)}>
-                                        <OpenModalButton
-                                            buttonText='🗑'
-                                            modalComponent={<DeleteModal note={note} />}
-                                        />
-                                    </div>
-                                </li>
-                            )
-                        })}
-                    </ol>
+                                        </div>
+                                        <div id="delete-note-modal-container" onClick={(e) => deleteButton(e)}>
+                                            <OpenModalButton
+                                                buttonText='🗑'
+                                                modalComponent={<DeleteModal note={note} />}
+                                            />
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ol>
 
-                </div>
-                <div className='notebook-detail-content-right'>
-                    <form type="submit" className='notebook-details-form'>
-                        <label type="type">
-                            <textarea
-                                className='notebook-detail-textarea-title'
-                                value={title ? title : currentNote.title}
-                                placeholder='Title'
-                                onChange={(e) => setTitle(e.target.value)}
-                            ></textarea>
-                        </label>
-                        <p className='errors'>{errors.title1 || errors.title2}</p>
-                        <label type="text">
-                            <textarea
-                                className='notebook-detail-textarea-body'
-                                value={newBody}
-                                onChange={(e) => setNewBody(e.target.value)}
-                            ></textarea>
-                        </label>
-                        <p className='errors'>{errors.body2}</p>
+                    </div>
+                    <div className='notebook-detail-content-right'>
+                        <form type="submit" className='notebook-details-form'>
+                            <label type="type">
+                                <textarea
+                                    className='notebook-detail-textarea-title'
+                                    value={title ? title : currentNote.title}
+                                    placeholder='Title'
+                                    onChange={(e) => setTitle(e.target.value)}
+                                ></textarea>
+                            </label>
+                            <p className='errors'>{errors.title1 || errors.title2}</p>
+                            <label type="text">
+                                <textarea
+                                    className='notebook-detail-textarea-body'
+                                    value={newBody}
+                                    onChange={(e) => setNewBody(e.target.value)}
+                                ></textarea>
+                            </label>
+                            <p className='errors'>{errors.body2}</p>
 
-                        {/* {updateOrCreate()} */}
-                        <div className='notebook-detail-button-container'>
-                            <button type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
-                                Update {currentNote.title} Notebook
-                            </button>
-                            <button type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
-                        </div>
-                    </form>
+                            {/* {updateOrCreate()} */}
+                            <div className='notebook-detail-button-container'>
+                                <button type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
+                                    Update {currentNote.title} Notebook
+                                </button>
+                                <button type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     )
 }

@@ -27,7 +27,7 @@ function TagCreateRenameModal({createOrRename, tag}) {
 
     if (createOrRename == "Create New") {
       const newTag = { name: tagName };
-      console.log("actual newtag create, name ", tagName )
+      // console.log("actual newtag create, name ", tagName )
 
       //thisMethod = "POST"
 

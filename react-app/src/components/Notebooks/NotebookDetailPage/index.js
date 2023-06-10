@@ -172,7 +172,7 @@ const NotebookDetails = () => {
                             {/* {updateOrCreate()} */}
                             <div className='notebook-detail-button-container'>
                                 <button className='Update-New-Note' type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
-                                    Update {currentNote.title} Notebook
+                                    Update {currentNote.title} Note
                                 </button>
                                 <button className='Reset-Note' type='submit' onClick={(e) => NewNotebookNow(e)}>Reset Note</button>
                                 <button className='Create-New-Note' type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>

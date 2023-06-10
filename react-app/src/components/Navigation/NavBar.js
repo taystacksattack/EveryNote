@@ -17,9 +17,9 @@ function NavBar({ isLoaded }){
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
-			<li>
+			{/* <li>
 				<NavLink exact to="/notes">Home</NavLink>
-			</li>
+			</li> */}
 			<li>
 				<NavLink exact to="/notes">Notes</NavLink>
 			</li>

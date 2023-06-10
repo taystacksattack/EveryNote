@@ -94,11 +94,24 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	}
 };
 
+// const emptyState = () => {
+// 	const state = {
+// 		notebooks: null,
+// 		notes: null,
+// 		notetags: null,
+// 		session: null,
+// 		tasks: null
+// 	}
+// 	return state
+// }
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
+			console.log("action inside logout", action)
+
 			return { user: null };
 		default:
 			return state;

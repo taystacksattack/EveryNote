@@ -38,7 +38,7 @@ const SingleTask = ({taskId}) =>{
         <div className="form-page">
             {task &&
             <div className="form-container">
-                <h1>task.title</h1>
+                <h1>{task.title}</h1>
                 <br></br>
                  <div id="">
                     <p>{task.description}</p>

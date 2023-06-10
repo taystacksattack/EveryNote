@@ -13,7 +13,6 @@
     /* color: red; */
     /* background-color: #c49f2f; */
 }
-
 /* for the button itself */
 #user-button{
     color: black;
@@ -23,10 +22,10 @@
     /* width: 30px */
 }
 
-
 #logged-out-button-wrapper{
     margin-top: 4.5%;
     width: 75vw;
+    /* position: absolute; */
     display: flex;
     justify-content: flex-end;
     /* flex-direction: column-reverse; */
@@ -35,12 +34,17 @@
 
 #logged-in-button-wrapper {
     margin-top: 2%;
-    /* width: 75vw; */
-    /* display: flex; */
-    /* justify-content: flex-end; */
+    height: 5rem;
+    width: 10vw;
+    display: flex;
+    align-items: center;
     /* border:red solid; */
 }
 
-#logged-in-layour{
-    border: red solid 1px
+.loggedin-dropdown{
+    padding: 0;
 }
+
+/* .profile-dropdown{
+    border: red solid 1 px
+} */

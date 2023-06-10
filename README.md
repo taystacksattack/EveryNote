@@ -1,3 +1,196 @@
+
+# Welcome to EveryNote's Wiki
+
+## Feature List
+
+EveryNote, an Evernote clone, is a website for users to jot down notes and tasks and organize them according to tags and notebooks.
+
+### 1. New account creation, log in, log out, and guest/demo login
+
+* Users can sign up, log in, and log out.
+* Users can use a demo log in to try the site.
+* Users can't use certain features without logging in (like notes and sharing).
+* Logged in users are directed to their profile page which displays a navigation bar, their notes, tasks, and a scratch pad.
+* Logged out users are directed to the login page.
+
+### 2. Notebooks
+
+* Logged in users can select their notebooks, which provides them with a brief list of the notes contained therein.
+* Logged in users can also write, edit, or delete notebooks.
+
+### 3. Notes
+
+* Logged in users can select and read their notes.
+* Logged in users can also write, edit, or delete notes.
+* Users can share notebooks with other users and determine if they have write capabilities.
+
+### 4. Tasks
+
+* Logged in users can select and view tasks they have created.
+* Logged in users can also write, edit, or delete tasks.
+
+### 5. Tags
+
+* Logged in users can view tags to notes.
+* Logged in users can assign tags and delete them from notes.
+
+---
+
+## DataBase Schema
+![image](https://github.com/taystacksattack/EveryNote/assets/118297234/ecf7b572-acc4-488d-bfdf-da982dc5786c)
+
+---
+
+## User Stories
+
+### Sign Up
+As an unregistered and unauthorized user, I want to be able to sign up as a user through a sign-up form.
+
+On the /signup page:
+* I would like to see a form where I can enter in my email, username and password of choice.
+* I would like to be able to successfully log in upon providing valid info and completion of the form.
+
+When I enter invalid data on the sign-up form:
+* I would like to be informed of the failed validations.
+* I would like the entries that were valid to stay populated on the form, such that I only have to to fill in the entries that weren’t valid and re-enter my password to resubmit
+
+### Log In
+As a registered user, I want to be able to log in to the website via a log-in form.
+
+On the /login page:
+* I would like to be able to enter my email and password on a log-in form.
+* I would like to be logged in upon successful and valid completion of the form.
+
+When I enter invalid data on the log-in form:
+* I would like to be informed of the failed validations.
+* I would like the entries that were valid to stay populated on the form, such that I only have to to fill in the entries that weren’t valid and re-enter my password to resubmit
+
+### Demo User
+As an unregistered and unauthorized user, I would like to see a button on both the /signup and /login forms to allow me to explore the site as a guest without needing to sign in or sign up.
+
+When on the /signup or /login page:
+* I can click on a Demo User button to log me in and allow me access to the site like a normal user.
+* I can test the site’s features and functionality without needing to enter credentials.
+
+Log out
+As a logged in user, I want to find a log out button on the navigation bar
+
+While on any page of the site:
+* I can log out of my account and be redirected to the website’s home page
+
+### Create Notes
+As a logged in user, I want a button to create a new note.
+
+When I click on the button to create a note:
+* I would like to be directed to the /notes page where I have a giant text area with a rich text editor where I can write, title, and style my notes.
+* I would also like a save button to save my notes (if not implementing autosave yet)
+
+View Notes
+As a logged in user, I want to be able to view all my notes.
+
+When I click “Notes” in the Navigation Bar or when I click the “create a note” button:
+* I would like to see a list of all my notes by their titles and when they were last created/edited
+* On the Notes heading, I would like to see a total count of my notes (additionally can have buttons to sort/filter the notes)
+* Clicking on an individual note title, I should be able to see the individual note contents
+
+Update Notes
+As a logged in user, I want to be able to edit my notes
+
+When I go to my /notes page and click on an individual note:
+* Upon clicking the note in the text area, I should be able to edit the content, or title or restyle my notes.
+* I would also like a save button to save my updated note (if autosave is not yet implemented)
+
+### Delete Notes
+As a logged in user, I want to be able to delete any of my notes
+
+When I go to my /notes page:
+* Upon selecting a note, there should be a dropdown menu (or button) to send the note to the trash for deletion.
+
+### Share Notes
+As a logged in user, I want to be able to share my notes to other users or to other people’s email
+
+When I go to my /notes page:
+* I should see a “Share” button. Upon clicking the button I can invite someone via their username or email and select their read/edit privileges
+
+### Create Tasks
+As a logged in user, I want to find a link in the navigation bar to create a new task.
+
+When I click to create a task:
+* I should get a popup allowing me to enter my new task
+* I should have a button “create task” that saves the task I created
+
+### View Tasks
+As a logged in user, I want to see all my tasks that I’ve created
+
+When I navigate to /tasks:
+I want to see a list of all my tasks as checkboxes
+If the tasks have been completed they would appear crossed off
+
+### Update Tasks
+As a logged in user, I want to be able to update my tasks.
+
+When I navigate to /tasks:
+* I want to be able to click on a task and either revise the name of the task or mark it as completed
+
+### Delete Tasks
+As a logged in user, I want to be able to delete my tasks
+
+When I navigate to /tasks and select a single task:
+* I want a button to delete the task and remove it from my list of tasks
+
+### Create Notebooks
+As a logged in user, in the navigation bar, I want to a button to create a new notebook
+
+When I click on the create new notebook button:
+* I want to see a form where I can fill out the name of my notebook
+
+### View Notebooks
+As a logged in user, I want to be able to see all my notebooks
+
+When I go to /notebooks:
+* I want to see a list of the names of the notebooks with a count of the number of notes inside the notebook
+* I also want to see the who created each notebook, when it was last updated, who it was shared with, and an actions menu where I can add a new note, share the notebook, rename the notebook or delete the notebook
+
+### Update Notebooks
+As a logged in user, I want to be able to update the name of my notebook
+
+When I go to /notebooks, under the actions menu:
+* I can click on rename notebook a form pops up where I can edit the name and save the new name
+
+
+### Delete Notebook
+As a logged in user, I want to be able to delete my notebook
+
+When I go to /notebooks, under the actions menu:
+* I can click on delete notebook and I will get a prompt to confirm whether I want to delete the notebook
+
+### Create Tags
+As a logged in user, I want a button to create a tag for my notes
+
+When I click on the button to create a tag:
+* I should have a form pop up to give the tag a name and have a button to actually create it.
+
+In the /notes page:
+* I also have the option to create new tag or attach a created tag to the note
+
+### View Tags
+As a logged in user, I want to be able to view all my created tags
+
+When I click “Tags” in the Navigation Bar:
+* I should see a list of the names of the tags and the number of notes that were tagged with that particular tag
+
+
+### Delete Tags
+As a logged in user, I want to be able to delete the tags I created
+
+When I click on an individual tag:
+* There is an option to delete the tag
+* Deleting the tag, removes the tag from all notes that had that tag
+
+
+
+---------------------
+
 # Flask React Project
 
 This is the starter for the Flask React project.

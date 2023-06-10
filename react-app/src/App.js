@@ -13,6 +13,7 @@ import CurrentTasks from './components/TasksPage'
 import CreateTask from './components/CreateTask'
 import EditTask from './components/EditTask'
 import LandingPage from './components/LandingPage'
+import './App.css'
 
 import TagsPage from './components/TagsPage'
 
@@ -29,44 +30,52 @@ function App() {
   return (
     <>
       {/* {true ?  : null} */}
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/notes">
-            <CurrentNotes />
-          </Route>
-          <Route exact path="/notebooks/new">
-            <NewNotebook />
-          </Route>
-          <Route exact path="/notebooks/:notebookId">
-            < NotebookDetails />
-          </Route>
 
-          <Route path="/notebooks">
-            <CurrentNotebooks />
-          </Route>
+      <div className="app-100-wrapper">
+      <div className="app-wrapper">
+        <div className="app-navbar">
+          <Navigation isLoaded={isLoaded} />
+        </div>
+        {isLoaded && (
+          <Switch>
+            <Route path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path="/notes">
+              <CurrentNotes />
+            </Route>
+            <Route exact path="/notebooks/new">
+              <NewNotebook />
+            </Route>
+            <Route exact path="/notebooks/:notebookId">
+              < NotebookDetails />
+            </Route>
 
-          <Route path="/tags">
-            <TagsPage />
-          </Route>
+            <Route path="/notebooks">
+              <CurrentNotebooks />
+            </Route>
 
-          <Route path="/tasks/:taskId/edit/">
-            <EditTask />
-          </Route>
-          <Route path="/tasks/new">
-            <CreateTask />
-          </Route>
-          <Route path="/tasks">
-            <CurrentTasks />
-          </Route>
-        </Switch>
-      )}
+            <Route path="/tags">
+              <TagsPage />
+            </Route>
+
+            <Route path="/tasks/:taskId/edit/">
+              <EditTask />
+            </Route>
+            <Route path="/tasks/new">
+              <CreateTask />
+            </Route>
+            <Route path="/tasks">
+              <CurrentTasks />
+            </Route>
+          </Switch>
+        )}
+        </div>
+      </div>
+
     </>
   );
 }

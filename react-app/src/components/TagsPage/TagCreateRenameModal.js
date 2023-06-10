@@ -4,15 +4,26 @@ import { useModal } from "../../context/Modal";
 
 import { createTagThunk, updateTagThunk } from "../../store/tags";
 
+import "./TagCreateRenameModal.css"
+
 function TagCreateRenameModal({createOrRename, tag}) {
   const dispatch = useDispatch();
   const [tagName, setTagName] = useState(tag ? tag.name : "");
+  const [errors, setErrors] = useState({})
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //let thisMethod = ""
+    setErrors({});
+
+    const submitErrors = {};
+
+    if (tagName.length === 0 || tagName.length > 30) {
+      submitErrors.tagName = "Name length must be between 1 and 30 characters"
+      setErrors(submitErrors)
+      return;
+    }
 
     if (createOrRename == "Create New") {
       const newTag = { name: tagName };
@@ -34,11 +45,14 @@ function TagCreateRenameModal({createOrRename, tag}) {
     }
     }
 
-
+  // const errorOrBlank = () => {
+  //   errors.tagName ? errors.tagName : "<br></br>";
+  // }
 
   return (
     <>
-      <h1>{createOrRename} Tag</h1>
+      <div className="create-rename-wrapper">
+      <h1 className="create-rename-title">{createOrRename} Tag</h1>
       <form onSubmit={handleSubmit} >
         {/* method={tag ? "PUT" : "POST"} */}
         {/* <ul>
@@ -46,9 +60,16 @@ function TagCreateRenameModal({createOrRename, tag}) {
             <li key={index}>{error}</li>
           ))}
         </ul> */}
-        <label>
+        <p id="create-rename-errors">
+          {errors.tagName ? errors.tagName : ""}
+          {/* {errorOrBlank} */}
+        </p>
+
+        <label id="create-rename-label">
           Tag Name
+
           <input
+            id="create-rename-input"
             type="text"
             value={tagName}
             onChange={(e) => {
@@ -61,6 +82,8 @@ function TagCreateRenameModal({createOrRename, tag}) {
         </label>
         <button type="submit">{createOrRename} Tag</button>
       </form>
+
+      </div>
     </>
   );
 }

@@ -11,6 +11,9 @@ const DeleteNotebookModal = ({ notebook }) => {
     const { closeModal } = useModal()
 
     const handleSubmit = (e) => {
+        console.log(notebook)
+        console.log(notebook.is_default)
+        if (notebook.is_default === true) return window.alert("Cannot delete Default Notebook")
         dispatch(deleteNotebookThunk(notebook))
         setBool(true)
         closeModal()

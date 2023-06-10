@@ -4,11 +4,13 @@
 }
 
 .everything-wrapper-2 {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: grid;
-  grid-template-columns: 25% 75%;
+  /* grid-template-columns: 25% 75%; */
+  grid-template-columns: 100%;
   justify-content: flex-end;
   height: 100%;
+  width: 100%;
   background-color: #1a1a1a;
   text-decoration: none;
   color: #a6a6a6;
@@ -60,12 +62,20 @@
 .hidden {
   display: none;
 }
+.hidden1 {
+  display: none;
+  font-weight: 100;
+  font-size: 10px;
+}
 .new-notebook-component {
   color: #008f26;
   display: flex;
   align-items: center;
   justify-content: right;
   padding-right: 10%;
+  border-bottom: solid 2px #a6a6a6;
+  position: relative;
+  right: 40px;
 }
 .new-notebook-component button {
   color: #008f26;
@@ -76,4 +86,9 @@
   position: relative;
   left: 5px;
   font-size: 1rem;
+}
+.notebook-note-dropdown-note-li {
+  height: 20px;
+  font-size: 15px;
+  font-weight: lighter;
 }

@@ -4,7 +4,7 @@ from app.models import Note
 from ..models.db import db
 from ..forms.note_form import NoteForm
 from datetime import datetime
-
+from .auth_routes import validation_errors_to_error_messages
 
 note_routes = Blueprint('notes', __name__)
 
@@ -41,9 +41,12 @@ def post_note():
 
         db.session.add(new_note)
         db.session.commit()
+
+        
+
         return new_note.to_dict()
 
-    return {"message":  "Bad Data"}     
+    return validation_errors_to_error_messages(form.errors), 400    
 
 
 @note_routes.route('/<int:id>')

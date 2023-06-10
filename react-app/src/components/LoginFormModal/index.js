@@ -3,9 +3,10 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 function LoginFormModal() {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,8 +25,8 @@ function LoginFormModal() {
 
   const handleDemoUser = async (e) => {
     await dispatch(login('demo@aa.io', 'password'))
+    history.push('/notes')
     closeModal()
-    return
 
   }
 
@@ -46,6 +47,7 @@ function LoginFormModal() {
             Email
             <input
               type="text"
+              id="login-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -55,6 +57,7 @@ function LoginFormModal() {
             Password
             <input
               type="password"
+              id="login-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

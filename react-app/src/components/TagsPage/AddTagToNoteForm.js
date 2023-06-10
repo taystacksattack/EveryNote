@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
@@ -69,7 +70,8 @@ function AddTagForm({noteId}) {
           </select>
 
         </label>
-        <button type="submit">Add Tag (Refresh after Add)</button>
+        <button>Add Tag (Refresh after Add)</button>
+        {/* <button type="submit">Add Tag (Refresh after Add)</button> */}
       </form>
     </>
   );
@@ -80,3 +82,4 @@ function AddTagForm({noteId}) {
 }
 
 export default AddTagForm;
+

@@ -1,0 +1,27 @@
+
+
+.create-rename-wrapper {
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--bg-clr);
+}
+
+
+.create-rename-title {
+    color: white;
+}
+
+#create-rename-label {
+    color: white;
+}
+
+#create-rename-input {
+    color: white;
+    background-color: var(--bg-clr);
+}
+
+#create-rename-errors {
+    color: red;
+    /* background-color: lightgray; */
+
+}

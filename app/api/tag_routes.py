@@ -21,7 +21,7 @@ def pull_notetags(self):
                   )
 @login_required
 def delete_tag(tagId):
-    print("at delete route")
+    # print("at delete route")
     to_delete = Tag.query.get(tagId)
     db.session.delete(to_delete)
     db.session.commit()
@@ -35,11 +35,11 @@ def update_tag(tagId):
     form['csrf_token'].data = request.cookies['csrf_token']
 
 
-    print("at update route, tag: ", tagId)
+    # print("at update route, tag: ", tagId)
     to_update = Tag.query.get(tagId)
 
 
-    print("EDIT TAG")
+    # print("EDIT TAG")
 
     if form.validate_on_submit():
         data = form.data
@@ -108,7 +108,7 @@ def get_notetags():
     Query for all note_tags and returns them in a list of note_tag tuples, by (note_id, tag_id)
     """
 
-    print("\n\n\nAT NOTETAGS ROUTE")
+    # print("\n\n\nAT NOTETAGS ROUTE")
 
     tags = Tag.query.all()
     res = {"note_to_tags": {},
@@ -213,14 +213,14 @@ def remove_tag_from_all_notes(tagId):
     #     return { "error": f"Unable to remove tag {tagId} from all notes"}
     this_tag = Tag.query.get(tagId)
 
-    print("\n\n\nthis_tag's notes", this_tag.notes)
+    # print("\n\n\nthis_tag's notes", this_tag.notes)
 
     for note in this_tag.notes:
-        print(f"\n\n\nRemoving tag {this_tag.name} from note {note.title}")
+        # print(f"\n\n\nRemoving tag {this_tag.name} from note {note.title}")
 
         [delete_tag_in_note] = [tag for tag in note.tags if tag == this_tag]
 
-        print("found tag for note")
+        # print("found tag for note")
 
         note.tags.remove(delete_tag_in_note)
     db.session.commit()
@@ -233,4 +233,3 @@ def remove_tag_from_all_notes(tagId):
 
     db.session.commit()
  """
-

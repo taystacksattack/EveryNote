@@ -150,7 +150,7 @@ const CurrentNotes = () => {
             }
 
             await dispatch(editNoteThunk(updatedNote, clickedNote.id))
-            await dispatch(getNotesThunk())
+            dispatch(getNotesThunk())
             setListRendered(listOfNotes)
             setTitle('')
             setNoteContent('')

@@ -17,6 +17,7 @@ import EditTask from './components/EditTask'
 import './App.css'
 
 import TagsPage from './components/TagsPage'
+import LandingPage from "./components/LandingPage";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         </div>
         {isLoaded && (
           <Switch>
+
             <Route path="/login" >
               <LoginFormPage />
             </Route>
@@ -71,6 +73,9 @@ function App() {
             </Route>
             <Route path="/tasks">
               <CurrentTasks />
+            </Route>
+            <Route path="/" >
+              <LandingPage />
             </Route>
           </Switch>
         )}

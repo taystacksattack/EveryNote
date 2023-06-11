@@ -239,7 +239,7 @@ const CurrentNotes = () => {
                 />
               </label> */}
                         <label>
-                            <select name="tagId"
+                            <select className ='tag-selections'name="tagId"
                                 onChange={(e) => {
                                     setTagIdChoice(e.target.value)
                                 }
@@ -292,9 +292,9 @@ const CurrentNotes = () => {
                         return (
                             <>
                                 <div className="tag-button">
-                                    <a href="/tags">
+                                    <div>
                                         <span id='tag-names'>{`${alltags[tagId].name} `}</span>
-                                    </a>
+                                    </div>
                                     <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
                                 </div>
                             </>

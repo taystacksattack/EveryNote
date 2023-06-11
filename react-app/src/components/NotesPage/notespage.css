@@ -207,3 +207,8 @@ button {
     background-color: var(--shadow);
     color:black
 }
+
+
+#add-tag-button{
+    margin-left: 1rem
+}

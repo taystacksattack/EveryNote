@@ -254,7 +254,9 @@ const CurrentNotes = () => {
                             </select>
 
                         </label>
-                        <button onClick={handleSubmitAddTag}>Add Tag (Refresh after Add) </button>
+                        {/* <div id="add-tag-button"> */}
+                            <button id="add-tag-button" onClick={handleSubmitAddTag}>Add Tag </button>
+                        {/* </div> */}
                     </form>
                 </>
             );

@@ -19,6 +19,8 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
+    history.push('/notes')
+
         closeModal()
     }
   };

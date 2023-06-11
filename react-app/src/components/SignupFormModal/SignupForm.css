@@ -5,7 +5,7 @@
 
 #sign-up-title{
     margin:0;
-    border: red solid
+    /* border: red solid */
 }
 
 
@@ -32,11 +32,16 @@
 }
 
 #form-items {
-    margin-top: 1rem
+    margin-top: 1rem;
+
 }
 
 
 #signup-button {
     width: 10rem;
     margin: 2rem 0
+}
+
+.input {
+    color:black
 }

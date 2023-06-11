@@ -150,7 +150,7 @@ const CurrentNotes = () => {
             }
 
             await dispatch(editNoteThunk(updatedNote, clickedNote.id))
-            await dispatch(getNotesThunk())
+            dispatch(getNotesThunk())
             setListRendered(listOfNotes)
             setTitle('')
             setNoteContent('')
@@ -202,7 +202,8 @@ const CurrentNotes = () => {
         try {
 
             // const currentNote = allnotes.allNotes[noteId]
-            const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+            // const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+            const tagsOfCurrentNote = notetags.note_to_tags[noteId] ? notetags.note_to_tags[noteId] : []
 
             const allTagsValues = Object.values(alltags);
             const allTagsList = allTagsValues.map((tag) => { return { "id": tag.id, "name": tag.name } })
@@ -238,7 +239,7 @@ const CurrentNotes = () => {
                 />
               </label> */}
                         <label>
-                            <select name="tagId"
+                            <select className ='tag-selections'name="tagId"
                                 onChange={(e) => {
                                     setTagIdChoice(e.target.value)
                                 }
@@ -257,7 +258,8 @@ const CurrentNotes = () => {
                 </>
             );
 
-        } catch {
+        } catch(e) {
+            console.log('errors', e)
             return (<></>)
         }
     }
@@ -290,10 +292,10 @@ const CurrentNotes = () => {
                         return (
                             <>
                                 <div className="tag-button">
-                                    <a href="/tags">
+                                    <div>
                                         <span id='tag-names'>{`${alltags[tagId].name} `}</span>
-                                    </a>
-                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                                    </div>
+                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
                                 </div>
                             </>
                         )

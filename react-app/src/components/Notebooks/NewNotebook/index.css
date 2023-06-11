@@ -15,9 +15,11 @@
 }
 
 .create-modal-div-wrapper {
-  border: solid 1px #262626;
-  background-color: #262626;
+  border: solid 1px var(--border);
+  background-color: var(--bg-clr);
   height: 100%;
+  width: 100%;
+  color: var(--button);
 }
 
 .create-modal-form {
@@ -29,11 +31,11 @@
 
 .create-modal-label {
   /* border: solid 1px rgb(94, 94, 142); */
-  color: white;
+  color: var(--button);
 }
 .create-des {
   /* border: solid 1px rgb(94, 94, 142); */
-  color: #a6a6a666;
+  color: var(--button);
 }
 
 .create-div-label-input {
@@ -51,7 +53,7 @@
   background-color: #262626;
   border: solid 1px #a6a6a666;
   border-radius: 5px;
-  color: white;
+  color: var(--button);
 }
 .create-button-container {
   display: flex;
@@ -71,19 +73,26 @@
 }
 
 .create-modal-button-submit {
-  background-color: #008f26;
-  color: black;
-  border-radius: 5px;
-  border: solid 1px #008f26;
+  background-color: var(--bg-clr);
+  color: var(--button);
+  /* border-radius: 5px; */
+  border: solid 0.5px var(--border);
 }
+/* .create-modal-button-submit:disabled {
+  background-color:red;
+  color: var(--button);
+  border: solid 0.5px var(--border);
+} */
 /* .create-modal-button-submit {
 } */
 .create-modal-button-cancel {
-  background-color: #262626;
-  border: solid 0.5px #a6a6a6;
-  color: #a6a6a6;
-  border-radius: 5px;
+  background-color: var(--bg-clr);
+  border: solid 0.5px var(--border);
+  color: var(--button);
+  /* border-radius: 5px; */
 }
+
+
 .fa-book {
-  color: #008f26;
+  color: var(--button);
 }

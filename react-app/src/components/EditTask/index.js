@@ -83,7 +83,7 @@ const EditTask = ({ taskId }) => {
     }, [title, description, due_date, completed])
 
 
-    if (showTask) return (<SingleTask taskId={task.id} />)
+    if (task && showTask) return (<SingleTask taskId={task.id} />)
 
     return (
         <div className="form-page">

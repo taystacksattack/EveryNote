@@ -6,6 +6,7 @@ const GET_NOTES = "session/GET_NOTES";
 const CREATE_NOTE = "session/CREATE_NOTE"
 const EDIT_NOTE = "session/EDIT_NOTE"
 const DELETE_NOTE = "session/DELETE_NOTE"
+const CLEAR_NOTES = "session/CLEAR_NOTES"
 
 
 //ACTION CREATORS
@@ -30,6 +31,10 @@ const deleteNote = (noteId) => ({
     noteId
 })
 
+
+export const clearNotes = () => ({
+    type: CLEAR_NOTES
+})
 
 //THUNKS
 export const getNotesThunk = () => async (dispatch) => {
@@ -138,6 +143,9 @@ export default function notesReducer(state = initialState, action) {
             const newState = { ...state, allNotes: { ...state.allNotes}}
             delete newState.allNotes[action.noteId]
             return newState
+        }
+        case CLEAR_NOTES: {
+            return { allNotes:{} }
         }
         default:
             return state

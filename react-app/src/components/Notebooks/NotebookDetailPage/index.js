@@ -32,9 +32,9 @@ const NotebookDetails = () => {
     const handleSubmitUpdate = (e) => {
         e.preventDefault()
 
-        if (title.length === 0) err.title = "Your note name must contain at least one character"
-        if (title.length > 30) err.title = "body character limit is between 1 and 2500 characters"
-
+        // if (title.length === 0) err.title1 = "Your note name must contain at least one character"
+        if (title.length > 30) err.title2 = "Title character limit is between 1 and 30 characters"
+        if (newBody.length > 2500) err.body2 = "body character limit is between 1 and 2500 characters"
         if (Object.values(err).length === 0) {
 
             const updateNote = {
@@ -45,6 +45,8 @@ const NotebookDetails = () => {
                 "notebookId": notebookId,
                 "trash": false,
             }
+            console.log(errors)
+            setErrors({})
             dispatch(editNoteThunk(updateNote, updateNote.id))
             setBool(!bool)
         }
@@ -67,6 +69,10 @@ const NotebookDetails = () => {
                 "notebookId": notebookId,
                 "trash": false,
             }
+            console.log(errors)
+
+            setErrors({})
+
             dispatch(createNoteThunk(newNote))
             setTitle('')
             setNewBody('')
@@ -84,13 +90,6 @@ const NotebookDetails = () => {
         return boolean
     }
 
-    // const checkState = () => {
-    //     let boolean = false
-    //     if (title.length === 0) boolean = true
-    //     if (title.length > 30) boolean = true
-    //     return boolean
-    // }
-
     const deleteButton = (e) => {
         e.preventDefault()
         setBool(!bool)
@@ -101,17 +100,10 @@ const NotebookDetails = () => {
         setNewBody(note.body)
     }
 
-    // const updateOrCreate = () => {
-    //     if (currentNote.id) {
-    //         return <button type="submit" onClick={handleSubmitUpdate}>
-    //             Update {currentNote.title} Notebook
-    //         </button>
-    //     }
-    //     return <button type='submit' onClick={handleSubmitCreate}>Create New Note</button>
-    // }
 
-    const NewNotebookNow = () => {
-        setErrors(err)
+    const NewNotebookNow = (e) => {
+        e.preventDefault()
+        setErrors({})
         setTitle('')
         setNewBody('')
         setCurrentNote({ title: '' })
@@ -131,7 +123,7 @@ const NotebookDetails = () => {
                 <div className='notebook-content-wrapper'>
 
                     <div className='notebook-content-left'>
-                        <button type='submit' onClick={NewNotebookNow}>Reset Note</button>
+
                         <ol>
                             {filtered.map(note => {
                                 return (
@@ -179,10 +171,11 @@ const NotebookDetails = () => {
 
                             {/* {updateOrCreate()} */}
                             <div className='notebook-detail-button-container'>
-                                <button type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
-                                    Update {currentNote.title} Notebook
+                                <button className='Update-New-Note' type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
+                                    Update {currentNote.title} Note
                                 </button>
-                                <button type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
+                                <button className='Reset-Note' type='submit' onClick={(e) => NewNotebookNow(e)}>Reset Note</button>
+                                <button className='Create-New-Note' type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
                             </div>
                         </form>
                     </div>

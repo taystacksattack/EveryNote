@@ -15,9 +15,9 @@
 }
 
 .delete-modal-div-wrapper {
-  border: solid 1px #262626;
-  background-color: #262626;
-  color: white;
+  border: solid 1px var(--border);
+  background-color: var(--bg-clr);
+  color: var(--modal);
   padding: 3%;
   height: 100%;
 }
@@ -25,10 +25,11 @@
 .delete-h1 {
   font-size: 22px;
   height: 40px;
+  color: var(--font-clr);
 }
 .delete-p {
-    color: #a6a6a6;
-    font-weight: 700;
+  color: var(--font-clr);
+  font-weight: 700;
   font-size: 15px;
 }
 .delete-button-container {
@@ -49,16 +50,16 @@
 }
 
 .delete-modal-button-submit {
-  background-color: #E86357;
-  color: black;
+  background-color: #bc2618;
   border-radius: 5px;
-  border: solid 1px#E86357;
+  color: var(--font-clr);
+  border: solid 1px#bc2618;
 }
 /* .create-modal-button-submit {
   } */
 .delete-modal-button-cancel {
-  background-color: #262626;
-  border: solid 0.5px #a6a6a6;
-  color: #a6a6a6;
+  background-color: var(--bg-clr);
+  border: solid 0.5px var(--border);
+  color: var(--font-clr);
   border-radius: 5px;
 }

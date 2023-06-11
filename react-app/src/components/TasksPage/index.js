@@ -34,7 +34,7 @@ const CurrentTasks = () => {
     // console.log("tasks array",tasksArr)
     useEffect(()=>{
         const sortedTasks = type => {
-            const sorted = [...tasksArr].sort((a, b) =>{
+            const sorted = tasksArr.sort((a, b) =>{
                 if (type !== "title"){
                     return new Date(a[type]) - new Date (b[type])
                 } else{
@@ -46,12 +46,15 @@ const CurrentTasks = () => {
             // console.log("sortedTasks",sortedTasks)
         }
         sortedTasks(sortType)
-    },[sortType, tasksArr.length])
+    // },[sortType, tasksArr.length, tasksObj[singleTask]?.title, tasksObj[singleTask]?.description], tasksObj[singleTask]?.due_date)
+},[sortType, tasksArr.length, tasksObj[singleTask]])
+
 
     useEffect(()=>{
         dispatch(getTasksThunk())
-    }, [dispatch, ])
+    }, [dispatch ])
 
+   
 
     const handleTaskDisplay = (e) => {
         setSingleTask(e)
@@ -75,6 +78,10 @@ const CurrentTasks = () => {
         if(showTask) setShowTask(false)
     }
 
+    const handleTrashClick = async (e) => {
+        e.preventDefault()
+        setShowEditTasks(false)
+    }
 
     if(!tasksObj) return (<div>Loading</div>)
     // console.log("heres the data ", tasks)
@@ -103,12 +110,14 @@ const CurrentTasks = () => {
                                 {/* <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                                     Edit task
                                 </NavLink> */}
-                                <Link onClick={e=> handleTaskEdit(task.id)}>Edit Task</Link>
-                                <div id="trash">
+                                <div className='edit-trash'>
+                                <Link className= 'edit-button'onClick={e=> handleTaskEdit(task.id)}>Edit Task</Link>
+                                <div id="trash" onClick={(e) => handleTrashClick(e)} >
                                     <OpenModalButton
                                     buttonText = "🗑"
                                     modalComponent={<DeleteTaskModal task={task} />}
                                     />
+                                </div>
                                 </div>
                             </div>
                         )

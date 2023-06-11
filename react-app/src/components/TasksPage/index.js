@@ -34,7 +34,7 @@ const CurrentTasks = () => {
     // console.log("tasks array",tasksArr)
     useEffect(()=>{
         const sortedTasks = type => {
-            const sorted = [...tasksArr].sort((a, b) =>{
+            const sorted = tasksArr.sort((a, b) =>{
                 if (type !== "title"){
                     return new Date(a[type]) - new Date (b[type])
                 } else{
@@ -46,11 +46,13 @@ const CurrentTasks = () => {
             // console.log("sortedTasks",sortedTasks)
         }
         sortedTasks(sortType)
-    },[sortType, tasksArr.length])
+    // },[sortType, tasksArr.length, tasksObj[singleTask]?.title, tasksObj[singleTask]?.description], tasksObj[singleTask]?.due_date)
+},[sortType, tasksArr.length, tasksObj[singleTask]])
+
 
     useEffect(()=>{
         dispatch(getTasksThunk())
-    }, [dispatch, ])
+    }, [dispatch ])
 
 
     const handleTaskDisplay = (e) => {

@@ -202,7 +202,8 @@ const CurrentNotes = () => {
         try {
 
             // const currentNote = allnotes.allNotes[noteId]
-            const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+            // const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+            const tagsOfCurrentNote = notetags.note_to_tags[noteId] ? notetags.note_to_tags[noteId] : []
 
             const allTagsValues = Object.values(alltags);
             const allTagsList = allTagsValues.map((tag) => { return { "id": tag.id, "name": tag.name } })
@@ -257,7 +258,8 @@ const CurrentNotes = () => {
                 </>
             );
 
-        } catch {
+        } catch(e) {
+            console.log('errors', e)
             return (<></>)
         }
     }
@@ -293,7 +295,7 @@ const CurrentNotes = () => {
                                     <a href="/tags">
                                         <span id='tag-names'>{`${alltags[tagId].name} `}</span>
                                     </a>
-                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
                                 </div>
                             </>
                         )

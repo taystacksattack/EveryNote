@@ -54,6 +54,7 @@ const CurrentTasks = () => {
         dispatch(getTasksThunk())
     }, [dispatch ])
 
+   
 
     const handleTaskDisplay = (e) => {
         setSingleTask(e)
@@ -77,6 +78,10 @@ const CurrentTasks = () => {
         if(showTask) setShowTask(false)
     }
 
+    const handleTrashClick = async (e) => {
+        e.preventDefault()
+        setShowEditTasks(false)
+    }
 
     if(!tasksObj) return (<div>Loading</div>)
     // console.log("heres the data ", tasks)
@@ -105,12 +110,14 @@ const CurrentTasks = () => {
                                 {/* <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                                     Edit task
                                 </NavLink> */}
-                                <Link onClick={e=> handleTaskEdit(task.id)}>Edit Task</Link>
-                                <div id="trash">
+                                <div className='edit-trash'>
+                                <Link className= 'edit-button'onClick={e=> handleTaskEdit(task.id)}>Edit Task</Link>
+                                <div id="trash" onClick={(e) => handleTrashClick(e)} >
                                     <OpenModalButton
                                     buttonText = "🗑"
                                     modalComponent={<DeleteTaskModal task={task} />}
                                     />
+                                </div>
                                 </div>
                             </div>
                         )

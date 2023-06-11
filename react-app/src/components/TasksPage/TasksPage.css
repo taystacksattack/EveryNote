@@ -48,6 +48,7 @@
         background-color: transparent;
         margin-bottom: 0.2rem;
         color: var(--font-clr);
+        font-size:2rem;
 }
 
 #task-input-area{
@@ -98,4 +99,18 @@
     display: flex;
     flex-direction: column;
 
+}
+
+.edit-button {
+    width: 6rem;
+    background-color: var(--button);
+    padding: 0.3rem;
+    border-radius:15pt;
+    text-align:center;
+}
+.edit-trash{
+    margin-top: 1rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -2,6 +2,7 @@ export const GET_NOTEBOOKS = 'Notebooks/GET_NOTEBOOKS'
 export const CREATE_NOTEBOOK = 'Notebooks/CREATE_NOTEBOOK'
 export const EDIT_NOTEBOOK = 'Notebooks/EDIT_NOTEBOOK'
 export const DELETE_NOTEBOOK = 'Notebooks/DELETE_NOTEBOOK'
+const CLEAR_NOTEBOOKS = "Notebooks/CLEAR_NOTEBOOKS"
 //GET, CREATE, EDIT, DELETE
 
 //actions
@@ -24,6 +25,10 @@ const editNotebook = (notebook) => ({
 const deleteNotebook = (notebook) => ({
     type: DELETE_NOTEBOOK,
     notebook
+})
+
+export const clearNotebooks = () => ({
+    type: CLEAR_NOTEBOOKS
 })
 
 //THUNK action creators
@@ -102,6 +107,9 @@ const notebooksReducer = (state = initialState, action) => {
             const deleteState = { ...state, allNotebooks: { ...state.allNotebooks } }
             delete deleteState.allNotebooks[action.notebook.id]
             return deleteState
+        case CLEAR_NOTEBOOKS: {
+            return { allNotebooks: {}}
+        }
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-// import LandingPage from '../LandingPage';
+import LandingPage from '../LandingPage';
 import './Navigation.css';
 
 function NavBar({ isLoaded }){
@@ -32,6 +32,7 @@ function NavBar({ isLoaded }){
 			<li>
 				<NavLink exact to="/tags">Tags</NavLink>
 			</li>
+			{/* <LandingPage isLoaded = {isLoaded}/> */}
 			{/* <li>
 				<NavLink exact to="/">Trash</NavLink>
 			</li>

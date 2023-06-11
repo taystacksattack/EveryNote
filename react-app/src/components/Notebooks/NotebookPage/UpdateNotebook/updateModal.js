@@ -82,7 +82,8 @@ const UpdateNotebookModel = ({ notebook }) => {
             <form
                 onSubmit={(e) => handleSubmit(e)} className='update-modal-form'>
                 <label className='update-modal-label'>
-                    <p className='update-dis'>Name</p>
+                    <p className='update-dis'> Update Name</p>
+                    <p className="errors">&#160;{errors.title}</p>
                     <div className='update-div-label-input'>
                         <input
                             className='update-modal-form-input'
@@ -94,7 +95,6 @@ const UpdateNotebookModel = ({ notebook }) => {
                         </input>
                     </div>
                 </label>
-                <p className="errors">&#160;{errors.title}</p>
                 <div className='update-button-container'>
                     <button onClick={(e) => closeForm()}
                         className='update-modal-button-cancel'>Cancel

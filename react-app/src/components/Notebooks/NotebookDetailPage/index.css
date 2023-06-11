@@ -2,23 +2,22 @@
   width: 60%;
 }
 
-#whole-notebook-wrapper{
+#whole-notebook-wrapper {
   background-color: var(--bg-clr);
   width: 100%;
   /* padding: 2rem; */
 }
 
-
 .notebook-content-wrapper {
   display: grid;
   grid-template-columns: 35% 65%;
-  column-gap: 20%;
+  column-gap: 10%;
 }
 .notebook-detail-h1 {
-  color: white;
+  color: var(--font-clr);
 }
 .notebook-detail-title {
-  color: rgba(255, 255, 255, 0.267);
+  color: var(--font-clr);
 }
 
 .notebook-detail-content-right {
@@ -26,28 +25,40 @@
   grid-template-columns: 100%;
 }
 .notebook-detail-textarea-title {
-  color: white;
+  color: var(--font-clr);
   width: 80%;
-  background-color: var(--bg-clr);
+  background-color: rgb(37, 37, 40);
 }
 .notebook-detail-textarea-body {
   resize: none;
   width: 80%;
   height: 20rem;
-  color: var(--font-color);
-  background-color: var(--bg-clr);
+  color: var(--font-clr);
+  background-color: rgb(37, 37, 40);
 }
 
 .notebook-details-form {
   width: 80%;
 }
 .notebook-detail-button-container {
+  display: grid;
   width: 80%;
 }
 .notebook-content-left {
   width: 100%;
 }
 .notebook-detail-note-li {
+  border-bottom: solid 1px var(--border);
+  width: 100%;
+}
+.Create-New-Note {
   /* border: solid 1px green; */
+  background-color: var(--modal);
+}
+.Update-New-Note {
+  background-color: var(--modal);
+}
+.Reset-Note {
+  background-color: var(--modal);
   width: 100%;
 }

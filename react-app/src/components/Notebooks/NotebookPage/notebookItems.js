@@ -78,7 +78,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
             <p>{findTimeUpdated(notebook)}</p>
             <label>
                 <button onClick={(e) => changeState(e)} className="drop-down-list">
-                    <p>...</p>
+                    <p className="dot-dot">...</p>
                 </button>
 
                 <div className="notebook-ul-ultra-wrapper">

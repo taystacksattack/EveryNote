@@ -132,6 +132,7 @@ const CurrentNotes = () => {
         const newErrors = {}
         if (title.length > 30) newErrors.title = 'Please keep title less than 30 characters.'
         if (noteContent.length > 2500) newErrors.noteContent = 'Please keep note less than 2500 characters.'
+        if (!title.length && !noteContent.length) newErrors.note = "Cannot create an empty note"
 
         if (Object.values(newErrors).length) {
             setErrors(newErrors)
@@ -253,7 +254,9 @@ const CurrentNotes = () => {
                             </select>
 
                         </label>
-                        <button onClick={handleSubmitAddTag}>Add Tag (Refresh after Add) </button>
+                        {/* <div id="add-tag-button"> */}
+                            <button id="add-tag-button" onClick={handleSubmitAddTag}>Add Tag </button>
+                        {/* </div> */}
                     </form>
                 </>
             );
@@ -419,6 +422,8 @@ const CurrentNotes = () => {
                     {notetags && notetags ? AddTagForm(clickedNote.id) : ''}
                     {errors.title && <p className='note-errors'>{errors.title}</p>}
                     {errors.noteContent && <p className='note-errors'>{errors.noteContent}</p>}
+                    {errors.note && <p className='note-errors'>{errors.note}</p>}
+
                 </form>
                 {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION LATER*/}
                 {/* <button onClick={(e) => setTrash(!trash)}>trash</button> */}

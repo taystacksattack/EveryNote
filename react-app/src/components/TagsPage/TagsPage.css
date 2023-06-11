@@ -85,7 +85,9 @@
 .tag-page-wrapper {
     background-color: #1a1a1a;
     color: var(--font-clr);
-    width: 28rem;
+    /* width: 28rem; */
+    width: 65%;
+
     border-left: 1px solid darkcyan;
     overflow-y: scroll;
 }

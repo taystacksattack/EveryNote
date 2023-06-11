@@ -19,8 +19,9 @@
 }
 
 #login-input{
-    background-color: var(--bg-clr);
-    color: var(--font-clr)
+    background-color: white;
+    color: black;
+    margin: 0 0.5rem;
 }
 
 #form-items-wrapper{
@@ -32,7 +33,7 @@
 }
 
 #form-items{
-    margin-top: 1rem
+    margin-top: 1rem;
 }
 
 

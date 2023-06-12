@@ -62,7 +62,7 @@ EveryNote, an Evernote clone, is a website for users to jot down notes and tasks
 
 ### Notebooks
 
-* NotbookPage
+* NotebookPage
 * NewNotebook
 * NotebookDetailPage
 
@@ -100,6 +100,68 @@ EveryNote, an Evernote clone, is a website for users to jot down notes and tasks
 * Tasks, path '/tasks'
 * Create Task, path '/tasks/new'
 
+
+## Backend Routes
+
+### Users
+
+* Login, POST, '/login'
+* Logout DELETE, '/logout'
+* Signup POST, '/signup'
+
+### Notebooks
+
+* Notebooks List, GET, '/notebooks'
+* NotebookDetailPage, GET, '/notebook/notebookId'
+* New Notebook, POST, '/notebooks/new'
+* Edit Notebook, PUT, '/notebooks/notebookId/edit'
+* Delete Notebook, DELETE, '/notebooks/notebookId/delete'
+
+### Notes
+
+* Notes, GET, '/notes'
+* Note by Note Id, GET, '/notes/noteId'
+* New Note, POST, '/notes'
+* Edit Note by Note Id, PUT, '/notes/noteId'
+* Delete Note by Note Id, DELETE, '/notes/noteId'
+
+### Tasks
+
+* Tasks, GET, '/tasks'
+* Task by Task Id, GET, '/tasks/taskId'
+* New Task, POST, '/tasks/new'
+* Edit Task by Id, PUT, '/tasks/taskId/edit'
+* Delete Task by Id, DELETE, '/tasks/taskId/delete'
+
+### Tags
+
+* Tags, GET, '/tags'
+* Task by Task Id, GET, '/tags/taskId'
+* New Tag, POST, '/tags'
+* Edit Tag by Id, POST, '/tags/taskId'
+* Delete Tag by Id, DELETE, '/tags/tagId'
+
+## Note Tags (Join Table Query)
+
+* Note Tags, GET, '/notetags'
+* Add Tag to Note, POST, '/notetags/noteId/tagId'
+* Edit Task by Id, PUT, '/tasks/taskId/edit'
+* Delete Note Tag, DELETE, '/notetags/noteId/tagId'
+* Remove Tag from all Notes, DELETE, '/notetags/all/tagId'
+
+
+## React Store
+
+State = {
+      notebooks: {allNoteBooks},
+      notes: {allNotes},
+      notetags: { 
+            {note_to_tags},
+            {tags_to_notes},
+      },
+      tasks: {allTasks},
+      session: {user}
+}
 
 ---
 

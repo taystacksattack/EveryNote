@@ -1,4 +1,5 @@
 import {clearNotes} from "./notes"
+import {clearNotebooks} from "./notebook"
 
 // constants
 const SET_USER = "session/SET_USER";
@@ -67,6 +68,7 @@ export const logout = () => async (dispatch) => {
 	if (response.ok) {
 		dispatch(removeUser());
 		dispatch(clearNotes())
+		dispatch(clearNotebooks())
 	}
 };
 

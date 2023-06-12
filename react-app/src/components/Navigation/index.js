@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import LandingPage from '../LandingPage';
 import NavBar from './NavBar';
 import './Navigation.css';
+import ProfileButton from './ProfileButton';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -13,8 +14,10 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div>
-			{isLoaded && sessionUser? <NavBar isLoaded = {isLoaded}/> : <LandingPage isLoaded = {isLoaded}/>}
+			{/* {isLoaded && sessionUser? <NavBar isLoaded = {isLoaded}/> : <LandingPage isLoaded = {isLoaded}/>} */}
 			{/* {isLoaded && sessionUser ? <NavBar isLoaded = {isLoaded}/> : null } */}
+			{isLoaded && sessionUser? <NavBar isLoaded = {isLoaded}/> : <ProfileButton/>}
+
 		</div>
 	);
 }

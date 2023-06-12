@@ -197,3 +197,18 @@ button {
     color:red;
     font-size: 20px;
 }
+
+
+.tag-selections {
+    background-color: var(--shadow)
+}
+
+.tag-selections > option  {
+    background-color: var(--shadow);
+    color:black
+}
+
+
+#add-tag-button{
+    margin-left: 1rem
+}

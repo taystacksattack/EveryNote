@@ -19,6 +19,8 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
+    history.push('/notes')
+
         closeModal()
     }
   };
@@ -45,7 +47,7 @@ function LoginFormModal() {
         <div id="form-items-wrapper">
           <label id="form-items">
             Email
-            <input
+            <input 
               type="text"
               id="login-input"
               value={email}
@@ -55,7 +57,7 @@ function LoginFormModal() {
           </label>
           <label id="form-items">
             Password
-            <input
+            <input 
               type="password"
               id="login-input"
               value={password}

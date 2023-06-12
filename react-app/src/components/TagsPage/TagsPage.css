@@ -85,7 +85,9 @@
 .tag-page-wrapper {
     background-color: #1a1a1a;
     color: var(--font-clr);
-    width: 28rem;
+    /* width: 28rem; */
+    width: 65%;
+
     border-left: 1px solid darkcyan;
     overflow-y: scroll;
 }
@@ -102,7 +104,8 @@
 
 /* top section, above taglist */
 .tag-list-top {
-    border: 1px solid fuchsia;
+    /* border: 1px solid fuchsia; */
+    border-bottom: 2px solid var(--font-clr);
     padding: 1rem;
 }
 

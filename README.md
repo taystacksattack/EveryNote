@@ -1,6 +1,10 @@
 
 # Welcome to EveryNote's Wiki
 
+## Link
+
+# https://everynote-yrm6.onrender.com/
+
 ## Feature List
 
 EveryNote, an Evernote clone, is a website for users to jot down notes and tasks and organize them according to tags and notebooks.
@@ -38,6 +42,126 @@ EveryNote, an Evernote clone, is a website for users to jot down notes and tasks
 
 ## DataBase Schema
 ![image](https://github.com/taystacksattack/EveryNote/assets/118297234/ecf7b572-acc4-488d-bfdf-da982dc5786c)
+
+---
+
+## React Components
+
+### Navigation
+
+* Navigation
+* ProfileButton
+* LandingPage
+
+### Users
+
+* LoginFormPage
+* LoginFormModal
+* SignupFormPage
+* SignupFormModal
+
+### Notebooks
+
+* NotebookPage
+* NewNotebook
+* NotebookDetailPage
+
+### Notes
+
+* NotesPage
+* DeleteNoteModal
+
+### Tasks
+
+* TasksPage
+* SingleTask
+* CreateTask
+* EditTask
+* DeleteTaskModal
+
+### Tags
+
+* Add SelectNoteToTag
+* AddTagToNoteForm
+* TagsPage
+* TagCreateRenameModal
+* TagDeleteModal
+
+---
+
+## Frontend Routes
+
+* Login, path '/login'
+* Signup, path '/signup'
+* Notes, path '/notes'
+* Notebooks, path '/notebooks'
+* Notboook Details, path 'notebooks/:notebookId'
+* Create Notebook, path '/notebooks/new'
+* Tasks, path '/tasks'
+* Create Task, path '/tasks/new'
+
+
+## Backend Routes
+
+### Users
+
+* Login, POST, '/login'
+* Logout DELETE, '/logout'
+* Signup POST, '/signup'
+
+### Notebooks
+
+* Notebooks List, GET, '/notebooks'
+* NotebookDetailPage, GET, '/notebook/notebookId'
+* New Notebook, POST, '/notebooks/new'
+* Edit Notebook, PUT, '/notebooks/notebookId/edit'
+* Delete Notebook, DELETE, '/notebooks/notebookId/delete'
+
+### Notes
+
+* Notes, GET, '/notes'
+* Note by Note Id, GET, '/notes/noteId'
+* New Note, POST, '/notes'
+* Edit Note by Note Id, PUT, '/notes/noteId'
+* Delete Note by Note Id, DELETE, '/notes/noteId'
+
+### Tasks
+
+* Tasks, GET, '/tasks'
+* Task by Task Id, GET, '/tasks/taskId'
+* New Task, POST, '/tasks/new'
+* Edit Task by Id, PUT, '/tasks/taskId/edit'
+* Delete Task by Id, DELETE, '/tasks/taskId/delete'
+
+### Tags
+
+* Tags, GET, '/tags'
+* Task by Task Id, GET, '/tags/taskId'
+* New Tag, POST, '/tags'
+* Edit Tag by Id, POST, '/tags/taskId'
+* Delete Tag by Id, DELETE, '/tags/tagId'
+
+## Note Tags (Join Table Query)
+
+* Note Tags, GET, '/notetags'
+* Add Tag to Note, POST, '/notetags/noteId/tagId'
+* Edit Task by Id, PUT, '/tasks/taskId/edit'
+* Delete Note Tag, DELETE, '/notetags/noteId/tagId'
+* Remove Tag from all Notes, DELETE, '/notetags/all/tagId'
+
+
+## React Store
+
+State = {
+      notebooks: {allNoteBooks},
+      notes: {allNotes},
+      notetags: { 
+            {note_to_tags},
+            {tags_to_notes},
+      },
+      tasks: {allTasks},
+      session: {user}
+}
 
 ---
 
@@ -191,7 +315,7 @@ When I click on an individual tag:
 
 ---------------------
 
-# Flask React Project
+# Flask React Project - this is from the original starter documentation (for reference)
 
 This is the starter for the Flask React project.
 

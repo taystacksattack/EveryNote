@@ -132,6 +132,7 @@ const CurrentNotes = () => {
         const newErrors = {}
         if (title.length > 30) newErrors.title = 'Please keep title less than 30 characters.'
         if (noteContent.length > 2500) newErrors.noteContent = 'Please keep note less than 2500 characters.'
+        if (!title.length && !noteContent.length) newErrors.note = "Cannot create an empty note"
 
         if (Object.values(newErrors).length) {
             setErrors(newErrors)
@@ -202,7 +203,8 @@ const CurrentNotes = () => {
         try {
 
             // const currentNote = allnotes.allNotes[noteId]
-            const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+            // const tagsOfCurrentNote = notetags.note_to_tags[noteId]
+            const tagsOfCurrentNote = notetags.note_to_tags[noteId] ? notetags.note_to_tags[noteId] : []
 
             const allTagsValues = Object.values(alltags);
             const allTagsList = allTagsValues.map((tag) => { return { "id": tag.id, "name": tag.name } })
@@ -238,7 +240,7 @@ const CurrentNotes = () => {
                 />
               </label> */}
                         <label>
-                            <select name="tagId"
+                            <select className ='tag-selections'name="tagId"
                                 onChange={(e) => {
                                     setTagIdChoice(e.target.value)
                                 }
@@ -252,12 +254,15 @@ const CurrentNotes = () => {
                             </select>
 
                         </label>
-                        <button onClick={handleSubmitAddTag}>Add Tag (Refresh after Add) </button>
+                        {/* <div id="add-tag-button"> */}
+                            <button id="add-tag-button" onClick={handleSubmitAddTag}>Add Tag </button>
+                        {/* </div> */}
                     </form>
                 </>
             );
 
-        } catch {
+        } catch(e) {
+            console.log('errors', e)
             return (<></>)
         }
     }
@@ -290,10 +295,10 @@ const CurrentNotes = () => {
                         return (
                             <>
                                 <div className="tag-button">
-                                    <a href="/tags">
+                                    <div>
                                         <span id='tag-names'>{`${alltags[tagId].name} `}</span>
-                                    </a>
-                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i class="fa-solid fa-circle-xmark"></i></span>
+                                    </div>
+                                    <span onClick={() => removeTagFromNote(currentNote.id, tagId)}><i className="fa-solid fa-circle-xmark"></i></span>
                                 </div>
                             </>
                         )
@@ -417,6 +422,8 @@ const CurrentNotes = () => {
                     {notetags && notetags ? AddTagForm(clickedNote.id) : ''}
                     {errors.title && <p className='note-errors'>{errors.title}</p>}
                     {errors.noteContent && <p className='note-errors'>{errors.noteContent}</p>}
+                    {errors.note && <p className='note-errors'>{errors.note}</p>}
+
                 </form>
                 {/* FOR IF I WANT TRASH STORAGE INSTEAD OF IMMEDIATE DELETION LATER*/}
                 {/* <button onClick={(e) => setTrash(!trash)}>trash</button> */}

@@ -1,6 +1,10 @@
 
 # Welcome to EveryNote's Wiki
 
+## Link
+
+# https://everynote-yrm6.onrender.com/
+
 ## Feature List
 
 EveryNote, an Evernote clone, is a website for users to jot down notes and tasks and organize them according to tags and notebooks.
@@ -38,6 +42,64 @@ EveryNote, an Evernote clone, is a website for users to jot down notes and tasks
 
 ## DataBase Schema
 ![image](https://github.com/taystacksattack/EveryNote/assets/118297234/ecf7b572-acc4-488d-bfdf-da982dc5786c)
+
+---
+
+## React Components
+
+### Navigation
+
+* Navigation
+* ProfileButton
+* LandingPage
+
+### Users
+
+* LoginFormPage
+* LoginFormModal
+* SignupFormPage
+* SignupFormModal
+
+### Notebooks
+
+* NotbookPage
+* NewNotebook
+* NotebookDetailPage
+
+### Notes
+
+* NotesPage
+* DeleteNoteModal
+
+### Tasks
+
+* TasksPage
+* SingleTask
+* CreateTask
+* EditTask
+* DeleteTaskModal
+
+### Tags
+
+* Add SelectNoteToTag
+* AddTagToNoteForm
+* TagsPage
+* TagCreateRenameModal
+* TagDeleteModal
+
+---
+
+## Frontend Routes
+
+* Login, path '/login'
+* Signup, path '/signup'
+* Notes, path '/notes'
+* Notebooks, path '/notebooks'
+* Notboook Details, path 'notebooks/:notebookId'
+* Create Notebook, path '/notebooks/new'
+* Tasks, path '/tasks'
+* Create Task, path '/tasks/new'
+
 
 ---
 
@@ -191,7 +253,7 @@ When I click on an individual tag:
 
 ---------------------
 
-# Flask React Project
+# Flask React Project - this is from the original starter documentation (for reference)
 
 This is the starter for the Flask React project.
 

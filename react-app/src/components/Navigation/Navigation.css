@@ -37,3 +37,7 @@ button {
   color: var(--bg-clr)
   /* margin-top: 1rem */
 }
+
+.nav-links{
+  padding-left: 1rem;
+}

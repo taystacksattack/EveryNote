@@ -18,6 +18,7 @@
 .app-navbar {
     background-color: var(--shadows);
     padding: 1em;
+    width:20%;
 
     /* flex: 1; */
 }

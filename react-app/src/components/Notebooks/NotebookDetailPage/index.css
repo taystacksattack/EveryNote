@@ -18,6 +18,7 @@
 }
 .notebook-detail-title {
   color: var(--font-clr);
+  cursor:pointer
 }
 
 .notebook-detail-content-right {

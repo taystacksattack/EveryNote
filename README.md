@@ -5,7 +5,7 @@ EveryNote, an Evernote clone, is a website for users to jot down notes and tasks
 Feel free to visit the live site [here](https://everynote-yrm6.onrender.com/)
 
 ## Index
-* [MVPFeature List](https://github.com/taystacksattack/EveryNote/wiki/MVP-Feature-List)
+* [MVP Feature List](https://github.com/taystacksattack/EveryNote/wiki/MVP-Feature-List)
 * [Database Schema](https://github.com/taystacksattack/EveryNote/wiki/Database-Schema)
 * [User Stories](https://github.com/taystacksattack/EveryNote/wiki/User-Stories)
 * [React Components](https://github.com/taystacksattack/EveryNote/wiki/React-Components-List)

@@ -51,7 +51,7 @@ src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=pos
 
    ```bash
    pipenv shell
-   flask db upgrad
+   flask db upgrade
    flask seed all
    flask run
    ```

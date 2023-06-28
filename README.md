@@ -1,5 +1,5 @@
 
-# Welcome to EveryNote's Wiki
+# Welcome to EveryNote
 
 EveryNote, an Evernote clone, is a website for users to jot down notes and tasks and organize them according to tags and notebooks. 
 Feel free to visit the live site [here](https://everynote-yrm6.onrender.com/)

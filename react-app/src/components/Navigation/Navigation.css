@@ -41,3 +41,46 @@ button {
 .nav-links{
   padding-left: 1rem;
 }
+
+#wrapper-for-navbar-ternary{
+  height: 80%;
+}
+
+#whole-nav-bar-wrapper{
+   height: 100%;
+   /* display: flex; */
+   /* align-items: end; */
+   /* align-items: space-between */
+}
+
+#whole-nav-bar-wrapper>div {
+  /* height: 75%; */
+  /* margin-bottom:1rem; */
+  display: flex;
+  align-items: end;
+  /* align-items: space-between */
+}
+
+#footer-wrapper{
+  height: 100%;
+}
+
+#developer-section-wrapper{
+  width: 100%;
+  margin-bottom:15%;
+}
+
+#developer-section-wrapper>h3 {
+  margin-bottom:.3rem;
+  border-bottom: var(--font-clr) solid 1px;
+}
+
+#links-wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: .5rem;
+}
+
+#links-wrapper>p {
+  font-size: 10pt;
+}

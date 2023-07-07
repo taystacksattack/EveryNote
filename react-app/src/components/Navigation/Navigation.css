@@ -84,3 +84,7 @@ button {
 #links-wrapper>p {
   font-size: 10pt;
 }
+
+#links-wrapper>div>a {
+  margin-left: .45rem;
+}

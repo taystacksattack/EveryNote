@@ -93,3 +93,45 @@ src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=pos
 
 * Logged in users can view tags to notes.
 * Logged in users can assign tags and delete them from notes.
+ 
+## API Endpoints
+### Authorization and User
+request|purpose|value
+---|---|---
+GET /api/auth/|When the app first loads, it checks to see if there is a a logged in user. It returns an object of the current user. |{ <br>'id': INT, <br>'username':STRING, <br>'email': STRING <br>}
+POST /api/auth/signup| With valid inputs, a user can sign up for an account, and it logs in the user. It returns the object of the newly-created in user.  |{ <br>'id': INT, <br>'username':STRING, <br>'email': STRING <br>}
+POST /api/auth/login| With valid credentials, a user can login. It returns an object of the logged in user.  |{ <br>'id': INT, <br>'username':STRING, <br>'email': STRING <br>}
+GET /api/auth/logout| A user can logout and leave no trace of their data. It returns a confirmation message.  |{ <br>'message': 'User logged out'<br>}
+### Notes
+| Request | Purpose | Return Value|
+|---------|---------|-------------|
+|GET/api/notes| This fetch queries for all notes and returns them in a list of note dictionaries | [{<br/>"id": INTEGER,<br/>"body": STRING,<br/>"title": STRING, <br/> "notebookId": INTEGER, <br/> "ownerId": INTEGER, <br/> "trash": BOOLEAN, <br/>  "created_at": DATETIME, <br/> "updated_at": DATETIME<br/>}]|
+|POST/api/notes| This fetch creates a new note and returns it as a dictionary| {<br/>"id": INTEGER,<br/>"body": STRING,<br/>"title": STRING, <br/> "notebookId": INTEGER, <br/> "ownerId": INTEGER, <br/> "trash": BOOLEAN, <br/>  "created_at": DATETIME, <br/> "updated_at": DATETIME<br/>}|
+|GET/api/notes/:id| This fetch queries for a note by id and returns that note as a dictionary| {<br/>"id": INTEGER,<br/>"body": STRING,<br/>"title": STRING, <br/> "notebookId": INTEGER, <br/> "ownerId": INTEGER, <br/> "trash": BOOLEAN, <br/>  "created_at": DATETIME, <br/> "updated_at": DATETIME<br/>}|
+|PUT/api/notes/:id| This fetch queries for a note by id and returns an updated note as a dictionary| {<br/>"id": INTEGER,<br/>"body": STRING,<br/>"title": STRING, <br/> "notebookId": INTEGER, <br/> "ownerId": INTEGER, <br/> "trash": BOOLEAN, <br/>  "created_at": DATETIME, <br/> "updated_at": DATETIME<br/>}|
+|DELETE/api/notes/:id| This fetch queries for a note by id and deletes the note| {"message": "Successfully deleted"}|
+### Tasks
+| Request | Purpose | Return Value|
+|---------|---------|-------------|
+GET /api/tasks/| A logged in user can view their tasks as a list. It returns an an array of tasks. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
+GET /api/tasks/| A logged in user can view their tasks as a list. It returns an an array of tasks. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
+GET /api/tasks/taskId| A logged in user can view the details of a single task. It returns the specific information of the task. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
+POST /api/tasks/new| A logged in user can add a new task to their tasks list. It returns the new task information. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
+PUT /api/tasks/taskId| A logged in user can edit a specific task. It returns the edited task with the new information. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
+DELETE /api/tasks/taskId/delete| A logged in user can delete a specific task. It returns a confirmation that the task was deleted successfully. |{<br> 'message': "successful deletion" <br>}
+### Notebooks
+
+### Tags
+| Request | Purpose | Return Value|
+|---------|---------|-------------|
+GET /api/tags/|Gets all Tags, formats into nested object|	{'tags': [<br>			{<br>            'id': 1<br>            'name': Joseph,<br>            'num_notes': 5,<br>            'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT',<br>            'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT'<br>			}<br>			]<br>	}<br>
+POST /api/tags/|Creates new tag, returns formatted object|    {<br>		'id': 1<br>		'name': Joseph,<br>		'num_notes':<br> 5,<br>		'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT',<br>		'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT'<br>	}<br>
+POST /api/tags/:tagId|Updates Tag of :tagId, returns updated tag in Object form|{<br>		'id': 1<br>		'name': Joseph,<br>		'num_notes': 5,<br>		'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT',<br>		'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT'<br>	}<br><br>{"Error": "end of update route" }
+DELETE /api/tags/:tagId|Deletes Tag of :tagId|{"message": f'Tag {tagId} successfully deleted'}
+GET /api/tags/notetags/|Fetches and formats nested objects of all ids of tags associated with each object (note_to_tags), and all notes associated with each tag (tag_to_notes)|{"note_to_tags": { 1: [2]},<br>"tag_to_notes": { 2: [1]}}
+POST /api/tags/notetags/<int:noteId>/<int:tagId>|Sends SQL query to add tag to note, returns message in object|{ "message": f"Tag {tagId} successfully added to Note {noteId}"}<br>{ "error": f"Unable to add tag {tagId} to Note {noteId}; note {noteId} not found" }<br>{ "error": f"Unable to add tag {tagId} to Note {noteId}; tag {tagId} not found" }<br>{ "message" :f"Tag {tagId} is already in Note {noteId}??"}<br>{ "error": f"Unable to add tag {tagId} to Note {noteId}"}
+DELETE /api/tags/notetags/<int:noteId>/<int:tagId>|Removes tag from note, returns message in object|{ "message": f"Tag {tagId} successfully removed from Note {noteId}"}<br>{ "error": f"Either unable to locate tag {tagId}, or notetag with note {noteId}"}
+
+
+
+

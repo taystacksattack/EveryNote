@@ -3,13 +3,14 @@
 
     display:flex;
     /* justify-content: flex-end; */
-    width:100%;
+    width:80%;
     background-color: var(--bg-clr);
+
 }
 
 #tasks-list{
     padding-top: 1rem;
-    border-left: solid 1px var(--button);
+    border-left: solid 2px var(--button);
     border-right: solid 1px var(--button);
     padding-left: 1rem;
     overflow: scroll;

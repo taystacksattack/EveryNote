@@ -8,17 +8,20 @@
   grid-template-columns: 100%;
   grid-template-rows: 30% 20% 10%;
   justify-content: flex-end;
-  height: 120%;
-  width: 100%;
+  height: 100%;
+  width: 80%;
   background-color: var(--bg-clr);
   text-decoration: none;
   color: var(--font-clr);
+  border-left: 2px solid  var(--button);
+ 
 }
 
 .notebook-wrapper {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 20% 10%;
+  /* padding:1rem; */
 }
 .notebook-wrapper a {
   color: var(--button);
@@ -36,6 +39,7 @@
 }
 .notebook-num-stuff {
   height: 2rem;
+  margin-left:0.5rem;
 }
 .spot-list {
   list-style: none;

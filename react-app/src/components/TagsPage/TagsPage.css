@@ -86,9 +86,9 @@
     background-color: #1a1a1a;
     color: var(--font-clr);
     /* width: 28rem; */
-    width: 65%;
+    width: 80%;
 
-    border-left: 1px solid darkcyan;
+    border-left: 2px solid var(--button);
     overflow-y: scroll;
 }
 

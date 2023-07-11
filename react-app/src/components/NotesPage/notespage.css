@@ -227,6 +227,11 @@ button {
     font-size: 2vw;
 }
 
+#add-tag-instruction {
+    font-size: 3.5vw;  
+}
+
+
 @media screen and (max-width: 718px) {
     .new-note-area {
         width:70%;
@@ -248,3 +253,14 @@ button {
     }
 }
 
+@media screen and (max-width: 390px) {
+    .everything-wrapper{
+        width:85%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #note-content-textarea {
+        height: 70%;
+    }
+}

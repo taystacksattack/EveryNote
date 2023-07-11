@@ -38,7 +38,12 @@ button {
 }
 
 .nav-links{
-  padding-left: 1rem;
+  /* background-color:black;
+  border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  padding-left: 0rem;
+
 }
 
 #wrapper-for-navbar-ternary{
@@ -102,7 +107,7 @@ button {
 
 .li-links {
   margin: 0.5vw 0;
-  
+  width: 100%;
 }
 
 .dev-links {
@@ -111,11 +116,15 @@ button {
 
 
 @media screen and (max-width: 480px) {
-  #navlink-names {
-    display: none;
-  }
+
   #links-wrapper {
     flex-direction: column;
     gap: 1px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #navlink-names {
+    display: none;
   }
 }

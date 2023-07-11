@@ -75,5 +75,19 @@
 
 /* working on adjusting profile button for small screen size here */
 @media screen and (max-width: 480px) {
-
+    #user-button {
+        font-size:20pt;
+    }
+    #profile-button {
+        width: 2rem;
+        height: 2rem;
+    }
+    #user-logout-btn {
+        width: 100%;
+        margin: 1vw auto 0;
+    }
+    .loggedin-dropdown {
+        padding: 0.5rem;
+        border-radius: 15px;
+    }
 }

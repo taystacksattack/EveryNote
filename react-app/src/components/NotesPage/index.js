@@ -228,7 +228,7 @@ const CurrentNotes = () => {
 
             return (
                 <>
-                    <div>Add Tag to Current Note</div>
+                    <div id='add-tag-instruction'>Add Tag to Current Note</div>
                     <form action='' onSubmit={handleSubmitAddTag}>
                         {/* <label>
                 Tag

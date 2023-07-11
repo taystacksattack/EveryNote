@@ -15,7 +15,7 @@ button {
 }
 
 .everything-wrapper{
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     justify-content:flex-end;
     height: 100%;
@@ -110,6 +110,7 @@ button {
 
 #note-content-textarea{
     font-size: 18px;
+
 }
 #save-note-btn {
     width: 5rem;
@@ -118,6 +119,7 @@ button {
     color:rgb(40, 37, 37);
     border-radius: 8pt;
     margin: .4rem;
+    font-size: 2.5vw;
 }
 
 #new-note-form {
@@ -213,6 +215,7 @@ button {
 #add-tag-button{
     margin-left: 1rem;
     border-radius: 8px;
+    font-size: 2vw;
 }
 
 
@@ -223,3 +226,25 @@ button {
 #updated-date {
     font-size: 2vw;
 }
+
+@media screen and (max-width: 718px) {
+    .new-note-area {
+        width:70%;
+    }
+}
+
+@media screen and (max-width: 588px) {
+    #note-icon, #add-note-icon, .notes-header > h1 {
+        font-size: 4vw;
+    }
+    .notes-tally, #alpha-sort-icon, #date-sort-icon {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 522px) {
+    .new-note-area {
+        width:45%;
+    }
+}
+

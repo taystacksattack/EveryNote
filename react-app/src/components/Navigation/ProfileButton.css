@@ -31,7 +31,7 @@
     display: flex;
     justify-content: flex-end;
     /* flex-direction: column-reverse; */
-    /* border:red solid; */
+    /* border: 1px solid red; */
 }
 
 #logged-in-button-wrapper {
@@ -41,21 +41,39 @@
     width: 10vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
     /* background-color: var(--bg-clr); */
-    /* border:red solid; */
+    /* border: 2px solid red; */
 }
 
 .loggedin-dropdown{
-    margin-top: .5rem;
-    padding: 10%;
-    z-index: 2000;
+    z-index: 2;
     background-color: var(--bg-clr);
     border-radius: 15pt;
-    /* justify-t: center; */
+    left: 5rem;
+    padding:1rem;
+    margin: 0.5rem auto;
+    font-size: 1.5vw;
+
 }
 
 .profile-dropdown{
     /* border: red solid 1 px; */
     margin-right: .6rem;
+}
+
+.ulClassName > li {
+    font-size: 1.5vw;
+}
+
+#user-logout-btn {
+    font-size: 1.5vw;
+    margin:  0.4rem 0.3rem 0 ;
+    border-radius: 5px;
+    border: none;
+}
+
+
+/* working on adjusting profile button for small screen size here */
+@media screen and (max-width: 480px) {
+
 }

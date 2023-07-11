@@ -18,21 +18,20 @@ function NavBar({ isLoaded }){
 						<ProfileButton user={sessionUser} />
 					</li>
 				)}
-				{/* <li>
-					<NavLink exact to="/notes">Home</NavLink>
-				</li> */}
-				<li>
-					<NavLink exact to="/notes">Notes</NavLink>
+				
+				<li className='li-links'>
+					<NavLink className='just-links'exact to="/notes">Notes</NavLink>
 				</li>
-				<li>
-					<NavLink exact to="/tasks">Tasks</NavLink>
+				<li className='li-links'>
+					<NavLink className='just-links'exact to="/tasks">Tasks</NavLink>
 				</li>
-				<li>
-					<NavLink exact to="/notebooks">Notebooks</NavLink>
+				<li className='li-links'>
+					<NavLink className='just-links'exact to="/notebooks">Notebooks</NavLink>
 				</li>
-				<li>
-					<NavLink exact to="/tags">Tags</NavLink>
+				<li className='li-links'>
+					<NavLink className='just-links'exact to="/tags">Tags</NavLink>
 				</li>
+				
 				{/* <LandingPage isLoaded = {isLoaded}/> */}
 				{/* <li>
 					<NavLink exact to="/">Trash</NavLink>
@@ -54,8 +53,8 @@ function NavBar({ isLoaded }){
 					<div id="links-wrapper">
 						<p>Joshua Lee</p>
 						<div>
-							<a href="https://github.com/j1jlee/"><i class="fa-brands fa-linkedin"></i></a>
-							<a href="https://linkedin.com/in/jaewon-lee-9573a0142"><i class="fa-brands fa-github"></i></a>
+							<a href="https://linkedin.com/in/jaewon-lee-9573a0142"><i class="fa-brands fa-linkedin"></i></a>
+							<a href="https://github.com/j1jlee/"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>
 					<div id="links-wrapper">

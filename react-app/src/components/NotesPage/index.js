@@ -360,8 +360,8 @@ const CurrentNotes = () => {
                 <div>
                     {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                            <p className='note-titles'>{note.title}</p>
-                            <p>{note.updated_at.split('.')[0]}</p>
+                            <p id='note-titles'>{note.title}</p>
+                            <p id='updated-date'>{note.updated_at.split('.')[0]}</p>
 
                             {noteTest(note.id)}
 
@@ -380,7 +380,7 @@ const CurrentNotes = () => {
                                     <div id="note-data-wrapper">
 
                                         <p id='note-titles'>{note.title}</p>
-                                        <p>{note.updated_at.split('.')[0]}</p>
+                                        <p id='updated-date'>{note.updated_at.split('.')[0]}</p>
                                     </div>
                                     <div id="delete-note-modal-container">
                                         <OpenModalButton

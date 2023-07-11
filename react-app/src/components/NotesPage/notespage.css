@@ -15,11 +15,12 @@ button {
 }
 
 .everything-wrapper{
-    /* border: 2px solid green; */
+    border: 2px solid green;
     display: flex;
     justify-content:flex-end;
     height: 100%;
     color: var(--font-clr);
+    width: 80%;
 
 }
 
@@ -158,7 +159,7 @@ button {
 #tag-names {
     color:black;
     background-color: var(--mustard);
-    font-size: .7em;
+    font-size: 1.5vw
 }
 
 .tag-button > *{
@@ -210,5 +211,15 @@ button {
 
 
 #add-tag-button{
-    margin-left: 1rem
+    margin-left: 1rem;
+    border-radius: 8px;
+}
+
+
+#note-titles {
+    font-size: 2vw;
+}
+
+#updated-date {
+    font-size: 2vw;
 }

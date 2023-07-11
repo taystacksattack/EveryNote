@@ -122,11 +122,18 @@ button {
   #links-wrapper {
     flex-direction: column;
     gap: 1px;
+    justify-content: center;
+  }
+  .fa-linkedin, .fa-github {
+    font-size: 3.5vw;
   }
 }
 
 @media screen and (max-width: 400px) {
   #navlink-names {
     display: none;
+  }
+  #links-wrapper > p, #developer-section-wrapper > h3 {
+    text-align:center;
   }
 }

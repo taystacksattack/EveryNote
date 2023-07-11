@@ -118,9 +118,9 @@ button {
     background-color: var(--mustard);
     padding: 0.2rem;
     color:rgb(40, 37, 37);
-    border-radius: 8pt;
+    border-radius: 8px;
     margin: .4rem;
-    font-size: 2.5vw;
+    font-size: 1rem;
 }
 
 #new-note-form {
@@ -204,19 +204,20 @@ button {
 
 
 .tag-selections {
-    background-color: var(--shadow)
+    background-color: var(--bg-clr);
+    margin-left: 5px;
 }
 
 .tag-selections > option  {
     background-color: var(--shadow);
-    color:black
+    color:white
 }
 
 
 #add-tag-button{
     margin-left: 1rem;
     border-radius: 8px;
-    font-size: 2vw;
+    font-size: 1rem;
 }
 
 
@@ -229,7 +230,8 @@ button {
 }
 
 #add-tag-instruction {
-    font-size: 2vw;  
+    font-size: 2vw;
+    margin-left: 5px;  
 }
 
 
@@ -246,11 +248,23 @@ button {
     .notes-tally, #alpha-sort-icon, #date-sort-icon {
         font-size: 3vw;
     }
+    #save-note-btn {
+        font-size:2vw;
+        padding:1vw;
+    }
+    #add-tag-button {
+        font-size:2vw;
+        padding:1vw;
+    }
 }
 
 @media screen and (max-width: 522px) {
     .new-note-area {
         width:45%;
+    }
+    .tag-selections {
+        width:45%;
+        font-size:2vw;
     }
 }
 

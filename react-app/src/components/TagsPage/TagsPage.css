@@ -13,7 +13,7 @@
     color: white;
 }
 #tag-list-top-sentence-notes {
-    color: rgb(101, 101, 101);
+    color: white;
 }
 
 .tag-node {
@@ -83,7 +83,7 @@
 }
 
 .tag-page-wrapper {
-    background-color: #1a1a1a;
+    background-color: var(--bg-clr);
     color: var(--font-clr);
     /* width: 28rem; */
     width: 80%;
@@ -139,6 +139,6 @@
 
 .tag-select-note-tag-selections {
     color: var(--font-clr);
-    background-color: #1a1a1a;
+    background-color: var(--bg-clr);
     width: 100%;
 }

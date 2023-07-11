@@ -31,12 +31,14 @@
     padding: 4px;
     border-radius: 8px;
     font-size: 2vw;
-    /* border: red solid 1px; */
-
+}
+#new-task > a {
+    color: var(--bg-clr)
 }
 
 #each-task{
     border-top: var(--font-clr) solid 1px;
+    padding-top: 5px;
     display: flex;
     flex-direction: column;
     margin: 1rem 2rem 0rem 0rem;
@@ -84,13 +86,15 @@
     background-color: var(--font-clr);
 }
 #due_date, #completed{
-    font-size: 14pt;
-    margin-left: .5rem;
-    /* background-color: var(--bg-clr); */
+    font-size: 2vw;
 }
 #completed-due{
     display: flex;
     justify-content: space-between;
+}
+
+#completed > input, #due_date_label > input {
+    margin-left:0.5rem;
 }
 
 #submit-button{
@@ -112,6 +116,7 @@
     border-radius:8px;
     text-align:center;
     font-size:2vw;
+    color: var(--bg-clr)
 }
 .edit-trash{
     margin-top: 1rem;
@@ -131,9 +136,31 @@
 .form-container > h1 {
     margin-top: 1rem;
 }
+
+#submit_button {
+    padding:0.5rem;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 850px) {
+    #completed-due {
+        flex-direction: column;
+    }
+}
+
+
 @media screen and (max-width:588px) {
     #tasks-list > h1 {
         font-size: 4vw;
+    }
+}
+
+@media screen and (max-width:560px) {
+    #tasks-list {
+        width: 65%;
+    }
+    .edit-button {
+        width:4rem;
     }
 }
 

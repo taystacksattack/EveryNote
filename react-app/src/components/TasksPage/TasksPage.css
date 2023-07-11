@@ -14,20 +14,23 @@
     border-right: solid 1px var(--button);
     padding-left: 1rem;
     overflow: scroll;
-    width: 50%
+    width: 75%;
 }
 
 #select-filter >select{
-    /* border: red solid 1px */
+    /* border: red solid 1px; */
     background-color: var(--bg-clr);
+    font-size: 2vw;
+
 }
 
 #new-task{
     background-color: var(--button);
-    width: 5.5rem;
+    width: 15vw;
     text-align: center;
     padding: 4px;
-    border-radius: 15pt;
+    border-radius: 8px;
+    font-size: 2vw;
     /* border: red solid 1px; */
 
 }
@@ -40,7 +43,7 @@
 }
 
 #task-title{
-    font-size: 16pt;
+    font-size: 2vw;
     color: white;
 }
 
@@ -49,7 +52,7 @@
         background-color: transparent;
         margin-bottom: 0.2rem;
         color: var(--font-clr);
-        font-size:2rem;
+        font-size:3vw;
 }
 
 #task-input-area{
@@ -106,12 +109,36 @@
     width: 6rem;
     background-color: var(--button);
     padding: 0.3rem;
-    border-radius:15pt;
+    border-radius:8px;
     text-align:center;
+    font-size:2vw;
 }
 .edit-trash{
     margin-top: 1rem;
     display:flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#task-duedate {
+    font-size:2vw;
+}
+
+.form-container {
+    font-size:2vw;
+}
+
+.form-container > h1 {
+    margin-top: 1rem;
+}
+@media screen and (max-width:588px) {
+    #tasks-list > h1 {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    #tasks-area-wrapper {
+        width:85%;
+    }
 }

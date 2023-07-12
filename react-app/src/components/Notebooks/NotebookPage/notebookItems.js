@@ -51,8 +51,8 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
     const ulClassNameForNotes = (showMenu ? "" : "hidden1");
 
     return (
-        <div className={`notebook-div-container `}>
-            <div key={notebook.id}>
+        <div className="notebook-div-container">
+            <div className= 'notebook-block'key={notebook.id}>
                 <i class="fa-solid fa-list " onClick={(e) => changeState(e)}>
                     <div className={`notebook-note-dropdown ${ulClassNameForNotes}`}>
                         <ul className="notebook-ul-note-links">
@@ -76,7 +76,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
             </div>
             <p>{findOwner()}</p>
             <p>{findTimeUpdated(notebook)}</p>
-            <label>
+            <label id='dot-dropdown-wrap'>
                 <button onClick={(e) => changeState(e)} className="drop-down-list">
                     <p className="dot-dot">...</p>
                 </button>
@@ -92,7 +92,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                             </div>
                         </li>
                         <li key="deleteNotebook">
-                            <div >
+                            <div id='delete-notebook-wrapper' >
                                 <DeleteNotebook notebook={notebook} />
                             </div>
                         </li>

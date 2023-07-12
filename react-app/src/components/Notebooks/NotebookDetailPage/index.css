@@ -77,13 +77,22 @@
 .notebook-detail-button-container > button {
   border-radius: 8px;
 }
-
-#delete-note-modal-container > button {
-  font-size: 4vw;
+.notebook-detail-title.currentNoteSelector {
+  font-size:2rem;
 }
 
-.notebook-detail-title.currentNoteSelector {
-  font-size:4vw;
+#delete-note-modal-container > button {
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 740px) {
+  #delete-note-modal-container > button {
+    font-size: 3vw;
+  }
+  
+  .notebook-detail-title.currentNoteSelector {
+    font-size:3vw;
+  }
 }
 
 

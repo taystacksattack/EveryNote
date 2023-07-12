@@ -76,7 +76,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
             </div>
             <p>{findOwner()}</p>
             <p>{findTimeUpdated(notebook)}</p>
-            <label>
+            <label id='dot-dropdown-wrap'>
                 <button onClick={(e) => changeState(e)} className="drop-down-list">
                     <p className="dot-dot">...</p>
                 </button>
@@ -92,7 +92,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
                             </div>
                         </li>
                         <li key="deleteNotebook">
-                            <div >
+                            <div id='delete-notebook-wrapper' >
                                 <DeleteNotebook notebook={notebook} />
                             </div>
                         </li>

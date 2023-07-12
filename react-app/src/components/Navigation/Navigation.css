@@ -91,7 +91,7 @@ button {
 }
 
 #links-wrapper>p {
-  font-size: 1.5vw;
+  font-size: 1rem;
 }
 
 #links-wrapper>div>a {
@@ -99,7 +99,6 @@ button {
 }
 
 .just-links {
-  font-size: 1.75vw;
   margin: 5px 0;
   padding: 5px 0;
   display: flex;
@@ -113,7 +112,7 @@ button {
 }
 
 .just-links > span {
-  font-size: 1.75vw;
+  font-size: 1.5rem;
 }
 
 .fa-linkedin, .fa-github {
@@ -124,6 +123,15 @@ button {
 
   .fa-linkedin, .fa-github {
     font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .just-links > span {
+    font-size: 2.5vw;
+  }
+  #links-wrapper>p {
+    font-size: 2vw;
   }
 }
 

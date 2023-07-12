@@ -148,7 +148,6 @@
 
 .create-notebook-feature > button {
   margin-bottom:10px;
-  font-size:3vw;
 }
 
 .notebook-content-div {
@@ -195,6 +194,9 @@
 @media screen and (max-width: 588px) {
   .add-note-notebook > h1 {
     font-size:4vw;
+  }
+  .create-notebook-feature > button {
+    font-size:2.5vw;
   }
 }
 

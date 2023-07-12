@@ -119,7 +119,7 @@ const NotebookDetails = () => {
     return (
         <div id="whole-notebook-wrapper">
             <div>
-                <h1>Notebook Details</h1>
+                <h1 id='notebook-details-h1'>Notebook Details</h1>
                 <div className='notebook-content-wrapper'>
 
                     <div className='notebook-content-left'>
@@ -131,12 +131,12 @@ const NotebookDetails = () => {
                                         key={note.id}
                                         onClick={(e) => setterFunction(note, e)}
                                     >
-                                        <div>
-                                            <p className={`notebook-detail-title ${'currentNoteSelector'}`}>
-                                                {note.title}
-                                            </p>
 
-                                        </div>
+                                        <p className={`notebook-detail-title ${'currentNoteSelector'}`}>
+                                            {note.title}
+                                        </p>
+
+
                                         <div id="delete-note-modal-container" onClick={(e) => deleteButton(e)}>
                                             <OpenModalButton
                                                 buttonText='🗑'

@@ -112,10 +112,9 @@ button {
   width: 100%;
 }
 
-.dev-links {
-  /* border: 2px solid black; */
+.just-links > span {
+  font-size: 1.75vw;
 }
-
 
 @media screen and (max-width: 480px) {
 

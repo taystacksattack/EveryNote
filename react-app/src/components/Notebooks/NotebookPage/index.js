@@ -43,11 +43,11 @@ const CurrentNotebooks = () => {
                 <div className="new-notebook-component">
                     <NewNotebook />
                 </div>
-                <div className={`notebook-div-container`}>
-                    <p className="notebook-title">TITLE</p>
-                    <p>CREATED BY</p>
-                    <p>UPDATED</p>
-                    <p>ACTIONS</p>
+                <div className="notebook-div-container">
+                    <p className="notebook-headings">TITLE</p>
+                    <p className="notebook-headings">CREATED BY</p>
+                    <p className="notebook-headings">UPDATED</p>
+                    <p className="notebook-headings">ACTIONS</p>
                 </div>
                 <div className="notebook-content-div">
                     {notebookObj && notebooks.map(notebook =>

@@ -142,3 +142,21 @@
     background-color: var(--bg-clr);
     width: 100%;
 }
+
+@media screen and (max-width:470px) {
+    .tag-note-list-note-li {
+        width: 10rem;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .tag-note-list-note-li {
+        width: 6rem;
+    }
+}
+
+@media screen and (max-width:390px) {
+    .tag-page-wrapper {
+        width:100%;
+    }
+}

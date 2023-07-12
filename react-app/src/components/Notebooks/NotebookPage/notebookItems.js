@@ -51,8 +51,8 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
     const ulClassNameForNotes = (showMenu ? "" : "hidden1");
 
     return (
-        <div className={`notebook-div-container `}>
-            <div key={notebook.id}>
+        <div className="notebook-div-container">
+            <div className= 'notebook-block'key={notebook.id}>
                 <i class="fa-solid fa-list " onClick={(e) => changeState(e)}>
                     <div className={`notebook-note-dropdown ${ulClassNameForNotes}`}>
                         <ul className="notebook-ul-note-links">

@@ -162,7 +162,7 @@ button {
 #tag-names {
     color:black;
     background-color: var(--mustard);
-    font-size: 1.5vw
+    /* font-size: 1.5vw */
 }
 
 .tag-button > *{
@@ -221,23 +221,42 @@ button {
 }
 
 
-#note-titles {
-    font-size: 2vw;
-}
 
-#updated-date {
-    font-size: 2vw;
-}
+
+
 
 #add-tag-instruction {
     font-size: 2vw;
     margin-left: 5px;  
 }
 
+@media screen and (min-width: 1024px) {
+    #updated-date {
+        font-size: 1.5rem;
+    }
+    #note-titles {
+        font-size: 1.75rem;
+    }
+    #tag-names {
+        font-size: 1rem
+    }
+    .tag-selections {
+        font-size:1.5rem;
+    }
+}
 
 @media screen and (max-width: 718px) {
     .new-note-area {
         width:70%;
+    }
+    #updated-date {
+        font-size: 2vw;
+    }
+    #note-titles {
+        font-size: 2.2vw;
+    }
+    #tag-names {
+        font-size: 1.5vw
     }
 }
 

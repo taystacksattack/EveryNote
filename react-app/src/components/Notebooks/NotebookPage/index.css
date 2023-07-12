@@ -116,10 +116,10 @@
   right: 0%;
 }
 .notebook-note-dropdown-note-li {
-  height: 20px;
   font-size: 15px;
   color: var(--button);
   font-weight: lighter;
+  margin-bottom:0.5rem;
 }
 .drop-down-list {
   display: flex;
@@ -164,7 +164,11 @@
   height:100%;
 }
 
-
+@media screen and (min-width: 1024px) {
+  .notebook-block > *, .notebook-div-container > p {
+    font-size:1.5rem;
+  }
+}
 
 @media screen and (max-width:740px) {
 

@@ -48,6 +48,7 @@
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    padding: 2.5px;
 }
 .tag-note-list-note-li {
     width: 15rem;
@@ -93,13 +94,12 @@
 }
 
 .tag-page-wrapper button {
-    /* color: hotpink; */
-    font-size: 0.7em;
+    font-size: 0.7rem;
     border-radius: 5px;
 }
 
 .tag-page-wrapper button > * {
-    font-size: 0.7em;
+    font-size: 0.7rem;
 }
 
 /* top section, above taglist */
@@ -141,6 +141,32 @@
     color: var(--font-clr);
     background-color: var(--bg-clr);
     width: 100%;
+    margin: 0.5rem 0;
+}
+
+
+@media screen and (min-width:1024px) {
+    .tag-list-top > p, .tag-node-name-and-num-name,
+    .tag-node-name-and-num-num {
+        font-size: 1.5rem;
+    }
+    .tag-select-note-tag-selections, .tag-select-note > div {
+        font-size: 1.2rem;
+    }
+
+    .tag-note-list-note-li {
+        font-size: 1.2rem;
+        width: 30rem;
+    }
+    .tag-page-wrapper button {
+        font-size: 1rem;
+    }
+    .tag-note-list-remove-button {
+        width: 10rem;
+    }
+    #tag-list-top-sentence {
+        font-size:1rem;
+    }
 }
 
 @media screen and (max-width:470px) {

@@ -240,6 +240,9 @@ button {
     #tag-names {
         font-size: 1rem
     }
+    .tag-selections {
+        font-size:1.5rem;
+    }
 }
 
 @media screen and (max-width: 718px) {

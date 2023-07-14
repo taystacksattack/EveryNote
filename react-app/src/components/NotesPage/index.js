@@ -405,15 +405,15 @@ const CurrentNotes = () => {
 
                     <textarea
                         id='title-textarea'
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value.trim())}
+                        value={title.trimStart()}
+                        onChange={(e) => setTitle(e.target.value)}
                         placeholder='Title'
                     >
                     </textarea>
                     <textarea
                         id='note-content-textarea'
-                        value={noteContent}
-                        onChange={(e) => setNoteContent(e.target.value.trim())}
+                        value={noteContent.trimStart()}
+                        onChange={(e) => setNoteContent(e.target.value)}
                         placeholder='Start writing'
                         rows='50'
                     >

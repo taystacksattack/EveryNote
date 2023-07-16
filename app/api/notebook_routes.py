@@ -65,7 +65,7 @@ def put_notebook(id):
         # print(form.errors)
         return {"message": "not successful in Update route"}
 
-
+    # delete Notebooks
 @notebook_routes.route('/<int:id>/delete', methods=["GET", "DELETE"])
 @login_required
 def delete_notebook(id):

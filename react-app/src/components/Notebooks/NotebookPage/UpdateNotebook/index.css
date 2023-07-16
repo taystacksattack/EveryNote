@@ -24,11 +24,11 @@
 
 .update-modal-label {
   /* border: solid 1px rgb(94, 94, 142); */
-  color: var(--button);
+  color: var(--font-clr);
 }
 .update-dis {
   /* border: solid 1px rgb(94, 94, 142); */
-  color: var(--modal);
+  color: var(--font-clr);
   height: 2rem;
   font-size: larger;
   display: flex;
@@ -52,7 +52,7 @@
   background-color: var(--bg-clr);
   border: solid 1px #a6a6a666;
   border-radius: 5px;
-  color: var(--modal);
+  color: var(--font-clr);
 }
 .update-button-container {
   display: flex;
@@ -73,7 +73,7 @@
 
 .update-modal-button-submit {
   background-color: #1a8a385f;
-  color: var(--modal);
+  color: var(--font-clr);
 
   border-radius: 5px;
   border: solid 1px #1a8a385f;
@@ -81,9 +81,67 @@
 /* .create-modal-button-submit {
   } */
 .update-modal-button-cancel {
-  background-color:var(--bg-clr);
+  background-color: var(--bg-clr);
   border: solid 0.5px #a6a6a6;
-  color: var(--modal);
+  color: var(--font-clr);
 
   border-radius: 5px;
+}
+
+/* mobile L*/
+@media screen and (max-width: 425px) {
+  .update-modal-div-wrapper {
+    border: solid 1px var(--border);
+    background-color: var(--bg-clr);
+    height: 10rem;
+    width: 22rem;
+  }
+  .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin: 0%;
+    padding: 0%;
+    height: 20px;
+    font-size: 13px;
+  }
+}
+/* mobile M*/
+@media screen and (max-width: 375px) {
+  .update-modal-div-wrapper {
+    border: solid 1px var(--border);
+    background-color: var(--bg-clr);
+    height: 10rem;
+    width: 19rem;
+  }
+  .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin: 0%;
+    padding: 0%;
+    height: 45px;
+    font-size: 11px;
+  }
+}
+/* mobile S*/
+@media screen and (max-width: 320px) {
+  .update-modal-div-wrapper {
+    border: solid 1px var(--border);
+    background-color: var(--bg-clr);
+    height: 10rem;
+    width: 15rem;
+  }
+  .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin: 0%;
+    padding: 0%;
+    height: 45px;
+    font-size: 13px;
+  }
 }

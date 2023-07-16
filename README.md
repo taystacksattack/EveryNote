@@ -120,6 +120,13 @@ POST /api/tasks/new| A logged in user can add a new task to their tasks list. It
 PUT /api/tasks/taskId| A logged in user can edit a specific task. It returns the edited task with the new information. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
 DELETE /api/tasks/taskId/delete| A logged in user can delete a specific task. It returns a confirmation that the task was deleted successfully. |{<br> 'message': "successful deletion" <br>}
 ### Notebooks
+request|purpose|value
+---|---|---
+GET /api/notebooks/| Gets all Notebooks,Formats into a nested object. |{ <br>'Notebooks':[ <br> { <br>'id': INT, <br>'title':STRING,<br>'is_default': STRING  <br> 'ownerId': STRING  <br>} <br>] <br>}
+GET /api/notebooks/:notebookId| Gets a single notebooks by its Id ,Formats into a nested object. |{ <br>'id': INT, <br>'title':STRING,<br>'is_default': STRING  <br> 'ownerId': STRING  <br>}
+POST /api/notebooks/new/| Creates a new notebook,Returns a formatted object.  |{ <br>'id': INT,<br>'title':STRING,<br>'is_default': STRING  <br>'ownerId': STRING  <br>'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT', <br>'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT' <br>}
+PUT /api/notebooks/:notebookId/edit/| Updates the associated notebook by its Id,returns a formatted object.  |{<br>'id': INT,<br>'title':STRING,<br>'is_default': STRING  <br>'ownerId': STRING  <br>'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT', <br>'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT' <br>}
+DELETE /api/notebooks/:notebook/delete| Deletes a notebook by its associated notebook,Returns a message.  |{ <br>'message': 'Notebook successfully deleted'<br>}
 
 ### Tags
 | Request | Purpose | Return Value|

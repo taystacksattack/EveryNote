@@ -228,7 +228,7 @@ const CurrentNotes = () => {
 
             return (
                 <>
-                    <div>Add Tag to Current Note</div>
+                    <div id='add-tag-instruction'>Add Tag to Current Note</div>
                     <form action='' onSubmit={handleSubmitAddTag}>
                         {/* <label>
                 Tag
@@ -360,8 +360,8 @@ const CurrentNotes = () => {
                 <div>
                     {notesObj && !listRendered ? listOfNotes.toReversed().map(note => (
                         <div key={note.id} className='note-selection' onClick={() => handleNoteClick(note)}>
-                            <p className='note-titles'>{note.title}</p>
-                            <p>{note.updated_at.split('.')[0]}</p>
+                            <p id='note-titles'>{note.title}</p>
+                            <p id='updated-date'>{note.updated_at.split('.')[0]}</p>
 
                             {noteTest(note.id)}
 
@@ -380,7 +380,7 @@ const CurrentNotes = () => {
                                     <div id="note-data-wrapper">
 
                                         <p id='note-titles'>{note.title}</p>
-                                        <p>{note.updated_at.split('.')[0]}</p>
+                                        <p id='updated-date'>{note.updated_at.split('.')[0]}</p>
                                     </div>
                                     <div id="delete-note-modal-container">
                                         <OpenModalButton
@@ -405,14 +405,14 @@ const CurrentNotes = () => {
 
                     <textarea
                         id='title-textarea'
-                        value={title}
+                        value={title.trimStart()}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder='Title'
                     >
                     </textarea>
                     <textarea
                         id='note-content-textarea'
-                        value={noteContent}
+                        value={noteContent.trimStart()}
                         onChange={(e) => setNoteContent(e.target.value)}
                         placeholder='Start writing'
                         rows='50'

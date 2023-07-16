@@ -54,7 +54,7 @@ const CurrentTasks = () => {
         dispatch(getTasksThunk())
     }, [dispatch ])
 
-   
+
 
     const handleTaskDisplay = (e) => {
         setSingleTask(e)
@@ -106,7 +106,7 @@ const CurrentTasks = () => {
                         return(
                             <div key={task.id} id='each-task'>
                                 <Link onClick={e=> handleTaskDisplay(task.id)} key={task.title} id='task-title'>{task.title}</Link>
-                                <p key={task.due_date}>Due: {task.due_date.slice(0,16)}</p>
+                                <p id='task-duedate'key={task.due_date}>Due: {task.due_date.slice(0,16)}</p>
                                 {/* <NavLink exact to = {`/tasks/${task.id}/edit`} id="edit_task_link">
                                     Edit task
                                 </NavLink> */}

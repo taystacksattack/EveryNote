@@ -8,20 +8,23 @@
   grid-template-columns: 100%;
   grid-template-rows: 30% 20% 10%;
   justify-content: flex-end;
-  height: 120%;
-  width: 100%;
+  height: 100%;
+  width: 80%;
   background-color: var(--bg-clr);
   text-decoration: none;
   color: var(--font-clr);
+  border-left: 2px solid  var(--button);
+ 
 }
 
 .notebook-wrapper {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 20% 10%;
+  /* padding:1rem; */
 }
 .notebook-wrapper a {
-  color: var(--button);
+  color: white;
 }
 
 .notebook-div-container {
@@ -33,9 +36,12 @@
   margin: 2px;
   padding: 10px;
   border-bottom: solid 2px #a6a6a6;
+  height:fit-content;
 }
 .notebook-num-stuff {
   height: 2rem;
+  margin-left:0.5rem;
+  margin-top:1rem;
 }
 .spot-list {
   list-style: none;
@@ -44,7 +50,6 @@
   justify-content: center;
   align-items: center;
   row-gap: 10px;
-  /* border: solid 1px #008f26; */
   position: relative;
   bottom: 10px;
   /* right: 0px; */
@@ -61,8 +66,11 @@
   /* border: solid 1px #008f26; */
   /* height: 1.5rem; */
 }
+
+
+
 .fa-solid {
-  color: var(--shadows);
+  color: white;
 }
 
 .dot-dot {
@@ -108,10 +116,10 @@
   right: 0%;
 }
 .notebook-note-dropdown-note-li {
-  height: 20px;
   font-size: 15px;
   color: var(--button);
   font-weight: lighter;
+  margin-bottom:0.5rem;
 }
 .drop-down-list {
   display: flex;
@@ -133,11 +141,87 @@
 }
 .notebook-ul-note-links {
   /* background-color: #008f26; */
-  position: relative;
-  left: 0%;
-  right: 0%;
+  position:absolute;
+  width: 12rem;
+  padding:0.5rem;
 }
+
+.create-notebook-feature > button {
+  margin-bottom:10px;
+}
+
+.notebook-content-div {
+
+  background-color: var(--bg-clr);
+}
+
+.fa-list {
+  cursor: pointer;
+  position:relative;
+}
+
+.notebook-block {
+  height:100%;
+}
+
 @media screen and (min-width: 1024px) {
+  .notebook-block > *, .notebook-div-container > p {
+    font-size:1.5rem;
+  }
 }
-@media screen and (min-width: 1440px) {
+
+@media screen and (max-width:740px) {
+
+  .notebook-headings {
+    font-size: 1.75vw;
+  }
+  .notebook-div-container > *{
+    font-size: 1.75vw;
+  }
+  .notebook-note-dropdown-note-li {
+    font-size: 1.75vw;
+  }
+  .add-note-feature, .update-notebook-feature > button, #delete-notebook-wrapper > button {
+    font-size: 1.75vw;
+  }
+}
+
+@media screen and (max-width:625px) {
+  .notebook-ul-note-links {
+    position:absolute;
+    width: 10rem;
+    padding:0.5rem;
+  }
+
+}
+
+@media screen and (max-width: 588px) {
+  .add-note-notebook > h1 {
+    font-size:4vw;
+  }
+  .create-notebook-feature > button {
+    font-size:2.5vw;
+  }
+}
+
+
+@media screen and (max-width:550px) {
+  .notebook-ul-note-links {
+    position:absolute;
+    width: 8rem;
+    padding:0.5rem;
+  }
+  .notebook-block {
+    height:100%;
+  }
+
+}
+
+@media screen and (max-width:390px) {
+  .everything-wrapper-2{
+    width:100%;
+  }
+  .notebook-ul-note-links {
+    width: 5rem;
+  }
 }

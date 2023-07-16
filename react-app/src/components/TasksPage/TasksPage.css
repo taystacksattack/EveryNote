@@ -1,116 +1,188 @@
-
-#tasks-area-wrapper{
-
-    display:flex;
-    /* justify-content: flex-end; */
-    width:100%;
-    background-color: var(--bg-clr);
+#tasks-area-wrapper {
+  display: flex;
+  /* justify-content: flex-end; */
+  width: 80%;
+  background-color: var(--bg-clr);
 }
 
-#tasks-list{
-    padding-top: 1rem;
-    border-left: solid 1px var(--button);
-    border-right: solid 1px var(--button);
-    padding-left: 1rem;
-    overflow: scroll;
-    width: 50%
+#tasks-list {
+  padding-top: 1rem;
+  border-left: solid 2px var(--button);
+  border-right: solid 1px var(--button);
+  padding-left: 1rem;
+  overflow: scroll;
+  width: 75%;
 }
 
-#select-filter >select{
-    /* border: red solid 1px */
-    background-color: var(--bg-clr);
+#select-filter > select {
+  background-color: var(--bg-clr);
+  width: 10rem;
 }
 
-#new-task{
-    background-color: var(--button);
-    width: 5.5rem;
-    text-align: center;
-    padding: 4px;
-    border-radius: 15pt;
-    /* border: red solid 1px; */
-
+#new-task {
+  background-color: var(--button);
+  width: 10rem;
+  text-align: center;
+  padding: 4px;
+  border-radius: 8px;
+}
+#new-task > a {
+  color: var(--bg-clr);
 }
 
-#each-task{
-    border-top: var(--font-clr) solid 1px;
-    display: flex;
-    flex-direction: column;
-    margin: 1rem 2rem 0rem 0rem;
+#each-task {
+  border-top: var(--font-clr) solid 1px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 2rem 0rem 0rem;
 }
 
-#task-title{
-    font-size: 16pt;
-    color: white;
+#task-title {
+  color: white;
 }
 
-#trash > button{
-    border: none;
-        background-color: transparent;
-        margin-bottom: 0.2rem;
-        color: var(--font-clr);
-        font-size:2rem;
+#trash > button {
+  border: none;
+  background-color: transparent;
+  margin-bottom: 0.2rem;
+  color: var(--font-clr);
+  font-size: 1.5rem;
 }
 
-#task-input-area{
-    width:100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    background-color: rgb(37, 37, 40);
+#task-input-area {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: rgb(37, 37, 40);
 }
 
-.errors-info > ul >li{
-    /* border: red solid 1px; */
-    color:red;
+.errors-info > ul > li {
+  /* border: red solid 1px; */
+  color: red;
 }
 
-#title{
-    font-size: 24pt;
-    width:100%;
-    background-color: rgb(37, 37, 40);
-    border: 1px solid var(--border)
+#title {
+  font-size: 24pt;
+  width: 100%;
+  background-color: rgb(37, 37, 40);
+  border: 1px solid var(--border);
 }
 #description {
-    /* font-size: 24pt; */
-    width: 100%;
-    background-color: rgb(37, 37, 40);;
+  /* font-size: 24pt; */
+  width: 100%;
+  background-color: rgb(37, 37, 40);
 }
-#due_date{
-    color: var(--bg-clr);
-    /* border: red solid 1px; */
-    background-color: var(--font-clr);
-}
-#due_date, #completed{
-    font-size: 14pt;
-    margin-left: .5rem;
-    /* background-color: var(--bg-clr); */
-}
-#completed-due{
-    display: flex;
-    justify-content: space-between;
+#due_date {
+  color: var(--bg-clr);
+  /* border: red solid 1px; */
+  background-color: var(--font-clr);
 }
 
-#submit-button{
-    width:10%;
+#completed-due {
+  display: flex;
+  justify-content: space-between;
 }
 
+#completed > input,
+#due_date_label > input {
+  margin-left: 0.5rem;
+}
 
-.form-container >form{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+#submit-button {
+  width: 10%;
+}
 
+.form-container > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .edit-button {
-    width: 6rem;
-    background-color: var(--button);
-    padding: 0.3rem;
-    border-radius:15pt;
-    text-align:center;
+  background-color: var(--button);
+  padding: 0.3rem;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--bg-clr);
+  width: 10rem;
 }
-.edit-trash{
-    margin-top: 1rem;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+.edit-trash {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-container > h1 {
+  margin-top: 1rem;
+}
+
+#submit_button {
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    #task-title {
+        font-size: 1.75rem;
+    }
+    #task-duedate, .edit-button, #new-task {
+        font-size: 1.3rem;
+    }
+    #select-filter > select {
+        font-size: 1.5rem;
+    }
+    #trash > button {
+        font-size: 2rem;
+    }
+    #completed, #due_date, #due_date_label {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+  #completed-due {
+    flex-direction: column;
+  }
+  #trash > button {
+    font-size: 3vw;
+  }
+  #task-title,  #due_date,
+  #completed, #task-duedate, .form-container {
+    font-size: 2vw;
+  }
+
+  .edit-button {
+    font-size: 1.5vw;
+  }
+
+}
+
+@media screen and (max-width: 588px) {
+  #tasks-list > h1 {
+    font-size: 4vw;
+  }
+  #select-filter > select,
+  #new-task {
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #tasks-list {
+    width: 65%;
+  }
+  .edit-button {
+    width: 4rem;
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  #tasks-area-wrapper {
+    width: 85%;
+  }
 }

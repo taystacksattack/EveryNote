@@ -4,7 +4,8 @@
 
 #whole-notebook-wrapper {
   background-color: var(--bg-clr);
-  width: 100%;
+  width: 80%;
+  border-left: 2px solid var(--button)
   /* padding: 2rem; */
 }
 
@@ -18,7 +19,7 @@
 }
 .notebook-detail-title {
   color: var(--font-clr);
-  cursor:pointer
+  cursor:pointer;
 }
 
 .notebook-detail-content-right {
@@ -42,7 +43,9 @@
   width: 80%;
 }
 .notebook-detail-button-container {
-  display: grid;
+  display:flex;
+  flex-direction:column;
+  gap: 0.5rem;
   width: 80%;
 }
 .notebook-content-left {
@@ -50,16 +53,57 @@
 }
 .notebook-detail-note-li {
   border-bottom: solid 1px var(--border);
+  margin-top: 5px;
   width: 100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .Create-New-Note {
   /* border: solid 1px green; */
-  background-color: var(--modal);
+  background-color: var(--button);
 }
 .Update-New-Note {
-  background-color: var(--modal);
+  background-color: var(--button);
 }
 .Reset-Note {
-  background-color: var(--modal);
+  background-color: var(--button);
   width: 100%;
+}
+
+#notebook-details-h1 {
+  padding:1rem;
+}
+.notebook-detail-button-container > button {
+  border-radius: 8px;
+}
+.notebook-detail-title.currentNoteSelector {
+  font-size:2rem;
+}
+
+#delete-note-modal-container > button {
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 740px) {
+  #delete-note-modal-container > button {
+    font-size: 3vw;
+  }
+
+  .notebook-detail-title.currentNoteSelector {
+    font-size:3vw;
+  }
+}
+
+
+@media screen and (max-width:390px) {
+  #whole-notebook-wrapper {
+    width:100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #notebook-details-h1 {
+    font-size:8vw;
+  }
 }

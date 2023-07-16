@@ -13,7 +13,7 @@ function Navigation({ isLoaded }){
 	// console.log(sessionUser)
 
 	return (
-		<div>
+		<div id="wrapper-for-navbar-ternary">
 			{/* {isLoaded && sessionUser? <NavBar isLoaded = {isLoaded}/> : <LandingPage isLoaded = {isLoaded}/>} */}
 			{/* {isLoaded && sessionUser ? <NavBar isLoaded = {isLoaded}/> : null } */}
 			{isLoaded && sessionUser? <NavBar isLoaded = {isLoaded}/> : <ProfileButton/>}

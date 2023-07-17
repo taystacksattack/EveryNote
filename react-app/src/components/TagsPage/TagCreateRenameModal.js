@@ -19,14 +19,23 @@ function TagCreateRenameModal({createOrRename, tag}) {
 
     const submitErrors = {};
 
-    if (tagName.length === 0 || tagName.length > 30) {
+    //07-17 tagName.trim instead of tagName, remove potential whitespace issues
+    const tagNameTrim = tagName.trim();
+
+
+    if (tagNameTrim.length === 0 || tagNameTrim.length > 30) {
+      //07-17 greenlit, error handling
+    // if (tagName.length === 0 || tagName.length > 30) {
       submitErrors.tagName = "Name length must be between 1 and 30 characters"
       setErrors(submitErrors)
       return;
     }
 
+
+
     if (createOrRename == "Create New") {
-      const newTag = { name: tagName };
+      const newTag = { name: tagNameTrim };
+      // const newTag = { name: tagName };
       // console.log("actual newtag create, name ", tagName )
 
       //thisMethod = "POST"
@@ -77,7 +86,7 @@ function TagCreateRenameModal({createOrRename, tag}) {
               setTagName(e.target.value)
               }
             }
-              required
+              // required //removing required here, want actual error handling
           />
         </label>
         <button type="submit">{createOrRename} Tag</button>

@@ -45,7 +45,8 @@ function TagCreateRenameModal({createOrRename, tag}) {
     }
 
     else if (createOrRename == "Rename") {
-      const updateTag = { name: tagName };
+      const updateTag = { name: tagNameTrim };
+      // const updateTag = { name: tagName };
 
       //thisMethod = "UPDATE"
 

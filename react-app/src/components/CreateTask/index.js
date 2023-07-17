@@ -104,7 +104,7 @@ const CreateTask = () =>{
                         </label>
                         <br></br>
                         <div id="completed-due">
-                            <label id="completed">Completed 
+                            <label id="completed">Completed
                                 <input
                                     id = "completed"
                                     type='checkbox'

@@ -54,7 +54,7 @@ const CurrentTasks = () => {
         dispatch(getTasksThunk())
     }, [dispatch ])
 
-   
+
 
     const handleTaskDisplay = (e) => {
         setSingleTask(e)

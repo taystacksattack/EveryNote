@@ -20,7 +20,7 @@ const CreateNewNotebookModel = () => {
         e.preventDefault()
         const err = {}
 
-        if (title.length === 0) err.title = "Your notebook name must contain at least one character"
+        if (title.trim().length === 0) err.title = "Your notebook name must contain at least one character"
         if (title.length > 30) err.title = "character limit is between 1 and 30 characters"
 
         if (Object.values(err).length === 0) {
@@ -55,6 +55,7 @@ const CreateNewNotebookModel = () => {
                 <label className='create-modal-label'>
                     <h1>Create new notebook</h1>
                     <p className='create-des'>Notebooks are useful for grouping notes around a common topic. They can be private or shared.</p>
+                    <p className="errors">&#160;{errors.title}</p>
                     <div className='create-div-label-input'>
 
                         <input
@@ -67,7 +68,6 @@ const CreateNewNotebookModel = () => {
                         </input>
                     </div>
                 </label>
-                <p className="errors">&#160;{errors.title}</p>
                 <div className='create-button-container'>
                     <button
                         onClick={(e) => closeModal()}

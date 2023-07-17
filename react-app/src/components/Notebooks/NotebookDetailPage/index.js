@@ -32,7 +32,7 @@ const NotebookDetails = () => {
     const handleSubmitUpdate = (e) => {
         e.preventDefault()
 
-        // if (title.length === 0) err.title1 = "Your note name must contain at least one character"
+        if (title.trim().length === 0) err.title1 = "Your note name must contain at least one character"
         if (title.length > 30) err.title2 = "Title character limit is between 1 and 30 characters"
         if (newBody.length > 2500) err.body2 = "body character limit is between 1 and 2500 characters"
         if (Object.values(err).length === 0) {
@@ -45,7 +45,7 @@ const NotebookDetails = () => {
                 "notebookId": notebookId,
                 "trash": false,
             }
-            console.log(errors)
+            // console.log(errors)
             setErrors({})
             dispatch(editNoteThunk(updateNote, updateNote.id))
             setBool(!bool)
@@ -69,7 +69,7 @@ const NotebookDetails = () => {
                 "notebookId": notebookId,
                 "trash": false,
             }
-            console.log(errors)
+            // console.log(errors)
 
             setErrors({})
 

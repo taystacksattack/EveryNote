@@ -40,6 +40,12 @@
 }
 
 
+/* 07-17 add remove icon */
+.tag-remove-icon:hover {
+   cursor: pointer;
+}
+
+
 /* #tag-note-list-invisible-tab {
     color: transparent;
 } */

@@ -1,7 +1,7 @@
 
 # Welcome to EveryNote
 
-EveryNote, an Evernote clone, is a website for users to jot down notes and tasks and organize them according to tags and notebooks. 
+EveryNote, an Evernote clone, is a website for users to jot down notes and tasks and organize them according to tags and notebooks.
 Feel free to visit the live site [here](https://everynote-yrm6.onrender.com/)
 
 ## Index
@@ -17,7 +17,7 @@ Feel free to visit the live site [here](https://everynote-yrm6.onrender.com/)
 
 ## Techologies Used
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /><img
-src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" /><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /><img src="https://img.shields.io/badge/Sqlalchemy-000000?style=for-the-badge&logo=Sqlalchemy&logoColor=white" /><img 
+src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" /><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /><img src="https://img.shields.io/badge/Sqlalchemy-000000?style=for-the-badge&logo=Sqlalchemy&logoColor=white" /><img
 src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" /><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /><img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" /><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /><img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=Render&logoColor=white" />
 
 ## Splash Page
@@ -93,7 +93,7 @@ src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=pos
 
 * Logged in users can view tags to notes.
 * Logged in users can assign tags and delete them from notes.
- 
+
 ## API Endpoints
 ### Authorization and User
 request|purpose|value
@@ -120,6 +120,13 @@ POST /api/tasks/new| A logged in user can add a new task to their tasks list. It
 PUT /api/tasks/taskId| A logged in user can edit a specific task. It returns the edited task with the new information. |{ <br>'id': INT, <br>'ownerId':INT, <br>'title': STRING, <br> 'description': STRING, <br> 'completed': BOOLEAN, <br> 'due_date': STRING, <br> 'created_at': STRING, <br> 'created_at': STRING <br>}
 DELETE /api/tasks/taskId/delete| A logged in user can delete a specific task. It returns a confirmation that the task was deleted successfully. |{<br> 'message': "successful deletion" <br>}
 ### Notebooks
+request|purpose|value
+---|---|---
+GET /api/notebooks/| Gets all Notebooks,Formats into a nested object. |{ <br>'Notebooks':[ <br> { <br>'id': INT, <br>'title':STRING,<br>'is_default': STRING  <br> 'ownerId': STRING  <br>} <br>] <br>}
+GET /api/notebooks/:notebookId| Gets a single notebooks by its Id ,Formats into a nested object. |{ <br>'id': INT, <br>'title':STRING,<br>'is_default': STRING  <br> 'ownerId': STRING  <br>}
+POST /api/notebooks/new/| Creates a new notebook,Returns a formatted object.  |{ <br>'id': INT,<br>'title':STRING,<br>'is_default': STRING  <br>'ownerId': STRING  <br>'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT', <br>'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT' <br>}
+PUT /api/notebooks/:notebookId/edit/| Updates the associated notebook by its Id,returns a formatted object.  |{<br>'id': INT,<br>'title':STRING,<br>'is_default': STRING  <br>'ownerId': STRING  <br>'created_at': 'Thu, 01 Jan 2023 00:00:00 GMT', <br>'updated_at': 'Thu, 01 Jan 2023 00:00:00 GMT' <br>}
+DELETE /api/notebooks/:notebook/delete| Deletes a notebook by its associated notebook,Returns a message.  |{ <br>'message': 'Notebook successfully deleted'<br>}
 
 ### Tags
 | Request | Purpose | Return Value|
@@ -131,7 +138,3 @@ DELETE /api/tags/:tagId|Deletes Tag of :tagId|{"message": f'Tag {tagId} successf
 GET /api/tags/notetags/|Fetches and formats nested objects of all ids of tags associated with each object (note_to_tags), and all notes associated with each tag (tag_to_notes)|{"note_to_tags": { 1: [2]},<br>"tag_to_notes": { 2: [1]}}
 POST /api/tags/notetags/<int:noteId>/<int:tagId>|Sends SQL query to add tag to note, returns message in object|{ "message": f"Tag {tagId} successfully added to Note {noteId}"}<br>{ "error": f"Unable to add tag {tagId} to Note {noteId}; note {noteId} not found" }<br>{ "error": f"Unable to add tag {tagId} to Note {noteId}; tag {tagId} not found" }<br>{ "message" :f"Tag {tagId} is already in Note {noteId}??"}<br>{ "error": f"Unable to add tag {tagId} to Note {noteId}"}
 DELETE /api/tags/notetags/<int:noteId>/<int:tagId>|Removes tag from note, returns message in object|{ "message": f"Tag {tagId} successfully removed from Note {noteId}"}<br>{ "error": f"Either unable to locate tag {tagId}, or notetag with note {noteId}"}
-
-
-
-

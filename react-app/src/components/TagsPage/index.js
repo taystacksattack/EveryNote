@@ -9,6 +9,8 @@ import "./TagsPage.css"
 // import { title } from "../NotesPage"
 
 import OpenModalButton from "../OpenModalButton";
+
+import OpenModalCustomIcon from "../OpenModalButton/OpenModalCustomIcon"
 // import TagDeleteModal from "./TagDeleteModal"
 import TagCreateRenameModal from "./TagCreateRenameModal"
 //import DeleteGroupModal from "../DeleteGroupModal";
@@ -39,6 +41,9 @@ const TagsPage = () => {
     const sortedByNotesList = sortByOwnedNotes(taglist)
     //SORTED BY ALPHABETICAL
     const sortedByAlphaList = sortByAlphabetical(taglist)
+
+    // sortedByNotesList && console.log("sortedByNotesLIst", sortedByNotesList)
+    // sortedByAlphaList && console.log("sortedByAlphaLIst", sortedByAlphaList)
     //
     //
     //
@@ -257,6 +262,9 @@ const TagsPage = () => {
     //*                 {sortedByAlphaList && sortedByAlphaList.map(
                 // {sortedByNotesList && sortedByNotesList.map( */
     function toggleSort() {
+
+        // console.log("togglesort running?");
+
         const tempSort = sortAlphaNum;
         setSortAlphaNum(!tempSort);
     }
@@ -325,7 +333,10 @@ const TagsPage = () => {
                 <li className="tag-note-list-note-li">{noteId}: {allnotes.allNotes[noteId].title}</li>
             </a>
             {/* <span id="tag-note-list-invisible-tab">_____</span> */}
-            <button className="tag-note-list-remove-button" onClick={() => removeTagFromNote(noteId, tagId)}>Remove Tag</button>
+            {/* <button className="tag-note-list-remove-button" onClick={() => removeTagFromNote(noteId, tagId)}>Remove Tag</button> */}
+
+            <span className="material-symbols-outlined tag-remove-icon" title="Remove tag" onClick={() => removeTagFromNote(noteId, tagId)}>label_off</span>
+
             </span>
             </>
             )
@@ -436,6 +447,23 @@ const TagsPage = () => {
                         modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
                     />
                     </span>
+
+                    {/* 07-17
+                    OpenModalCustomIcon,
+                        modalComponent,
+                        materialSymbolIconName
+                        iconTitle/hovertext
+                        onButtonClick
+                         */}
+                    {/* <span className="tag-node-rename-button">
+                    <OpenModalCustomIcon
+                        // buttonText="Rename Tag"
+                        materialSymbolIconName={"none"}
+                        modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
+                    />
+                    </span> */}
+
+
 
                     <span className="tag-node-delete-button">
                     {<button onClick={() => {deleteTest(tag.id)}}>Delete this Tag</button>}

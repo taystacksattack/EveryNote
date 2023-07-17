@@ -35,7 +35,7 @@
 }
 .create-des {
   /* border: solid 1px rgb(94, 94, 142); */
-  color: var(--button);
+  color: var(--font-clr);
 }
 
 .create-div-label-input {
@@ -95,4 +95,78 @@
 
 .fa-book {
   color: var(--button);
+}
+
+
+
+/* mobile L*/
+@media screen and (max-width: 425px) {
+  .create-modal-div-wrapper {
+    border: solid 1px var(--border);
+    background-color: var(--bg-clr);
+    height: 15rem;
+    width: 22rem;
+  }
+  .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin: 0%;
+    padding: 0%;
+    height: 20px;
+    font-size: 13px;
+  }
+  .create-modal-form {
+    /* border: solid 1px blue; */
+    display: grid;
+    margin: 1%;
+    padding: 1%;
+    row-gap: 5px;
+}
+}
+/* mobile M*/
+@media screen and (max-width: 375px) {
+  .create-modal-div-wrapper {
+    border: solid 1px var(--border);
+    background-color: var(--bg-clr);
+    height: 18rem;
+    width: 19rem;
+  }
+  .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin: 0%;
+    padding: 0%;
+    height: 45px;
+    font-size: 15px;
+  }
+  .create-modal-form {
+    /* border: solid 1px blue; */
+    display: grid;
+    margin: 1%;
+    padding: 1%;
+    row-gap: 10px;
+}
+}
+/* mobile S*/
+@media screen and (max-width: 320px) {
+  .create-modal-div-wrapper {
+    border: solid 1px var(--border);
+    background-color: var(--bg-clr);
+    height: 20rem;
+    width: 15rem;
+  }
+  .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin: 0%;
+    padding: 0%;
+    height: 45px;
+    font-size: 13px;
+  }
 }

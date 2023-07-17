@@ -41,6 +41,7 @@ function NavBar({ isLoaded }) {
 				<li className='li-links'>
 					<NavLink className='just-links' exact to="/tags">
 						<span className="material-symbols-outlined">sell</span>
+						{/* <span className="material-symbols-outlined">sell</span> */}
 						<span id='navlink-names'>Tags</span>
 					</NavLink>
 				</li>

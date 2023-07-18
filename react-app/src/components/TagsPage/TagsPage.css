@@ -35,6 +35,12 @@
     max-width: 0;
 }
 
+.tag-node-name-and-num {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .tag-node-name-and-num-name {
     color: white;
 }
@@ -45,6 +51,22 @@
    cursor: pointer;
 }
 
+.tag-title-and-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tag-title-and-new h1 {
+    display: inline-block;
+}
+
+
+.tag-top-number-and-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /* #tag-note-list-invisible-tab {
     color: transparent;
@@ -93,7 +115,14 @@
     background-color: var(--bg-clr);
     color: var(--font-clr);
     /* width: 28rem; */
-    width: 80%;
+    /* width: 80%; */
+    /* test width 07-18 */
+    /* margin-left: 10rem; */
+
+    /* display: flex;
+    justify-content: column; */
+
+    /* max-width: 28rem; */
 
     border-left: 2px solid var(--button);
     overflow-y: scroll;
@@ -115,6 +144,12 @@
     padding: 1rem;
 }
 
+/* .tag-list-rename-delete {
+    display: flex;
+    align-items: center;
+} */
+
+
 .tag-list-top-create-and-sort-buttons {
     display: flex;
     justify-content: space-evenly;
@@ -132,6 +167,8 @@
 }
 
 /* 07/17 create icon */
+
+
 .tag-list-hover-pointer:hover {
     cursor: pointer;
 }

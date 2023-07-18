@@ -369,12 +369,27 @@ const TagsPage = () => {
     return (
         <div className="tag-page-wrapper">
 
+        <div className="tag-page-center"></div>
+
+
         <div className="tag-list-top">
+
+        <span className="tag-title-and-new">
             <h1>
             <span className="material-symbols-outlined">sell</span>
             &nbsp;
             Tags</h1>
-            <br></br>
+
+
+            <span className="tag-list-hover-pointer">
+                    <OpenModalCustomIcon
+                        modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
+                        materialSymbolIconName="library_add"
+                        iconTitle="Create New Tag"
+                        />
+            </span>
+        </span>
+            {/* <br></br> */}
 {/*
             <p>Apply tags to better organize your notes!</p>
             <br></br>
@@ -391,24 +406,36 @@ const TagsPage = () => {
 
             </div> */}
 
-            <div className="tag-list-top-create-and-sort-buttons">
+            <div className="tag-top-number-and-sort">
+                <span>
+                    { taglist ? taglist.length + " tags" : "0 tags" }
+                </span>
+
+
+                <span
+                    className="material-symbols-outlined tag-list-hover-pointer"
+                    title="Sort: A-Z or #Notes"
+                    onClick={toggleSort}>
+                    sort
+                </span>
+            </div>
+
+
+            {/* <span className="tag-list-top-create-and-sort-buttons">
+
+            </span> */}
+
+
+
                  {/* <span id="tag-list-top-create-button">
                 <OpenModalButton
-                    buttonText="Create New Tag"
-                    modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
-                    />
+                buttonText="Create New Tag"
+                modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
+                />
                 </span> */}
 {/*
                 <span className="material-symbols-outlined tag-list-top-create-icon" title="Create New Tag">library_add</span> */}
 
-                <span className="tag-list-hover-pointer">
-                <OpenModalCustomIcon
-                    modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
-                    materialSymbolIconName="library_add"
-                    iconTitle="Create New Tag"
-                    />
-
-                </span>
 
                 {/* 07-17
                 OpenModalCustomIcon,
@@ -423,15 +450,6 @@ const TagsPage = () => {
                     <button onClick={toggleSort}>Toggle Sort: A-Z or #notes</button>
                 </span> */}
 
-                <span
-                className="material-symbols-outlined tag-list-hover-pointer"
-                title="Sort: A-Z or #Notes"
-                onClick={toggleSort}>
-                    sort
-                </span>
-
-
-            </div>
 
         </div>
         {/* end of tag-list-top */}
@@ -460,13 +478,15 @@ const TagsPage = () => {
                     </div> */}
 
                     <div className="tag-node-name-and-num">
-                        <span className="tag-node-name-and-num-name">
-                            {tag.name}
-                        </span>
-                        <span> </span>
+                        <span className="tag-node-name-and-num-span"> {/* added 07-18 */}
+                            <span className="tag-node-name-and-num-name">
+                                {tag.name}
+                            </span>
+                            <span> </span>
 
-                        <span className="tag-node-name-and-num-num">
-                            ({tag.id && numNotesByOwner(tag.id)})
+                            <span className="tag-node-name-and-num-num">
+                                ({tag.id && numNotesByOwner(tag.id)})
+                            </span>
                         </span>
 
                         {/* add 07/17 */}
@@ -494,7 +514,6 @@ const TagsPage = () => {
 
                         </span> {/* end of two buttons */}
                     </div>
-
                     <div>
                         {waitForLoad(tag.id)}
                     </div>
@@ -537,6 +556,8 @@ const TagsPage = () => {
                         {AddSelectNoteToTag(tag.id)}
                     </div>
 
+
+                    
 
                     </div>
                     </>

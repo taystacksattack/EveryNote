@@ -61,6 +61,7 @@ button {
     cursor: pointer;
     overflow:hidden;
     padding: .3rem 0;
+    overflow-wrap:anywhere;
 
 }
 

@@ -217,7 +217,7 @@
 
 .center-within {
     justify-self: center;
-    width:60%;
+    width:fit-content;
     overflow-y: scroll;
     /* margin: auto; */
     /* border-left: 1px solid white; */

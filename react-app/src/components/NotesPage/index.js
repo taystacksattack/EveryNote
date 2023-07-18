@@ -8,6 +8,9 @@ import { getTagsThunk } from "../../store/tags"
 // import { deleteTagThunk } from "../../store/tags"
 import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk } from "../../store/notetags"
 
+//josh, get notebooks
+import { getNotebooksThunk } from "../../store/notebook"
+
 import "./notespage.css"
 
 const CurrentNotes = () => {
@@ -27,15 +30,20 @@ const CurrentNotes = () => {
     const alltags = useSelector(state => state.tags);
     const allnotes = useSelector(state => state.notes);
     const notetags = useSelector(state => state.notetags);
-    const [renderSwitch, setRenderSwitch] = useState(true)
 
+    const allnotebooks = useSelector(state => state.notebooks);
+
+
+    const [renderSwitch, setRenderSwitch] = useState(true)
     const [tagIdChoice, setTagIdChoice] = useState();
+
+    const [notebookIdChoice, setNotebookIdChoice] = useState(1);
     //
+
+
 
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
-
-
 
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
@@ -68,6 +76,11 @@ const CurrentNotes = () => {
     useEffect(() => {
         dispatch(getTagsThunk())
         dispatch(getNoteTagsThunk())
+
+        dispatch(getNotebooksThunk())
+        //resets on each add
+        setTagIdChoice('')
+
     }, [dispatch, renderSwitch])
 
 
@@ -186,6 +199,9 @@ const CurrentNotes = () => {
         setClickedNote(note)
         setErrors({})
 
+        // // /* josh */
+        setTagIdChoice('')
+
     }
 
     //add tag stuff
@@ -229,8 +245,16 @@ const CurrentNotes = () => {
 
             const handleSubmitAddTag = async (e) => {
                 e.preventDefault();
-                setRenderSwitch(!renderSwitch)
-                await dispatch(addNoteTagThunk(noteId, tagIdChoice))
+
+                if (tagIdChoice == '') {
+                    // console.log('ignoring, no selection');
+                    return;
+                }
+
+                setRenderSwitch(!renderSwitch);
+                await dispatch(addNoteTagThunk(noteId, tagIdChoice));
+
+                // setTagIdChoice(0);
             };
 
             return (
@@ -251,11 +275,23 @@ const CurrentNotes = () => {
                                 onChange={(e) => {
                                     setTagIdChoice(e.target.value)
                                 }
-                                }>
+                            }
+                            //new addition, should reset to -select- on add
+                            value={tagIdChoice}
+
+                            >
+
+
                                 {/* MAP: option value=tagID, label tag_name */}
-                                <option value={""}>-Select Tag-</option>
+                                <option value={''}>-Select Tag-</option>
+                                {/* <option value={""} selected="selected">-Select Tag-</option> */}
+
+
                                 {availableTags.map((tagNamePair) => (
-                                    <option value={tagNamePair.id}>{tagNamePair.name}</option>
+                                    <option value={tagNamePair.id}
+
+                                    // selected = { tagNamePair.id == 5 ? true : false}
+                                    >{tagNamePair.name}</option>
                                 ))}
 
                             </select>

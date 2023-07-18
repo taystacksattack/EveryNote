@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState} from "react" //useState
-import {  deleteTagThunk, getTagsThunk } from "../../store/tags"
+import { useEffect, useState } from "react" //useState
+import { deleteTagThunk, getTagsThunk } from "../../store/tags"
 // import { createTagThunk } from "../../store/tags"
 import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk, removeAllNoteTagThunk } from "../../store/notetags"
 import { getNotesThunk } from "../../store/notes"
@@ -26,7 +26,7 @@ const TagsPage = () => {
     const allnotes = useSelector(state => state.notes);
     const notetags = useSelector(state => state.notetags);
     // const this_user = useSelector(state => state.session.user)
-    const [ sortAlphaNum, setSortAlphaNum ] = useState(true); //true, sort by alphabetical
+    const [sortAlphaNum, setSortAlphaNum] = useState(true); //true, sort by alphabetical
     //false, sort by number of owned notes
     const [renderSwitch, setRenderSwitch] = useState(true);
     const [noteIdChoice, setNoteIdChoice] = useState();
@@ -70,16 +70,16 @@ const TagsPage = () => {
         // console.log("test noteTag with note 1, tag 3");
 
         return dispatch(addNoteTagThunk(noteId, tagId))
-        .then(() => {
-            let temp = renderSwitch;
-            setRenderSwitch(!temp);
-        })
-        .catch(async (res) => {
-            // console.log("addNoteTag errors?", res)
-        })
+            .then(() => {
+                let temp = renderSwitch;
+                setRenderSwitch(!temp);
+            })
+            .catch(async (res) => {
+                // console.log("addNoteTag errors?", res)
+            })
     }
 
-/////TEST NOTE DISPLAY
+    /////TEST NOTE DISPLAY
     // function giveTagObj(tagId) {
     //     try {
     //         console.log("giveTagObj ALLTAGS?", alltags.tags)
@@ -106,7 +106,7 @@ const TagsPage = () => {
             const notesOfCurrentTag = notetags.tag_to_notes[tagId] ? notetags.tag_to_notes[tagId] : []
 
             const allNotesValues = Object.values(allnotes.allNotes);
-            const allNotesList = allNotesValues.map((note) => {return {"id": note.id, "title": note.title} })
+            const allNotesList = allNotesValues.map((note) => { return { "id": note.id, "title": note.title } })
 
 
             const availableNotes = allNotesList.filter((val) => notesOfCurrentTag.indexOf(val.id) === -1)
@@ -120,42 +120,43 @@ const TagsPage = () => {
             // console.log("(addSelect) unique, available notes??", availableNotes)
 
 
-        const handleSubmitSelectNote = async (e) => {
-          e.preventDefault();
-          dispatch(addNoteTagThunk(noteIdChoice, tagId));
-          setRenderSwitch(!renderSwitch);
-        };
+            const handleSubmitSelectNote = async (e) => {
+                e.preventDefault();
+                dispatch(addNoteTagThunk(noteIdChoice, tagId));
+                setRenderSwitch(!renderSwitch);
+            };
 
-        return (
-          <>
-            <div>Add This Tag to Select Note</div>
-            <form onSubmit={handleSubmitSelectNote}>
-              <label>
-                <select name="noteId"
-                onChange={(e) => {
-                  setNoteIdChoice(e.target.value)}} className="tag-select-note-tag-selections">
+            return (
+                <>
+                    <div>Add This Tag to Select Note</div>
+                    <form onSubmit={handleSubmitSelectNote}>
+                        <label>
+                            <select name="noteId"
+                                onChange={(e) => {
+                                    setNoteIdChoice(e.target.value)
+                                }} className="tag-select-note-tag-selections">
 
-                  {/* MAP: option value=tagID, label tag_name */}
-                  <option value={""}>-Select Note-</option>
+                                {/* MAP: option value=tagID, label tag_name */}
+                                <option value={""}>-Select Note-</option>
 
-                  {availableNotes.map((noteNamePair) => (
-                       <option value={noteNamePair.id}>{noteNamePair.title}</option>
-                  ))}
+                                {availableNotes.map((noteNamePair) => (
+                                    <option value={noteNamePair.id}>{noteNamePair.title}</option>
+                                ))}
 
-                </select>
+                            </select>
 
-              </label>
-              <button>Add Tag</button>
-              {/* <button type="submit">Add Tag (Refresh after Add)</button> */}
-            </form>
-          </>
-        );
+                        </label>
+                        <button>Add Tag</button>
+                        {/* <button type="submit">Add Tag (Refresh after Add)</button> */}
+                    </form>
+                </>
+            );
 
-      } catch {
-          return (<></>)
-      }
-      }
-////////////END add tag to select note
+        } catch {
+            return (<></>)
+        }
+    }
+    ////////////END add tag to select note
 
 
     // function noteTest(noteId) {
@@ -202,19 +203,19 @@ const TagsPage = () => {
 
         // console.log("remove tag from note")
         return dispatch(deleteNoteTagThunk(noteId, tagId))
-        .then(() => setRenderSwitch(!renderSwitch))
-        .catch(async (res) => {
-            console.log("errors?", res)
-        })
+            .then(() => setRenderSwitch(!renderSwitch))
+            .catch(async (res) => {
+                console.log("errors?", res)
+            })
     }
 
     async function removeTagFromAll(tagId) {
         // console.log(`FIX LATER: remove tag ${tagId} from ALL notes`)
         return dispatch(removeAllNoteTagThunk(tagId))
-        .then(() => setRenderSwitch(!renderSwitch))
-        .catch(async (res) => {
-            // console.log("errors?", res)
-        })
+            .then(() => setRenderSwitch(!renderSwitch))
+            .catch(async (res) => {
+                // console.log("errors?", res)
+            })
     }
     //END OF NOTE TEST
     //
@@ -239,14 +240,14 @@ const TagsPage = () => {
         // console.log("testing delete...");
 
         return dispatch(deleteTagThunk(tagId))
-        .then(() => {
-            let temp = renderSwitch;
-            setRenderSwitch(!temp);
-        })
-        // .then(dispatch(getTagsThunk()))
-        .catch(async (res) => {
-            // console.log("delete error?")
-        })
+            .then(() => {
+                let temp = renderSwitch;
+                setRenderSwitch(!temp);
+            })
+            // .then(dispatch(getTagsThunk()))
+            .catch(async (res) => {
+                // console.log("delete error?")
+            })
 
 
 
@@ -260,7 +261,7 @@ const TagsPage = () => {
         }
     }
     //*                 {sortedByAlphaList && sortedByAlphaList.map(
-                // {sortedByNotesList && sortedByNotesList.map( */
+    // {sortedByNotesList && sortedByNotesList.map( */
     function toggleSort() {
 
         // console.log("togglesort running?");
@@ -319,47 +320,47 @@ const TagsPage = () => {
                 }
             }
         }
-        catch {}
+        catch { }
         return count;
     }
 
     const listValidNotes = (noteId, tagId) => {
         try {
             return (
-            <>
+                <>
 
-            <span className="tag-note-list-note-and-remove">
-            <a href="/notes/">
-                <li className="tag-note-list-note-li">{noteId}: {allnotes.allNotes[noteId].title}</li>
-            </a>
-            {/* <span id="tag-note-list-invisible-tab">_____</span> */}
-            {/* <button className="tag-note-list-remove-button" onClick={() => removeTagFromNote(noteId, tagId)}>Remove Tag</button> */}
+                    <span className="tag-note-list-note-and-remove">
+                        <a href="/notes/">
+                            <li className="tag-note-list-note-li">{allnotes.allNotes[noteId].title}</li>
+                        </a>
+                        {/* <span id="tag-note-list-invisible-tab">_____</span> */}
+                        {/* <button className="tag-note-list-remove-button" onClick={() => removeTagFromNote(noteId, tagId)}>Remove Tag</button> */}
 
-            <span className="material-symbols-outlined tag-remove-icon" title="Remove tag" onClick={() => removeTagFromNote(noteId, tagId)}>label_off</span>
+                        <span className="material-symbols-outlined tag-remove-icon" title="Remove tag" onClick={() => removeTagFromNote(noteId, tagId)}>label_off</span>
 
-            </span>
-            </>
+                    </span>
+                </>
             )
         } catch {
-// ///////////////////////////////////////////////////
-//ADD SPECIFIC NOTE_ID LOGIC TO <A> LINKS
+            // ///////////////////////////////////////////////////
+            //ADD SPECIFIC NOTE_ID LOGIC TO <A> LINKS
         }
     }
 
     const waitForLoad = (tagId) => {
         try {
             return (
-             <>
-            <ul className="tag-note-list-ul">
-                {notetags.tag_to_notes[tagId].map(
-                        note_id => (
-                            <>
-                                {listValidNotes(note_id, tagId)}
-                            </>
-                        )
-                )}
-            </ul>
-            </>
+                <>
+                    <ul className="tag-note-list-ul">
+                        {notetags.tag_to_notes[tagId].map(
+                            note_id => (
+                                <>
+                                    {listValidNotes(note_id, tagId)}
+                                </>
+                            )
+                        )}
+                    </ul>
+                </>
             )
         } catch (e) {
             // console.log("\n\n\nERROR", e)
@@ -369,159 +370,159 @@ const TagsPage = () => {
     return (
         <div className="tag-page-wrapper">
 
-        <div className="tag-page-center"></div>
+            <div className="tag-page-center">
+            <div className='center-within'>
+                    <div className="tag-list-top">
+
+                        <span className="tag-title-and-new">
+                            <h1>
+                                <span className="material-symbols-outlined">sell</span>
+                                &nbsp;
+                                Tags</h1>
 
 
-        <div className="tag-list-top">
-
-        <span className="tag-title-and-new">
-            <h1>
-            <span className="material-symbols-outlined">sell</span>
-            &nbsp;
-            Tags</h1>
-
-
-            <span className="tag-list-hover-pointer">
-                    <OpenModalCustomIcon
-                        modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
-                        materialSymbolIconName="library_add"
-                        iconTitle="Create New Tag"
-                        />
-            </span>
-        </span>
-            {/* <br></br> */}
-{/*
+                            <span className="tag-list-hover-pointer">
+                                <OpenModalCustomIcon
+                                    modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
+                                    materialSymbolIconName="library_add"
+                                    iconTitle="Create New Tag"
+                                />
+                            </span>
+                        </span>
+                        {/* <br></br> */}
+                        {/*
             <p>Apply tags to better organize your notes!</p>
             <br></br>
-            <p id="tag-list-top-sentence">(The following <span id='tag-list-top-sentence-tags'>tags</span> are applied to the following <span id="tag-list-top-sentence-notes">notes</span>)</p> */}
-            {/* <div className="tag-notetest-node">
+        <p id="tag-list-top-sentence">(The following <span id='tag-list-top-sentence-tags'>tags</span> are applied to the following <span id="tag-list-top-sentence-notes">notes</span>)</p> */}
+                        {/* <div className="tag-notetest-node">
                 {noteTest(1)}
-            </div>
-            <div className="tag-notetest-note-controls">
-
+                </div>
+                <div className="tag-notetest-note-controls">
+                
                 <AddTagForm noteId="1" />
                 {/* <button onClick={createTest}>Test, Create New Tag</button>
-
+                
                 <button onClick={() => {addNoteTag(1, 2)}}>Test: Add to Note1, Tag2</button>
-
+                
             </div> */}
 
-            <div className="tag-top-number-and-sort">
-                <span>
-                    { taglist ? taglist.length + " tags" : "0 tags" }
-                </span>
+                        <div className="tag-top-number-and-sort">
+                            <span>
+                                {taglist ? taglist.length + " tags" : "0 tags"}
+                            </span>
 
 
-                <span
-                    className="material-symbols-outlined tag-list-hover-pointer"
-                    title="Sort: A-Z or #Notes"
-                    onClick={toggleSort}>
-                    sort
-                </span>
-            </div>
+                            <span
+                                className="material-symbols-outlined tag-list-hover-pointer"
+                                title="Sort: A-Z or #Notes"
+                                onClick={toggleSort}>
+                                sort
+                            </span>
+                        </div>
 
 
-            {/* <span className="tag-list-top-create-and-sort-buttons">
+                        {/* <span className="tag-list-top-create-and-sort-buttons">
 
             </span> */}
 
 
 
-                 {/* <span id="tag-list-top-create-button">
+                        {/* <span id="tag-list-top-create-button">
                 <OpenModalButton
                 buttonText="Create New Tag"
                 modalComponent={<TagCreateRenameModal createOrRename="Create New" />}
                 />
-                </span> */}
-{/*
+            </span> */}
+                        {/*
                 <span className="material-symbols-outlined tag-list-top-create-icon" title="Create New Tag">library_add</span> */}
 
 
-                {/* 07-17
+                        {/* 07-17
                 OpenModalCustomIcon,
-                    modalComponent,
-                    materialSymbolIconName
-                    iconTitle/hovertext
-                    onButtonClick
-                     */}
+                modalComponent,
+                materialSymbolIconName
+                iconTitle/hovertext
+                onButtonClick
+            */}
 
-{/*
+                        {/*
                 <span id="tag-list-top-sort-button">
-                    <button onClick={toggleSort}>Toggle Sort: A-Z or #notes</button>
-                </span> */}
+                <button onClick={toggleSort}>Toggle Sort: A-Z or #notes</button>
+            </span> */}
 
 
-        </div>
-        {/* end of tag-list-top */}
-
-
-            <div>
-                {alphaOrNum().map(
-                // {sortedByAlphaList && sortedByAlphaList.map(
-                // {sortedByNotesList && sortedByNotesList.map(
-                // {taglist && taglist.map(
-                tag => (
-                    <>
-                    <div className="tag-node">
-
-                    {/* <div key={tag.id}>
-                        tag_id: {tag.id}
                     </div>
-                    <div key={tag.name}>
-                        tag_name: {tag.name}
-                    </div>
-                    //////// <div>
-                        num_notes: {tag.num_notes}
-                    </div>
+                    {/* end of tag-list-top */}
+
+
+                        {/* <div className='center-within'> */}
                     <div>
+                        {alphaOrNum().map(
+                            // {sortedByAlphaList && sortedByAlphaList.map(
+                                // {sortedByNotesList && sortedByNotesList.map(
+                                    // {taglist && taglist.map(
+                                        tag => (
+                                            <>
+                                    <div className="tag-node">
+
+                                        {/* <div key={tag.id}>
+                        tag_id: {tag.id}
+                        </div>
+                        <div key={tag.name}>
+                        tag_name: {tag.name}
+                        </div>
+                        //////// <div>
+                        num_notes: {tag.num_notes}
+                        </div>
+                        <div>
                         num_notes: {tag.id && numNotesByOwner(tag.id)}
                     </div> */}
 
-                    <div className="tag-node-name-and-num">
-                        <span className="tag-node-name-and-num-span"> {/* added 07-18 */}
-                            <span className="tag-node-name-and-num-name">
-                                {tag.name}
-                            </span>
-                            <span> </span>
+                                        <div className="tag-node-name-and-num">
+                                            <span className="tag-node-name-and-num-span"> {/* added 07-18 */}
+                                                <span className="tag-node-name-and-num-name">
+                                                    {tag.name}
+                                                </span>
+                                                <span> </span>
 
-                            <span className="tag-node-name-and-num-num">
-                                ({tag.id && numNotesByOwner(tag.id)})
-                            </span>
-                        </span>
+                                                <span className="tag-node-name-and-num-num">
+                                                    ({tag.id && numNotesByOwner(tag.id)})
+                                                </span>
+                                            </span>
 
-                        {/* add 07/17 */}
-                        <span className="tag-list-rename-delete">
+                                            {/* add 07/17 */}
+                                            <span className="tag-list-rename-delete">
 
-                        <span className="tag-list-hover-pointer">
-                        <OpenModalCustomIcon
-                            modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
-                            materialSymbolIconName="edit_square"
-                            iconTitle="Rename Tag"
-                            />
-                        </span>
+                                                <span className="tag-list-hover-pointer">
+                                                    <OpenModalCustomIcon
+                                                        modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
+                                                        materialSymbolIconName="edit_square"
+                                                        iconTitle="Rename Tag"
+                                                    />
+                                                </span>
 
-                        <span className="tag-list-hover-pointer">
-                        <OpenModalCustomIcon
-                            modalComponent={<TagDeleteModal
-                                tagId={tag.id}
-                                tagName={tag.name}
-                                renderSwitch={renderSwitch}
-                                setRenderSwitch={setRenderSwitch} />}
-                            materialSymbolIconName="delete"
-                            iconTitle="Delete Tag"
-                            />
-                        </span>
+                                                <span className="tag-list-hover-pointer">
+                                                    <OpenModalCustomIcon
+                                                        modalComponent={<TagDeleteModal
+                                                            tagId={tag.id}
+                                                            tagName={tag.name}
+                                                            renderSwitch={renderSwitch}
+                                                            setRenderSwitch={setRenderSwitch} />}
+                                                        materialSymbolIconName="delete"
+                                                        iconTitle="Delete Tag"
+                                                    />
+                                                </span>
 
-                        </span> {/* end of two buttons */}
-                    </div>
-                    <div>
-                        {waitForLoad(tag.id)}
-                    </div>
+                                            </span> {/* end of two buttons */}
+                                        </div>
+                                        <div>
+                                            {waitForLoad(tag.id)}
+                                        </div>
 
-                    <div className="tag-node-main-buttons">
+                                        <div className="tag-node-main-buttons">
 
 
-                    {/* <span className="tag-node-rename-button">
+                                            {/* <span className="tag-node-rename-button">
                     <OpenModalButton
                         buttonText="Rename Tag"
                         modalComponent={<TagCreateRenameModal createOrRename="Rename" tag={tag} />}
@@ -530,7 +531,7 @@ const TagsPage = () => {
 
 
 
-                    {/* <span className="tag-node-rename-button">
+                                            {/* <span className="tag-node-rename-button">
                     <OpenModalCustomIcon
                         // buttonText="Rename Tag"
                         materialSymbolIconName={"none"}
@@ -540,29 +541,31 @@ const TagsPage = () => {
 
 
 
-                    {/* <span className="tag-node-delete-button">
+                                            {/* <span className="tag-node-delete-button">
                     {<button onClick={() => {deleteTest(tag.id)}}>Delete this Tag</button>}
                     </span> */}
 
 
 
 
-                    {/* <span>
+                                            {/* <span>
                         <button onClick={() => {removeTagFromAll(tag.id)}}>Remove Tag from ALL notes</button>
                     </span> */}
+                                        </div>
+
+                                        <div className="tag-select-note">
+                                            {AddSelectNoteToTag(tag.id)}
+                                        </div>
+
+
+
+
+                                    </div>
+                                </>
+                            )
+                        )}
                     </div>
-
-                    <div className="tag-select-note">
-                        {AddSelectNoteToTag(tag.id)}
-                    </div>
-
-
-                    
-
-                    </div>
-                    </>
-                )
-            )}
+                </div>
             </div>
         </div>
     )

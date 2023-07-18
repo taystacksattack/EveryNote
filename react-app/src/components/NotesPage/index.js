@@ -31,7 +31,7 @@ const CurrentNotes = () => {
     const allnotes = useSelector(state => state.notes);
     const notetags = useSelector(state => state.notetags);
 
-    const allnotebooks = useSelector(state => state.notebooks);
+    const allnotebooks = useSelector(state => state.notebooks.allNotebooks);
 
 
     const [renderSwitch, setRenderSwitch] = useState(true)
@@ -54,11 +54,16 @@ const CurrentNotes = () => {
 
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
+
+    // console.log("creating new note, notebookIdChoice", notebookIdChoice);
+
     const newNote = {
         title,
         body: noteContent,
         ownerId: owner.id,
-        notebookId: 1,
+        // notebookId: 1,
+        notebookId: notebookIdChoice,
+        //
         trash: false
 
     }
@@ -80,6 +85,7 @@ const CurrentNotes = () => {
         dispatch(getNotebooksThunk())
         //resets on each add
         setTagIdChoice('')
+        setNotebookIdChoice(1)
 
     }, [dispatch, renderSwitch])
 
@@ -152,29 +158,46 @@ const CurrentNotes = () => {
         if (Object.values(newErrors).length) {
             setErrors(newErrors)
             return null
-        } else if (Object.values(clickedNote).length > 0) {
+        } else if ((Object.values(clickedNote).length > 0) ||
+                    clickedNote.notebookId && clickedNote.notebookId !== notebookIdChoice) {
+        // } else if (Object.values(clickedNote).length > 0) {
 
             // console.log("updatingggggggggggg", title, noteContent)
             // console.log("note info", clickedNote)
 
-
+            console.log("clickedNote notebookId", clickedNote.notebookId)
+            console.log("notebookIdChoice", notebookIdChoice)
 
             const updatedNote = {
                 title,
                 body: noteContent,
 
+                //07-18, work
+                notebookId: notebookIdChoice
+
             }
+
+            //console.log("updating note, updated notebookId", notebookIdChoice)
+
+
 
             await dispatch(editNoteThunk(updatedNote, clickedNote.id))
             dispatch(getNotesThunk())
             setListRendered(listOfNotes)
             setTitle('')
             setNoteContent('')
+
+            //
+            setNotebookIdChoice(1)
+            setClickedNote({})
+            // dispatch(getNotesThunk())
         } else {
 
             await dispatch(createNoteThunk(newNote))
             setTitle('')
             setNoteContent('')
+            //
+            setNotebookIdChoice(1)
 
             await dispatch(getNotesThunk())
 
@@ -201,6 +224,7 @@ const CurrentNotes = () => {
 
         // // /* josh */
         setTagIdChoice('')
+        setNotebookIdChoice(note.notebookId)
 
     }
 
@@ -309,6 +333,54 @@ const CurrentNotes = () => {
             return (<></>)
         }
     }
+
+    //
+
+
+    function AddToNotebookForm() {
+        //console.log("attempting add to notebook")
+        try {
+
+            // const currentNoteNotebookId = clickedNote ? clickedNote.id : 1;
+            // const noteValues = Object.values(notesObj);
+            const notebookValues = Object.values(allnotebooks);
+
+            //notebookIdChoice
+
+            return (
+                <>
+                    <div id='set-notebook-instruction'>Set Notebook</div>
+                    <form action=''>
+                    {/* <form action='' onSubmit={handleSubmitAddTag}> */}
+
+                        <label>
+                            <select className='tag-selections'
+                                    name="notebookId"
+                                    onChange={(e) => {
+                                        setNotebookIdChoice(e.target.value)
+                                    }
+                            }
+                            //new addition, should reset to -select- on add
+                            value={notebookIdChoice}
+
+                            >
+                                {notebookValues.map((notebook) => (
+                                    <option value={notebook.id}>
+                                        {notebook.title}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </form>
+                </>
+            );
+
+        } catch(e) {
+            console.log('add notebook errors', e)
+            return (<>Nothing</>)
+        }
+    }
+
 
 
 
@@ -463,6 +535,9 @@ const CurrentNotes = () => {
                     </textarea>
                     <button type='submit' id='save-note-btn'>Save Note</button>
                     {notetags && (Object.values(clickedNote).length > 0) ? AddTagForm(clickedNote.id) : ''}
+
+                    {AddToNotebookForm()}
+
                     {/* {notetags && notetags ? AddTagForm(clickedNote.id) : ''} */}
                     {errors.title && <p className='note-errors'>{errors.title}</p>}
                     {errors.noteContent && <p className='note-errors'>{errors.noteContent}</p>}

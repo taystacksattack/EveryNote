@@ -21,6 +21,7 @@
     padding: 1em;
     /* margin: 0.3em; */
     border-bottom: 2px solid var(--font-clr);
+    border-right: 2px solid white;
 }
 
 .tag-node-main-buttons {
@@ -150,6 +151,7 @@
     /* border: 1px solid fuchsia; */
     border-bottom: 2px solid var(--font-clr);
     padding: 1rem;
+    border-right: 2px solid white;
 }
 
 /* .tag-list-rename-delete {
@@ -218,7 +220,7 @@
 .center-within {
     justify-self: center;
     width:fit-content;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* margin: auto; */
     /* border-left: 1px solid white; */
     /* border-right: 1px solid white; */

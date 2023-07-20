@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from "react";
-// import React, { useSelector } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -22,6 +21,7 @@ import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
   const [isLoaded, setIsLoaded] = useState(false);
 
 
@@ -75,7 +75,7 @@ function App() {
               <CurrentTasks />
             </Route>
             <Route path="/" >
-              <LandingPage />
+             {!sessionUser? <LandingPage /> : <CurrentNotes/>}
             </Route>
           </Switch>
         )}

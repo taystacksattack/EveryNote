@@ -110,7 +110,7 @@ const EditTask = ({ taskId }) => {
                             placeholder="Title"
                             id="title"
                             type='textarea'
-                            value={title}
+                            value={title.trimStart()}
                             onChange={e => setTitle(e.target.value)}
                         >
                         </input>
@@ -120,7 +120,7 @@ const EditTask = ({ taskId }) => {
                             placeholder="Description"
                             id="description"
                             type='textarea'
-                            value={description}
+                            value={description.trimStart()}
                             onChange={e => setDescription(e.target.value)}
                         >
                         </textarea>
@@ -136,7 +136,7 @@ const EditTask = ({ taskId }) => {
                             >
                             </input>
                         </label>
-                        <label id="due_date">Due Date
+                        <label id="due_date_label">Due Date
                             <input
                                 id="due_date"
                                 type='date'

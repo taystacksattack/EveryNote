@@ -28,6 +28,8 @@ const CurrentNotes = () => {
     const allnotes = useSelector(state => state.notes);
     const notetags = useSelector(state => state.notetags);
     const [renderSwitch, setRenderSwitch] = useState(true)
+
+    const [tagIdChoice, setTagIdChoice] = useState();
     //
 
     const notesObj = useSelector(state => state.notes.allNotes)
@@ -190,7 +192,12 @@ const CurrentNotes = () => {
     function AddTagForm(noteId) {
         const dispatch = useDispatch();
         //   const [noteIdChoice, setNoteIdChoice] = useState("");
-        const [tagIdChoice, setTagIdChoice] = useState();
+
+        //07-17 rendered more hooks error; try moving to top of doc
+        //const [tagIdChoice, setTagIdChoice] = useState();
+
+        //07-17 test, don't display on new note
+        //clickedNote ? console.log("clickedNOte, ", clickedNote) : console.log("No current clickedNote");
 
         // const alltags = useSelector(state => state.tags);
         // const allnotes = useSelector(state => state.notes);
@@ -419,7 +426,8 @@ const CurrentNotes = () => {
                     >
                     </textarea>
                     <button type='submit' id='save-note-btn'>Save Note</button>
-                    {notetags && notetags ? AddTagForm(clickedNote.id) : ''}
+                    {notetags && (Object.values(clickedNote).length > 0) ? AddTagForm(clickedNote.id) : ''}
+                    {/* {notetags && notetags ? AddTagForm(clickedNote.id) : ''} */}
                     {errors.title && <p className='note-errors'>{errors.title}</p>}
                     {errors.noteContent && <p className='note-errors'>{errors.noteContent}</p>}
                     {errors.note && <p className='note-errors'>{errors.note}</p>}

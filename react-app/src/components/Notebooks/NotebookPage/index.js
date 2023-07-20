@@ -38,7 +38,11 @@ const CurrentNotebooks = () => {
         <div className="everything-wrapper-2">
             <div className="notebook-wrapper">
                 <div className="add-note-notebook">
-                    <h1 className="notebook-num-stuff">{notebookNum(notebooks)}</h1>
+                    <h1 className="notebook-num-stuff">
+                    <span className="material-symbols-outlined">auto_stories</span>
+                    &nbsp;
+                    {notebookNum(notebooks)}</h1>
+                    {/* <h1 className="notebook-num-stuff">{notebookNum(notebooks)}</h1> */}
                 </div>
                 <div className="new-notebook-component">
                     <NewNotebook />

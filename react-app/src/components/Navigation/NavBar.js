@@ -60,7 +60,7 @@ function NavBar({ isLoaded }) {
 					<div id="links-wrapper">
 						<p>Carmen Lee</p>
 						<div className='dev-links'>
-							<a href="https://www.linkedin.com/in/carmen-lee-52061690/"target="_blank"><i class="fa-brands fa-linkedin" ></i></a>
+							<a href="https://www.linkedin.com/in/carmen-lee-52061690/ "target="_blank"><i class="fa-brands fa-linkedin" ></i></a>
 							<a href="https://github.com/lee2278" target="_blank"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>

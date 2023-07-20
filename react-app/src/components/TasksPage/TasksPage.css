@@ -11,7 +11,7 @@
   border-right: solid 1px var(--button);
   padding-left: 1rem;
   overflow: scroll;
-  width: 75%;
+  width: 52%;
 }
 
 #select-filter > select {

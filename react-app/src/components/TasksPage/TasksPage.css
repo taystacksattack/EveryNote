@@ -14,18 +14,32 @@
   width: 52%;
 }
 
+#tasks-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#select-filter{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.35rem;
+}
+
 #select-filter > select {
   background-color: var(--bg-clr);
   width: 10rem;
 }
 
 #new-task {
-  background-color: var(--button);
-  width: 10rem;
+  /* background-color: var(--button); */
+  /* width: 10rem; */
   text-align: center;
   padding: 4px;
   border-radius: 8px;
+  padding-right: 1.35rem;
 }
+
 #new-task > a {
   color: var(--bg-clr);
 }

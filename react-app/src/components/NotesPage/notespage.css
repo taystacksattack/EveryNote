@@ -32,7 +32,7 @@ button {
 }
 
 .notes-header > h1{
-    color:white;
+    color: var(--font-clr);
 }
 
 .notes-subheading{

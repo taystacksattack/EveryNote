@@ -57,16 +57,7 @@ const CurrentNotes = () => {
 
     // console.log("creating new note, notebookIdChoice", notebookIdChoice);
 
-    const newNote = {
-        title,
-        body: noteContent,
-        ownerId: owner.id,
-        // notebookId: 1,
-        notebookId: notebookIdChoice,
-        //
-        trash: false
 
-    }
     useEffect(() => {
         dispatch(getNotesThunk())
         setListRendered(listOfNotes)
@@ -147,6 +138,16 @@ const CurrentNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const newNote = {
+            title,
+            body: noteContent,
+            ownerId: owner?.id,
+            // notebookId: 1,
+            notebookId: notebookIdChoice,
+            //
+            trash: false
+    
+        }
 
         setErrors({})
 

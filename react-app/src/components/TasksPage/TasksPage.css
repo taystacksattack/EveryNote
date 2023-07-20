@@ -40,6 +40,11 @@
   padding-right: 1.35rem;
 }
 
+#new-task:hover{
+  cursor: pointer;
+  /* border: red solid 1px */
+}
+
 #new-task > a {
   color: var(--bg-clr);
 }

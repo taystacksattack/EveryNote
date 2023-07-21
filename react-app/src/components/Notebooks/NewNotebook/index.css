@@ -18,86 +18,82 @@
   border: solid 1px var(--border);
   background-color: var(--bg-clr);
   height: 100%;
-  width: 100%;
+  width: 25rem;
   color: var(--button);
 }
 
 .create-modal-form {
-  /* border: solid 1px blue; */
   display: grid;
   margin: 1%;
   padding: 1%;
 }
 
 .create-modal-label {
-  /* border: solid 1px rgb(94, 94, 142); */
   color: var(--button);
 }
 .create-des {
-  /* border: solid 1px rgb(94, 94, 142); */
   color: var(--font-clr);
 }
 
 .create-div-label-input {
   display: flex;
   justify-content: center;
-  /* border: solid 1px red */
 }
 .create-modal-form-input {
-  /* border: solid 1px rgb(234, 255, 0); */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
   height: 30px;
-  background-color: #262626;
+  background-color: white;
   border: solid 1px #a6a6a666;
   border-radius: 5px;
-  color: var(--button);
+  color: black;
 }
 .create-button-container {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  justify-content: center;
   align-items: center;
+  grid-template-columns: 50% 50%;
   height: 4rem;
   column-gap: 10px;
-  /* border: solid 1px rgb(0, 255, 30); */
 }
 .create-button-container button {
+  background-color: var(--button);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2rem;
-  width: 5rem;
+  width: 9rem;
   font-weight: bold;
 }
-
+.notebook-create-button-div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
 .create-modal-button-submit {
   background-color: var(--bg-clr);
-  color: var(--button);
-  /* border-radius: 5px; */
+  color: var(--modal-txt);
   border: solid 0.5px var(--border);
 }
-/* .create-modal-button-submit:disabled {
-  background-color:red;
-  color: var(--button);
-  border: solid 0.5px var(--border);
-} */
-/* .create-modal-button-submit {
-} */
+
 .create-modal-button-cancel {
   background-color: var(--bg-clr);
   border: solid 0.5px var(--border);
-  color: var(--button);
-  /* border-radius: 5px; */
+  color: var(--modal-txt);
+}
+.create-modal-button-submit:hover {
+  background-color: var(--evernote-green);
 }
 
+.create-modal-button-cancel:hover {
+  background-color: var(--modal-button-cancel);
+}
 
 .fa-book {
   color: var(--button);
 }
-
-
 
 /* mobile L*/
 @media screen and (max-width: 425px) {
@@ -123,7 +119,7 @@
     margin: 1%;
     padding: 1%;
     row-gap: 5px;
-}
+  }
 }
 /* mobile M*/
 @media screen and (max-width: 375px) {
@@ -149,7 +145,7 @@
     margin: 1%;
     padding: 1%;
     row-gap: 10px;
-}
+  }
 }
 /* mobile S*/
 @media screen and (max-width: 320px) {

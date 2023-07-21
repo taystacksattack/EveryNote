@@ -80,6 +80,11 @@ def update_note(id):
             # print('\n\n\n\n\n\n form data ', form.data)
             note.body=form.data['body']
 
+        #also with notebookId 07-18
+        if form.data['notebookId']:
+            print("\n\n\n\nNOTEBOOK ID", form.data['notebookId'])
+            note.notebookId=form.data['notebookId']
+
 
         # note.updated_at=datetime.utcnow
 

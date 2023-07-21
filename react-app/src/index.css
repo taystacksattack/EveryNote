@@ -9,22 +9,25 @@
 } */
 
 :root {
-    --bg-clr: #131d2d;
-    --font-clr: #d5d8e1;
-    --evernote-green: #008f26;
-    --txt-area-gray: rgb(40, 37, 37);
-    --mustard: #5583CC;
-    --modal: #90B7F7;
-    --button: #5583CC;
-    --shadows: #29446e;
-    --border: rgb(118, 118, 118);
-
+  --bg-clr: #131d2d;
+  --font-clr: #d5d8e1;
+  --evernote-green: #008f26;
+  --txt-area-gray: rgb(40, 37, 37);
+  --mustard: #5583cc;
+  --modal: #90b7f7;
+  --button: #5583cc;
+  --shadows: #29446e;
+  --border: rgb(118, 118, 118);
+  /* modal */
+  --modal-txt: rgba(255, 255, 255, 0.594);
+  --modal-button-cancel: rgb(252, 105, 105);
+  --modal-bg: rgba(0, 0, 0, 0.337);
 }
 /* retry
  */
-*{
-    margin:0;
-    /* background-color: var(--bg-clr); */
-    font-family: arial;
-    color: var(--font-clr)
+* {
+  margin: 0;
+  /* background-color: var(--bg-clr); */
+  font-family: arial;
+  color: var(--font-clr);
 }

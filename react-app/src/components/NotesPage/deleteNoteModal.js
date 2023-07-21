@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal"
-import { deleteNoteThunk} from "../../store/notes";
+import { deleteNoteThunk } from "../../store/notes";
 
 
-function DeleteModal({note}) {
+function DeleteModal({ note }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal()
 
@@ -19,8 +19,24 @@ function DeleteModal({note}) {
         <div id='delete-note-modal'>
             <h1>Confirm Delete</h1>
             <p>Are you sure you want to delete this note?</p>
-            <button onClick={handleDelete}>{`Yes (Delete Note)`}</button>
-            <button onClick={closeModal}>{`No (Keep Note)`}</button>
+            <div className="button-container">
+
+                <div
+                    className="delete-modal">
+                    <button
+                        className="delete-cancel"
+                        onClick={closeModal}>{`Cancel`}</button>
+                        {/* onClick={closeModal}>{`No (Keep Note)`}</button> */}
+                </div>
+                <div className="delete-modal">
+                    <button
+                        className="delete-submit"
+                        onClick={handleDelete}>
+                        {`Delete Note`}
+                        {/* {`Yes (Delete Note)`} */}
+                    </button>
+                </div>
+            </div>
 
         </div>
     )

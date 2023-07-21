@@ -21,6 +21,7 @@
     padding: 1em;
     /* margin: 0.3em; */
     border-bottom: 2px solid var(--font-clr);
+    border-right: 2px solid white;
 }
 
 .tag-node-main-buttons {
@@ -37,7 +38,7 @@
 
 .tag-node-name-and-num {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
 }
 
@@ -47,6 +48,11 @@
 
 
 /* 07-17 add remove icon */
+.tag-remove-icon {
+    margin-left: 3rem;
+
+}
+
 .tag-remove-icon:hover {
    cursor: pointer;
 }
@@ -73,7 +79,7 @@
 } */
 .tag-note-list-note-and-remove {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 100%;
     align-items: center;
     padding: 2.5px;
@@ -81,6 +87,7 @@
 .tag-note-list-note-li {
     width: 15rem;
     color: var(--font-clr);
+    overflow-wrap:anywhere;
 }
 .tag-note-list-note-li > * {
     font-size: 0.7rem;
@@ -115,7 +122,7 @@
     background-color: var(--bg-clr);
     color: var(--font-clr);
     /* width: 28rem; */
-    /* width: 80%; */
+    width: 80%;
     /* test width 07-18 */
     /* margin-left: 10rem; */
 
@@ -126,6 +133,8 @@
 
     border-left: 2px solid var(--button);
     overflow-y: scroll;
+    display: flex;
+
 }
 
 .tag-page-wrapper button {
@@ -142,12 +151,20 @@
     /* border: 1px solid fuchsia; */
     border-bottom: 2px solid var(--font-clr);
     padding: 1rem;
+    border-right: 2px solid white;
 }
 
 /* .tag-list-rename-delete {
     display: flex;
     align-items: center;
 } */
+
+.tag-list-rename-delete {
+    display: flex;
+    gap: 0.2rem;
+    margin-left: 2rem;
+}
+
 
 
 .tag-list-top-create-and-sort-buttons {
@@ -191,6 +208,36 @@
     margin: 0.5rem 0;
 }
 
+.tag-page-center {
+    display: flex;
+    width: 100%;
+    /* margin:auto; */
+    /* border: 2px solid red; */
+    /* flex-direction: column; */
+    height: 100%;
+}
+
+.center-within {
+    justify-self: center;
+    width:fit-content;
+    /* overflow-y: scroll; */
+    /* margin: auto; */
+    /* border-left: 1px solid white; */
+    /* border-right: 1px solid white; */
+
+
+}
+
+.tag-note-list-note-and-remove {
+    display: flex;
+    width: 30rem;
+}
+
+
+.tag-node-name-and-num-span {
+    width: 23rem;
+}
+
 
 @media screen and (min-width:1024px) {
     .tag-list-top > p, .tag-node-name-and-num-name,
@@ -203,7 +250,9 @@
 
     .tag-note-list-note-li {
         font-size: 1.2rem;
-        width: 30rem;
+        /* width: 30rem; */
+        width: 20rem;
+
     }
     .tag-page-wrapper button {
         font-size: 1rem;
@@ -216,20 +265,70 @@
     }
 }
 
-@media screen and (max-width:470px) {
+@media screen and (max-width: 1023px) {
+    .tag-node-name-and-num-span {
+        width: 18rem;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .tag-note-list-note-and-remove {
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width:560px) {
+    .tag-note-list-note-li {
+        width: 11rem;
+    }
+    .tag-node-name-and-num-span {
+        width: 14rem;
+    }
+    .tag-note-list-note-and-remove {
+        width: 16rem;
+    }
+}
+
+@media screen and (max-width: 482px) {
     .tag-note-list-note-li {
         width: 10rem;
     }
+    .tag-note-list-note-and-remove {
+        width: 14rem;
+    }
+    .tag-node-name-and-num-span {
+        width: 13rem;
+    }
+    .tag-list-rename-delete {
+        margin-left: 1rem;
+    }
+    .tag-remove-icon{
+        margin-left:2rem;
+    }
 }
+
+
 
 @media screen and (max-width:425px) {
     .tag-note-list-note-li {
         width: 6rem;
+    }
+    .tag-node-name-and-num-span {
+        width: 8.5rem;
+    }
+    .tag-note-list-note-and-remove {
+        width: 12rem;
     }
 }
 
 @media screen and (max-width:390px) {
     .tag-page-wrapper {
         width:100%;
+    }
+    .tag-note-list-note-li {
+        width: 5rem;
+    }
+    .tag-note-list-note-and-remove {
+        width: 10rem;
     }
 }

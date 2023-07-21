@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 import { deleteTaskThunk } from '../../store/tasks'
 // import { getTasksThunk } from '../../store/tasks'
 // import { useHistory } from "react-router-dom";
-
+import './index.css'
 
 
 const DeleteTaskModal = ({ task }) => {
@@ -31,12 +31,18 @@ const DeleteTaskModal = ({ task }) => {
 
     return (
         <>
-            {task && <div>
+            {task && <div className="delete-wrapper">
                 <h2>Confirm Delete</h2>
                 <h3>Are you sure you want to delete this task? </h3>
-                <div>
-                    <button onClick={deleteTask}>Yes (delete task)</button>
-                    <button onClick={closeModal}>No (keep task)</button>
+                <div className="button-container">
+                    <div className="button-div">
+                        <button onClick={closeModal} className="delete-cancel">No (keep task)</button>
+
+                    </div>
+                    <div className="button-div">
+                        <button onClick={deleteTask} className="delete-submit">Yes (delete task)</button>
+
+                    </div>
                 </div>
             </div>}
         </>

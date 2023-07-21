@@ -60,29 +60,29 @@ function NavBar({ isLoaded }) {
 					<div id="links-wrapper">
 						<p>Carmen Lee</p>
 						<div className='dev-links'>
-							<a href="https://www.linkedin.com/in/carmen-lee-52061690/"><i class="fa-brands fa-linkedin"></i></a>
-							<a href="https://github.com/lee2278"><i class="fa-brands fa-github"></i></a>
+							<a href="https://www.linkedin.com/in/carmen-lee-52061690/ "target="_blank"><i class="fa-brands fa-linkedin" ></i></a>
+							<a href="https://github.com/lee2278" target="_blank"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>
 					<div id="links-wrapper">
 						<p>Joshua Lee</p>
 						<div className='dev-links'>
-							<a href="https://linkedin.com/in/jaewon-lee-9573a0142"><i class="fa-brands fa-linkedin"></i></a>
-							<a href="https://github.com/j1jlee/"><i class="fa-brands fa-github"></i></a>
+							<a href="https://linkedin.com/in/jaewon-lee-9573a0142" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+							<a href="https://github.com/j1jlee/" target="_blank"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>
 					<div id="links-wrapper">
 						<p>Taylor McClerin</p>
 						<div className='dev-links'>
-							<a href="https://www.linkedin.com/in/taylor-mcclerin-059586177/"><i class="fa-brands fa-linkedin"></i></a>
-							<a href="https://github.com/taystacksattack"><i class="fa-brands fa-github"></i></a>
+							<a href="https://www.linkedin.com/in/taylor-mcclerin-059586177/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+							<a href="https://github.com/taystacksattack" target="_blank"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>
 					<div id="links-wrapper">
 						<p>Roberto Peregrina Jr</p>
 						<div className='dev-links'>
-							<a href="https://www.linkedin.com/in/roberto-peregrina/"><i class="fa-brands fa-linkedin"></i></a>
-							<a href="https://github.com/RobertoPeregrinaJr96"><i class="fa-brands fa-github"></i></a>
+							<a href="https://www.linkedin.com/in/roberto-peregrina/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+							<a href="https://github.com/RobertoPeregrinaJr96" target="_blank"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>
 				</div>

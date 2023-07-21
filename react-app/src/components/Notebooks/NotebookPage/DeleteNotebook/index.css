@@ -19,6 +19,7 @@
   background-color: var(--bg-clr);
   color: var(--modal);
   padding: 3%;
+  width: 20rem;
   height: 100%;
 }
 
@@ -33,33 +34,43 @@
   font-size: 15px;
 }
 .delete-button-container {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
   align-items: center;
   height: 4rem;
   column-gap: 10px;
   /* border: solid 1px rgb(0, 255, 30); */
+}
+.button-div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 .delete-button-container button {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2rem;
-  width: 5rem;
+  width: 7rem;
   font-weight: bold;
 }
 
 .delete-modal-button-submit {
-  background-color: #bc2618;
-  border-radius: 5px;
-  color: var(--font-clr);
-  border: solid 1px#bc2618;
+  background-color: var(--button);
+  border-radius: 20pt;
+  color: var(--modal-txt);
 }
-/* .create-modal-button-submit {
-  } */
+
 .delete-modal-button-cancel {
-  background-color: var(--bg-clr);
-  border: solid 0.5px var(--border);
-  color: var(--font-clr);
-  border-radius: 5px;
+  background-color: var(--button);
+  color: var(--modal-txt);
+  border-radius: 20pt;
+}
+.delete-modal-button-submit:hover {
+  background-color: var(--modal-button-cancel);
+}
+
+.delete-modal-button-cancel:hover {
+  background-color: var(--evernote-green);
 }

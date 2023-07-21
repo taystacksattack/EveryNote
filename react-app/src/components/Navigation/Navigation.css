@@ -154,4 +154,12 @@ button {
   #links-wrapper > p, #developer-section-wrapper > h3 {
     text-align:center;
   }
+  .just-links>span {
+    font-size: 5.5vw;
+  }
+  .just-links{
+    display: flex;
+    justify-content: center;
+
+  }
 }

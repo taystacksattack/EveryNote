@@ -22,7 +22,7 @@ const UpdateNotebookModel = ({ notebook }) => {
         const err = {}
         e.preventDefault()
 
-        if (title.length === 0) err.title = "Your notebook name must contain at least one character"
+        if (title.trim().length === 0) err.title = "Your notebook name must contain at least one character"
         if (title.length > 30) err.title = "character limit is between 1 and 30 characters"
 
         if (Object.values(err).length === 0) {
@@ -96,16 +96,20 @@ const UpdateNotebookModel = ({ notebook }) => {
                     </div>
                 </label>
                 <div className='update-button-container'>
-                    <button onClick={(e) => closeForm()}
-                        className='update-modal-button-cancel'>Cancel
-                    </button>
-                    <button
-                        disabled={(e) => checkState()}
-                        // disabled={!!Object.values(errors).length}
-                        type='submit'
-                        onClick={(e) => handleSubmit(e)}
-                        className='update-modal-button-submit'
-                    >Continue</button>
+                    <div className='update-div'>
+                        <button onClick={(e) => closeForm()}
+                            className='update-modal-button-cancel'>Cancel
+                        </button>
+                    </div>
+                    <div className='update-div'>
+                        <button
+                            disabled={(e) => checkState()}
+                            // disabled={!!Object.values(errors).length}
+                            type='submit'
+                            onClick={(e) => handleSubmit(e)}
+                            className='update-modal-button-submit'
+                        >Continue</button>
+                    </div>
                 </div>
             </form>
         </div >

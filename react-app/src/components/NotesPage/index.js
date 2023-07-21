@@ -8,6 +8,9 @@ import { getTagsThunk } from "../../store/tags"
 // import { deleteTagThunk } from "../../store/tags"
 import { getNoteTagsThunk, addNoteTagThunk, deleteNoteTagThunk } from "../../store/notetags"
 
+//josh, get notebooks
+import { getNotebooksThunk } from "../../store/notebook"
+
 import "./notespage.css"
 
 const CurrentNotes = () => {
@@ -27,15 +30,20 @@ const CurrentNotes = () => {
     const alltags = useSelector(state => state.tags);
     const allnotes = useSelector(state => state.notes);
     const notetags = useSelector(state => state.notetags);
-    const [renderSwitch, setRenderSwitch] = useState(true)
 
+    const allnotebooks = useSelector(state => state.notebooks.allNotebooks);
+
+
+    const [renderSwitch, setRenderSwitch] = useState(true)
     const [tagIdChoice, setTagIdChoice] = useState();
+
+    const [notebookIdChoice, setNotebookIdChoice] = useState(1);
     //
+
+
 
     const notesObj = useSelector(state => state.notes.allNotes)
     const owner = useSelector(state => state.session.user)
-
-
 
     const listOfNotes = Object.values(notesObj).filter(note => note.trash === false)
 
@@ -46,14 +54,10 @@ const CurrentNotes = () => {
 
 
     // notebookId hardcoded for now, gotta remember to make it dynamic later
-    const newNote = {
-        title,
-        body: noteContent,
-        ownerId: owner.id,
-        notebookId: 1,
-        trash: false
 
-    }
+    // console.log("creating new note, notebookIdChoice", notebookIdChoice);
+
+
     useEffect(() => {
         dispatch(getNotesThunk())
         setListRendered(listOfNotes)
@@ -68,6 +72,12 @@ const CurrentNotes = () => {
     useEffect(() => {
         dispatch(getTagsThunk())
         dispatch(getNoteTagsThunk())
+
+        dispatch(getNotebooksThunk())
+        //resets on each add
+        setTagIdChoice('')
+        setNotebookIdChoice(1)
+
     }, [dispatch, renderSwitch])
 
 
@@ -128,6 +138,16 @@ const CurrentNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const newNote = {
+            title,
+            body: noteContent,
+            ownerId: owner?.id,
+            // notebookId: 1,
+            notebookId: notebookIdChoice,
+            //
+            trash: false
+    
+        }
 
         setErrors({})
 
@@ -139,29 +159,46 @@ const CurrentNotes = () => {
         if (Object.values(newErrors).length) {
             setErrors(newErrors)
             return null
-        } else if (Object.values(clickedNote).length > 0) {
+        } else if ((Object.values(clickedNote).length > 0) ||
+                    clickedNote.notebookId && clickedNote.notebookId !== notebookIdChoice) {
+        // } else if (Object.values(clickedNote).length > 0) {
 
             // console.log("updatingggggggggggg", title, noteContent)
             // console.log("note info", clickedNote)
 
-
+            console.log("clickedNote notebookId", clickedNote.notebookId)
+            console.log("notebookIdChoice", notebookIdChoice)
 
             const updatedNote = {
                 title,
                 body: noteContent,
 
+                //07-18, work
+                notebookId: notebookIdChoice
+
             }
+
+            //console.log("updating note, updated notebookId", notebookIdChoice)
+
+
 
             await dispatch(editNoteThunk(updatedNote, clickedNote.id))
             dispatch(getNotesThunk())
             setListRendered(listOfNotes)
             setTitle('')
             setNoteContent('')
+
+            //
+            setNotebookIdChoice(1)
+            setClickedNote({})
+            // dispatch(getNotesThunk())
         } else {
 
             await dispatch(createNoteThunk(newNote))
             setTitle('')
             setNoteContent('')
+            //
+            setNotebookIdChoice(1)
 
             await dispatch(getNotesThunk())
 
@@ -185,6 +222,10 @@ const CurrentNotes = () => {
         setNoteContent(note.body)
         setClickedNote(note)
         setErrors({})
+
+        // // /* josh */
+        setTagIdChoice('')
+        setNotebookIdChoice(note.notebookId)
 
     }
 
@@ -229,8 +270,16 @@ const CurrentNotes = () => {
 
             const handleSubmitAddTag = async (e) => {
                 e.preventDefault();
-                setRenderSwitch(!renderSwitch)
-                await dispatch(addNoteTagThunk(noteId, tagIdChoice))
+
+                if (tagIdChoice == '') {
+                    // console.log('ignoring, no selection');
+                    return;
+                }
+
+                setRenderSwitch(!renderSwitch);
+                await dispatch(addNoteTagThunk(noteId, tagIdChoice));
+
+                // setTagIdChoice(0);
             };
 
             return (
@@ -251,11 +300,23 @@ const CurrentNotes = () => {
                                 onChange={(e) => {
                                     setTagIdChoice(e.target.value)
                                 }
-                                }>
+                            }
+                            //new addition, should reset to -select- on add
+                            value={tagIdChoice}
+
+                            >
+
+
                                 {/* MAP: option value=tagID, label tag_name */}
-                                <option value={""}>-Select Tag-</option>
+                                <option value={''}>-Select Tag-</option>
+                                {/* <option value={""} selected="selected">-Select Tag-</option> */}
+
+
                                 {availableTags.map((tagNamePair) => (
-                                    <option value={tagNamePair.id}>{tagNamePair.name}</option>
+                                    <option value={tagNamePair.id}
+
+                                    // selected = { tagNamePair.id == 5 ? true : false}
+                                    >{tagNamePair.name}</option>
                                 ))}
 
                             </select>
@@ -273,6 +334,54 @@ const CurrentNotes = () => {
             return (<></>)
         }
     }
+
+    //
+
+
+    function AddToNotebookForm() {
+        //console.log("attempting add to notebook")
+        try {
+
+            // const currentNoteNotebookId = clickedNote ? clickedNote.id : 1;
+            // const noteValues = Object.values(notesObj);
+            const notebookValues = Object.values(allnotebooks);
+
+            //notebookIdChoice
+
+            return (
+                <>
+                    <div id='set-notebook-instruction'>Set Notebook</div>
+                    <form action=''>
+                    {/* <form action='' onSubmit={handleSubmitAddTag}> */}
+
+                        <label>
+                            <select className='tag-selections'
+                                    name="notebookId"
+                                    onChange={(e) => {
+                                        setNotebookIdChoice(e.target.value)
+                                    }
+                            }
+                            //new addition, should reset to -select- on add
+                            value={notebookIdChoice}
+
+                            >
+                                {notebookValues.map((notebook) => (
+                                    <option value={notebook.id}>
+                                        {notebook.title}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </form>
+                </>
+            );
+
+        } catch(e) {
+            console.log('add notebook errors', e)
+            return (<>Nothing</>)
+        }
+    }
+
 
 
 
@@ -427,6 +536,9 @@ const CurrentNotes = () => {
                     </textarea>
                     <button type='submit' id='save-note-btn'>Save Note</button>
                     {notetags && (Object.values(clickedNote).length > 0) ? AddTagForm(clickedNote.id) : ''}
+
+                    {AddToNotebookForm()}
+
                     {/* {notetags && notetags ? AddTagForm(clickedNote.id) : ''} */}
                     {errors.title && <p className='note-errors'>{errors.title}</p>}
                     {errors.noteContent && <p className='note-errors'>{errors.noteContent}</p>}

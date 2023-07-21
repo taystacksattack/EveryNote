@@ -1,27 +1,91 @@
-
-
 .create-rename-wrapper {
-    padding: 1rem;
-    border-radius: 5px;
-    background-color: var(--bg-clr);
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: var(--bg-clr);
 }
-
 
 .create-rename-title {
-    color: white;
+  color: white;
 }
-
+.create-form {
+  display: grid;
+  height: 10rem;
+}
 #create-rename-label {
-    color: white;
+  color: white;
 }
 
 #create-rename-input {
-    color: white;
-    background-color: var(--bg-clr);
+  color: rgb(0, 0, 0);
+  background-color: white;
+  border: solid 1px #a6a6a666;
+  border-radius: 5px;
 }
 
 #create-rename-errors {
-    color: red;
-    /* background-color: lightgray; */
+  color: red;
+  width: 17rem;
+}
+.create-submit-button {
+  height: 2rem;
+  width: 9rem;
+  font-weight: bold;
+  color: var(--modal-txt);
+}
+.create-button-div {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  column-gap: 10px;
+}
+.create-cancel-button {
+  height: 2rem;
+  width: 9rem;
+  color: var(--modal-txt);
+  font-weight: bold;
+}
+.create-cancel-button:hover {
+  background-color: var(--modal-button-cancel);
+}
+.create-submit-button:hover {
+  background-color: var(--evernote-green);
+}
+/* DELETE */
+.delete-wrapper {
+  display: grid;
+  width: 20rem;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
+}
 
+.tag-node-delete-button {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  align-items: center;
+}
+.button-div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.delete-cancel {
+  color: var(--modal-txt);
+  height: 2rem;
+  width: 7rem;
+}
+
+.delete-submit {
+  color: var(--modal-txt);
+  height: 2rem;
+  width: 7rem;
+}
+.delete-cancel:hover {
+  background-color: var(--modal-button-cancel);
+}
+
+.delete-submit:hover {
+  background-color: var(--evernote-green);
 }

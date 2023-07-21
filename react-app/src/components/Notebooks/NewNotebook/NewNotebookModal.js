@@ -69,18 +69,24 @@ const CreateNewNotebookModel = () => {
                     </div>
                 </label>
                 <div className='create-button-container'>
-                    <button
-                        onClick={(e) => closeModal()}
-                        className='create-modal-button-cancel'
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        disabled={(e) => checkState()}
-                        type="submit"
-                        className='create-modal-button-submit' >
-                        Create
-                    </button>
+                    <div className='notebook-create-button-div'>
+                        <button
+                            onClick={(e) => closeModal()}
+                            className='create-modal-button-cancel'
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+                    <div className='notebook-create-button-div'>
+                        <button
+                            disabled={(e) => checkState()}
+                            type="submit"
+                            className='create-modal-button-submit' >
+                            Create
+                        </button>
+
+                    </div>
                 </div>
             </form>
         </div>

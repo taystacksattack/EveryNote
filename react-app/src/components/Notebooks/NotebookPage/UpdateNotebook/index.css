@@ -12,22 +12,19 @@
   border: solid 1px var(--border);
   background-color: var(--bg-clr);
   height: 10rem;
-  width: 30rem;
+  width: 20rem;
 }
 
 .update-modal-form {
-  /* border: solid 1px blue; */
   display: grid;
   margin: 1%;
   padding: 1%;
 }
 
 .update-modal-label {
-  /* border: solid 1px rgb(94, 94, 142); */
   color: var(--font-clr);
 }
 .update-dis {
-  /* border: solid 1px rgb(94, 94, 142); */
   color: var(--font-clr);
   height: 2rem;
   font-size: larger;
@@ -39,55 +36,62 @@
 .update-div-label-input {
   display: flex;
   justify-content: center;
-  /* border: solid 1px red */
   height: 2rem;
 }
 .update-modal-form-input {
-  /* border: solid 1px rgb(234, 255, 0); */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
   height: 30px;
-  background-color: var(--bg-clr);
+  background-color: white;
   border: solid 1px #a6a6a666;
   border-radius: 5px;
-  color: var(--font-clr);
+  color: black;
 }
 .update-button-container {
-  display: flex;
+  display: grid;
   justify-content: flex-end;
   align-items: center;
   height: 3rem;
-  column-gap: 10px;
-  /* border: solid 1px rgb(0, 255, 30); */
+  /* column-gap: 10px; */
+  grid-template-columns: 50% 50%;
 }
 .update-button-container button {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2rem;
-  width: 5rem;
+  width: 7rem;
   font-weight: bold;
 }
 
 .update-modal-button-submit {
-  background-color: #1a8a385f;
-  color: var(--font-clr);
-
-  border-radius: 5px;
-  border: solid 1px #1a8a385f;
+  border-radius: 20pt;
+  background-color: var(--button);
+  padding: 0.25rem;
+  font-size: 12pt;
+  color: var(--modal-txt);
 }
-/* .create-modal-button-submit {
-  } */
 .update-modal-button-cancel {
-  background-color: var(--bg-clr);
-  border: solid 0.5px #a6a6a6;
-  color: var(--font-clr);
-
-  border-radius: 5px;
+  border-radius: 20pt;
+  background-color: var(--button);
+  padding: 0.25rem;
+  font-size: 12pt;
+  color: var(--modal-txt);
+}
+.update-modal-button-submit:hover {
+  background-color: var(--evernote-green);
+}
+.update-modal-button-cancel:hover {
+  background-color: var(--modal-button-cancel);
 }
 
+.update-div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
 /* mobile L*/
 @media screen and (max-width: 425px) {
   .update-modal-div-wrapper {

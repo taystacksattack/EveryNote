@@ -1,0 +1,31 @@
+.delete-wrapper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.button-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.button-container button{
+    color: var(--modal-txt);
+    width: 9rem;
+    border-radius: 20pt;
+}
+.button-div{
+
+}
+.delete-cancel {
+    background-color: var(--button);
+  border-radius: 20pt;
+}
+.delete-submit {
+    background-color: var(--button);
+    border-radius: 20pt;
+}
+.delete-cancel:hover {
+    background-color: var(--evernote-green);
+}
+.delete-submit:hover {
+    background-color: var(--modal-button-cancel);
+}

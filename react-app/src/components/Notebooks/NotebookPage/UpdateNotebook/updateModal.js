@@ -96,16 +96,20 @@ const UpdateNotebookModel = ({ notebook }) => {
                     </div>
                 </label>
                 <div className='update-button-container'>
-                    <button onClick={(e) => closeForm()}
-                        className='update-modal-button-cancel'>Cancel
-                    </button>
-                    <button
-                        disabled={(e) => checkState()}
-                        // disabled={!!Object.values(errors).length}
-                        type='submit'
-                        onClick={(e) => handleSubmit(e)}
-                        className='update-modal-button-submit'
-                    >Continue</button>
+                    <div className='update-div'>
+                        <button onClick={(e) => closeForm()}
+                            className='update-modal-button-cancel'>Cancel
+                        </button>
+                    </div>
+                    <div className='update-div'>
+                        <button
+                            disabled={(e) => checkState()}
+                            // disabled={!!Object.values(errors).length}
+                            type='submit'
+                            onClick={(e) => handleSubmit(e)}
+                            className='update-modal-button-submit'
+                        >Continue</button>
+                    </div>
                 </div>
             </form>
         </div >

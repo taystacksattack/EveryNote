@@ -32,19 +32,24 @@ const DeleteNotebookModal = ({ notebook }) => {
             <h1 className='delete-h1'>Delete notebook?</h1>
             <p className='delete-p'>Any notes in the notebook will be moved to Trash.This cannot be undone.</p>
             <div className='delete-button-container'>
+                <div className='button-div'>
+                    <button
+                        className="delete-modal-button-cancel"
+                        onClick={(e) => closeForm()}
+                    >
+                        Cancel
+                    </button>
 
-                <button
-                    className="delete-modal-button-cancel"
-                    onClick={(e) => closeForm()}
-                >
-                    Cancel
-                </button>
-                <button
-                    className="delete-modal-button-submit"
-                    onClick={(e) => handleSubmit()}
-                >
-                    Delete
-                </button>
+                </div>
+                <div className='button-div'>
+                    <button
+                        className="delete-modal-button-submit"
+                        onClick={(e) => handleSubmit()}
+                    >
+                        Delete
+                    </button>
+
+                </div>
             </div>
         </div>
     )

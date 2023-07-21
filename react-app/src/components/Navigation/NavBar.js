@@ -85,6 +85,10 @@ function NavBar({ isLoaded }) {
 							<a href="https://github.com/RobertoPeregrinaJr96" target="_blank"><i class="fa-brands fa-github"></i></a>
 						</div>
 					</div>
+					<br></br>
+					<div id="links-wrapper">
+						<a style={{textDecoration:"underline"}} href="https://github.com/taystacksattack/EveryNote" target="_blank">Github Repository</a>
+					</div>
 				</div>
 			</div>
 		</div>

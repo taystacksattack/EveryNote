@@ -28,8 +28,8 @@ button {
   margin-top: 1rem;
 }
 
-.notes-header > h1 {
-  color: white;
+.notes-header > h1{
+    color: var(--font-clr);
 }
 
 .notes-subheading {
@@ -53,13 +53,15 @@ button {
   color: white;
 }
 
-.note-selection {
-  border-bottom: 1px solid var(--font-clr);
-  /* height: 100%; */
-  width: 100%;
-  cursor: pointer;
-  overflow: hidden;
-  padding: 0.3rem 0;
+.note-selection{
+    border-bottom: 1px solid var(--font-clr);
+    /* height: 100%; */
+    width: 100%;
+    cursor: pointer;
+    overflow:hidden;
+    padding: .3rem 0;
+    overflow-wrap:anywhere;
+
 }
 
 .all-notes-area {

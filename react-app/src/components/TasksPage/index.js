@@ -89,12 +89,15 @@ const CurrentTasks = () => {
 
             <div id='tasks-area-wrapper'>
                 <div id="tasks-list">
-                    <h1><span className="material-symbols-outlined">task_alt</span>
-                    Tasks</h1>
-                    {/* <h1>Tasks</h1> */}
-                    <br></br>
-                    <div id="new-task">
-                        <Link onClick={e=>handleNewTask(e)}>New Task</Link>
+                    <div id='tasks-header'>
+                        <h1><span className="material-symbols-outlined">task_alt</span>
+                        Tasks</h1>
+                        {/* <h1>Tasks</h1> */}
+                        {/* <br></br> */}
+                        <div id="new-task">
+                            {/* <Link onClick={e=>handleNewTask(e)}>New Task</Link> */}
+                            <i class="fa-solid fa-calendar-plus" onClick={e=>handleNewTask(e)}></i>
+                        </div>
                     </div>
                     <br></br>
                     <div id="select-filter">

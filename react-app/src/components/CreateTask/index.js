@@ -86,7 +86,7 @@ const CreateTask = () =>{
                                 placeholder = "Title"
                                 id = "title"
                                 type='textarea'
-                                value = {title}
+                                value = {title.trimStart()}
                                 onChange={e=> setTitle(e.target.value)}
                             >
                             </input>
@@ -97,7 +97,7 @@ const CreateTask = () =>{
                                 placeholder="Description"
                                 id = "description"
                                 type='textarea'
-                                value = {description}
+                                value = {description.trimStart()}
                                 onChange={e=> setDescription(e.target.value)}
                             >
                             </textarea>

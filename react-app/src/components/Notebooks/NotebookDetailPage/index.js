@@ -12,13 +12,14 @@ const NotebookDetails = () => {
     const [currentNote, setCurrentNote] = useState({})
     const [newBody, setNewBody] = useState('')
     const [title, setTitle] = useState('')
+    const [disabled, setDisable] = useState(true)
     const [bool, setBool] = useState(true)
     const [errors, setErrors] = useState({})
 
     const dispatch = useDispatch()
     const notebookId = useParams().notebookId
 
-    // const notebookObj = useSelector(state => state.notebooks.allNotebooks)
+    const notebookObj = useSelector(state => state.notebooks.allNotebooks)
     const notes = useSelector(state => state.notes.allNotes)
 
     const userObj = useSelector(state => state.session.user)
@@ -26,6 +27,8 @@ const NotebookDetails = () => {
 
         return note.notebookId === Number(notebookId)
     })
+    const array = Object.values(notebookObj)
+    const currentNotebook = array.find(notebook => Number(notebook.id) === Number(notebookId))
 
 
     const err = {}
@@ -91,10 +94,6 @@ const NotebookDetails = () => {
         return boolean
     }
 
-    const deleteButton = (e) => {
-        e.preventDefault()
-        setBool(!bool)
-    }
 
     const setterFunction = (note, e) => {
         setCurrentNote(note)
@@ -106,10 +105,19 @@ const NotebookDetails = () => {
         e.preventDefault()
         setErrors({})
         setTitle('')
+        console.log('title', title)
         setNewBody('')
+        console.log('newBody', newBody)
         setCurrentNote({ title: '' })
+        console.log('currentNote', currentNote)
         setBool(!bool)
     }
+    // const deleteButton = (e) => {
+    //     NewNotebookNow(e)
+    //     // setBool(!bool)
+    // }
+
+    let able = disabled ? 'able' : 'disabled'
 
     useEffect(() => {
         dispatch(getNotebooksThunk())
@@ -120,7 +128,7 @@ const NotebookDetails = () => {
     return (
         <div id="whole-notebook-wrapper">
             <div>
-                <h1 id='notebook-details-h1'>Notebook Details</h1>
+                <h1 id='notebook-details-h1'>{`${currentNotebook?.title}`}</h1>
                 <div className='notebook-content-wrapper'>
 
                     <div className='notebook-content-left'>
@@ -137,13 +145,6 @@ const NotebookDetails = () => {
                                             {note.title}
                                         </p>
 
-
-                                        <div id="delete-note-modal-container" onClick={(e) => deleteButton(e)}>
-                                            <OpenModalButton
-                                                buttonText='🗑'
-                                                modalComponent={<DeleteModal note={note} />}
-                                            />
-                                        </div>
                                     </li>
                                 )
                             })}
@@ -156,6 +157,7 @@ const NotebookDetails = () => {
                                 <textarea
                                     className='notebook-detail-textarea-title'
                                     value={title ? title : currentNote.title}
+                                    // value={title }
                                     placeholder='Title'
                                     onChange={(e) => setTitle(e.target.value)}
                                 ></textarea>
@@ -171,18 +173,27 @@ const NotebookDetails = () => {
                             <p className='errors'>{errors.body2}</p>
 
                             {/* {updateOrCreate()} */}
-                            <div className='notebook-detail-button-container'>
-                                <button className='Update-New-Note' type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
+                            <div className={`notebook-detail-button-container`}>
+                                <button className={`Update-New-Note  ${able}`} type="submit" disabled={!currentNote.id} onClick={handleSubmitUpdate}>
                                     Update {currentNote.title} Note
                                 </button>
                                 <button className='Reset-Note' type='submit' onClick={(e) => NewNotebookNow(e)}>Reset Note</button>
-                                <button className='Create-New-Note' type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
+                                <button className={`Create-New-Note  ${able}`} type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
+                                <div className='div-delete-note'>
+                                    <button className='notebook-Delete-Note' type='submit' onClick={(e) => NewNotebookNow(e)}>
+                                        <OpenModalButton
+                                            buttonText='🗑'
+                                            modalComponent={<DeleteModal note={currentNote} />}
+                                        />
+
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

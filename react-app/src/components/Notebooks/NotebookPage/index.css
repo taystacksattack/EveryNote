@@ -108,6 +108,10 @@
   background-color: var(--bg-clr);
   border: none;
 }
+#add-note-link:hover{
+  cursor: pointer;
+}
+
 .add-note-feature {
   position: relative;
   left: 5px;

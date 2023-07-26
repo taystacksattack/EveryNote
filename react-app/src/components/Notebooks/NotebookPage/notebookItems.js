@@ -83,7 +83,7 @@ const NotebookItems = ({ userObj, notebook, notes }) => {
 
                 <div className="notebook-ul-ultra-wrapper">
                     <ul className={`${ulClassName} spot-list`}>
-                        <li key="addNote">
+                        <li key="addNote" id="add-note-link">
                             <AddNoteToNotebook notebook={notebook} />
                         </li>
                         <li className="li-divider" key="updateNotebook">

@@ -15,6 +15,7 @@ const NotebookDetails = () => {
     const [disabled, setDisable] = useState(true)
     const [bool, setBool] = useState(true)
     const [errors, setErrors] = useState({})
+    const [deleteNoteState, setDeleteNoteState] = useState(false)
 
     const dispatch = useDispatch()
     const notebookId = useParams().notebookId
@@ -124,7 +125,7 @@ const NotebookDetails = () => {
         dispatch(getNotesThunk())
     }, [dispatch, newBody, bool, title])
 
-    // console.log(errors)
+    console.log(currentNote)
     return (
         <div id="whole-notebook-wrapper">
             <div>
@@ -180,13 +181,13 @@ const NotebookDetails = () => {
                                 <button className='Reset-Note' type='submit' onClick={(e) => NewNotebookNow(e)}>Reset Note</button>
                                 <button className={`Create-New-Note  ${able}`} type='submit' disabled={currentNote.id && bigCheckState()} onClick={handleSubmitCreate}>Create New Note</button>
                                 <div className='div-delete-note'>
-                                    <button className='notebook-Delete-Note' type='submit' onClick={(e) => NewNotebookNow(e)}>
+                                    <div className={(Object.values(currentNote)).length===0 ? "hidden" :'notebook-Delete-Note'} type='submit' onClick={(e) => NewNotebookNow(e)}>
                                         <OpenModalButton
                                             buttonText='🗑'
-                                            modalComponent={<DeleteModal note={currentNote} />}
+                                            modalComponent={<DeleteModal note={currentNote} setDeleteNoteState={setDeleteNoteState} deleteNoteState={deleteNoteState} />}
                                         />
 
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>

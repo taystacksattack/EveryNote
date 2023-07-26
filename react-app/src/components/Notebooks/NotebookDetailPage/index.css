@@ -9,6 +9,7 @@
 }
 #whole-notebook-wrapper {
   background-color: var(--bg-clr);
+  height: fit-content;
   width: 80%;
   border-left: 2px solid var(--button);
   /* padding: 2rem; */
@@ -48,6 +49,9 @@
   justify-content: center;
   align-items: center;
   height: 4rem;
+}
+.hidden>*{
+  display: none;
 }
 .notebook-Delete-Note {
   /* height: \rem; */

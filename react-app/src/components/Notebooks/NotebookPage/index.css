@@ -34,9 +34,11 @@
   align-items: center;
   width: 100%;
   margin: 2px;
+  margin-bottom: 14px;
   padding: 10px;
   border-bottom: solid 2px #a6a6a6;
   height:fit-content;
+  overflow-y: scroll;
 }
 .notebook-num-stuff {
   height: 2rem;
@@ -224,5 +226,11 @@
   }
   .notebook-ul-note-links {
     width: 5rem;
+  }
+  .notebook-div-container>p, .notebook-block, .notebook-note-dropdown-note-li{
+    font-size: .6rem;
+  }
+  .notebook-div-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

@@ -203,5 +203,53 @@
 @media screen and (max-width: 390px) {
   #tasks-area-wrapper {
     width: 85%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: .5rem;
+  }
+  #tasks-list{
+    height: 50%;
+    width: 100%;
+    border: var(--button) 2px solid;
+  }
+  #each-task>a{
+    font-size: 1.3rem;
+  }
+  #each-task>p {
+    font-size: 1rem;
+  }
+  .edit-button{
+    font-size: 1rem;
+    width: 30%
+  }
+  #trash>button, #select-filter>select{
+    font-size: 1rem;
+  }
+
+
+  #task-input-area{
+      /* width: 30rem; */
+      border: var(--border) 2px solid;
+      /* background-color: pink; */
+      height: 50%;
+      width: 100%
+  }
+  .form-container>h1{
+    font-size: 1.5rem;
+  }
+  .form-container>div>p {
+    font-size: 1rem;
+  }
+
+  #new-task{
+    font-size: 1.5rem;
+  }
+  #title{
+    font-size: 1rem;
+  }
+  #description{
+    font-size: 1rem;
+    height: 25vh;
   }
 }

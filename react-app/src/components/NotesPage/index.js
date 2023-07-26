@@ -39,6 +39,9 @@ const CurrentNotes = () => {
 
     const [notebookIdChoice, setNotebookIdChoice] = useState(1);
     //
+    // final edit stuff
+    const [showSaved, setShowSaved] = useState(false)
+    const [deleteNoteState, setDeleteNoteState] = useState(false)
 
 
 
@@ -60,7 +63,9 @@ const CurrentNotes = () => {
 
     useEffect(() => {
         dispatch(getNotesThunk())
-        setListRendered(listOfNotes)
+        setListRendered(dateSort(listOfNotes).toReversed())
+        // setSortDate(false)
+
 
     }, [dispatch, listOfNotes.length, listRendered.length, notesObj[clickedNote.id]?.title, notesObj[clickedNote.id]?.body])
     // useEffect(() => {
@@ -85,7 +90,7 @@ const CurrentNotes = () => {
         setClickedNote({})
         setTitle('')
         setNoteContent('')
-    }, [listOfNotes.length, clickedAdd])
+    }, [clickedAdd, deleteNoteState])
 
 
 
@@ -110,7 +115,7 @@ const CurrentNotes = () => {
     }
 
     const dateSort = (notesList) => {
-        const copy = notesList.slice()
+        const copy = notesList
         const sortedCopy = copy.sort((a, b) => {
             const dateA = a.updated_at
             const dateB = b.updated_at
@@ -146,7 +151,7 @@ const CurrentNotes = () => {
             notebookId: notebookIdChoice,
             //
             trash: false
-    
+
         }
 
         setErrors({})
@@ -166,8 +171,8 @@ const CurrentNotes = () => {
             // console.log("updatingggggggggggg", title, noteContent)
             // console.log("note info", clickedNote)
 
-            console.log("clickedNote notebookId", clickedNote.notebookId)
-            console.log("notebookIdChoice", notebookIdChoice)
+            // console.log("clickedNote notebookId", clickedNote.notebookId)
+            // console.log("notebookIdChoice", notebookIdChoice)
 
             const updatedNote = {
                 title,
@@ -184,21 +189,34 @@ const CurrentNotes = () => {
 
             await dispatch(editNoteThunk(updatedNote, clickedNote.id))
             dispatch(getNotesThunk())
-            setListRendered(listOfNotes)
-            setTitle('')
-            setNoteContent('')
+            setListRendered(listOfNotes.toReversed())
+            // setTitle('')
+            // setNoteContent('')
+
+            setShowSaved(true)
+            setTimeout(()=>{
+                setShowSaved(false)
+            }, 3000)
 
             //
-            setNotebookIdChoice(1)
-            setClickedNote({})
+            // setNotebookIdChoice(1)
+            // setClickedNote({})
             // dispatch(getNotesThunk())
         } else {
 
-            await dispatch(createNoteThunk(newNote))
-            setTitle('')
-            setNoteContent('')
+            const tempNote = await dispatch(createNoteThunk(newNote))
+            // console.log("tempNote id!",tempNote.id)
+            // setTitle('')
+            // setNoteContent('')
             //
-            setNotebookIdChoice(1)
+            // setNotebookIdChoice(1)
+
+            setClickedNote(tempNote)
+            setShowSaved(true)
+            setTimeout(()=>{
+                setShowSaved(false)
+            }, 3000)
+
 
             await dispatch(getNotesThunk())
 
@@ -445,6 +463,9 @@ const CurrentNotes = () => {
 
 
 
+    // console.log("deletenote state - is this defined?", deleteNoteState)
+    // console.log("set deletenote state - is this defined?", setDeleteNoteState)
+
     if (!notesObj) return (<div>Loading</div>)
     return (
         <div className='everything-wrapper'>
@@ -484,7 +505,7 @@ const CurrentNotes = () => {
                             <div id="delete-note-modal-container">
                                 <OpenModalButton
                                     buttonText='🗑'
-                                    modalComponent={<DeleteModal note={note} />}
+                                    modalComponent={<DeleteModal note={note} setDeleteNoteState={setDeleteNoteState} deleteNoteState={deleteNoteState} />}
                                 />
                             </div>
                         </div>
@@ -501,7 +522,7 @@ const CurrentNotes = () => {
                                     <div id="delete-note-modal-container">
                                         <OpenModalButton
                                             buttonText='🗑'
-                                            modalComponent={<DeleteModal note={note} />}
+                                            modalComponent={<DeleteModal note={note} setDeleteNoteState={setDeleteNoteState} deleteNoteState={deleteNoteState} />}
                                         />
                                     </div>
 
@@ -519,13 +540,22 @@ const CurrentNotes = () => {
             <div className='new-note-area'>
                 <form id='new-note-form' onSubmit={handleSubmit} method={Object.values(clickedNote).length ? "PUT" : "POST"}>
 
-                    <textarea
+                    {/* <textarea
+                        id='title-textarea'
+                        value={title.trimStart()}
+                        rows="2"
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder='Title'
+                    >
+                    </textarea> */}
+                    <input
                         id='title-textarea'
                         value={title.trimStart()}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder='Title'
+
                     >
-                    </textarea>
+                    </input>
                     <textarea
                         id='note-content-textarea'
                         value={noteContent.trimStart()}
@@ -534,7 +564,10 @@ const CurrentNotes = () => {
                         rows='50'
                     >
                     </textarea>
-                    <button type='submit' id='save-note-btn'>Save Note</button>
+                    <div id="saved">
+                        <button type='submit' id='save-note-btn'>Save Note</button>
+                        {showSaved && <p>Saved!</p>}
+                    </div>
                     {notetags && (Object.values(clickedNote).length > 0) ? AddTagForm(clickedNote.id) : ''}
 
                     {AddToNotebookForm()}

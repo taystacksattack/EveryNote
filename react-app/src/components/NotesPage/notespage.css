@@ -101,14 +101,26 @@ button {
 }
 
 #title-textarea {
-  font-size: 2rem;
-  overflow: hidden;
+  font-size: 1.5rem;
+  /* overflow: hidden; */
   height: 3rem;
+  /* width: 100%; */
+
 }
 
 #note-content-textarea {
   font-size: 18px;
 }
+
+#saved{
+  display: flex;
+  align-items: center;
+}
+
+#saved>p{
+  font-size: 1rem;
+}
+
 #save-note-btn {
   width: 5rem;
   background-color: var(--mustard);
@@ -268,6 +280,24 @@ button {
   #tag-names {
     font-size: 1.5vw;
   }
+  /* #title-textarea {
+    font-size: 3vw;
+  } */
+  /* .everything-wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-y:scroll;
+  }
+  .all-notes-area{
+    height: 50%;
+    width:100%
+  }
+  .new-note-area{
+    width: 30rem;
+    background-color: pink;
+    height:50%;
+    width: 100%
+  } */
 }
 
 @media screen and (max-width: 588px) {
@@ -304,6 +334,38 @@ button {
 @media screen and (max-width: 390px) {
   .everything-wrapper {
     width: 85%;
+  }
+  .everything-wrapper>*{
+    font-size: 1rem;
+  }
+    .everything-wrapper {
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      gap:.5rem;
+    }
+
+    .all-notes-area {
+      height: 50%;
+      width: 100%;
+      border: var(--button) 2px solid;
+    }
+
+    .new-note-area {
+      /* width: 30rem; */
+      border: var(--border) 2px solid;
+      background-color: pink;
+      height: 50%;
+      width: 100%
+    }
+  #note-titles, .notes-header>h1, #add-note-icon, #delete-note-modal-container>*{
+    font-size: 1.25rem;
+  }
+  #delete-note-modal-container>button{
+    font-size: 20rem;
+  }
+  #updated-date{
+    font-size:.75rem
   }
 }
 

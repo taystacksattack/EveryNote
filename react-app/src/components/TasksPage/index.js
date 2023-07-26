@@ -96,7 +96,7 @@ const CurrentTasks = () => {
                         {/* <br></br> */}
                         <div id="new-task">
                             {/* <Link onClick={e=>handleNewTask(e)}>New Task</Link> */}
-                            <i class="fa-solid fa-calendar-plus" onClick={e=>handleNewTask(e)}></i>
+                            <i class="fa-solid fa-calendar-plus" onClick={e=>handleNewTask(e)} title="Add a new task"></i>
                         </div>
                     </div>
                     <br></br>
@@ -129,6 +129,7 @@ const CurrentTasks = () => {
                     })}
                 </div>
                 <div id="task-input-area">
+                    {!showTask && !showNewTasks && !showEditTasks ? <h3><br/>Click a task to view its content</h3> : null}
                     {showTask ? <SingleTask taskId={singleTask}/> : null}
                     {showNewTasks ? <CreateTask/> : null}
                     {showEditTasks ? <EditTask taskId={singleTask}/> : null}

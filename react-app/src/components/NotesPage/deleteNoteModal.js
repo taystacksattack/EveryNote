@@ -3,7 +3,7 @@ import { useModal } from "../../context/Modal"
 import { deleteNoteThunk } from "../../store/notes";
 
 
-function DeleteModal({ note }) {
+function DeleteModal({ note, setDeleteNoteState, deleteNoteState}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal()
 
@@ -11,9 +11,13 @@ function DeleteModal({ note }) {
     const handleDelete = (e) => {
         e.preventDefault();
         dispatch(deleteNoteThunk(note.id))
+        setDeleteNoteState(!deleteNoteState)
 
         closeModal()
     }
+
+    console.log("HERE IS SETDELETENOTESTATE", setDeleteNoteState)
+    console.log("HERE IS DELETENOTESTATE", deleteNoteState)
 
     return (
         <div id='delete-note-modal'>

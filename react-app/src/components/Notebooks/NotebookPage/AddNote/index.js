@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 
 
 
-const AddNoteToNotebook = () => {
+const AddNoteToNotebook = ({ notebook }) => {
 
     const history = useHistory()
 
@@ -12,7 +12,7 @@ const AddNoteToNotebook = () => {
     // }
 
     const pushPushPush = () => {
-        history.push("/notebooks/1")
+        history.push(`/notebooks/${notebook.id}`)
     }
 
     return (
